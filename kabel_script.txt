@@ -1,0 +1,1189 @@
+Chapter 1: Merad [Action] (x1 action)
+  Saito fights on the battlefield, gets knocked out by a defective grenade, and
+  is euthanized when it is determined too great a cost to nurse him to health.
+Chapter 2: Gheni [Stealth] (x1 action)
+  Thane, Diego, and Asra decide to flee the country. They burn their collection
+  of banned books before sneaking on a freight train to Rega.
+Chapter 3: Chalt [Boss] (x2 action)
+  The trio uses a prostitute to find the local black market to find a uniform
+  for Diego. Later, they end up at one of Somoza's rally and have a chance to
+  kill him. If they do, they fight a helicopter. They escape the city in a
+  military convoy.
+Chapter 4: Nenegi [Rescue] (x2 action)
+  The ask Vanna to smuggle them out and are led into a trap where Asra is
+  captured. An assault on Nenegi gives them a chance to infiltrate the prison.
+  Along the way they meet Jacques, who helps them but dies along with Diego.
+  Thane hallucinates that Asra is rescued and Diego survives. Cheminan forces
+  retake the prison, and Thane is forced to retreat into Erawa.
+Chapter 5: Tripsi [Evincer] (x1 action)
+  Thane tries to make peace with Erawans to no avail, and fights his way back
+  across the border.
+Chapter 6: Rega [Stealth] (x1 action)
+  Thane sneaks onto a ship bound for Debony.
+Chapter 7: Venha [Epilogue]
+  Thane makes contact with Debonese authorities and is granted political asylum.
+  He is admitted as an engineer in their government intelligence program.
+  
+Map of North Kabel
+ 
+ #####    @@@@@    (#) Erawa, (@) Chemina
+#######  @C@@G@@   (C)halt, (G)heni
+#####MTN@@@@@@@@@@ (M)erad, (T)ripsi, (N)enegi
+#######R@@@@@@@    (R)ega
+ #####   @@
+ 
+ 
+     $$$$V$$        (V)enha, ($) Debony
+  $$$$$$$$$$$$$$$$$
+ $$$$$$$$$$$$$$$$$$$$$$$$$$
+
+  
+  Geography... O<>
+    Erawa circular, Chemina diamondesque?
+	  Gheni north, Rega west, port south?
+	  G
+	
+	
+  
+  * Split Rega into several parts? Put port somewhere else?
+  
+  Gheni, Chalt, Nenegi, Tripsi, Rega
+  Gheni: Rural 
+  
+  City 1: Where the party starts. They catch a train to City 2.
+  City 2: Where Somoza's rally is. The party 
+  City 3: Where Vanna is, Asra gets kidnapped and rescued. Party pushed to
+          Erawa.
+  City 4: In Erawa.
+  City 5: Where the port is.
+
+Chapter 0: Bloodshed in Merad
+  Panoramic
+  The Heat of Battle
+  Bane's Advice
+  Bane's Death
+  Infirmary
+Chapter 1: Escape From Gheni
+  Death Letter
+  Asra: Diego's Apathy
+  Diego: Traveling Together
+  Book Cellar
+  Asra: About Books
+  Erawa At a Glance
+  Beyond Reality
+  A Brief History
+  Book Burning
+  Cheminan Engineering
+  Past Curfew
+  I Units
+Chapter 2: Disguise
+  Train Hopping
+  Meeting Vanna
+  Leaving Vanna's
+  Rally
+  Iron Sights
+  Asra: Assassination
+  Diego: Assassination
+  
+  Black market, optional assassination (helicopter battle)
+  Foreshadow medical experiments and nausea
+Chapter 2: Military Convoy
+  Insider helps takeover of convoy, Asra captured.
+Chapter 3: Escort and Rescue
+  Evincer prisoner Jacques
+  Diego dies, Asra "rescued"
+  Evincer dies from hallucination, foreshadowing
+Chapter 4: Sailing Away
+  Fighting Evincers
+  
+  Breaking News: Defeat in Merad
+  Breaking News: Night Patrol Killed
+  Breaking News: Invention of Television
+  Breaking News: Deserter Captured
+  Breaking News: Risto Somoza's Succession
+  Breaking News: Remembrance of the Rega Massacre
+  Breaking News: Record High Trades With Debony
+  Breaking News: Heavy Losses in Debony
+
+<000> # Panoramic
+
+# An urban city street fades into view. Civilians scatter as a formation
+# of troops march forward.
+
+Twenty years ago, the country of Chemina erupted in civil war. Farid Somoza and
+his militia emerged victorious and claimed the nation as their own.
+
+# The screen fades to a timelapse of a skyline, with smoke stacks and
+# street lights appearing one at a time.
+
+Somoza saw promise in coal and electrical power, creating an economic powerhouse
+from the emerging industries.
+
+Soon after, a campaign was launched to occupy the neighboring territory of Erawa
+and use its mystic properties as an energy source.
+
+# Evincers are shown driving back Cheminan soldiers with projectile attacks
+
+The Erawan government considered this exploitation impious, expunging the
+occupation and thrusting the two nations into protracted conflict.
+
+<001> # The Heat of Battle
+
+# The screen flashes white with a tremendous explosion, after which
+# an Erawan village fades into view with several buildings on fire.
+# Saito is seen lying on his stomach behind half-destroyed sandbags, while his
+# commanding officer watches him from the cover of an abandoned house.
+
+Bane: Move your ass, private!
+
+Saito: Ugh...
+
+# Saito gets up into a crouching position. Bane fires at an evincer, forcing him
+# to take cover, and Saito makes a dash to join him behind the house.
+
+Saito: We're getting hammered out here.
+
+Bane: That's what happens when you take the fight to their doorstep.
+
+Saito: So why don't we have ballistic protection for the heat bombs?
+
+# An earth-shaking blast knocks them both to the ground.
+
+Bane: Enough! Let's move!
+
+<002> # Bane's Advice
+
+Bane: Never charge the enemy! Take cover and wait it out until you can get the
+drop on them.
+
+Select a tile to move to that position, or select the tile you're already on to
+wait a turn instead. Wait on tiles with cover to ambush enemies.
+
+When enemies are on your tile, you may select battle commands to engage them.
+
+<003> # Bane's Death
+
+# A shockwave hurls Bane against a tree, one of its branches impaling him
+# through the side. Saito turns to see an Erawan girl duck behind a hut.
+
+Saito: Major, are you...? Oh, no.
+
+# Bane struggles to reach in his pack and pulls out a grenade, which he hands to
+# Saito.
+
+Bane: Take it. Flush her out and gun her down.
+
+Saito: Try not to talk. We can-
+
+Bane: No, private. This is beyond mending.
+
+Saito: ...
+
+Bane: Go out there and take down as many as you can.
+
+# Another shockwave comes, throwing Saito to the ground. He looks up to see the
+# girl by the hut again, ready to throw a rock. Saito takes off running,
+# stopping behind another hut.
+
+Saito: She looks just like Phaedra...
+
+<004> # Infirmary
+
+Saito: Ugh, my head...
+
+# The screen fades from black to show Saito bandaged in a hospital bed.
+# A telegraph can be heard off-screen.
+
+???: ... right hand. Third degree burns along arm. Traumatic brain injury.
+Multiple fractures.
+
+???: Chance of recovery?
+
+???: Condition stable, full recovery impossible.
+
+???: Fit to fight? Fit to work?
+
+???: Negative to both.
+
+???: We can't spare resources to rehabilitate.
+
+Saito: ... Is this how it all ends? Mauled by a defective grenade and
+euthanized in a medical tent? No, they can't be talking about me.
+
+# Footsteps approach and a shadow can be seen through the hospital curtain.
+
+Saito: Well I’m not going down without a fight.
+
+# Saito pretends to be asleep. A nurse comes in and swabs his arm. Before she
+# gives an injection, he strikes her in the chest. The screen flashes red, and
+# blood gushes from Saito’s hand.
+
+Saito: What happened... to my arm?
+
+# The nurse finishes giving him the injection, after which he collapses.
+
+<100> # Death Letter
+
+# An upstairs bedroom fades into view, showing a young couple sitting together
+# on the bed and an older man standing at the window.
+
+Thane: "I regret to inform you that Saito Belikoff was reported killed in action
+while deployed in Merad, Erawa. I hope you can find solace in the knowledge of
+his heroic service to the state. I extend my deepest sympathy to you."
+
+Asra: ...
+
+Thane: Think it's true?
+
+Asra: That he died on the battlefield? Maybe. Could've been blown up. Could've
+been put down. Both happen pretty often.
+
+Diego: It's time to leave. There's nothing left for us here.
+
+Thane: Now?
+
+Asra: There isn’t much for us to wait around for, is there? I’m sure I’ll be
+deployed soon.
+
+Thane: That is true. Somoza keeps people on active duty so their families can't
+escape without leaving them behind.
+
+Diego: Get the books from the cellar. I don't want them laying around after we
+leave.
+
+<100a> # Asra: Diego's Apathy
+
+Asra: How can your uncle care so little about his own brother?
+
+Thane: Diego's lost a lot of family. He doesn't have the energy to grieve
+anymore. But you shouldn't take that to mean that he doesn't care.
+
+Asra: And what about you?
+
+Thane: I'm sure he cares about how I'm feeling. He just doesn't know how to show
+it.
+
+Asra: No, I mean how are you feeling?
+
+Thane: Er, sad? In shock? I don't know. I think I need some time to process
+everything that's going through my head right now. What are you thinking?
+
+Asra: Is it bad if I say I'm really ready to leave this place?
+
+Thane: No. You're in the military reserve. I'm sure you're thinking how easily
+that letter could have been about you instead.
+
+Asra: Actually... I was thinking about how both of our parents are gone now. I
+just want to go somewhere else and not think about all of this anymore. But I
+feel bad pushing your dad under the rug like that.
+
+Thane: I can't expect you to feel the same way about my dad as I do. You barely
+knew him. Besides, Diego seems pretty ready to leave, too.
+
+Asra: Heh... Can't believe we finally agree on something.
+
+<100d> # Diego: Traveling Together
+
+Diego: What's the matter? Is the vent stuck?
+
+Thane: No, I haven't been down to the cellar yet.
+
+Diego: I told you to get those books. We need to make sure they're gone before
+we get raided.
+
+Thane: I was actually going to ask why you wanted to bring Asra along. I know
+you two don't get along.
+
+Diego: Our best bet making it out of the country is through Rega. Asra knows the
+city better than we do. She'll be able to help.
+
+Thane: I don't follow your reasoning. There's a difference between living in a
+city and knowing how to flee a country from it.
+
+Diego: Asra also knows you're half Erawan. If we left her here she'd be taken
+into custody. There's no telling what she'd say. It's best we take her along for
+the same reason I want those books gone.
+
+<101> # Book Cellar
+
+# With a click, a lightbulb comes to life, illuminating a small basement. The
+# old Cheminan flag hangs sideways on the wall. The screen dims for a flashback.
+
+Thane: The old flag looks kind of creepy.
+
+Saito: I don't see how. The new one has a mountain to represent authority.
+That's way worse if you ask me.
+
+# The screen brightens to show Asra behind Thane.
+
+Asra: Hey. Everything alright down here?
+
+Thane: Yeah, what's up?
+
+Asra: You were down here a while. Still bringing this stuff back up?
+
+Thane: It seems like such a waste to burn them.
+
+Asra: Thane... Would you rather be tried as a renegade or traitor? If we get
+caught, these are the difference between the gallows and thumbscrews. They have
+to go.
+
+Thane: I know. Just... Give me a minute.
+
+<101a> # Asra: About Books
+
+Thane: A Brief History has a tear on one of the pages. Dad wouldn't read me part
+of it because he was afraid I'd repeat it in school. I threw a tantrum and tried
+to grab it out of his hand.
+
+Asra: How old were you?
+
+Thane: Five.
+
+Asra: That's pretty young to be lecturing your kid about politics.
+
+Thane: He said all the children's books were "nationalistic garbage" so he read
+these to me instead. Even though he had to paraphrase most of it. Kind of weird
+to think he's not here to protect the book from me this time.
+
+Asra: You shouldn't think of it that way.
+
+Thane: Why not?
+
+Asra: Those books made you who you are. They've served their purpose. We're only
+burning them now because we're making room for a new life - one where we can be
+safe from Somoza and this stupid war. If Saito could see you now he'd be proud.
+
+Thane: How can you say that? You never even knew him.
+
+Asra: Okay. What would he really think of you?
+
+Thane: I guess... He would have been proud. Probably.
+
+Asra: See? This is the best thing we can do right now. Now come over here and
+hold me.
+
+Thane: ... I'm going to miss him.
+
+Asra: I know.
+
+# Thane and Asra embrace tightly.
+
+<102> # Erawa At a Glance
+
+Paranormal phenomena were first observed in Erawa in the sixth century, though
+their nature has been closely guarded by the Erawan Empire. Indeed, nearly half
+a millennia passed before Zeke Salow observed that the magnitude and frequency
+
+of these events correlated with their proximity to the center of the peninsula.
+
+Legends of Erawan magicians known as evincers had existed for centuries, but it
+wasn't until Salow interviewed defected practitioners that he theorized the
+center of Erawa contained what he called a 'subjective fracture in objective
+
+reality,' which enabled the temporary suspension of physical law. Evincers
+trained to exploit the Fracture, primarily manipulating the natural tundra into
+a tropical rainforest suitable for agriculture and resource production, as well
+
+as a source of military power during the period of Cheminan colonization.
+
+Erawa's geography is also a topic of debate. According to mythology, its
+distinct shape is a result of ancient evincers causing the land to physically
+expand outward from the Fracture itself, resulting in a perfectly round
+
+landmass. However, skeptics argue that such profound influence over the terrain
+so far from the center is virtually impossible.
+
+<103> # Beyond Reality: What the Fracture Means for Modern Society
+
+The exact nature of the Fracture is unknown - reality becomes increasingly
+unstable as one approaches it. Within a forty-mile radius, objects from an
+observer's imagination begin to materialize, and objects not being actively
+
+observed may dematerialize. Beyond a thirty mile radius, unconscious eye
+movements cause earthquakes, and measurement tools begin to malfunction.
+Experienced evincers are able to dampen these effects, but there are no
+
+confirmed records of the center having been reached.
+
+Because of this, Erawa is divided into five territories shaped like concentric
+rings around the center. The ectosphere houses civilians, whose prowess in
+evincing is typically modest. The endosphere is home to the aristocracy, who
+
+wield significantly more paranormal power. Beyond this layer is the introsphere,
+which requires specific training and discipline to enter safely. As a result,
+only devoted evincers and shaman are able to live here. The metasphere lies
+
+beyond this, and while the effects of the Fracture are too potent for this area
+to be permanently inhabitable, it is often a staple of an evincer's spiritual
+journey. The cryptosphere is the innermost layer, and is the event horizon for
+
+all human activity. Those that cross this boundary are never seen again.
+
+The nature of the center is a topic of fierce debate. Zeke Salow denied that the
+itself could have any concrete shape, insisting that complete subversion of
+objective reality contradicted the idea of a physical form. He went on to
+
+postulate that a point of purely subjective reality might 'explain the spark of
+consciousness that transformed blood-bots into what we call life.'
+	
+<104> # A Brief History of Cheminan-Erawan Relations
+
+Due to the Erawan Empire's reliance on a natural landmark which proved
+ineffective outside of the local territory, the state adopted isolationist
+policies, much to the detriment of foreign relations. Erawan-Cheminan diplomacy
+
+only soured in the wake of the Cheminan's industrialization, during which
+engineers proposed using the Fracture to construct a perpetual energy machine.
+This sparked outrage among Erawan activists who considered technological
+
+exploitation of the Fracture heresy, escalating political tensions to an
+all-out war.
+
+Although Chemina has no shortage of trade partners following their emergence as
+an economic superpower, the possibility of military intervention by a foreign
+body is slim. Developed countries have expressed concerns over Chemina's
+
+political instability and the risk of its supreme leader Farid Somoza using the
+Fracture to wage a world war, were it ever secured. Consequently, the two
+nations have been locked in a stalemate.
+
+<105> # Erawan Scriptures
+
+Thane: It's in Erawan. The last time anyone could read this was when Mom was
+still around.
+
+Asra: I'm really surprised you have one of those.
+
+Thane: Yeah, I'm not sure why we kept it. All of these are banned, but Erawan
+literature is by far the biggest liability.
+
+Asra: Where did A Brief History come from? Doesn't it have a lot of contemporary
+history?
+
+Thane: A Brief History was published in the United Territories. I'm really not
+sure how my dad got a hold of it. I'm sure we'll be able to get another copy if
+we make it out of here.
+
+<106> # Old Cheminan Flag
+
+Asra: That thing looks ancient.
+
+Thane: It's not that much older than we are. Probably just looks like it
+because we never see them anymore.
+
+Asra: I can't believe your dad fought Somoza's troops back before he rose to
+power. Your family's so much more interesting than mine.
+
+# Thane looks down.
+
+Thane: Didn't do them much good, did it? Mom died in the internment camps, and
+now Dad's... I'm sorry. It's not like you haven't lost family yourself.
+
+Asra: I'm still grateful, you know. After the Rega Massacre you were all I had
+left. There were a lot of people that had nowhere to go. Thanks for taking me
+in.
+
+Thane: Asra, I love you. You know I love you. Did you really think I wouldn't
+open my doors for you?
+
+Asra: I'm still thankful.
+
+<107> # Book Burning
+
+# Thane holds the books and flag in a fireplace shovel.
+
+Thane: Does anyone want to look at these one last time?
+
+Diego: ...
+
+# Thane thrusts the books into the fire. Diego leaves the room. After a moment
+of silence, he walks over to Asra.
+
+Asra: Guess the censors won.
+
+Thane: Weren't you just saying we had to get rid of these?
+
+Asra: Yeah. I can only imagine what Diego's thinking, though. Wasn't he a war
+correspondent during the Civil War?
+
+Thane: Kind of. Things got... Weird.
+
+Asra: You mean when he had to pledge his loyalty to Somoza?
+
+Thane: According to my dad, it was actually earlier than that. Even before
+Somoza won, Diego wanted to stay neutral. He reported numbers and took photos.
+
+Asra: What about when Phaedra was taken away?
+
+# Thane pauses and looks around.
+
+Thane: By the time Mom was captured, it was clear Somoza was going to win. I
+guess Diego wanted to be on the winning side. Even Dad did, although he said it
+was only to keep me safe.
+
+Asra: He lost his wife, pledged his loyalty to the man that had her killed, and
+after all that Somoza forced him back onto the battlefield. That's so fucked up.
+
+Thane: Asra, I really don't want to think about that right now...
+
+Asra: And now all Diego does is write pro-Somoza propaganda.
+
+Thane: I don't know what to tell you. He's a good writer and it pays the bills.
+Neither of us would be here if it weren't for him. That said, a lot of those
+books were his. You'd think he'd at least care a little about burning them.
+
+Asra: You said it yourself, didn't you? He did what he had to in order to get
+by. We all have feelings but we can't let them get in the way of pragmatism.
+
+<108> # Cheminan Engineering
+
+Diego: It's a shame we can't bring the appliances with us. We won't get this
+kind of modern convenience anywhere else in the world.
+
+Thane: That's funny coming from you. Aren't you always talking about how great
+the United Territories is?
+
+Diego: Politically, sure. But we've still got a lock on technology. You have to
+be pretty rich just to get a refrigerator if you live overseas.
+
+Asra: Don't they live like savages?
+
+Diego: Of course not! They've got all your basic necessities - horse and buggy,
+ice boxes, that kind of stuff. Just like when you were a baby.
+
+<> # Past Curfew
+
+Diego: Hey, listen up you two. If things go to shit, you should have these
+handy.
+
+# Diego hands Thane a rifle and Asra a revolver.
+
+Asra: Diego, you know I'm a medic, right?
+
+Diego: Doesn't matter. We're not trying to rack up a body count here, but having
+some suppressive fire could be a good idea.
+
+Thane: Where did you get these?
+
+Diego: My brother was a bit of a kleptomaniac. When it became apparent Somoza
+was winning the war, he started collecting weapons from fallen enemies. Once the
+war was over his service weapon was taken but he was able to hide these.
+
+Thane: I'm surprised I didn't know about these before. Why weren't they in the
+book cellar?
+
+Diego: Hell if I know. He kept them hidden in the bedroom, of all places.
+Fucking maniac.
+
+# Thane unlocks the front door.
+
+Diego: The enemy should never have a chance to retaliate. Ever. Being prepared
+means slaughtering thm before they know you're there. Anything short of that is
+failure.
+
+Thane: Were people this underhanded during the Civil War?
+
+Diego: "Underhanded" is a pejorative used to make people follow the rules of
+some arbitrary leader. Fighting honorably is the same as surrendering to the
+side with the biggest guns.
+
+Asra: I thought we weren't trying to kill anyone.
+
+Diego: We're not. Don't treat this like it's a war zone. We should be running
+and hiding whenever possible. But if it comes to violence, don't take chances.
+
+<> # I Units
+
+# Thane collapses on the street, vomiting.
+
+Asra: Are you okay?
+
+Thane: Ugh... Damned tear gas...
+
+Asra: What? I didn't-
+
+# Thane vomits more profusely.
+
+Diego: Let's find you some cover so you can take your time getting back up.
+
+# Thane stands up slowly.
+
+Thane: No, I'm okay. Let's keep moving.
+
+<> # Train Hopping
+
+# Diego, Asra, and Thane watch the scenery from the train car. A mix of forest
+# and smokestacks pass them.
+
+Asra: I always wanted to take you back home with me, but I never imagined it
+like this.
+
+Thane: Yeah. Me too. I wish I'd gotten to know your parents.
+
+# Asra smiles weakly.
+
+Asra: Stop romanticizing it like that, Thane. I already told you they were
+ignorant. If they'd known I was seeing some half-Erawan guy...
+
+Thane: What if they didn't know? Do you think we would have gotten along?
+
+Asra: I don't know. They would have been nice to you. You might not have liked
+them so much.
+
+Thane: ...
+
+Asra: Do you think you'll be able to do any evincing in Rega?
+
+Thane: I actually don't know. Rega is pretty close to the Erawan border. I might
+be able to do something simple. Control a coin flip, maybe.
+
+Asra: What was the evincer program like? Was it anything like your mom taught
+you?
+
+Thane: Mom never talked much about evincing. Gheni was way too far from the
+Fracture for her to do stuff. She still talked about the spiritual aspect,
+though.
+
+Asra: So the training was different?
+
+Thane: Definitely. It was secular, of course. There were only twenty of us, and
+the whole thing was supposed to be under wraps. Mostly they just gave us the
+enhancements and started off by having us rig dice.
+
+Asra: Why dice? That doesn't make any sense.
+
+Thane: Evincing is basically a glorified placebo effect.
+
+Asra: Meaning what?
+
+Thane: It's more than just willing things to happen. You have to believe they're
+already happening. Stuff that's based on luck is easy because you can imagine it
+happening already. The point is to skew the odds in your favor.
+
+Asra: Did you ever spar with each other?
+
+Thane: Eventually, yeah. Fighting is way harder because you can use your own
+perception to suppress the other person's abilities. I was never great at it.
+That, and there was the whole medical discharge thing, so I left early.
+
+Asra: Yeah, what was that about? You've never explained why that happened.
+
+Thane: That's because I don't understand it myself. They kept saying I was sick,
+but I felt totally fine. They wouldn't even wait for me to recover.
+
+# Diego stirs behind them.
+
+Diego: How far's the black market from the station?
+
+Asra: Not too far. Probably ten minutes or so on the trolley.
+
+Diego: You haven't been here in years. You sure it's in the same spot?
+
+Asra: It's run by the officers. Unless someone picked up the whole barracks and
+put it down somewhere else I doubt it’s gone anywhere. Also...
+
+# Asra points to a massive port in the distance.
+
+Asra: That's where we want to go once we've got uniforms. Since the United
+Territories of Debony is the only trade partner as far north we are, ships
+commuting anywhere else should have tropical barnacles stuck to them.
+
+Thane: And we're sure we want to go to Debony?
+
+Diego: Distance is the key factor here. Every country in Kabel is trying to get
+their hands on Cheminan engineers. We can expect political asylum pretty much
+anywhere. What’s important is we make it to land before we’re discovered.
+
+# The train begins slowing down. Thane points to a transit center milling with
+# a large crowd. Snow begins to fall.
+
+Thane: So can we transfer there?
+
+Asra: That's weird. I've never seen the station this backed up before.
+
+Soldier: Because our great leader is holding a rally at the square, the only
+routes in service today are those running to or from the downtown area!
+
+Asra: Nothing to boost your self-esteem like a captive audience.
+
+Thane: Does that mean we're stuck here?
+
+Asra: No, it just means we’ll have to transfer at the square instead of getting
+a straight shot. And judging by the crowd, it might be a while before we get to
+board.
+
+<> # Meeting Vanna
+
+# The trio enter a fishing supplies shop and confront the front desk.
+
+Asra: Hey, Vanna.
+
+Vanna: Asra. Haven’t seen you around. And you’ve got company, too.
+
+Asra: Yeah. This is Diego. We’re looking to get him a uniform and dog tags.
+
+Vanna: Your friend's pretty big. I doubt there's anything in the back that's
+going to fit him. Say... What do you need a uniform for anyway?
+
+Asra: We wanted to play dress-up.
+
+Vanna: A bit old for that, aren't you?
+
+Asra: It's a fetish.
+
+Diego: Hey-
+
+Vanna: I see you've still got your sense of humor. Well, I suppose it's not
+really my business what you need it for anyway. Just don't let the officers
+catch you... unless you're also a masochist. Which wouldn't surprise me.
+
+Diego: How do we get a hold of something that fits?
+
+Vanna: Someone sure is eager. I've got a friend on the other side of town that
+should be able to help you.
+
+<> # Leaving Vanna's
+
+Diego: Is this place always so poorly stocked?
+
+Asra: It's not. You're just a really big guy.
+
+Diego: It's not that I'm big. It's that the rest of you are all so damned small.
+Your generation grew up with refrigerators and ovens and no food to put in them.
+It's hardly a surprise your growth was stunted.
+
+Thane: I didn't know you had these kinds of connections in Rega.
+
+Asra: What do you mean? Everyone has a supplier somewhere or other. My dad
+wasn’t a revolutionary but that doesn’t mean we were naive. My parents took me
+here since I was eleven.
+
+Diego: Are you sure we can trust her?
+
+Asra: I would think so. She doesn't know we're deserters. Besides, if there's
+anything Vanna knows how to do it's keeping customers.
+
+<> # Rally
+
+# Somoza stands at a podium, delivering a speech.
+
+Farid Somoza: Despite our recent defeat in Merad, it is only a matter of time
+before we have secured control over the Fracture.
+
+Farid Somoza: My rule began with the dream that we could create a nation of
+unwavering advancement, and I stand here humbled by the efforts of the men and
+women who are making this dream a reality.
+
+Farid Somoza: The entirety of Kabel has already been transformed by our
+collective innovations, and I promise you, we are now closer than we have ever
+been to the dawn of a new age.
+
+Farid Somoza: Progress can only move forward, and those who try to oppose us
+will inevitably be crushed beneath its gears!
+
+Asra: Do you think Somoza’s right about us moving into a new age?
+
+Diego: I think change is coming. But I also think Somoza’s biting off more than
+he can chew. If he keeps trying to trade technology like gold and spices it’s
+going to blow up in his face.
+
+Thane: Why? He's been leader my whole life and I've never seen something so much
+as threaten his rule.
+
+Diego: It's not about politics, it's about the technology itself. It’s taken all
+of 40 years to go from steam engines to biplanes. Industrial growth helps
+sovereign power, but it helps the market more.
+
+Asra: Yeah, except Somoza controls the market, too.
+
+Diego: His official position is supreme leader. Dictator or not, that title is
+weighing him down. The market will help him, but it's also going to outgrow him.
+
+Asra: You said yourself Chemina has a lock on technology. If Somoza won't be in
+control of the economy, who will be?
+
+Diego: Countries are already starting to reverse engineer our goods. It’s only a
+matter of time before Chemina has competitors, and when that happens we’ll have
+a second explosion of trade.
+
+Thane: So anyone that wants to rule Kabel will have to do it through the
+economy. But what's to say Somoza still won't be that person?
+
+Diego: Have you heard him talk? Somoza's too stubborn to survive the changes
+he's causing. Truth be told, I'm not sure any government is flexible enough to
+take on changes like this and ride with it.
+
+Asra: That makes even less sense. You still haven't said who's going to pick up
+the slack and benefit the most from all this.
+
+Diego: If I had to guess, I’d say pirates. But at the rate technology is going,
+the factory owners might become separate entities altogether. The trick would be
+if they could go international.
+
+<> # Iron Sights
+
+Thane: Hey, come look at this.
+
+# Thane gestures to a window looking over Somoza.
+
+Asra: Holy shit. We could totally hit him from here. What are the odds of an
+opportunity like this?
+
+Diego: Virtually nothing. Do we really want to though?
+
+Thane: We can't pass up an opportunity like this.
+
+Diego: Thane, listen to me closely. If you shoot him, all of us will die. I'm
+not going to stop you, but you have to get that through your head.
+
+<> # Asra: Assassination
+
+Asra: This fucker started the war that killed my parents. He sent both of yours
+away to die. He has to pay.
+
+Thane: You realize there's no way we could get away with this, right?
+
+Asra: This is going to sound impulsive, but I don't care. We're just three
+people, Thane. What are our lives worth compared to the millions suffering
+because of him?
+
+Thane: Now you're starting to sound like the revolutionary. I didn't think you
+would be so eager to do this.
+
+Asra: My family might have been misinformed but we weren't naive. I was taught
+in school to love Somoza, but we were also afraid. There's only so much you can
+fear someone before you start to resent them.
+
+Thane: I want Somoza dead too, but I also want to make it out of this country
+alive. I want to have a future with you.
+
+Asra: What if someone else had the same chance to kill him, but didn't. What if
+they said the same thing you did? We can't let this slip through our fingers.
+
+Thane: Weren't you just saying you were afraid of how bloodthirsty you were
+becoming? Are you sure this is what you want?
+
+Asra: This is different. I'm not the one holding the gun. And I've wanted Somoza
+dead long before we decided we wanted to go to Debony. Believe it or not, I'm
+actually quite calm right now.
+
+Thane: But... Would you really rather have your vengeance than make it over the
+border? Aren't you more important than that? Aren't I?
+
+Asra: I don't want to bully you into getting yourself killed based on my whim.
+If I were a good enough shot I'd shoot him myself and take full responsibility,
+but I'm not. I don't think it's right for me to make the decision for us all.
+
+Thane: You didn't answer my question. Does killing him mean that much to you?
+
+Asra: I... don't know. I do love you. But what if we don't shoot him and we
+still get caught trying to flee? What if we pass up this chance and it's all for
+nothing?
+
+Thane: What if I shoot and miss? There's always a chance something could go
+wrong.
+
+Asra: We have a really good position. I don't think you'll miss.
+
+<> # Diego: Assassination
+
+Diego: I'd think twice before pulling that trigger. You know his son is just
+going to take over, right? Besides, his regime is doomed to fall even without
+our help.
+
+Thane: Yeah, but-
+
+Diego: But what? What's done is done. You can't bring back the people that are
+already dead, and killing Somoza now isn't going to help anyone either. Changing
+the world is more complicated than shooting bad guys.
+
+Thane: He still deserves to die.
+
+Diego: Sure he does. But are you going to throw all of our lives away based on
+who deserves what?
+
+Thane: Are you telling me not to shoot him?
+
+Diego: ... No. I don't ever want to tell someone the story about how my nephew
+almost killed Farid Somoza until I talked him out of it. I could never live with
+myself.
+
+Thane: What do you want, then?
+
+Diego: I'm staying neutral.
+
+Thane: Is this some kind of vestigial journalistic objectivity? You never
+change, do you?
+
+Diego: Thane, my integrity went out the window after your mom was taken away. My
+actions at that time were rooted in self-preservation. If that bothers you,
+consider that I'm letting you make this choice yourself, even if it kills me.
+
+Thane: You're just putting your life in my hands that easily? Does this mean
+anything to you?
+
+Diego: This is extremely important to me, but both choices have merit. That's
+why I'm fine with whatever you choose to do.
+
+<> # Breaking News: Defeat in Merad
+
+Thane: "Our valiant soldiers continue their tug of war over Merad. Fourteen
+Cheminan casualties were reported on the battlefields in the most recent battle,
+but General Kowalski assures us that victory is simply a matter of patience."
+
+Asra: What a crock of shit. We've been fighting over that miserable little town
+for three years now. I'll bet the actual body count is forty.
+
+Diego: I promise I didn't write that one... My articles are more ham-fisted.
+
+Thane: Does this kind of stuff really raise morale?
+
+Diego: I'll let you know when we run a story on how the war is actually going.
+
+Asra: That sounds like a real test of patience.
+
+<> # Breaking News: Night Patrol Killed
+
+Thane: "Early this morning, officers found several of squadmates in Gheni dead
+while doing rounds. Forensics confirmed the cause of death to be multiple
+gunshot wounds from Civil War-era weapons."
+
+Diego: Let me guess. A reward-
+
+Thane: "A handsome reward shall be offered to any who provide evidence leading
+to the capture of the suspects."
+
+Asra: Thane... Can I talk to you about something?
+
+Thane: Of course. What's going on?
+
+Asra: I'm a murderer now. And the... thing is... fuck.
+
+Thane: Trust me, I know. It's hard to-
+
+Asra: It's not hard! That's why I'm so fucking scared!
+
+Thane: ...
+
+Asra: I never wanted to be drafted into the service. I never wanted to be a
+medic, either. But I was able to accept it because I could tell myself at least
+I was helping people. But something about killing just felt... exciting.
+
+Thane: Everyone has their own way of handling taking a life.
+
+Asra: It's not even about that. It's that I liked it! What does that say about
+who I am? What if I just get worse and I lose control? This isn't who I want to
+be.
+
+Thane: It's going to be alright. We're not soldiers and we're not here to fight.
+Once we're in Debony you won't have to think about any of this anymore.
+
+Asra: Even if we make it... I'm scared of myself, Thane.
+
+Thane: I can't promise everything will be fine, but give yourself time. You'll
+at least feel better than you do now.
+
+<> # Breaking News: Invention of Television
+
+Thane: "Physicists use amplitude-modulated frequencies to transmit images via
+cathode ray tubes. A union of motion pictures and remote broadcasts is expected
+to reach the market later this year."
+
+Diego: I didn't understand half of that.
+
+Asra: And here I was thinking you were the educated gentleman.
+
+Diego: I never said that. I just said you kids never learn the things you really
+need to know in school.
+
+Asra: Oh yeah? What's the last thing you invented?
+
+Thane: Asra, don't-
+
+Diego: It's not about what I've invented, or what anyone's invented for that
+matter. You two grow up practically illiterate and completely ignorant of your
+own history, and then you think engineering is the only thing worth knowing.
+
+Asra: Not everyone has to be like you, Diego! Different people-
+
+Diego: Everyone needs to know why things are the way they are right now! You
+can't raise a whole generation of engineers to be subservient workers that shirk
+their collective responsibility as citizens and then expect a revolution.
+
+Asra: What about you? Your own brother risked his life in the Civil War and all
+you did was stand on the sidelines and watch!
+
+Thane: Stop!!
+
+Asra: ...
+
+<> # Breaking News: Deserter Captured
+
+Thane: "Last night, attempted deserter Sara Cosac was detained."
+
+<Z00> # Misc Scene
+
+<> # Appendix: Chemina
+
+A rapidly developing nation home to everything from the steam engine to the
+helicopter. Its government was toppled by now supreme leader Farid Somoza, who
+catalyzed the country's industrial growth.
+
+<> # Appendix: Erawa
+
+An isolationist country kept afloat by the mysterious Fracture. Despite its
+location near the arctic, weather manipulation causes its local climate to
+resemble a tropical rainforest. It is currently ruled under a theocracy.
+
+<> # Appendix: Gheni
+
+A rural town in central Chemina.
+
+<> # Appendix: Kabel
+
+The second planet from Sol and also the smallest in its respective solar system,
+measuring 2,911 miles in diameter. It is the only known celestial body known to
+contain life.
+
+<> # Appendix: Merad
+
+A small village in the ectosphere of Erawa. Though once farmland, it has been
+mostly evacuated and repurposed into a military base due to repeated invasion
+by Cheminan troops.
+
+<> # Appendix: Rega
+
+A port city in Chemina that lies adjacent to the Erawan border, and also the
+site of Chemina's largest military base. Rumors have circulated that minor
+evincing can be done here due to its geographical closeness with Erawa.
+
+<> # Appendix: United Territories of Debony
+
+Widely considered the most developed country in Kabel, and Chemina's largest
+trade partner. Various ores and fossil fuels are sent to Chemina for processing,
+with electronic goods being sent back.
+
+<> # Appendix: Cheminan-Erawan War
+
+An ongoing conflict over control of the Fracture following Erawa's refusal to
+allow the research and development of Fracture-based technology on Erawan soil.
+
+<> # Appendix: Cheminan Civil War
+
+A war fought between the then-ruling republic and the extremist militia led by
+Farid Somoza. A combination of Erawan labor camps and superior military tactics
+led to the Somoza overpowering the republic both economically and in battle.
+
+<> # Appendix: Rega Massacre
+
+One of Erawa's rare assaults on Cheminan territory, involving an unprecendented
+number of evincers storming the port city and targeting both civilian life as
+well as cargo ships containing a quarter million tons of exports.
+
+<> # Appendix: Evincer
+
+A blanket term given to Erawans utilizing the Fracture to manipulate reality.
+Different castes demonstrate various levels of proficiency, though aside from
+everyday convenience, evincing is usually used for defense and climate control.
+
+<> # Appendix: Fracture
+
+A geographical point in the center of Erawa's geography. Physical laws become
+exponentially more pliable in proportion to how close one is. As a result, close
+proximity is inherently dangerous, but also allows for metaphysical feats.
+
+<> # Appendix: Lauve
+
+The national unit of currency (/) used in Chemina. /1 is 
+
+<> # Appendix: Pliability
+
+Pliability refers to how much control an evincer has over reality. It is
+proportional to a person's proximity to the Fracture but inversely proportional
+to mental noise, which produces unwanted effects on the environment.
+
+<> # Appendix: Ribatol
+
+A psychadelic drug developed by Cheminan medical researchers. It is intended to
+allow the user to arbitrarily create and manipulate hallucinations, with varying
+levels of success. In rare cases, effects persist following previous use.
+
+<> # Appendix: Risk
+
+Risk refers to the level of danger a person poses to themselves as a result of
+the Fracture. It is proportional both to their proximity as well as mental
+noise, meaning erratic and unstable phenomena occur when both are high.
+
+<> # Appendix: Diego Belikoff
+
+A journalist and war photographer during the Civil War, Diego pledged loyalty to
+Somoza after his sister-in-law Phaedra was sent to an internment camp. Since
+then he has continued to work as a writer, generating pro-Somoza propaganda.
+
+<> # Appendix: Phaedra Belikoff
+
+An Erawan refugee who fled the draconic theocracy of her homeland, Phaedra
+defected to Chemina and married Saito Belikoff. During the Civil War, she was
+forced into one of Somoza's labor camps, where she is believed to have died.
+
+<> # Appendix: Saito Belikoff
+
+A former revolutionary that fought Somoza's initial takeover of Chemina. Under
+the threat of losing his son Thane, he pledged his loyalty to Somoza. Following
+Thane's discharge, Saito himself was deployed and was killed in Merad.
+
+<> # Appendix: Thane Belikoff
+
+An engineer that was drafted into the military, Thane participated in a program
+meant to create Cheminan evincers. Due to side effects, Thane was both dropped
+from the program and honorably discharged from the military on medical grounds.
+
+<> # Jacques Giovanni
+
+An Erawan soldier taken prisoner and held in Rega, where he was experimented on
+to see if chemical augmentation synergized with traditional Erawan training. His
+power was so great that he was held in a sensory deprivation chamber for safety.
+
+<> # Appendix: Vanna Kowalski
+
+The merchant of Rega's black market, Vanna operates a multi-tiered business
+consisting of fishing supplies, military gear, and contraband materials. She has
+a long-standing relationship with Asra spanning a decade.
+
+<> # Appendix: Asra Sacco
+
+Initially an engineer, Asra was drafted into service as a combat medic and
+remains in the military reserve. After losing her parents and home in the Rega
+Massacre, she moved in with her romantic partner Thane in downtown Gheni.
+
+<> # Appendix: Farid Somoza
+
+The self-appointed supreme leader of Chemina following the Civil War, Somoza saw
+the beginnings of revolution in the infancy of the country's industrialization,
+ultimately seizing it as his own and capitalizing on technological advancement.
+
+<> # Appendix: Risto Somoza
+
+Farid Somoza's son and chosen successor, Risto has served as a high-ranking
+general in the Cheminan-Erawan War for the past six years. His brutal but
+effective preference for human wave attacks made him both feared and respected.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

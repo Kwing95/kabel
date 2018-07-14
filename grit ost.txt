@@ -1,0 +1,215 @@
+- - - SOUNDTRACK - - -
+
+Devastation and Revenge - Random Encounter
+Plans in Motion - Random Encounter
+Stormfront - Random Encounter
+Nerves - Random Encounter
+Faceoff - Random Encounter
+
+Lightless Dawn - Exploring
+Dark Fog - Exploring
+Martian Cowboy - Exploring
+Ritual - Exploring
+Sunset at Glengorm - Exploring
+
+Lasting Hope - Town Theme
+Anguish - Town Theme
+Mourning Song - Town Theme
+Earnest - Town Theme
+Loss - Town Theme
+
+Steel and Seething - Being Hunted
+
+Shadowlands 1 - Horizon - Opening/Credits
+
+Rynos Theme - Boss Theme
+Exhilarate - Boss Theme
+
+- - - ENEMY TYPES - - -
+
+Helicopter (hard to hit, can't run)
+Sniper (hard to hit)
+Machine Gunner (spread attack)
+Shotgun (high damage)
+Grenadier (destroys cover)
+Bloodhound (hard to hit, low health) SEEKS ON MAP
+Cavalry (destroys cover, accurate) MOVES TWICE ON MAP
+i-Troop (nerve gas, imaginary)
+Wrangler (serves as cover) MOVES TWICE ON MAP
+
+- - - MECHANICS - - -
+
+Each player has 3 health bars corresponding to
+HEAD, BODY, and LIMBS. Having these drop below
+2/3 or 1/3 causes negative status ailments.
+
+      34-66%    0-33%
+HEAD  50% SKIP  CAN'T ACT
+  (chance of action being canceled)
+BODY  150% dmg  200% dmg
+  (defense down)
+LIMB  2 TURNS   3 TURNS
+  (multiple turns required per action)
+
+Bandages restores gauge from 66-99% to 100%
+First Aid Kit restores gauge from 1-65% by 33%
+Unit is killed when two gauges reach 0%
+
+Medics restore 50% when using First Aid Kit.
+Debilitated status (tear gas) = Defense down, unable to act
+Blinded (smoke grenade) = Accuracy down
+
+Dead units drop equipment based on which gauge still has
+health. Condition of equipment is based on the percentage
+of the gauge. Durability decreases with use. Not all units
+have all gear.
+HEADGEAR / BODYGEAR / LIMBGEAR
+
+ctd...
+
+i-TROOPS use nerve gases on Bane and imaginary
+players.
+
+ctd...
+
+All enemy attacks are prefaced with a random two
+letter morse code sequence. Inputting these
+letters in reverse allows the player to counterattack
+with the targeted player immediately after.
+
+All controls can be accessed via morse code. However, the game may also
+be played with traditional menu options as well.
+
+ctd...
+
+Each enemy drops a dog tag including a name, age, and rank,
+as well as a photo of their family. These go into the player's
+inventory under KILLS and cannot be discarded.
+
+- - - MENU - - -
+
+Inventory
+  Bandage (x3)
+  First Aid Kit
+  Grenade (x4)
+  Smoke Grenade (x2)
+Gear
+  Thane
+    Headgear (100%)
+	Vest (63%)
+	Greaves and Gauntlets (33%)
+Dog Tags
+  Dmitry Kowalski, 16M (picture of family)
+Appendix
+  Gheni
+  Cheminan Civil War
+  Rega Massacre
+  Thane Belikoff
+Options
+  Controls
+  Sound
+Save
+  Save Game
+  Load Game
+
+- - - CHARACTERS - - -
+
+MINOR CHARACTERS
+  Black market
+  Discharged soldiers/medics
+  Active military
+
+INTROSPECTION
+STRONG OPINIONS
+  Reve: Survivalist
+RISK/SACRIFICE
+  Bane rescues Hope
+  Hope sacrifices for Bane
+HYPOTENUSE
+  Reve-Hope: Different temperaments
+  Bane-Hope: Reve's death
+  Bane-Reve: 
+GROUP DYNAMICS
+AMBIGUITY
+GRUDGE
+  Bane/Reve and dictator
+EVERYDAY INTERACTIONS
+
+Thane - Kind of generic? (Thane?)
+       archetype: Joel (The Last of Us)
+       What would break them: Losing loved ones
+       Best thing in character's life: 
+       Worst thing in character's life: First kill
+       Seemingly insignificant memory: 
+       Hobby/work relationship: 
+       Reluctant to tell people: About hallucinations
+       Thoughts on sex: 
+       Number of friends: 
+       No. of friends wanted: Satisfied with Reve/Hope
+       Would make a scene about: 
+       Would give their life for: Revenge on dictator
+       Major flaws: Acts strong and hides weakness
+       Pretends to care about: 
+       Projected image vs actual: 
+       Fears: Losing loved ones
+Engineer, former military
+Fought conventional war with Erawa.
+
+Diego - Likeable due to political wit (Diego?)
+       archetype: Sol (Make Room! Make Room!)
+       What would break them: Being imprisoned
+       Best thing in character's life: 
+       Worst thing in character's life: Son drafted
+       Seemingly insignificant memory: 
+       Hobby/work relationship: 
+       Reluctant to tell people: Besotted with grief
+       Thoughts on sex: 
+       Number of friends: All dead
+       No. of friends wanted:
+       Would make a scene about: 
+       Would give their life for: Nothing
+       Major flaws: Overly cynical/pessimistic
+       Pretends to care about: Nothing (actually cares)
+       Projected image vs actual: 
+       Fears: Helplessness/death
+News editor, formerly fought against Somoza in geurilla civil war
+"Retaliation means you were underprepared."
+"Fighting with honor means engaging on terms dictated from the top down."
+
+Asra - Likeable due to comic wit (Asra?)
+       archetype: Samantha (Her)
+       What would break them: 
+       Best thing in character's life: 
+       Worst thing in character's life: Killed for pleasure
+       Seemingly insignificant memory: 
+       Hobby/work relationship: 
+       Reluctant to tell people: Enjoys fighting
+       Thoughts on sex: 
+       Number of friends: 
+       No. of friends wanted: 
+       Would make a scene about: 
+       Would give their life for: Life of loved one
+       Major flaws: Arrogant/overconfident
+       Pretends to care about: 
+       Projected image vs actual: Laughs off real concerns
+       Fears: Inability to speak
+Medical unit, not currently deployed
+
+SHOOT
+ITEMS (Grenade, First Aid)
+FLEE
+
+Exploration (areas under curfew/martial law):
+You navigate streets block by block. Abandoned or otherwise accessible buildings can be used as cover. You may see military units in any adjacent intersection. You may also hide in wait to ambush such units.
+After your first kill, enemies will actively look for you
+Darkness - Can be hidden in, but useless for cover.
+Large Obstacle - Cannot be hidden in, but can be used for cover.
+Abandoned Building - Can be used to hide and as cover.
+
+- Inspiration -
+Jin-Roh: The Wolf Brigade
+Her
+Make Room! Make Room!
+Spec Ops: The Line
+The Last of Us
+Final Fantasy VI

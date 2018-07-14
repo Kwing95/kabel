@@ -1,0 +1,54 @@
+Vagrant Story:
+ 13,263 words 77,790 characters
+
+Thane Belikoff (ISTJ)
+  Hair color: Black
+  Eye color: Gray
+  Weight: 140
+  Height: 5'9"
+  Build: Slim/athletic
+  Age: 23
+  Father: Saito Belikoff
+  Uncle: Diego Belikoff
+  Partner: Asra Sacco
+  Education: Mostly engineering
+  Occupation: Veteran/engineer
+  Residence: Chemina
+  History: Born in Chemina, drafted into military. Subject of experiments involving hallucinogens, was discharged as a result of side effects. Currently working as engineer.
+           Half-Erawan, his mother was taken to an internment camp when he was an infant and later killed.
+  Personal goals: Emigrate to United Territories.
+
+Diego Belikoff (INTJ)
+  Hair color: Brown
+  Eye color: Hazel
+  Weight: 170
+  Height: 5'9"
+  Build: Husky
+  Age: 51
+  Nephew: Thane Belikoff
+  Brother: Saito Belikoff
+  Education: Privately tutored
+  Occupation: Former freedom fighter, news editor
+  Residence: Chemina
+  History: Born in Chemina pre-Somoza, fought against him in civil war. Ultimately re-educated and moved in with Saito.
+           Former journalist who tried to stay neutral during the Cheminan civil war. Ultimately pledged loyalty to
+		   Somoza in self-preservation and forced to produce pro-Somoza propaganda instead.
+  Personal goals: Emigrate to United Territories.
+
+Asra Sacco (ESTP)
+  Hair color: Black
+  Eye color: Green
+  Weight: 120
+  Age: 22
+  Build: Slim
+  Partner: Thane Belikoff
+  Education: Engineering, medical training
+  Occupation: Medical unit (not currently deployed)
+  Residence: Chemina
+  History: Born in Chemina. Lost both parents in Chemina-Erawa war. Drafted into military as medic.
+  Personal goals: Emigrate to United Territories.
+  
+
+"Historical evolution mocks all the prophylactic measures that have been adopted for the prevention of oligarchy." - Robert Michels
+
+"When all of your wishes are granted, many of your dreams will be destoyed." - Marilyn Manson

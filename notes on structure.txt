@@ -1,0 +1,46 @@
+Final Fantasy VI ######################################################
+
+Uses new character relationships to flesh out characters.
+Uses new locations to flesh out world building.
+Townspeople provide information about current events.
+
+88 word intro
+Kabel is insular, revolving around three characters with existing relationships
+Possibly use Asra's naivety to teach the player about history. However, Asra
+  needs cynical wit and therefore can't be too naive
+
+Iji ##################################################################
+
+Uses logbooks to characterize Tasen and  against Somoza openly
+Add anti-Somoza characters?
+Iji and Dan have existing relationshipKomato
+Similar techniques could be used in Kabel, however most sources of information
+  would provide propaganda, as no one can speak out
+  
+Have characters discuss news articles.
+  
+Spec Ops: The Line ####################################################
+
+Walker driven forward by hallucination, hallucination provides monologue
+
+The Last of Us (35k word script) ######################################
+
+Similar character death as intro
+Shares theme of survival pragmatist protecting loved ones
+"Make it to destination" premise
+Builds story through relationship developing
+Dialogue (small talk) during gameplay
+Characters exploring environment builds world
+World building through eavesdropping
+Robert, Dropoff, Bill, "north", Sam/Henry
+Wyoming/Tommy, Research lab, Joel recovery
+hospital
+
+Vagrant Story is 12k words
+
+Make Room! Make Room! ##################################################
+
+Three characters
+* Cynical old man
+* Overworked young man
+* (Comparatively) naive, lighthearted girl
