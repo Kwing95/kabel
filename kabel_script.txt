@@ -1024,6 +1024,16 @@ Thane: "Last night, attempted deserter Sara Cosac was detained."
 
 <Z00> # Misc Scene
 
+# Appendicies
+# Locations
+# Events
+# Things
+# People
+
+<> # Appendix: Chalt
+
+The national capital of Chemina.
+
 <> # Appendix: Chemina
 
 A rapidly developing nation home to everything from the steam engine to the
@@ -1038,7 +1048,9 @@ resemble a tropical rainforest. It is currently ruled under a theocracy.
 
 <> # Appendix: Gheni
 
-A rural town in central Chemina.
+A college town in central Chemina notable for the Gheni Technical Institute,
+which received exorbitant subsidies from Somoza following the civil war. It is
+widely considered the most prestigious engineering school in Kabel.
 
 <> # Appendix: Kabel
 
@@ -1052,11 +1064,23 @@ A small village in the ectosphere of Erawa. Though once farmland, it has been
 mostly evacuated and repurposed into a military base due to repeated invasion
 by Cheminan troops.
 
+<> # Appendix: Nenegi
+
+Chemina's largest military town, situated near the Erawan border. It features a
+checkpoint heavily guarded by the border patrol, as well as the largest barracks
+and military detention center in the country.
+
 <> # Appendix: Rega
 
-A port city in Chemina that lies adjacent to the Erawan border, and also the
-site of Chemina's largest military base. Rumors have circulated that minor
-evincing can be done here due to its geographical closeness with Erawa.
+A port city in Chemina that lies adjacent to the Erawan border. Nearly a third
+of all exports are shipped from here. Rumors have circulated that minor evincing
+can be done here due to its geographical closeness with Erawa.
+
+<> # Appendix: Tripsi
+
+An Erawan town located very close to the Cheminan border. Nearly all of its
+infrastructure has been destroyed by battles, leaving it mostly uninhabited save
+for those too impoverished to move elsewhere.
 
 <> # Appendix: United Territories of Debony
 
@@ -1095,7 +1119,9 @@ proximity is inherently dangerous, but also allows for metaphysical feats.
 
 <> # Appendix: Lauve
 
-The national unit of currency (/) used in Chemina. /1 is 
+The national unit of currency used in Chemina. Though pre-war bank notes are
+still legally accepted, they have mostly been phased out and destroyed in favor
+of designs sporting the new flag.
 
 <> # Appendix: Pliability
 
