@@ -60,7 +60,8 @@ Map of North Kabel
 Chapter 0: Bloodshed in Merad
   Panoramic
   The Heat of Battle
-  Bane's Advice
+  Flushing the Enemy
+  Ambush Tactics
   Bane's Death
   Infirmary
 Chapter 1: Escape From Gheni
@@ -134,27 +135,50 @@ occupation and thrusting the two nations into protracted conflict.
 # Saito is seen lying on his stomach behind half-destroyed sandbags, while his
 # commanding officer watches him from the cover of an abandoned house.
 
-Bane: Move your ass, private!
+Bane: Saito, move!!
 
 Saito: Ugh...
 
-# Saito gets up into a crouching position. Bane fires at an evincer, forcing him
-# to take cover, and Saito makes a dash to join him behind the house.
+# Saito gets up into a crouching position. Bane provides cover fire as Saito
+# runs to join him behind the house.
 
 Saito: We're getting hammered out here.
 
 Bane: That's what happens when you take the fight to their doorstep.
 
-Saito: So why don't we have ballistic protection for the heat bombs?
-
 # An earth-shaking blast knocks them both to the ground.
 
-Bane: Enough! Let's move!
+Bane: Those things travel so damned far...
 
-<002> # Bane's Advice
+Saito: You mean the flat bombs?
 
-Bane: Never charge the enemy! Take cover and wait it out until you can get the
-drop on them.
+Bane: The what?
+
+Saito: Flat bombs. You take an object, compress it to a fraction of its original
+size, then throw it. When it's out of sight, it expands so violently that it
+causes an explosion.
+
+Bane: Where did you learn that?
+
+Saito: My late wife was an Erawan refugee.
+
+Bane: ...
+
+# Another explosion throws them both to the ground.
+
+Saito: Save it for later. We've got company.
+
+<> # Flushing the Enemy
+
+Bane: I can't hit shit with them hiding all the time.
+
+Saito: Try throwing a grenade. I'll pop them as soon as they show their heads.
+
+<002> # Ambush Tactics
+
+Saito: Here they come.
+
+Bane: Stay down. When they're close enough, we'll ambush them.
 
 Select a tile to move to that position, or select the tile you're already on to
 wait a turn instead. Wait on tiles with cover to ambush enemies.
@@ -166,24 +190,20 @@ When enemies are on your tile, you may select battle commands to engage them.
 # A shockwave hurls Bane against a tree, one of its branches impaling him
 # through the side. Saito turns to see an Erawan girl duck behind a hut.
 
-Saito: Major, are you...? Oh, no.
+Saito: Bane!! Oh, no.
 
-# Bane struggles to reach in his pack and pulls out a grenade, which he hands to
-# Saito.
+# Bane coughs up blood.
 
-Bane: Take it. Flush her out and gun her down.
+Bane: Take my gear.
 
 Saito: Try not to talk. We can-
 
-Bane: No, private. This is beyond mending.
+Bane: ...
 
-Saito: ...
-
-Bane: Go out there and take down as many as you can.
+Saito: ... Bane?
 
 # Another shockwave comes, throwing Saito to the ground. He looks up to see the
-# girl by the hut again, ready to throw a rock. Saito takes off running,
-# stopping behind another hut.
+# girl by the hut again, ready to throw a rock. Saito takes cover.
 
 Saito: She looks just like Phaedra...
 
