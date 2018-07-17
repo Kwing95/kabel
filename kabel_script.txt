@@ -1123,7 +1123,7 @@ led to the Somoza overpowering the republic both economically and in battle.
 
 One of Erawa's rare assaults on Cheminan territory, involving an unprecendented
 number of evincers storming the port city and targeting both civilian life as
-well as cargo ships containing a quarter million tons of exports.
+well as cargo ships, claiming hundreds of lives and millions in damaged goods.
 
 <> # Appendix: Evincer
 
@@ -1177,7 +1177,7 @@ forced into one of Somoza's labor camps, where she is believed to have died.
 
 A former revolutionary that fought Somoza's initial takeover of Chemina. Under
 the threat of losing his son Thane, he pledged his loyalty to Somoza. Following
-Thane's discharge, Saito himself was deployed and was killed in Merad.
+Thane's discharge, Saito himself was deployed and ultimately killed in Merad.
 
 <> # Appendix: Thane Belikoff
 
