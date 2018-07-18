@@ -57,14 +57,14 @@ Map of North Kabel
   City 4: In Erawa.
   City 5: Where the port is.
 
-Chapter 0: Bloodshed in Merad
+Chapter 0: Merad
   Panoramic
   The Heat of Battle
   Flushing the Enemy
   Ambush Tactics
-  Bane's Death
+  The Fall of Bane
   Infirmary
-Chapter 1: Escape From Gheni
+Chapter 1: Gheni
   Death Letter
   Asra: Diego's Apathy
   Diego: Traveling Together
@@ -77,7 +77,7 @@ Chapter 1: Escape From Gheni
   Cheminan Engineering
   Past Curfew
   I Units
-Chapter 2: Disguise
+Chapter 2: Chalt
   Train Hopping
   Meeting Vanna
   Leaving Vanna's
@@ -85,6 +85,9 @@ Chapter 2: Disguise
   Iron Sights
   Asra: Assassination
   Diego: Assassination
+Chapter 7: Venha
+  Ashore
+  Closure?
   
   Black market, optional assassination (helicopter battle)
   Foreshadow medical experiments and nausea
@@ -128,7 +131,7 @@ and use its mystic properties as an energy source.
 The Erawan government considered this exploitation impious, expunging the
 occupation and thrusting the two nations into protracted conflict.
 
-<001> # The Heat of Battle
+<101> # The Heat of Battle
 
 # The screen flashes white with a tremendous explosion, after which
 # an Erawan village fades into view with several buildings on fire.
@@ -185,7 +188,7 @@ wait a turn instead. Wait on tiles with cover to ambush enemies.
 
 When enemies are on your tile, you may select battle commands to engage them.
 
-<003> # Bane's Death
+<003> # The Fall of Bane
 
 # A shockwave hurls Bane against a tree, one of its branches impaling him
 # through the side. Saito turns to see an Erawan girl duck behind a hut.
@@ -383,11 +386,11 @@ Thane: I guess... He would have been proud. Probably.
 Asra: See? This is the best thing we can do right now. Now come over here and
 hold me.
 
+# Thane and Asra embrace tightly.
+
 Thane: ... I'm going to miss him.
 
 Asra: I know.
-
-# Thane and Asra embrace tightly.
 
 <102> # Erawa At a Glance
 
@@ -933,18 +936,63 @@ Thane: What do you want, then?
 
 Diego: I'm staying neutral.
 
-Thane: Is this some kind of vestigial journalistic objectivity? You never
-change, do you?
+Thane: Is this your idea of journalistic objectivity? You never change, do you?
 
 Diego: Thane, my integrity went out the window after your mom was taken away. My
 actions at that time were rooted in self-preservation. If that bothers you,
-consider that I'm letting you make this choice yourself, even if it kills me.
+remember that I'm letting you make this choice yourself, even if it kills me.
 
 Thane: You're just putting your life in my hands that easily? Does this mean
 anything to you?
 
 Diego: This is extremely important to me, but both choices have merit. That's
-why I'm fine with whatever you choose to do.
+why I'm fine with whatever you choose to do. Just make sure whatever you pick is
+for a good reason.
+
+<> # Ashore
+
+# Thane awakens in the machine room next to Asra and Diego. He looks out the
+porthole.
+
+Thane: Guys, get up!
+
+Asra: Did we make it?
+
+Thane: Mhm. See for yourself.
+
+# Asra looks out the window then embraces Thane.
+
+Asra: Let's get off this damned boat.
+
+# Thane opens the door, only to be met with a Cheminan sailor.
+
+Sailor: Hey! What do you think-
+
+# Thane points his gun at the man.
+
+Thane: We just want to get off. Turn around. Hands on your head.
+
+# The trio make their way off the ship, sailor walking in front. Debonese police
+# wait at the dock.
+
+Officer: You are under arrest for unlawful entry into the country. Surrender
+your weapon or we will open fire.
+
+# The trio drops their weapons and goes peacefully.
+
+<> # Closure?
+
+Two Weeks Later
+
+# The trio stand on a beach looking at the ocean, though footprints only lead to
+# Thane.
+
+Thane: Well, you were right, Diego. We hardly took two steps before they asked
+me to work for the Intelligence Bureau. Looks like things turned out alright in
+the end.
+
+# The trio are shown in silence for several seconds before Asra and Diego slowly
+# fade and disappear.
 
 <> # Breaking News: Defeat in Merad
 
@@ -961,7 +1009,7 @@ Thane: Does this kind of stuff really raise morale?
 
 Diego: I'll let you know when we run a story on how the war is actually going.
 
-Asra: That sounds like a real test of patience.
+Asra: Now that's real patience.
 
 <> # Breaking News: Night Patrol Killed
 
@@ -990,7 +1038,8 @@ Asra: I never wanted to be drafted into the service. I never wanted to be a
 medic, either. But I was able to accept it because I could tell myself at least
 I was helping people. But something about killing just felt... exciting.
 
-Thane: Everyone has their own way of handling taking a life.
+Thane: Everyone has their own way of handling extreme situations. That includes
+taking a life.
 
 Asra: It's not even about that. It's that I liked it! What does that say about
 who I am? What if I just get worse and I lose control? This isn't who I want to
@@ -1040,7 +1089,11 @@ Asra: ...
 
 <> # Breaking News: Deserter Captured
 
-Thane: "Last night, attempted deserter Sara Cosac was detained."
+Thane: "Last week, defector Sara Cosac was detained on charges of illegal
+emigration, draft evasion, resisting arrest, and unauthorized possession of a
+firearm. She is scheduled to be publicly executed tomorrow morning."
+
+Asra: Shit... That could have been us.
 
 <Z00> # Misc Scene
 
