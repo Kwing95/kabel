@@ -109,6 +109,10 @@ Chapter 4: Sailing Away
   Breaking News: Record High Trades With Debony
   Breaking News: Heavy Losses in Debony
 
+######################
+## CHAPTER 1: MERAD ##
+######################
+
 <000> # Panoramic
 
 # An urban city street fades into view. Civilians scatter as a formation
@@ -244,6 +248,10 @@ Saito: Well I’m not going down without a fight.
 Saito: What happened... to my arm?
 
 # The nurse finishes giving him the injection, after which he collapses.
+
+######################
+## CHAPTER 2: GHENI ##
+######################
 
 <100> # Death Letter
 
@@ -634,6 +642,10 @@ Diego: Let's find you some cover so you can take your time getting back up.
 
 Thane: No, I'm okay. Let's keep moving.
 
+######################
+## CHAPTER 3: CHALT ##
+######################
+
 <> # Train Hopping
 
 # Diego, Asra, and Thane watch the scenery from the train car. A mix of forest
@@ -948,6 +960,22 @@ anything to you?
 Diego: This is extremely important to me, but both choices have merit. That's
 why I'm fine with whatever you choose to do. Just make sure whatever you pick is
 for a good reason.
+
+#######################
+## CHAPTER 4: TRIPSI ##
+#######################
+
+#######################
+## CHAPTER 5: NENEGI ##
+#######################
+
+#####################
+## CHAPTER 6: REGA ##
+#####################
+
+######################
+## CHAPTER 7: VENHA ##
+######################
 
 <> # Ashore
 
