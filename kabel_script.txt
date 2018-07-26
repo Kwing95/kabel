@@ -1,3 +1,36 @@
+########################
+## MAP OF NORTH KABEL ##
+########################
+ 
+ #####    @@@@@    (#) Erawa, (@) Chemina
+#######  @C@@G@@   (C)halt, (G)heni
+#####MTN@@@@@@@@@@ (M)erad, (T)ripsi, (N)enegi
+#######R@@@@@@@    (R)ega
+ #####   @@
+ 
+ 
+     $$$$V$$        (V)enha, ($) Debony
+  $$$$$$$$$$$$$$$$$
+ $$$$$$$$$$$$$$$$$$$$$$$$$$
+ 
+  #####    @@@@@    (#) Erawa, (@) Chemina
+#######  .C--G@@   (C)halt, (G)heni
+#####MTN-@@@@@@@@@ (M)erad, (T)ripsi, (N)enegi
+#######R@@@@@@@    (R)ega
+ ##### | @@
+        \
+         |
+     $$$$V$$        (V)enha, ($) Debony
+  $$$$$$$$$$$$$$$$$
+ $$$$$$$$$$$$$$$$$$$$$$$$$$
+ 
+Gheni -> Chalt -> Nenegi -> Tripsi -> Rega -> Venha
+Gheni W to Chalt SW to Nenegi W to Tripsi SE to Rega S to Venha
+
+#####################
+## CHAPTER SUMMARY ##
+#####################
+
 Chapter 1: Merad [Action] (x1 action)
   Saito fights on the battlefield, gets knocked out by a defective grenade, and
   is euthanized when it is determined too great a cost to nurse him to health.
@@ -6,11 +39,10 @@ Chapter 2: Gheni [Stealth] (x1 action)
   of banned books before sneaking on a freight train to Rega.
 Chapter 3: Chalt [Boss] (x2 action)
   The trio uses a prostitute to find the local black market to find a uniform
-  for Diego. Later, they end up at one of Somoza's rally and have a chance to
-  kill him. If they do, they fight a helicopter. They escape the city in a
-  military convoy.
+  for Diego. Later, they end up at Somoza's rally and have a chance to kill him.
+  If they do, they fight a helicopter. They escape the city in a convoy.
 Chapter 4: Nenegi [Rescue] (x2 action)
-  The ask Vanna to smuggle them out and are led into a trap where Asra is
+  They ask Vanna to smuggle them out and are led into a trap where Asra is
   captured. An assault on Nenegi gives them a chance to infiltrate the prison.
   Along the way they meet Jacques, who helps them but dies along with Diego.
   Thane hallucinates that Asra is rescued and Diego survives. Cheminan forces
@@ -24,47 +56,18 @@ Chapter 7: Venha [Epilogue]
   Thane makes contact with Debonese authorities and is granted political asylum.
   He is admitted as an engineer in their government intelligence program.
   
-Map of North Kabel
- 
- #####    @@@@@    (#) Erawa, (@) Chemina
-#######  @C@@G@@   (C)halt, (G)heni
-#####MTN@@@@@@@@@@ (M)erad, (T)ripsi, (N)enegi
-#######R@@@@@@@    (R)ega
- #####   @@
- 
- 
-     $$$$V$$        (V)enha, ($) Debony
-  $$$$$$$$$$$$$$$$$
- $$$$$$$$$$$$$$$$$$$$$$$$$$
+###################
+## CUTSCENE LIST ##
+###################
 
-  
-  Geography... O<>
-    Erawa circular, Chemina diamondesque?
-	  Gheni north, Rega west, port south?
-	  G
-	
-	
-  
-  * Split Rega into several parts? Put port somewhere else?
-  
-  Gheni, Chalt, Nenegi, Tripsi, Rega
-  Gheni: Rural 
-  
-  City 1: Where the party starts. They catch a train to City 2.
-  City 2: Where Somoza's rally is. The party 
-  City 3: Where Vanna is, Asra gets kidnapped and rescued. Party pushed to
-          Erawa.
-  City 4: In Erawa.
-  City 5: Where the port is.
-
-Chapter 0: Merad
+Chapter 1: Merad
   Panoramic
   The Heat of Battle
   Flushing the Enemy
   Ambush Tactics
   The Fall of Bane
   Infirmary
-Chapter 1: Gheni
+Chapter 2: Gheni
   Death Letter
   Asra: Diego's Apathy
   Diego: Traveling Together
@@ -77,7 +80,7 @@ Chapter 1: Gheni
   Cheminan Engineering
   Past Curfew
   I Units
-Chapter 2: Chalt
+Chapter 3: Chalt
   Train Hopping
   Meeting Vanna
   Leaving Vanna's
@@ -85,20 +88,52 @@ Chapter 2: Chalt
   Iron Sights
   Asra: Assassination
   Diego: Assassination
+Chapter 4: Nenegi
+  Streetwalker
+  Saving Asra
+Chapter 5: Tripsi
+Chapter 6: Rega
 Chapter 7: Venha
   Ashore
   Closure?
-  
-  Black market, optional assassination (helicopter battle)
-  Foreshadow medical experiments and nausea
-Chapter 2: Military Convoy
-  Insider helps takeover of convoy, Asra captured.
-Chapter 3: Escort and Rescue
-  Evincer prisoner Jacques
-  Diego dies, Asra "rescued"
-  Evincer dies from hallucination, foreshadowing
-Chapter 4: Sailing Away
-  Fighting Evincers
+Chapter N: Breaking News
+  Defeat in Merad
+  Night Patrol Killed
+  Invention of Television
+  Deserter Captured
+  Risto Somoza's Succession
+  Remembrance of the Rega Massacre
+  Record High Trades With Debony
+  Heavy Losses in Debony
+Chapter A: Appendix
+  Chalt
+  Chemina
+  Erawa
+  Gheni
+  Kabel
+  Merad
+  Nenegi
+  Rega
+  Tripsi
+  United Territories of Debony
+  Cheminan Civil War
+  Cheminan-Erawan War
+  Rega Massacre
+  Evincer
+  Fracture
+  Lauve
+  Pliability
+  Ribatol
+  Risk
+  Diego Belikoff
+  Phaedra Belikoff
+  Saito Belikoff
+  Thane Belikoff
+  Jacques Giovanni
+  Vanna Kowalski
+  Asra Sacco
+  Farid Somoza
+  Risto Somoza
   
   Breaking News: Defeat in Merad
   Breaking News: Night Patrol Killed
@@ -108,6 +143,110 @@ Chapter 4: Sailing Away
   Breaking News: Remembrance of the Rega Massacre
   Breaking News: Record High Trades With Debony
   Breaking News: Heavy Losses in Debony
+
+######################
+## CUTSCENE SUMMARY ##
+######################
+
+Chapter 1: Merad
+  Panoramic
+    A history montage detailing Chemina's history.
+  The Heat of Battle
+    Saito is introduced alongside squadmate Bane, fighting in Merad.
+  Flushing the Enemy
+    The player is advised to use grenades to flush out enemies.
+  Ambush Tactics
+    The players is advised to lie in wait for enemies rather than charging.
+  The Fall of Bane
+    Bane dies and Saito takes his items.
+  Infirmary
+    After a defective grenade explodes, Saito awakens in a hospital only to be
+	euthanized.
+Chapter 2: Gheni
+  Death Letter
+    Thane, Diego, and Asra are introduced reading Saito's death letter. Diego
+	insists they flee the country.
+  Asra: Diego's Apathy
+    Thane and Asra talk about Diego's apathy toward his brother's death.
+  Diego: Traveling Together
+    Thane and Diego talk about the latter's dislike of Asra.
+  Book Cellar
+    Thane and Asra talk in the hidden book cellar.
+  Asra: About Books
+    Thane and Asra talk about the books.
+  Erawa At a Glance
+    Summary of Erawan history.
+  Beyond Reality
+    Summary of the Fracture.
+  A Brief History
+    Summary of Cheminan-Erawan relations.
+  Book Burning
+    Thane burns the banned books.
+  Cheminan Engineering
+    Diego talks about kitchen appliances.
+  Bad Blood
+    Authorities come for Thane, forcing Diego to kill them in self-defense. They
+	flee their home and make for the trainyards.
+  Past Curfew
+    The trio prepare to leave, heading for the trainyards.
+  I Units
+    Thane collapses from tear gas following a battle.
+Chapter 3: Chalt
+  Train Hopping
+    The trio discuss their plans to reach Rega.
+  Streetwalker
+    Diego approaches a prostitute seeking the black market.
+  Rally
+    Somoza holds a rally and Diego comments on his politics.
+  Iron Sights
+    Thane notices an opportunity to snipe the supreme leader.
+  Asra: Assassination
+    Asra talks about her preference to shoot Somoza.
+  Diego: Assassination
+    Diego talks about his neutral position on shooting Somoza.
+  Spare: Meltdown
+    Thane spares Somoza, only to be recognized and chased.
+  Kill: Meltdown
+    Thane kills Somoza, riots break out, and a helicopter is dispatched.
+  Cornered
+    The trio attempt to flee, but are cornered by an armored vehicle.
+  Kill: Escape
+    The trio discuss the peculiarity of their victory.
+Chapter 4: Nenegi
+  Roadtrip
+    The trio ride the vehicle into Nenegi before abandoning it.
+  Meeting Vanna
+    Asra introduces the trio to Vanna and asks for help in fleeing the country.
+  Leaving Vanna's
+    Diego expresses doubt about trusting Vanna.
+  Setup
+    The trio encounter Asra's friend, but are led into a trap.
+  Capture
+    Asra is captured. Thane and Diego retreat.
+  Saving Asra
+    Thane and Diego discuss rescuing Asra from an inn when Erawans attack.
+  The Erawan Major
+    Thane and Diego encounter prisoner of war Jacques, who agrees to help them.
+  Event Horizon
+    Thane finds an illusory Asra. Cheminan troops retake the prison, ceasing the
+	Erawan assault, mortally wounding Diego, and driving the trio back.
+Chapter 5: Tripsi
+  Idiopathic
+    While taking Thane and Diego back to a base camp in Tripsi, Jacques sustains
+	a fatal but invisible injury, leaving the trio stranded in enemy territory.
+  Half-Breed
+    Thane, unable to reason with Erawan soldiers, fights his way out of camp.
+Chapter 6: Rega
+  The Port City
+    Thane makes it back across the border to Chemina.
+  Stowaway
+    Thane sneaks onto a cargo ship at the port.
+Chapter 7: Venha
+  Ashore
+    Thane arrives in Venha and escapes the ship, surrendering to Debonese cops.
+  Closure?
+    Two weeks later, the trio talk at the beach before Diego and Asra fade away,
+	revealed to be hallucinations.
 
 ######################
 ## CHAPTER 1: MERAD ##
@@ -203,7 +342,7 @@ Saito: Bane!! Oh, no.
 
 Bane: Take my gear.
 
-Saito: Try not to talk. We can-
+Saito: Don't talk. We can still-
 
 Bane: ...
 
@@ -962,11 +1101,64 @@ why I'm fine with whatever you choose to do. Just make sure whatever you pick is
 for a good reason.
 
 #######################
-## CHAPTER 4: TRIPSI ##
+## CHAPTER 4: NENEGI ##
 #######################
 
+<> # Streetwalker
+
+Thane: I can't believe we still haven't gotten you a full uniform that fits.
+
+Diego: I'm sure they're made in my size. It just isn't common.
+
+Asra: It doesn't help that we aren't targeting soldiers the same size as you.
+
+Diego: Obviously. It's not like we're trying to pick fights here. We'd be better
+off going to a black market.
+
+Asra: Easier said than done. I don't think any of us have connections in Nenegi.
+
+# Diego approaches an escort on the corner.
+
+Diego: Hey!
+
+Escort: Hey there. Anything I can help you with?
+
+Diego: Yeah. Does your boss work in trade?
+
+Escort: Aren't we forward? Yes, I can get you anything you need.
+
+<> # Saving Asra
+
+# An air raid siren sounds. Thane and Diego watch the city from an inn.
+
+Diego: They're raiding the detention center, no doubt to get some of their men
+back. If you want to save Asra this is as good a chance as we're ever going to
+get.
+
+Thane: Since when did you care about Asra?
+
+Diego: I don't. But she means something to you. You can flee a country but you
+can't escape the guilt of leaving someone behind like that.
+
+Thane: That doesn't sound like you at all. Are you trying to make up for turning
+your back on my mom?
+
+Diego: No. I don't regret my alliance with Somoza. Phaedra and I were close, but
+I put my feelings aside when she was taken away because I wanted to keep you
+safe. I knew it was what she would have wanted. Your father did too.
+
+Thane: Still, I've never seen you so eager to go on a suicide mission.
+
+Diego: If this is what's important to you, it doesn't make sense to willfully do
+nothing. And like I said, this is our only chance. It's either now or never.
+
+Thane: I... really appreciate that.
+
+Diego: Just keep in mind that if things start to look bad, I'm going to escape
+with my life. I suggest you do the same.
+
 #######################
-## CHAPTER 5: NENEGI ##
+## CHAPTER 5: TRIPSI ##
 #######################
 
 #####################
@@ -1015,9 +1207,9 @@ Two Weeks Later
 # The trio stand on a beach looking at the ocean, though footprints only lead to
 # Thane.
 
-Thane: Well, you were right, Diego. We hardly took two steps before they asked
-me to work for the Intelligence Bureau. Looks like things turned out alright in
-the end.
+Thane: Well, you were right, Diego. We hardly took two steps in the country
+before they asked me to work for the Intelligence Bureau. Looks like things
+turned out alright in the end.
 
 # The trio are shown in silence for several seconds before Asra and Diego slowly
 # fade and disappear.
@@ -1189,16 +1381,16 @@ Widely considered the most developed country in Kabel, and Chemina's largest
 trade partner. Various ores and fossil fuels are sent to Chemina for processing,
 with electronic goods being sent back.
 
-<> # Appendix: Cheminan-Erawan War
-
-An ongoing conflict over control of the Fracture following Erawa's refusal to
-allow the research and development of Fracture-based technology on Erawan soil.
-
 <> # Appendix: Cheminan Civil War
 
 A war fought between the then-ruling republic and the extremist militia led by
 Farid Somoza. A combination of Erawan labor camps and superior military tactics
 led to the Somoza overpowering the republic both economically and in battle.
+
+<> # Appendix: Cheminan-Erawan War
+
+An ongoing conflict over control of the Fracture following Erawa's refusal to
+allow the research and development of Fracture-based technology on Erawan soil.
 
 <> # Appendix: Rega Massacre
 
