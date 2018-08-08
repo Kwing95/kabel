@@ -36,11 +36,11 @@ Chapter 1: Merad [Action] (x1 action)
   is euthanized when it is determined too great a cost to nurse him to health.
 Chapter 2: Gheni [Stealth] (x1 action)
   Thane, Diego, and Asra decide to flee the country. They burn their collection
-  of banned books before sneaking on a freight train to Rega.
+  of banned books before sneaking on a freight train to Chalt.
 Chapter 3: Chalt [Boss] (x2 action)
   The trio uses a prostitute to find the local black market to find a uniform
   for Diego. Later, they end up at Somoza's rally and have a chance to kill him.
-  If they do, they fight a helicopter. They escape the city in a convoy.
+  If they do, they fight a blimp. They escape the city in a convoy.
 Chapter 4: Nenegi [Rescue] (x2 action)
   They ask Vanna to smuggle them out and are led into a trap where Asra is
   captured. An assault on Nenegi gives them a chance to infiltrate the prison.
@@ -102,7 +102,7 @@ Chapter N: Breaking News
   Invention of Television
   Deserter Captured
   Risto Somoza's Succession
-  Remembrance of the Rega Massacre
+  Remembrance of the Nenegi Massacre
   Record High Trades With Debony
   Heavy Losses in Debony
 Chapter A: Appendix
@@ -118,7 +118,7 @@ Chapter A: Appendix
   United Territories of Debony
   Cheminan Civil War
   Cheminan-Erawan War
-  Rega Massacre
+  Nenegi Massacre
   Evincer
   Fracture
   Lauve
@@ -135,15 +135,15 @@ Chapter A: Appendix
   Farid Somoza
   Risto Somoza
   
-  Breaking News: Defeat in Merad
-  Breaking News: Night Patrol Killed
-  Breaking News: Invention of Television
-  Breaking News: Deserter Captured
-  Breaking News: Risto Somoza's Succession
-  Breaking News: Remembrance of the Rega Massacre
+  Breaking News: Defeat in Merad (2: Gheni)
+  Breaking News: Night Patrol Killed (3: Chalt)
+  Breaking News: Risto Somoza's Succession (4: Nenegi)
+  Breaking News: Invention of Television (4: Nenegi)
+  Breaking News: Deserter Captured (6: Rega)
+  Breaking News: Remembrance of the Nenegi Massacre
   Breaking News: Record High Trades With Debony
   Breaking News: Heavy Losses in Debony
-
+  
 ######################
 ## CUTSCENE SUMMARY ##
 ######################
@@ -184,11 +184,11 @@ Chapter 2: Gheni
     Thane burns the banned books.
   Cheminan Engineering
     Diego talks about kitchen appliances.
-  Bad Blood
+  Police State
     Authorities come for Thane, forcing Diego to kill them in self-defense. They
 	flee their home and make for the trainyards.
-  Past Curfew
-    The trio prepare to leave, heading for the trainyards.
+  Breaking News: Defeat in Merad
+    The trio talks about war propaganda.
   I Units
     Thane collapses from tear gas following a battle.
 Chapter 3: Chalt
@@ -207,7 +207,7 @@ Chapter 3: Chalt
   Spare: Meltdown
     Thane spares Somoza, only to be recognized and chased.
   Kill: Meltdown
-    Thane kills Somoza, riots break out, and a helicopter is dispatched.
+    Thane kills Somoza, riots break out, and a blimp is dispatched.
   Cornered
     The trio attempt to flee, but are cornered by an armored vehicle.
   Kill: Escape
@@ -445,7 +445,7 @@ that letter could have been about you instead.
 
 Asra: Actually... I was thinking about how both of our parents are gone now. I
 just want to go somewhere else and not think about all of this anymore. But I
-feel bad pushing your dad under the rug like that.
+feel like that's mentally pushing your dad under the rug.
 
 Thane: I can't expect you to feel the same way about my dad as I do. You barely
 knew him. Besides, Diego seems pretty ready to leave, too.
@@ -463,12 +463,6 @@ we get raided.
 
 Thane: I was actually going to ask why you wanted to bring Asra along. I know
 you two don't get along.
-
-Diego: Our best bet making it out of the country is through Rega. Asra knows the
-city better than we do. She'll be able to help.
-
-Thane: I don't follow your reasoning. There's a difference between living in a
-city and knowing how to flee a country from it.
 
 Diego: Asra also knows you're half Erawan. If we left her here she'd be taken
 into custody. There's no telling what she'd say. It's best we take her along for
@@ -623,13 +617,17 @@ nations have been locked in a stalemate.
 Thane: It's in Erawan. The last time anyone could read this was when Mom was
 still around.
 
-Asra: I'm really surprised you have one of those.
+Asra: I thought you knew Erawan.
 
-Thane: Yeah, I'm not sure why we kept it. All of these are banned, but Erawan
-literature is by far the biggest liability.
+Thane: My mom taught me a little bit growing up, but only spoken. I don't know
+how to read at all.
 
-Asra: Where did A Brief History come from? Doesn't it have a lot of contemporary
-history?
+Asra: So why did you keep the scriptures after Phaedra was taken?
+
+Thane: I'm not sure. All of these are banned, but Erawan literature is by far
+the biggest liability.
+
+Asra: What about A Brief History? Doesn't it have a lot of contemporary history?
 
 Thane: A Brief History was published in the United Territories. I'm really not
 sure how my dad got a hold of it. I'm sure we'll be able to get another copy if
@@ -650,7 +648,7 @@ power. Your family's so much more interesting than mine.
 Thane: Didn't do them much good, did it? Mom died in the internment camps, and
 now Dad's... I'm sorry. It's not like you haven't lost family yourself.
 
-Asra: I'm still grateful, you know. After the Rega Massacre you were all I had
+Asra: I'm still grateful, you know. After the Nenegi Massacre you were all I had
 left. There were a lot of people that had nowhere to go. Thanks for taking me
 in.
 
@@ -668,7 +666,7 @@ Thane: Does anyone want to look at these one last time?
 Diego: ...
 
 # Thane thrusts the books into the fire. Diego leaves the room. After a moment
-of silence, he walks over to Asra.
+# of silence, he walks over to Asra.
 
 Asra: Guess the censors won.
 
@@ -677,7 +675,7 @@ Thane: Weren't you just saying we had to get rid of these?
 Asra: Yeah. I can only imagine what Diego's thinking, though. Wasn't he a war
 correspondent during the Civil War?
 
-Thane: Kind of. Things got... Weird.
+Thane: Kind of. Things got... weird.
 
 Asra: You mean when he had to pledge his loyalty to Somoza?
 
@@ -722,10 +720,40 @@ Asra: Don't they live like savages?
 Diego: Of course not! They've got all your basic necessities - horse and buggy,
 ice boxes, that kind of stuff. Just like when you were a baby.
 
-<> # Past Curfew
+<> # Police State
 
-Diego: Hey, listen up you two. If things go to shit, you should have these
-handy.
+# Thane approaches the door, only to hear a knock.
+
+Asra: What the-
+
+Thane: Who's there?
+
+Officer: Cheminan Law Enforcement. Open up!
+
+# Thane reluctantly opens the door to reveal two officers.
+
+Officer: We're looking to speak with a Thane Belikoff.
+
+Thane: Yes, that's me.
+
+Officers: You need to come with us.
+
+Thane: Hold on, I'm in-
+
+# One of the officers raises a gun.
+
+Officers: If you don't cooperate, we are authorized to use force.
+
+# Two gunshots sound and both officers drop dead. Diego stands at the ready
+# holding a rifle.
+
+Asra: Holy shit!
+
+Thane: Fuck! Fuck! Diego, what the fuck?
+
+# Diego rushes forward and shuts the door.
+
+Diego: Quit standing around. It's time to move! Take these.
 
 # Diego hands Thane a rifle and Asra a revolver.
 
@@ -734,34 +762,65 @@ Asra: Diego, you know I'm a medic, right?
 Diego: Doesn't matter. We're not trying to rack up a body count here, but having
 some suppressive fire could be a good idea.
 
-Thane: Where did you get these?
+Thane: Where did you even get these?
 
-Diego: My brother was a bit of a kleptomaniac. When it became apparent Somoza
-was winning the war, he started collecting weapons from fallen enemies. Once the
-war was over his service weapon was taken but he was able to hide these.
+Diego: My brother was a bit of a kleptomaniac. When it was clear Somoza was
+winning the war, he started collecting weapons from fallen enemies. Once the war
+was over his service weapon was taken but he was able to hide these.
 
-Thane: I'm surprised I didn't know about these before. Why weren't they in the
-book cellar?
+Thane: I had no idea. Why weren't they in the book cellar?
 
-Diego: Hell if I know. He kept them hidden in the bedroom, of all places.
-Fucking maniac.
+Diego: Hell if I know. Saito hid them in the bedroom. Reckless, but we're lucky
+he kept them so handy.
 
-# Thane unlocks the front door.
+Asra: Looks like we're leaving earlier than expected. Good thing we're already
+packed.
 
-Diego: The enemy should never have a chance to retaliate. Ever. Being prepared
-means slaughtering thm before they know you're there. Anything short of that is
-failure.
+Thane: What the hell did they want from me?
+
+Diego: Who knows? My guess is some double-checked Saito's family records when he
+died and realized you were half Erawan.
+
+# Asra opens the door.
+
+Asra: We really need to go.
+
+Diego: Shit. It's after curfew. Look, in case things go to shit-
+
+Asra: They already have.
+
+Diego: Brilliant observation. Anyway, the enemy should never have a chance to
+retaliate. Ever. Being prepared means slaughtering them before they know you're
+there. Anything short of that is failure.
 
 Thane: Were people this underhanded during the Civil War?
 
 Diego: "Underhanded" is a pejorative used to make people follow the rules of
-some arbitrary leader. Fighting honorably is the same as surrendering to the
-side with the biggest guns.
+some arbitrary leader. Fighting honorably means surrendering to the side with
+the most guns.
 
 Asra: I thought we weren't trying to kill anyone.
 
 Diego: We're not. Don't treat this like it's a war zone. We should be running
 and hiding whenever possible. But if it comes to violence, don't take chances.
+Don't gamble with your life. Now let's go.
+
+<> # Breaking News: Defeat in Merad
+
+Thane: "Our valiant soldiers continue their tug of war over Merad. Fourteen
+Cheminan casualties were reported on the battlefields in the most recent battle,
+but General Kowalski assures us that victory is simply a matter of patience."
+
+Asra: What a crock of shit. We've been fighting over that miserable little town
+for three years now. I'll bet the actual body count is forty.
+
+Diego: I promise I didn't write that one... My articles are more ham-fisted.
+
+Thane: Does this kind of stuff really raise morale?
+
+Diego: I'll let you know when we run a story on how the war is actually going.
+
+Asra: Now that's real patience.
 
 <> # I Units
 
@@ -787,105 +846,7 @@ Thane: No, I'm okay. Let's keep moving.
 
 <> # Train Hopping
 
-# Diego, Asra, and Thane watch the scenery from the train car. A mix of forest
-# and smokestacks pass them.
 
-Asra: I always wanted to take you back home with me, but I never imagined it
-like this.
-
-Thane: Yeah. Me too. I wish I'd gotten to know your parents.
-
-# Asra smiles weakly.
-
-Asra: Stop romanticizing it like that, Thane. I already told you they were
-ignorant. If they'd known I was seeing some half-Erawan guy...
-
-Thane: What if they didn't know? Do you think we would have gotten along?
-
-Asra: I don't know. They would have been nice to you. You might not have liked
-them so much.
-
-Thane: ...
-
-Asra: Do you think you'll be able to do any evincing in Rega?
-
-Thane: I actually don't know. Rega is pretty close to the Erawan border. I might
-be able to do something simple. Control a coin flip, maybe.
-
-Asra: What was the evincer program like? Was it anything like your mom taught
-you?
-
-Thane: Mom never talked much about evincing. Gheni was way too far from the
-Fracture for her to do stuff. She still talked about the spiritual aspect,
-though.
-
-Asra: So the training was different?
-
-Thane: Definitely. It was secular, of course. There were only twenty of us, and
-the whole thing was supposed to be under wraps. Mostly they just gave us the
-enhancements and started off by having us rig dice.
-
-Asra: Why dice? That doesn't make any sense.
-
-Thane: Evincing is basically a glorified placebo effect.
-
-Asra: Meaning what?
-
-Thane: It's more than just willing things to happen. You have to believe they're
-already happening. Stuff that's based on luck is easy because you can imagine it
-happening already. The point is to skew the odds in your favor.
-
-Asra: Did you ever spar with each other?
-
-Thane: Eventually, yeah. Fighting is way harder because you can use your own
-perception to suppress the other person's abilities. I was never great at it.
-That, and there was the whole medical discharge thing, so I left early.
-
-Asra: Yeah, what was that about? You've never explained why that happened.
-
-Thane: That's because I don't understand it myself. They kept saying I was sick,
-but I felt totally fine. They wouldn't even wait for me to recover.
-
-# Diego stirs behind them.
-
-Diego: How far's the black market from the station?
-
-Asra: Not too far. Probably ten minutes or so on the trolley.
-
-Diego: You haven't been here in years. You sure it's in the same spot?
-
-Asra: It's run by the officers. Unless someone picked up the whole barracks and
-put it down somewhere else I doubt it’s gone anywhere. Also...
-
-# Asra points to a massive port in the distance.
-
-Asra: That's where we want to go once we've got uniforms. Since the United
-Territories of Debony is the only trade partner as far north we are, ships
-commuting anywhere else should have tropical barnacles stuck to them.
-
-Thane: And we're sure we want to go to Debony?
-
-Diego: Distance is the key factor here. Every country in Kabel is trying to get
-their hands on Cheminan engineers. We can expect political asylum pretty much
-anywhere. What’s important is we make it to land before we’re discovered.
-
-# The train begins slowing down. Thane points to a transit center milling with
-# a large crowd. Snow begins to fall.
-
-Thane: So can we transfer there?
-
-Asra: That's weird. I've never seen the station this backed up before.
-
-Soldier: Because our great leader is holding a rally at the square, the only
-routes in service today are those running to or from the downtown area!
-
-Asra: Nothing to boost your self-esteem like a captive audience.
-
-Thane: Does that mean we're stuck here?
-
-Asra: No, it just means we’ll have to transfer at the square instead of getting
-a straight shot. And judging by the crowd, it might be a while before we get to
-board.
 
 <> # Meeting Vanna
 
@@ -1104,6 +1065,114 @@ for a good reason.
 ## CHAPTER 4: NENEGI ##
 #######################
 
+<> # Waylaid
+
+# Diego, Asra, and Thane ride past trees and smokestacks in the Vollmer Armored
+# Car.
+
+Thane: I always wanted to see your hometown, but I never imagined it like this.
+
+Asra: Uh, Thane? We're in a fucking tank. I don't think this was what anyone had
+in mind. But yeah, it's weird coming back after all this time.
+
+Thane: I wish I'd gotten to know your parents.
+
+# Asra smiles weakly.
+
+Asra: Stop romanticizing it like that, Thane. I already told you they were
+ignorant. If they'd known I was seeing some half-Erawan guy...
+
+Thane: What if they didn't know? Do you think we would have gotten along?
+
+Asra: I don't know. They would have been nice to you. You might not have liked
+them so much.
+
+Thane: ...
+
+Asra: Do you think you'll be able to do any evincing in Nenegi?
+
+Thane: I actually don't know. Nenegi is pretty close to the Erawan border. I
+might be able to do something simple. Control a coin flip, maybe.
+
+Asra: What was the evincer program like? Was it anything like your mom taught
+you?
+
+Thane: Mom never talked much about evincing. Gheni was way too far from the
+Fracture for her to do stuff. She still talked about the spiritual aspect,
+though.
+
+Asra: So the training was different?
+
+Thane: Definitely. It was secular, of course. There were only twenty of us, and
+the whole thing was supposed to be under wraps. Mostly they just gave us the
+enhancements and started off by having us rig dice.
+
+Asra: Why dice? That doesn't make any sense.
+
+Thane: Evincing is basically a glorified placebo effect.
+
+Asra: Meaning what?
+
+Thane: It's more than just willing things to happen. You have to believe they're
+already happening. Stuff that's based on luck is easy because you can imagine it
+happening already. The point is to skew the odds in your favor.
+
+Asra: Did you ever spar with each other?
+
+Thane: Eventually, yeah. Fighting is way harder because you can use your own
+perception to suppress the other person's abilities. I was never great at it.
+That, and there was the whole medical discharge thing, so I left early.
+
+Asra: Yeah, what was that about? You've never explained why that happened.
+
+Thane: That's because I don't understand it myself. They kept saying I was sick,
+but I felt totally fine. They wouldn't even wait for me to recover.
+
+# An explosion jolts the vehicle and sends the vehicle swerving out of control.
+
+<> # 
+
+# Diego stirs behind them.
+
+Diego: How far's the black market from the station?
+
+Asra: Not too far. Probably ten minutes or so on the trolley.
+
+Diego: You haven't been here in years. You sure it's in the same spot?
+
+Asra: It's run by the officers. Unless someone picked up the whole barracks and
+put it down somewhere else I doubt it’s gone anywhere. Also...
+
+# Asra points to a massive port in the distance.
+
+Asra: That's where we want to go once we've got uniforms. Since the United
+Territories of Debony is the only trade partner as far north we are, ships
+commuting anywhere else should have tropical barnacles stuck to them.
+
+Thane: And we're sure we want to go to Debony?
+
+Diego: Distance is the key factor here. Every country in Kabel is trying to get
+their hands on Cheminan engineers. We can expect political asylum pretty much
+anywhere. What’s important is we make it to land before we’re discovered.
+
+# The train begins slowing down. Thane points to a transit center milling with
+# a large crowd. Snow begins to fall.
+
+Thane: So can we transfer there?
+
+Asra: That's weird. I've never seen the station this backed up before.
+
+Soldier: Because our great leader is holding a rally at the square, the only
+routes in service today are those running to or from the downtown area!
+
+Asra: Nothing to boost your self-esteem like a captive audience.
+
+Thane: Does that mean we're stuck here?
+
+Asra: No, it just means we’ll have to transfer at the square instead of getting
+a straight shot. And judging by the crowd, it might be a while before we get to
+board.
+
 <> # Streetwalker
 
 Thane: I can't believe we still haven't gotten you a full uniform that fits.
@@ -1213,23 +1282,6 @@ turned out alright in the end.
 
 # The trio are shown in silence for several seconds before Asra and Diego slowly
 # fade and disappear.
-
-<> # Breaking News: Defeat in Merad
-
-Thane: "Our valiant soldiers continue their tug of war over Merad. Fourteen
-Cheminan casualties were reported on the battlefields in the most recent battle,
-but General Kowalski assures us that victory is simply a matter of patience."
-
-Asra: What a crock of shit. We've been fighting over that miserable little town
-for three years now. I'll bet the actual body count is forty.
-
-Diego: I promise I didn't write that one... My articles are more ham-fisted.
-
-Thane: Does this kind of stuff really raise morale?
-
-Diego: I'll let you know when we run a story on how the war is actually going.
-
-Asra: Now that's real patience.
 
 <> # Breaking News: Night Patrol Killed
 
@@ -1392,11 +1444,11 @@ led to the Somoza overpowering the republic both economically and in battle.
 An ongoing conflict over control of the Fracture following Erawa's refusal to
 allow the research and development of Fracture-based technology on Erawan soil.
 
-<> # Appendix: Rega Massacre
+<> # Appendix: Nenegi Massacre
 
 One of Erawa's rare assaults on Cheminan territory, involving an unprecendented
-number of evincers storming the port city and targeting both civilian life as
-well as cargo ships, claiming hundreds of lives and millions in damaged goods.
+number of evincers storming the port city and targeting soldiers and civilians
+alike, claiming hundreds of lives and millions in property damage.
 
 <> # Appendix: Evincer
 
@@ -1473,7 +1525,7 @@ a long-standing relationship with Asra spanning a decade.
 <> # Appendix: Asra Sacco
 
 Initially an engineer, Asra was drafted into service as a combat medic and
-remains in the military reserve. After losing her parents and home in the Rega
+remains in the military reserve. After losing her parents and home in the Nenegi
 Massacre, she moved in with her romantic partner Thane in downtown Gheni.
 
 <> # Appendix: Farid Somoza

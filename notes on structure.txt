@@ -1,3 +1,32 @@
+# Diego stirs behind them.
+
+Diego: How far's the black market from the station?
+
+Asra: Not too far. Probably ten minutes or so on the trolley.
+
+Diego: You haven't been here in years. You sure it's in the same spot?
+
+Asra: It's run by the officers. Unless someone picked up the whole barracks and
+put it down somewhere else I doubt it’s gone anywhere. Also...
+
+# Asra points to a massive port in the distance.
+
+Asra: That's where we want to go once we've got uniforms. Since the United
+Territories of Debony is the only trade partner as far north we are, ships
+commuting anywhere else should have tropical barnacles stuck to them.
+
+Thane: And we're sure we want to go to Debony?
+
+Diego: Distance is the key factor here. Every country in Kabel is trying to get
+their hands on Cheminan engineers. We can expect political asylum pretty much
+anywhere. What’s important is we make it to land before we’re discovered.
+
+# The train begins slowing down. Thane points to a transit center milling with
+# a large crowd. Snow begins to fall.
+
+Thane: So can we transfer there?
+
+
 Final Fantasy VI ######################################################
 
 Uses new character relationships to flesh out characters.
@@ -11,11 +40,11 @@ Possibly use Asra's naivety to teach the player about history. However, Asra
 
 Iji ##################################################################
 
-Uses logbooks to characterize Tasen and  against Somoza openly
+Uses logbooks to characterize Tasen and Komato
 Add anti-Somoza characters?
-Iji and Dan have existing relationshipKomato
+Iji and Dan have existing relationship
 Similar techniques could be used in Kabel, however most sources of information
-  would provide propaganda, as no one can speak out
+  would provide propaganda, as no one can speak out against Somoza openly
   
 Have characters discuss news articles.
   
@@ -44,3 +73,21 @@ Three characters
 * Cynical old man
 * Overworked young man
 * (Comparatively) naive, lighthearted girl
+
+########################################################################
+
+Capital letter denotes vertex.
+Lower case letter denotes edge.
+  => Two letters denotes horizontal edge.
+  => Two numbers denotes vertical edge.
+Diagonal Edges:
+  A1SE denotes edge from A1 southeast to B2
+  A2NE denotes edge from A2 northeast to A1
+  B1SW denotes edge from B1 southwest to A2
+  NEB2 denotes edge to B2 southeast from A1 (?)
+
+A01 ab1 B01 bc1 C01
+a12     b12     c12
+A02 ab2 B02 bc2 C02
+a23     b23     c23
+A03 ab3 B03 bc3 C03
