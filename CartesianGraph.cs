@@ -4,14 +4,38 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-public class Vertex {
-    public int x;
-    public int y;
-    public List<Vertex> edges = new List<Vertex>();
-}
+namespace Kabel {
 
-namespace ConsoleApplication1 {
+    public class Vertex {
+        public int x;
+        public int y;
+        public List<Vertex> edges = new List<Vertex>();
+        public Vertex() { }
+        public Vertex(int xIn, int yIn) {
+            x = xIn;
+            y = yIn;
+        }
+        public void print(bool newline) {
+            if(newline)
+                Console.WriteLine("(" + x + ", " + y + ")");
+            else
+                Console.Write("(" + x + ", " + y + ")");
+        }
+    }
+
     public class CartesianGraph {
+
+        /* Converts text dump to a graph via this format:
+
+        <MAP>
+
+        O-O   O
+        |X \ /
+        O O O
+
+        </MAP>
+
+        */
 
         public CartesianGraph(string inFile) {
             // example said: @"C:\Users\Public\TestFolder\WriteText.txt"
@@ -25,9 +49,7 @@ namespace ConsoleApplication1 {
                 iterateGrid(mapData[i], ref r, ref c);
                 if (mapData[i] == 'O') {
                     if (r == -1) r = 0;
-                    Vertex temp = new Vertex();
-                    temp.x = c / 2;
-                    temp.y = r / 2;
+                    Vertex temp = new Vertex(c / 2, r / 2);
                     vertices.Add(temp);
                 }
             }
@@ -57,6 +79,14 @@ namespace ConsoleApplication1 {
                     }
                 }
             }
+        }
+
+        public List<Vertex> getPaths(int x, int y) {
+            return findVertex(x, y).edges;
+        }
+
+        public List<Vertex> getPaths(Vertex v) {
+            return v.edges;
         }
 
         private List<Vertex> vertices = new List<Vertex>();
@@ -98,13 +128,12 @@ namespace ConsoleApplication1 {
         }
 
         // Returns a reference to a vertex at the specified (x, y)
-        private Vertex findVertex(int x, int y) {
+        public Vertex findVertex(int x, int y) {
             for (int i = 0; i < vertices.Count(); ++i)
                 if (vertices[i].x == x && vertices[i].y == y)
                     return vertices[i];
             Console.WriteLine("ERROR: Vertex not found at coordinates.");
-            Vertex retVal = new Vertex();
-            retVal.x = -1;
+            Vertex retVal = new Vertex(-1, 0);
             return retVal;
         }
 

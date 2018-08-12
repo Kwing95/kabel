@@ -10,9 +10,12 @@ Aurelia
 Aurora
 Bama
 Basil
+Batou
+Beatrice
 Biel
 Bilial
 Blaise
+Brooke
 Buford
 Byron
 Callum
@@ -212,6 +215,7 @@ Elva
 Emmitt
 Enoch
 Felder
+Fieri
 Galt
 Hatsu
 Hong
