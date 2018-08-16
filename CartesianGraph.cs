@@ -91,13 +91,49 @@ namespace Kabel {
 
         private List<Vertex> vertices = new List<Vertex>();
 
+        // Uses Dijkstra's algorithm to find shortest path between start and end
+        public List<Vertex> shortestPath(Vertex start, Vertex end) {
+
+            int startIndex = findVertex(start);
+            int endIndex = findVertex(end);
+
+            List<Vertex> unvisited = new List<Vertex>();
+            List<int> cost = Enumerable.Repeat(2147483647, vertices.Count()).ToList(); // -1 = infinity
+            List<Vertex> prev = Enumerable.Repeat(new Vertex(), vertices.Count()).ToList(); // -1 = undefined
+            cost[startIndex] = 0;
+
+            for (int i = 0; i < vertices.Count(); ++i)
+                unvisited.Add(vertices[i]);
+
+            while(unvisited.Count() > 0) {
+                int minCost = 2147483647;
+                Vertex v = new Kabel.Vertex();
+                for(int i = 0; i < unvisited.Count(); ++i) {
+                    if (cost[findVertex(unvisited[i])] < minCost) {
+                        minCost = cost[findVertex(unvisited[i])];
+                        v = unvisited[i];
+                    }
+                }
+
+                unvisited.Remove(v);
+                for(int i = 0; i < v.edges.Count(); ++i) {
+                    int dist = cost[findVertex(v)] + 1;
+                    if(dist < cost[findVertex(v.edges[i])]) {
+                        cost[findVertex(v.edges[i])] = dist;
+                        prev[findVertex(v.edges[i])] = v;
+                    }
+                }
+            }
+
+            return prev;
+
+        }
+
         // Adds edges between two points
         private void addEdge(bool edgeH, bool edgeV, int c, int r, bool ne) {
-            Vertex point1 = new Vertex();
-            Vertex point2 = new Vertex();
-            point1 = ne ? findVertex((c - 1) / 2, (r + 1) / 2) :
+            Vertex point1 = ne ? findVertex((c - 1) / 2, (r + 1) / 2) :
                 findVertex(c / 2, r / 2);
-            point2 = ne ? findVertex((c + 1) / 2, (r - 1) / 2) :
+            Vertex point2 = ne ? findVertex((c + 1) / 2, (r - 1) / 2) :
                 findVertex((c + (edgeH ? 1 : 0)) / 2, (r + (edgeV ? 1 : 0)) / 2);
             point1.edges.Add(point2);
             point2.edges.Add(point1);
@@ -135,6 +171,19 @@ namespace Kabel {
             Console.WriteLine("ERROR: Vertex not found at coordinates.");
             Vertex retVal = new Vertex(-1, 0);
             return retVal;
+        }
+
+        // Returns index of vertex in List<Vertex> vertices
+        public int findVertex(Vertex v) {
+            for (int i = 0; i < vertices.Count(); ++i)
+                if (sameVertex(v, vertices[i]))
+                    return i;
+            Console.WriteLine("ERROR: No vertex found matching argument.");
+            return -1;
+        }
+
+        private bool sameVertex(Vertex v1, Vertex v2) {
+            return v1.x == v2.x && v1.y == v2.y;
         }
 
     }
