@@ -94,12 +94,15 @@ namespace Kabel {
         // Uses Dijkstra's algorithm to find shortest path between start and end
         public List<Vertex> shortestPath(Vertex start, Vertex end) {
 
+            start = vertices[findVertex(start)];
+            end = vertices[findVertex(end)];
+            
             int startIndex = findVertex(start);
             int endIndex = findVertex(end);
 
             List<Vertex> unvisited = new List<Vertex>();
             List<int> cost = Enumerable.Repeat(2147483647, vertices.Count()).ToList(); // -1 = infinity
-            List<Vertex> prev = Enumerable.Repeat(new Vertex(), vertices.Count()).ToList(); // -1 = undefined
+            //List<Vertex> prev = Enumerable.Repeat(new Vertex(), vertices.Count()).ToList(); // -1 = undefined
             cost[startIndex] = 0;
 
             for (int i = 0; i < vertices.Count(); ++i)
@@ -120,12 +123,27 @@ namespace Kabel {
                     int dist = cost[findVertex(v)] + 1;
                     if(dist < cost[findVertex(v.edges[i])]) {
                         cost[findVertex(v.edges[i])] = dist;
-                        prev[findVertex(v.edges[i])] = v;
+                        //prev[findVertex(v.edges[i])] = v;
                     }
                 }
             }
 
-            return prev;
+            List<Vertex> retVal = new List<Vertex>();
+            retVal.Insert(0, end);
+            int distToEnd = cost[findVertex(end)];
+            for(Vertex i = end; !sameVertex(start, i);) {
+                for(int j = 0; j < i.edges.Count(); ++j) {
+                    if(cost[findVertex(i.edges[j])] == distToEnd - 1) {
+                        i = i.edges[j];
+                        distToEnd = cost[findVertex(i)];
+                        retVal.Insert(0, i);
+                    }
+                }
+
+                //ti.Insert(0, initialItem);
+            }
+
+            return retVal;
 
         }
 
