@@ -53,6 +53,7 @@ Chapter 5: Tripsi [Evincer] (x1 action)
 Chapter 6: Rega [Stealth] (x1 action)
   Thane sneaks onto a ship bound for Debony.
 Chapter 7: Venha [Epilogue]
+  Thane fights his way off the ship.
   Thane makes contact with Debonese authorities and is granted political asylum.
   He is admitted as an engineer in their government intelligence program.
   
@@ -102,7 +103,7 @@ Chapter N: Breaking News
   Invention of Television
   Deserter Captured
   Risto Somoza's Succession
-  Remembrance of the Nenegi Massacre
+  Remembrance of the Rega Massacre
   Record High Trades With Debony
   Heavy Losses in Debony
 Chapter A: Appendix
@@ -118,7 +119,7 @@ Chapter A: Appendix
   United Territories of Debony
   Cheminan Civil War
   Cheminan-Erawan War
-  Nenegi Massacre
+  Rega Massacre
   Evincer
   Fracture
   Lauve
@@ -140,7 +141,7 @@ Chapter A: Appendix
   Breaking News: Risto Somoza's Succession (4: Nenegi)
   Breaking News: Invention of Television (4: Nenegi)
   Breaking News: Deserter Captured (6: Rega)
-  Breaking News: Remembrance of the Nenegi Massacre
+  Breaking News: Remembrance of the Rega Massacre
   Breaking News: Record High Trades With Debony
   Breaking News: Heavy Losses in Debony
   
@@ -191,6 +192,8 @@ Chapter 2: Gheni
     The trio talks about war propaganda.
   I Units
     Thane collapses from tear gas following a battle.
+  Trainyard
+    The trio sneak onto a train as it's departing and head for Chalt.
 Chapter 3: Chalt
   Train Hopping
     The trio discuss their plans to reach Rega.
@@ -648,7 +651,7 @@ power. Your family's so much more interesting than mine.
 Thane: Didn't do them much good, did it? Mom died in the internment camps, and
 now Dad's... I'm sorry. It's not like you haven't lost family yourself.
 
-Asra: I'm still grateful, you know. After the Nenegi Massacre you were all I had
+Asra: I'm still grateful, you know. After the Rega Massacre you were all I had
 left. There were a lot of people that had nowhere to go. Thanks for taking me
 in.
 
@@ -753,7 +756,7 @@ Thane: Fuck! Fuck! Diego, what the fuck?
 
 # Diego rushes forward and shuts the door.
 
-Diego: Quit standing around. It's time to move! Take these.
+Diego: Quit standing around. We have to move! Take these.
 
 # Diego hands Thane a rifle and Asra a revolver.
 
@@ -768,10 +771,11 @@ Diego: My brother was a bit of a kleptomaniac. When it was clear Somoza was
 winning the war, he started collecting weapons from fallen enemies. Once the war
 was over his service weapon was taken but he was able to hide these.
 
-Thane: I had no idea. Why weren't they in the book cellar?
+Thane: I had no idea. Wait, why weren't they in the book cellar?
 
-Diego: Hell if I know. Saito hid them in the bedroom. Reckless, but we're lucky
-he kept them so handy.
+Diego: Hell if I know. Saito hid them in the bedroom. Pretty reckless
+considering what would have happened if we'd ever been raided, but I guess
+keeping them handy finally paid off.
 
 Asra: Looks like we're leaving earlier than expected. Good thing we're already
 packed.
@@ -779,7 +783,7 @@ packed.
 Thane: What the hell did they want from me?
 
 Diego: Who knows? My guess is some double-checked Saito's family records when he
-died and realized you were half Erawan.
+died and realized you were half Erawan. No use worrying about it now.
 
 # Asra opens the door.
 
@@ -824,7 +828,8 @@ Asra: Now that's real patience.
 
 <> # I Units
 
-# Thane collapses on the street, vomiting.
+# After encountering an I-Troop with tear gas, Thane collapses on the street,
+# vomiting.
 
 Asra: Are you okay?
 
@@ -840,17 +845,166 @@ Diego: Let's find you some cover so you can take your time getting back up.
 
 Thane: No, I'm okay. Let's keep moving.
 
+<> # Trainyard
+
+# The trio reach the trainyard just as a train carrying lumber begins moving.
+# Asra leaps onto a ladder on the side of one of the cars.
+
+Asra: Grab on!
+
+# Thane and Diego make it onto the ladder and the three climb to the top of the
+# car.
+
+Thane: It's fucking freezing up here. Is there any way we can get inside one of
+the cars?
+
+Diego: Probably not.
+
+Asra: Peekaboo!
+
+# Thane and Diego turn to see Asra on an adjacent car, peeking out from a tarp
+# covering the cargo.
+
+Asra: Come on down. Hey, there's a jacuzzi down here!
+
+Thane: Don't get my hopes up.
+
+# Thane crawls to the edge of the car and jumps onto the tarp before crawling
+# under to meet her. Diego follows suit.
+
+Diego: It's not exactly warm, but at least the wind is out of our faces.
+
+Thane: Hey, Asra... you cold?
+
+# Asra nods and leans into Thane. The two hold hands.
+
 ######################
 ## CHAPTER 3: CHALT ##
 ######################
 
-<> # Train Hopping
+<> # Cargo Inspection
+
+# The train slows and comes to a halt.
+
+Thane: Is this Chalt?
+
+Asra: Has to be. The Capital Spire is right over there, see?
+
+# Asra points into the distance. A bright light shines in her eyes and she
+# shrinks back into the shadows.
+
+Thane: Fuck, what was that?
+
+Diego: Shit. Cargo inspection. Time to go.
+
+Asra: Curfew's still in effect. Where the hell do we go?
+
+Diego: We'll have to figure that out later.
+
+<> # Breaking News: Night Patrol Killed
+
+Thane: "Early this morning, officers found several squadmates in Gheni dead
+while doing rounds. Forensics confirmed the cause of death to be multiple
+gunshot wounds from Civil War-era weapons."
+
+Diego: Let me guess. A reward-
+
+Thane: "A handsome reward shall be offered to any who provide evidence leading
+to the capture of the suspects Thane Belikoff, Diego Belikoff, and Asra Sacco.
+All three are considered to be armed and dangerous."
+
+Asra: Why didn't they mention that you were resisting arrest in the first place?
+Wouldn't they want to make you look like the bad guy?
+
+Diego: You think they'd admit they weren't able to contain the situation? It's
+better to make it look like a random act of violence.
+
+Asra: Thane... Can I talk to you about something?
+
+Thane: Of course. What's going on?
+
+Asra: I'm a murderer now. And the... thing is... fuck.
+
+Thane: Hey, calm down. Trust me, I know. It's hard when-
+
+Asra: It's not hard! That's why I'm so fucking scared!
+
+Thane: ...
+
+Asra: I never wanted to be drafted into the service. I never wanted to be a
+medic, either. But I was able to accept it because I could tell myself at least
+I was helping people. But something about killing just felt... exciting.
+
+Thane: Everyone has their own way of handling extreme situations.
+
+Asra: It's not even about that. It's that I liked it! What does that say about
+who I am? What if I just get worse and I lose control? This isn't who I want to
+be.
+
+Thane: It's going to be alright. We're not soldiers and we're not here to fight.
+Once we're in Debony you won't have to think about any of this anymore.
+
+Asra: Even if we make it... I'm scared of myself, Thane.
+
+Thane: I can't promise everything will be fine, but give yourself time. You have
+time to think and deal with it later. Don't try to figure it out all at once.
+
+<> # Streetwalker
+
+Thane: I can't believe we still haven't gotten you a full uniform that fits.
+
+Diego: I'm sure they're made in my size. It just isn't common.
+
+Asra: It doesn't help that we aren't targeting soldiers the same size as you.
+
+Diego: Obviously. It's not like we're trying to pick fights here. We'd be better
+off going to a black market.
+
+Asra: Easier said than done. I don't think any of us have connections in Chalt.
+
+# Diego approaches an escort on the corner.
+
+Diego: Hey!
+
+Thane: What the hell is he doing?
+
+Escort: Hey there. Anything I can help you with?
+
+Diego: Yeah. I'm looking to buy a couple things.
+
+Escort: Alright, hun. I know a place where you can get anything you need.
+
+Diego: I don't need a hotel room. I need ammo.
+
+Asra: Uh, Diego? Why are you trying to buy munitions from a hooker?
+
+Escort: I know someone that can help you.
+
+Diego: Let's just say crime is a versatile business.
+
+Asra: And she trusts you because...?
+
+Thane: Just a wild guess, but I imagine it has more to do with three armed
+people approaching her in the middle of the night than it has to do with her
+trusting us.
+
+<> # Meeting Malik
+
+# The escort leads them into an apartment complex. She knocks on a door.
+
+Merchant: Who is it?
+
+Fayth: It's Fayth. I've got some people that need gear.
+
+# The door opens as much as the door chain allows, with a man behind it.
+
+Malik: Name's Malik. What do you need?
 
 
 
 <> # Meeting Vanna
 
-# The trio enter a fishing supplies shop and confront the front desk.
+# The trio enter a shop and confront the front desk.
 
 Asra: Hey, Vanna.
 
@@ -1130,6 +1284,10 @@ but I felt totally fine. They wouldn't even wait for me to recover.
 
 # An explosion jolts the vehicle and sends the vehicle swerving out of control.
 
+Diego: What the fuck was that?
+
+Asra: Rockets!
+
 <> # 
 
 # Diego stirs behind them.
@@ -1172,29 +1330,6 @@ Thane: Does that mean we're stuck here?
 Asra: No, it just means we’ll have to transfer at the square instead of getting
 a straight shot. And judging by the crowd, it might be a while before we get to
 board.
-
-<> # Streetwalker
-
-Thane: I can't believe we still haven't gotten you a full uniform that fits.
-
-Diego: I'm sure they're made in my size. It just isn't common.
-
-Asra: It doesn't help that we aren't targeting soldiers the same size as you.
-
-Diego: Obviously. It's not like we're trying to pick fights here. We'd be better
-off going to a black market.
-
-Asra: Easier said than done. I don't think any of us have connections in Nenegi.
-
-# Diego approaches an escort on the corner.
-
-Diego: Hey!
-
-Escort: Hey there. Anything I can help you with?
-
-Diego: Yeah. Does your boss work in trade?
-
-Escort: Aren't we forward? Yes, I can get you anything you need.
 
 <> # Saving Asra
 
@@ -1283,47 +1418,7 @@ turned out alright in the end.
 # The trio are shown in silence for several seconds before Asra and Diego slowly
 # fade and disappear.
 
-<> # Breaking News: Night Patrol Killed
 
-Thane: "Early this morning, officers found several of squadmates in Gheni dead
-while doing rounds. Forensics confirmed the cause of death to be multiple
-gunshot wounds from Civil War-era weapons."
-
-Diego: Let me guess. A reward-
-
-Thane: "A handsome reward shall be offered to any who provide evidence leading
-to the capture of the suspects."
-
-Asra: Thane... Can I talk to you about something?
-
-Thane: Of course. What's going on?
-
-Asra: I'm a murderer now. And the... thing is... fuck.
-
-Thane: Trust me, I know. It's hard to-
-
-Asra: It's not hard! That's why I'm so fucking scared!
-
-Thane: ...
-
-Asra: I never wanted to be drafted into the service. I never wanted to be a
-medic, either. But I was able to accept it because I could tell myself at least
-I was helping people. But something about killing just felt... exciting.
-
-Thane: Everyone has their own way of handling extreme situations. That includes
-taking a life.
-
-Asra: It's not even about that. It's that I liked it! What does that say about
-who I am? What if I just get worse and I lose control? This isn't who I want to
-be.
-
-Thane: It's going to be alright. We're not soldiers and we're not here to fight.
-Once we're in Debony you won't have to think about any of this anymore.
-
-Asra: Even if we make it... I'm scared of myself, Thane.
-
-Thane: I can't promise everything will be fine, but give yourself time. You'll
-at least feel better than you do now.
 
 <> # Breaking News: Invention of Television
 
@@ -1377,7 +1472,7 @@ Asra: Shit... That could have been us.
 
 <> # Appendix: Chalt
 
-The national capital of Chemina.
+The capital of Chemina and residence of supreme leader Farid Somoza.
 
 <> # Appendix: Chemina
 
@@ -1444,11 +1539,16 @@ led to the Somoza overpowering the republic both economically and in battle.
 An ongoing conflict over control of the Fracture following Erawa's refusal to
 allow the research and development of Fracture-based technology on Erawan soil.
 
-<> # Appendix: Nenegi Massacre
+<> # Appendix: Rega Massacre
 
 One of Erawa's rare assaults on Cheminan territory, involving an unprecendented
 number of evincers storming the port city and targeting soldiers and civilians
 alike, claiming hundreds of lives and millions in property damage.
+
+<> # Appendix: Capital Spire
+
+A monument built to commemorate Farid Somoza's inauguration, located at the
+center of downtown Chalt.
 
 <> # Appendix: Evincer
 
@@ -1461,6 +1561,12 @@ everyday convenience, evincing is usually used for defense and climate control.
 A geographical point in the center of Erawa's geography. Physical laws become
 exponentially more pliable in proportion to how close one is. As a result, close
 proximity is inherently dangerous, but also allows for metaphysical feats.
+
+<> # Appendix: HPPD
+
+Hallucinogen persisting perception disorder is characterized by auditory or
+visual hallucinations persisting for an undefined amount of time following use
+of hallucinogens.
 
 <> # Appendix: Lauve
 
@@ -1478,7 +1584,7 @@ to mental noise, which produces unwanted effects on the environment.
 
 A psychadelic drug developed by Cheminan medical researchers. It is intended to
 allow the user to arbitrarily create and manipulate hallucinations, with varying
-levels of success. In rare cases, effects persist following previous use.
+levels of success. In rare cases, individuals taking Ribatol experience HPPD.
 
 <> # Appendix: Risk
 
@@ -1525,7 +1631,7 @@ a long-standing relationship with Asra spanning a decade.
 <> # Appendix: Asra Sacco
 
 Initially an engineer, Asra was drafted into service as a combat medic and
-remains in the military reserve. After losing her parents and home in the Nenegi
+remains in the military reserve. After losing her parents and home in the Rega
 Massacre, she moved in with her romantic partner Thane in downtown Gheni.
 
 <> # Appendix: Farid Somoza
