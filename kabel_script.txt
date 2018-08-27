@@ -1000,7 +1000,22 @@ Fayth: It's Fayth. I've got some people that need gear.
 
 Malik: Name's Malik. What do you need?
 
+Thane: Police uniforms. For him.
 
+# Thane gestures to Diego.
+
+Malik: Hmph... Big dude. I'm not sure I've got anything that'll fit him, but
+I'll see what I can find. What do you need 'em for, anyway?
+
+Asra: Just playing dress-up.
+
+Malik: Bit old for that, aren't we?
+
+Asra: It's a fetish.
+
+Diego: Hey-
+
+Malik: Whatever. Not my business. Give me a second.
 
 <> # Meeting Vanna
 
