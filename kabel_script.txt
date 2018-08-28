@@ -61,51 +61,6 @@ Chapter 7: Venha [Epilogue]
 ## CUTSCENE LIST ##
 ###################
 
-Chapter 1: Merad
-  Panoramic
-  The Heat of Battle
-  Flushing the Enemy
-  Ambush Tactics
-  The Fall of Bane
-  Infirmary
-Chapter 2: Gheni
-  Death Letter
-  Asra: Diego's Apathy
-  Diego: Traveling Together
-  Book Cellar
-  Asra: About Books
-  Erawa At a Glance
-  Beyond Reality
-  A Brief History
-  Book Burning
-  Cheminan Engineering
-  Past Curfew
-  I Units
-Chapter 3: Chalt
-  Train Hopping
-  Meeting Vanna
-  Leaving Vanna's
-  Rally
-  Iron Sights
-  Asra: Assassination
-  Diego: Assassination
-Chapter 4: Nenegi
-  Streetwalker
-  Saving Asra
-Chapter 5: Tripsi
-Chapter 6: Rega
-Chapter 7: Venha
-  Ashore
-  Closure?
-Chapter N: Breaking News
-  Defeat in Merad
-  Night Patrol Killed
-  Invention of Television
-  Deserter Captured
-  Risto Somoza's Succession
-  Remembrance of the Rega Massacre
-  Record High Trades With Debony
-  Heavy Losses in Debony
 Chapter A: Appendix
   Chalt
   Chemina
@@ -195,10 +150,19 @@ Chapter 2: Gheni
   Trainyard
     The trio sneak onto a train as it's departing and head for Chalt.
 Chapter 3: Chalt
-  Train Hopping
-    The trio discuss their plans to reach Rega.
+  Cargo Inspection
+    The train is stopped for inspection and the trio flees.
+  Breaking News: Night Patrol Killed
+    The trio discuss their status as wanted criminals. Asra admits she enjoys
+	killing.
   Streetwalker
     Diego approaches a prostitute seeking the black market.
+  Meeting Malik
+    The trio buy a supplies on the black market.
+  Squatting
+    The trio spend the night in the apartment stairwell.
+  Leaving Chalt
+    The trio discuss how to make it to Nenegi.
   Rally
     Somoza holds a rally and Diego comments on his politics.
   Iron Sights
@@ -1017,56 +981,112 @@ Diego: Hey-
 
 Malik: Whatever. Not my business. Give me a second.
 
-<> # Meeting Vanna
+# Malik closes the door.
 
-# The trio enter a shop and confront the front desk.
+Thane: Do you always struggle to find clothes that fit?
 
-Asra: Hey, Vanna.
+Diego: Not always, but it's pretty common. Really asinine how poorly stocked
+most places are.
 
-Vanna: Asra. Haven’t seen you around. And you’ve got company, too.
+Asra: Give them a break. You are a pretty big guy.
 
-Asra: Yeah. This is Diego. We’re looking to get him a uniform and dog tags.
+Diego: No I'm not. It's that the rest of you are all so damned small. Your whole
+generation grew up with refrigerators and ovens and hardly any food to put in
+them. I'm not big. The rest of you are just malnourished.
 
-Vanna: Your friend's pretty big. I doubt there's anything in the back that's
-going to fit him. Say... What do you need a uniform for anyway?
+# The door opens again. Behind it, Malik is holding a uniform.
 
-Asra: We wanted to play dress-up.
+Malik: Twenty lauves, please.
 
-Vanna: A bit old for that, aren't you?
+Asra: That's absurd! Fayth, how many blowjobs could we get for that much?
 
-Asra: It's a fetish.
+Fayth: Six.
 
-Diego: Hey-
+Malik: Fayth, that is not helpful. Do you want these or not?
 
-Vanna: I see you've still got your sense of humor. Well, I suppose it's not
-really my business what you need it for anyway. Just don't let the officers
-catch you... unless you're also a masochist. Which wouldn't surprise me.
+Diego: We don't even know if they fit yet.
 
-Diego: How do we get a hold of something that fits?
+Malik: If they don't fit I'll give you your money back.
 
-Vanna: Someone sure is eager. I've got a friend on the other side of town that
-should be able to help you.
+Diego: ...
 
-<> # Leaving Vanna's
+Thane: Doesn't leave us much choice, does it?
 
-Diego: Is this place always so poorly stocked?
+# Diego exchanges money for the uniform and changes into it.
 
-Asra: It's not. You're just a really big guy.
+Diego: Hmph. A bit tight, but it's better than nothing.
 
-Diego: It's not that I'm big. It's that the rest of you are all so damned small.
-Your generation grew up with refrigerators and ovens and no food to put in them.
-It's hardly a surprise your growth was stunted.
+Malik: Is there anything else you three are interested in?
 
-Thane: I didn't know you had these kinds of connections in Rega.
+# A shop opens.
 
-Asra: What do you mean? Everyone has a supplier somewhere or other. My dad
-wasn’t a revolutionary but that doesn’t mean we were naive. My parents took me
-here since I was eleven.
+<> # Squatting
 
-Diego: Are you sure we can trust her?
+Thane: We should find a place to settle down for the night. We can't keep going
+around past curfew. We'll get ourselves killed.
 
-Asra: I would think so. She doesn't know we're deserters. Besides, if there's
-anything Vanna knows how to do it's keeping customers.
+Diego: Why not stay here?
+
+Thane: I don't even know where this is.
+
+Asra: None of us know our way around Chalt. I think it's as good a place as any.
+Let's try the stairwell and see if we can stay by the roof.
+
+# The three climb just past the top floor.
+
+Thane: Feels like there's a slight breeze here, but I don't think anyone's going
+to come up here and bother us.
+
+# Thane lays a blanket out and the three of them huddle together on the landing.
+# Insert berserk Asra?
+
+<> # Leaving Chalt
+
+# The trio wakes up on the stairwell.
+
+Thane: So what's the plan for today?
+
+Diego: That's a damn good question. After the debacle at the trainyard there's
+no way we can go back and hitch a ride to Nenegi. Our best bet might be going by
+horseback.
+
+Asra: Why not get a car?
+
+Diego: We don't have the money for that. Plus, none of us can drive.
+
+<> # Breaking News: Invention of Television
+
+Thane: "Physicists use amplitude-modulated frequencies to transmit images via
+cathode ray tubes. A union of motion pictures and remote broadcasts is expected
+to reach the market later this year."
+
+Diego: I didn't understand half of that.
+
+Asra: And here I was thinking you were the educated gentleman.
+
+Diego: I never said that. I just said you kids never learn the things you really
+need to know in school.
+
+Asra: Oh yeah? What's the last thing you invented?
+
+Thane: Asra, don't-
+
+Diego: It's not about what I've invented, or what anyone's invented for that
+matter. You two grow up practically illiterate and completely ignorant of your
+own history, and then you think engineering is the only thing worth knowing.
+
+Asra: Not everyone has to be like you, Diego! Different people-
+
+Diego: Everyone needs to know why things are the way they are right now! You
+can't raise a whole generation of engineers to be subservient workers that shirk
+their collective responsibility as citizens and then expect a revolution.
+
+Asra: What about you? Your own brother risked his life in the Civil War and all
+you did was stand on the sidelines and watch!
+
+Thane: Stop!!
+
+Asra: ...
 
 <> # Rally
 
@@ -1435,39 +1455,7 @@ turned out alright in the end.
 
 
 
-<> # Breaking News: Invention of Television
 
-Thane: "Physicists use amplitude-modulated frequencies to transmit images via
-cathode ray tubes. A union of motion pictures and remote broadcasts is expected
-to reach the market later this year."
-
-Diego: I didn't understand half of that.
-
-Asra: And here I was thinking you were the educated gentleman.
-
-Diego: I never said that. I just said you kids never learn the things you really
-need to know in school.
-
-Asra: Oh yeah? What's the last thing you invented?
-
-Thane: Asra, don't-
-
-Diego: It's not about what I've invented, or what anyone's invented for that
-matter. You two grow up practically illiterate and completely ignorant of your
-own history, and then you think engineering is the only thing worth knowing.
-
-Asra: Not everyone has to be like you, Diego! Different people-
-
-Diego: Everyone needs to know why things are the way they are right now! You
-can't raise a whole generation of engineers to be subservient workers that shirk
-their collective responsibility as citizens and then expect a revolution.
-
-Asra: What about you? Your own brother risked his life in the Civil War and all
-you did was stand on the sidelines and watch!
-
-Thane: Stop!!
-
-Asra: ...
 
 <> # Breaking News: Deserter Captured
 
@@ -1637,11 +1625,20 @@ An Erawan soldier taken prisoner and held in Rega, where he was experimented on
 to see if chemical augmentation synergized with traditional Erawan training. His
 power was so great that he was held in a sensory deprivation chamber for safety.
 
+<> # Fayth Haun
+
+An escort working under Malik Ouran in Chalt.
+
 <> # Appendix: Vanna Kowalski
 
 The merchant of Rega's black market, Vanna operates a multi-tiered business
 consisting of fishing supplies, military gear, and contraband materials. She has
 a long-standing relationship with Asra spanning a decade.
+
+<> # Appendix: Malik Ouran
+
+A mobster operating in Chalt whose business endeavors include human trafficking 
+and illcit distribution of drugs and weapons.
 
 <> # Appendix: Asra Sacco
 
