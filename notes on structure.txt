@@ -15,6 +15,7 @@ Vagrant Story #########################################################
 
 Only 11k words in script.
 Takes place over 24 hour period.
+Development through previous information revealed.
 
 Final Fantasy VI ######################################################
 
