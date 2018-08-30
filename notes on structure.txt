@@ -1,31 +1,20 @@
-# Diego stirs behind them.
+Initial equipment: Flashlight, canned food, water, uniforms, blanket, medkit,
+grenades, ammo, weapons.
 
-Diego: How far's the black market from the station?
+Current holes:
+Somoza's conference
+Breaking News: Risto's Succession
+Breaking News: Remembrance of Rega Massacre
+Breaking News: Major Losses in Debony
+Breaking News: Trade Deals in Debony
+Tripsi
+Rega
+Thane discussing evincing with Asra?
 
-Asra: Not too far. Probably ten minutes or so on the trolley.
+Vagrant Story #########################################################
 
-Diego: You haven't been here in years. You sure it's in the same spot?
-
-Asra: It's run by the officers. Unless someone picked up the whole barracks and
-put it down somewhere else I doubt it’s gone anywhere. Also...
-
-# Asra points to a massive port in the distance.
-
-Asra: That's where we want to go once we've got uniforms. Since the United
-Territories of Debony is the only trade partner as far north we are, ships
-commuting anywhere else should have tropical barnacles stuck to them.
-
-Thane: And we're sure we want to go to Debony?
-
-Diego: Distance is the key factor here. Every country in Kabel is trying to get
-their hands on Cheminan engineers. We can expect political asylum pretty much
-anywhere. What’s important is we make it to land before we’re discovered.
-
-# The train begins slowing down. Thane points to a transit center milling with
-# a large crowd. Snow begins to fall.
-
-Thane: So can we transfer there?
-
+Only 11k words in script.
+Takes place over 24 hour period.
 
 Final Fantasy VI ######################################################
 
