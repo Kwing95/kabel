@@ -20,11 +20,9 @@ body {
     outline: none;
     font-size: 15px;
 }
-
 .active, .collapsible:hover {
     background-color: #666666;
 }
-
 .content {
     padding: 0 18px;
     display: none;
@@ -275,10 +273,10 @@ Chapter 4: Nenegi
 Chapter 5: Tripsi
   Behind Enemy Lines
     Thane is chased back into Erawa, only for Erawan soldiers to attack him.
-  Half-Breed
-    Thane tries unsuccessfully to reason with Erawan soldiers.
-  Southbound
-    
+  Bad Blood
+    Thane accidentally kills an old man in self-defense.
+  Family Ties
+    Thane meets Phaedra's sister Oda.
 Chapter 6: Rega
   The Port City
     Thane makes it back across the border to Chemina.
@@ -2243,8 +2241,151 @@ Soldier: (in Erawan) Die, Cheminan scum!
 
 </div>
 
-<button class="collapsible">Half-Breed</button>
+<button class="collapsible">Bad Blood</button>
 <div class="content">
+
+# The trio make their way into an abandoned house.
+
+Diego: You really think we'll find anything in here?
+
+Thane: I doubt we'll find food here, but at the very least it should serve as
+shelter for the night.
+
+# Thane enters the kitchen and sees fresh fruit on the table.
+
+Asra: This stuff can't be more than a few days old.
+
+Thane: Maybe we should-
+
+Old Man: (in Erawan) Who are you!?
+
+Thane: What-
+
+Old Man: (in Erawan) Cheminan! Haven't you taken enough from us already?
+
+Thane: (in Erawan) Wait! I'm not-
+
+# The man grabs a knife from the counter. It shrinks to less than an inch in
+# length before he throws it.
+
+Old Man: (in Erawan) Die!
+
+# Thane reflexively raises his hand and deflects the knife, which bounces back
+# toward the man.
+
+Old Man: (in Erawan) How-
+
+# Thane tackles Asra to the floor just as it explodes violently.
+
+Asra: What... just happened?
+
+# The trio get back up. The old man is dead, a shard of metal embedded in his
+# forehead.
+
+Thane: He tried to kill us with a flat bomb... And I was able to delay the
+explosion by an extra second.
+
+Asra: I didn't know you could do that.
+
+Thane: I... I did it without thinking.
+
+# Diego surveys the man's wounds.
+
+Diego: How did a civilian learn to make flat bombs?
+
+Thane: Fuck if I know. Most people in Erawa know at least a few things. Oh fuck.
+
+# Thane leans over the man.
+
+Thane: I didn't mean to... Fuck. Fuck! I don't know how much more of this I can
+take...
+
+</div>
+
+<button class="collapsible">Family Ties</button>
+<div class="content">
+
+# The trio enter another old house, Thane holding a flashlight.
+
+Diego: I don't like this.
+
+Thane: Neither do I, but we don't have a choice. We need a place to spend the
+night.
+
+# As they make their way through a hall, a door opens and a woman steps out.
+
+Thane: (in Erawan) Please don't hurt us! We just need shelter!
+
+Woman: (in Erawan) What's that? Who are you?
+
+Thane: (in Erawan) We're just trying to survive the night. I didn't realize
+someone was living here, I'm so sorry. Please just let us leave.
+
+Woman: (in Erawan) If you need a place to stay, why not here? You'll be safe for
+the night.
+
+Thane: (in Erawan) ... What?
+
+Woman: (in Erawan) That's what you're looking for, isn't it?
+
+Thane: (in Erawan) Yes, but-
+
+Oda: (in Erawan) Then make yourself at home. There's too few of us left here in
+Tripsi for us not to take care of each other. I'm Oda, by the way. Oda Stutz.
+
+Thane: (in Erawan) I'm Thane Belikoff.
+
+# Diego gestures to himself, then to Asra.
+
+Diego: Diego Belikoff. Asra Sacco.
+
+Oda: (in Erawan) Pleased to meet you. I don't suppose you know a Saito Belikoff
+by any chance?
+
+Thane: (in Erawan) What...? That's my father!
+
+Oda: (in Erawan) I see. I suppose that would make Phaedra Stutz your mother?
+
+Thane: (in Erawan) Who... are you?
+
+Oda: (in Erawan) I'm Phaedra's older sister. How is your mother doing?
+
+Diego: What!? How does this woman know your parents?
+
+Thane: She's... your sister-in-law. (in Erawan) My mother was... taken away. I
+haven't seen her since I was little.
+
+Oda: (in Erawan) I expected as much. When your mother defected to Chemina, I was
+imprisoned for five years as retribution, as was the rest of the family. When I
+was released, I was unable to contact her.
+
+Thane: (in Erawan) How did you end up in Tripsi? I thought my mother was from
+Merad.
+
+Oda: (in Erawan) We were from Merad, yes. But our home was sold while we were
+incarcerated. When I was released, this was the only place I could afford to go.
+
+Thane: (in Erawan) I'm so sorry.
+
+Oda: (in Erawan) I suppose I should ask what you're doing here in Erawa.
+
+Thane: (in Erawan) We were trying to escape to Debony but we ended up having to
+flee here instead. It's a long story.
+
+Oda: (in Erawan) The grass is always greener on the other side, isn't it? My
+sister ran to Chemina, and here you are trying to escape.
+
+Thane: (in Erawan) A lot changed since Somoza won the war. At least, that's what
+my dad told me. Are you sure you don't want to come with us? I don't mean to be
+rude, but it doesn't sound like there's much keeping you here.
+
+Oda: (in Erawan) I would love to, Thane. Trust me, I would. But there's no
+country in Kabel that wants to take in an Erawan refugee.
+
+Thane: ...
+
+Oda: (in Erawan) Get some rest. It sounds like you have a long journey ahead of
+you.
 
 </div>
 
@@ -2674,7 +2815,6 @@ effective preference for human wave attacks made him both feared and respected.
 <script>
 var coll = document.getElementsByClassName("collapsible");
 var i;
-
 for (i = 0; i < coll.length; i++) {
   coll[i].addEventListener("click", function() {
     this.classList.toggle("active");
@@ -2689,20 +2829,3 @@ for (i = 0; i < coll.length; i++) {
 </script>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
