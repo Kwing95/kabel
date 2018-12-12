@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Kabel {
     class Program {
-        static void Main(string[] args) {
+        static void Main(string[] args) {						Console.Write(Names.generateName(1) + "\n");			Console.Write(Names.generateName(1) + "\n");			for(int i = 0; i < 10; ++i){				Console.Write(Names.generateName(i) + "\n");			}
 
             CartesianGraph graph = new CartesianGraph("level1.txt");
             PlayerUnit player = new Kabel.PlayerUnit(0, 0, 100, 100, 100, new ManualMove(), graph);
