@@ -25,6 +25,9 @@ namespace Kabel {
 
     public class CartesianGraph {
 
+		private List<Vertex> vertices = new List<Vertex>();
+		string levelDump;
+
         /* Converts text dump to a graph via this format:
 
         <MAP>
@@ -41,6 +44,7 @@ namespace Kabel {
             // example said: @"C:\Users\Public\TestFolder\WriteText.txt"
             string text = System.IO.File.ReadAllText(inFile);
             string mapData = getBetween(text, "<MAP>", "</MAP>");
+			levelDump = mapData;
             int c = 0;
             int r = -1;
             // for all vertices
@@ -80,6 +84,34 @@ namespace Kabel {
                 }
             }
         }
+		
+		public void printMap(Vertex pos, List<Vertex> enemyPos){
+
+			List<string> lines = levelDump.Split('\n').ToList();
+
+			for(int j = 0; j < enemyPos.Count; ++j){
+				for(int i = 0; i < lines.Count; ++i){
+					if((i - 2) == enemyPos[j].y * 2){
+						StringBuilder temp = new StringBuilder(lines[i]);
+						temp[enemyPos[j].x * 2] = '*';
+						lines[i] = temp.ToString();
+					}
+				}
+			}
+
+			for(int i = 0; i < lines.Count; ++i){
+				if((i - 2) == pos.y * 2){
+					StringBuilder temp = new StringBuilder(lines[i]);
+					temp[pos.x * 2] = '@';
+					lines[i] = temp.ToString();
+				}
+			}
+			
+			for(int i = 0; i < lines.Count; ++i){
+				Console.Write(lines[i] + "\n");
+			}
+
+		}
 
         public List<Vertex> getPaths(int x, int y) {
             return findVertex(x, y).edges;
@@ -88,8 +120,6 @@ namespace Kabel {
         public List<Vertex> getPaths(Vertex v) {
             return v.edges;
         }
-
-        private List<Vertex> vertices = new List<Vertex>();
 
         // Uses Dijkstra's algorithm to find shortest path between start and end
         public List<Vertex> shortestPath(Vertex start, Vertex end) {

@@ -1,6 +1,9 @@
 using System;
 using System.Text;
 
+// Couldn't be simpler. Call this to generate a pseudorandom name:
+// Names.generateName(1)
+
 namespace Kabel {
     class Names {
 		public static string generateName(int seed){

@@ -16,19 +16,31 @@ namespace Kabel {
 
         public override Vertex move(Vertex position, CartesianGraph graph) {
             List<Vertex> options = graph.getPaths(position);
-            printOptions(options);
+            printOptions(options, position);
             int selection = -1;
             while (selection < 0 || selection > 9)
                 selection = Console.ReadLine()[0] - '0';
             return options[selection];
         }
 
-        public void printOptions(List<Vertex> options) {
+        public void printOptions(List<Vertex> options, Vertex position) {
             for (int i = 0; i < options.Count(); ++i) {
-                // 0: (2, 3)
-                Console.Write(i + ": ");
-                options[i].print(true);
+                string lat = "";
+				string lon = "";
+                // options[i].print(true);
+				if(options[i].x > position.x){
+					lon = "EAST";
+				} else if(options[i].x < position.x){
+					lon = "WEST";
+				}
+				if(options[i].y > position.y){
+					lat = "SOUTH";
+				} else if(options[i].y < position.y){
+					lat = "NORTH";
+				}
+				Console.Write("[" + i + ": " + lat + lon + "] ");
             }
+			Console.Write("\n");
         }
 
     }

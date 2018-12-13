@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Kabel {
     class Program {
-        static void Main(string[] args) {						Console.Write(Names.generateName(1) + "\n");			Console.Write(Names.generateName(1) + "\n");			for(int i = 0; i < 10; ++i){				Console.Write(Names.generateName(i) + "\n");			}
+        static void Main(string[] args) {
 
             CartesianGraph graph = new CartesianGraph("level1.txt");
             PlayerUnit player = new Kabel.PlayerUnit(0, 0, 100, 100, 100, new ManualMove(), graph);
@@ -21,13 +21,7 @@ namespace Kabel {
             EnemyUnit cycle = new Kabel.EnemyUnit(1, 1, new ScriptedMove(path), graph);
             int round = 0;
 
-            while (true) {
-                Console.Write("Current position: ");
-                player.position.print(true);
-                Console.Write("Randy: ");
-                randy.position.print(true);
-                Console.Write("Cycle: ");
-                cycle.position.print(true);
+            while (true) {				List<Vertex> enemyPos = new List<Vertex>();				enemyPos.Add(randy.position);				enemyPos.Add(cycle.position);								graph.printMap(player.position, enemyPos);
                 player.position = player.moveset.move(player.position, graph);
                 randy.position = randy.moveset.move(randy.position, graph);
                 cycle.position = cycle.moveset.move(cycle.position, graph);
