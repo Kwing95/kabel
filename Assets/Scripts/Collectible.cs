@@ -6,13 +6,20 @@ using UnityEngine.SceneManagement;
 public class Collectible : MonoBehaviour
 {
 
+    public Sprite loot;
+    public Sprite noLoot;
+
     public bool isGoal = false;
+    private bool hasLoot = true;
+
     private GridMover player;
     private AudioSource kaching;
+    private SpriteRenderer sr;
 
     // Start is called before the first frame update
     void Start()
     {
+        sr = GetComponent<SpriteRenderer>();
         if (isGoal)
             transform.position = PlayerMover.instance.transform.position;
         kaching = GetComponent<AudioSource>();
@@ -22,27 +29,9 @@ public class Collectible : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Mathf.Abs(transform.position.x - player.transform.position.x) <= 1 &&
-            Mathf.Abs(transform.position.y - player.transform.position.y) <= 1 &&
-            transform.position.z == 0)
+        if(Vector2.Distance(PlayerMover.instance.transform.position, transform.position) == 0 && hasLoot)
         {
-
-            if (!isGoal)
-            {
-                transform.position = transform.position + new Vector3(0, 0, 1);
-                GetComponent<SpriteRenderer>().enabled = false;
-                kaching.Play();
-                gameObject.AddComponent<AutoVanish>().timeToLive = 1;
-            }
-
-            if(transform.parent.childCount == 1 && isGoal)
-            {
-                Transitioner.instance.Transition((SceneManager.GetActiveScene().buildIndex + 1) % 4);
-                //SceneManager.LoadScene((SceneManager.GetActiveScene().buildIndex + 1) % 3);
-                Vector2 entryPoint = Grapher.instance.entryPoint;
-                Grapher.instance.MakeGraph(entryPoint);
-            }
-                
+            sr.sprite = noLoot;
         }
     }
 

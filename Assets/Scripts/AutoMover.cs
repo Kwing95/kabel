@@ -35,6 +35,7 @@ public class AutoMover : MonoBehaviour
     private List<int> prev = new List<int>();
     private Vector2 destination;
     private bool chasing = false;
+    public bool waiting = false;
     private Shooter shooter;
 
     private Vector2 savedDestination;
@@ -44,6 +45,7 @@ public class AutoMover : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        //EnemyList.numEnemies += 1; // EnemyList counts this itself
         crossInstance = Instantiate(cross, transform.position, Quaternion.identity);
         crossInstance.GetComponent<SpriteRenderer>().enabled = false;
 
@@ -76,7 +78,7 @@ public class AutoMover : MonoBehaviour
         }
 
         // This should run once every time the enemy moves
-        if (unit.GetAP() > 0 && mover.GetCanTurn() && (distanceToPlayer > 1 || !chasing))
+        if (!waiting && (unit.ap > 0 && mover.GetCanTurn() && (distanceToPlayer > 1 || !chasing)))
         {
             EnemyTurn();
         }
@@ -93,15 +95,15 @@ public class AutoMover : MonoBehaviour
         }
         //visualizer.SetAlert(chasing);
 
-        if (unit.GetAP() > 2 && seeker.GetSighted())
+        if (unit.ap > 2 && seeker.GetSighted())
         {
             EnemyAttack();
         }
-        if(unit.GetAP() > 0 && (distanceToPlayer > 1 || !chasing))
+        if(unit.ap > 0 && (distanceToPlayer > 1 || !chasing))
         {
             EnemyMove();
         }
-        if (unit.GetAP() <= 0)
+        if (unit.ap <= 0)
         {
             EnemyList.SetEnemiesMoving(false);
         }
@@ -121,11 +123,12 @@ public class AutoMover : MonoBehaviour
             }
         }
 
-        unit.ConsumeAP(chasing ? 1 : 2);
+        unit.ap -= chasing ? 1 : 2;
         List<int> path = Grapher.FindPath(Grapher.VectorToIndex((Vector2)transform.position), Grapher.VectorToIndex(destination));
         // If unit has somewhere it wants to go
         if (path.Count > 1)
         {
+            waiting = true;
             int nextTileIndex = path[1];
             Vector2 nextTile = Grapher.GetGraph()[nextTileIndex];
             navigator.SetDestination(nextTile, chasing);
@@ -145,12 +148,17 @@ public class AutoMover : MonoBehaviour
         }
     }
 
+    public void StopWaiting()
+    {
+        waiting = false;
+    }
+
     private void EnemyAttack()
     {
-        if(unit.GetAP() >= 2)
+        if(unit.ap >= 2)
         {
-            unit.ConsumeAP(2);
-            shooter.FireShot();
+            unit.ap -= 2;
+            GetComponent<Shooter>().GunAttack(gameObject, player.gameObject);
         }
     }
 

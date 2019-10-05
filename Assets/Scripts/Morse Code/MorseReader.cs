@@ -46,6 +46,11 @@ public class MorseReader : MonoBehaviour
                 SendLetter();
         }
 
+        if (Input.GetMouseButtonDown(0))
+            Press();
+        if (Input.GetMouseButtonUp(0))
+            Release();
+
         if (Input.GetKeyDown("space"))
             Press();
         if (Input.GetKeyUp("space"))
@@ -62,7 +67,8 @@ public class MorseReader : MonoBehaviour
             Displayer.instance.DisplayMessage("Invalid", 2);
         else
         {
-            onLetter(letterTyped);
+            if(Letter.morseMode)
+                onLetter(letterTyped);
         }
             
 

@@ -134,7 +134,7 @@ GameObject:
   - component: {fileID: 8545447538481007053}
   - component: {fileID: 7090203232210423814}
   - component: {fileID: 4936981625158096942}
-  - component: {fileID: 5204921324119757899}
+  - component: {fileID: 700835109156535467}
   m_Layer: 9
   m_Name: Enemy
   m_TagString: Enemy
@@ -251,6 +251,7 @@ MonoBehaviour:
   rotator: {fileID: 2412678186565906556}
   visualizer: {fileID: 1675128802511844902}
   navigator: {fileID: 0}
+  waiting: 0
 --- !u!114 &4735645799990054808
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -278,8 +279,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc393b0dc72cbb84ba09aa41677386f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  white: {fileID: 2100000, guid: ec6141ad00ea94541a30dcbb49feb2b1, type: 2}
+  noise: {fileID: 2668141482787250845, guid: 493d90707a419eb458ad9282a4db35e1, type: 3}
   gunshot: {fileID: 8300000, guid: 20695eaaecdf9d54b88fd1e9406fc6af, type: 3}
-  rotator: {fileID: 2412678186565906556}
 --- !u!82 &7090203232210423814
 AudioSource:
   m_ObjectHideFlags: 0
@@ -388,8 +390,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c592e9cb3e89a7146bcafb7ac2fb40ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  noise: {fileID: 2668141482787250845, guid: 95aa559bfb5a26842a05c5ab0577f9be, type: 3}
---- !u!114 &5204921324119757899
+  noise: {fileID: 2668141482787250845, guid: 493d90707a419eb458ad9282a4db35e1, type: 3}
+--- !u!114 &700835109156535467
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -398,6 +400,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 4735645799990054801}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 96b1caa67be669646ae77af8ab9e55a1, type: 3}
+  m_Script: {fileID: 11500000, guid: a41204cefee6375498af14ef0bf700e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  party:
+  - maxHealth: 3
+    maxFocus: 3
+    health: 3
+    focus: 3
+    real: 0
+  corpse: {fileID: 1474132779627499509, guid: 953d031f20f3d61449a9bac04be24099, type: 3}
+  maxAP: 4
+  ap: 0

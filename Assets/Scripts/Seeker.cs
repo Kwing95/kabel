@@ -16,13 +16,15 @@ public class Seeker : MonoBehaviour
     private Vector2 currentDirection;
     public Rotator rotator;
     private AutoMover mover;
-    private LayerMask mask = ~(1 << 9) & ~(1 << 10) & ~(1 << 11);
+    private LayerMask mask; //~(1 << 9) & ~(1 << 10) & ~(1 << 11);
 
     // Start is called before the first frame update
     void Start()
     {
         //subjects = new List<GameObject>();
         //subjects.Add(PlayerMover.instance.gameObject);
+
+        mask = LayerMask.GetMask(new string[] { "Default", "Player" });
         player = PlayerMover.instance.GetComponent<GridMover>();
         mover = GetComponent<AutoMover>();
     }
@@ -30,6 +32,10 @@ public class Seeker : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+        // This is going to get really hard. Check for player AND dead bodies
+        // Behave differently when a body is spotted.
+
         //for(int i = 0; i < subjects.Count; ++i)
         //{
             Vector2 origin = transform.position;// + rotator.FrontOffset();

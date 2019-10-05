@@ -96,6 +96,14 @@ public class MenuManager : MonoBehaviour
         currentOptions.Clear();
     }
 
+    public void SetMorse(bool value)
+    {
+        Letter.morseMode = value;
+        for (int i = 0; i < currentOptions.Count; ++i)
+            currentOptions[i].GetComponentInChildren<Letter>().RefreshSprite();
+            
+    }
+
     public void ShowMenu(List<MenuNode> children)
     {
         ClearOptions();
@@ -104,6 +112,7 @@ public class MenuManager : MonoBehaviour
             AddOption(children[i]);
     }
 
+    // Generate map letters for moving to a new location
     public void MoveMenu(Vector2 startPoint, int radius)
     {
         List<Vector2> tilesInRange = Grapher.instance.MakeGraph(startPoint, radius);
@@ -117,6 +126,7 @@ public class MenuManager : MonoBehaviour
 
     }
 
+    // Generate map letters for selecting a target
     public void TargetMenu(Vector2 startPoint, int radius)
     {
         for(int i = 0; i < EnemyList.instance.transform.childCount; ++i)

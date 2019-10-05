@@ -39,13 +39,16 @@ public class Navigator : MonoBehaviour
             {
                 moving = true;
                 mover.ChangeDirection(Grapher.graph[path[1]] - (Vector2)transform.position);
-                if(running)
-                    Instantiate(noise, transform.position, Quaternion.identity);
+                if (running)
+                {
+                    GameObject tempNoise = Instantiate(noise, transform.position, Quaternion.identity);
+                    tempNoise.GetComponent<Noise>().Initialize(CompareTag("Player"), 3);
+                }
             } else if(moving)
             {
                 if (tag == "Player")
                 {
-                    if (PlayerMover.instance.GetComponent<FieldUnit>().GetAP() == 0)
+                    if (PlayerMover.instance.GetComponent<FieldUnit>().ap == 0)
                         CommandManager.EndTurn();
                     else
                         MenuNode.RefreshMenu();
@@ -61,7 +64,7 @@ public class Navigator : MonoBehaviour
     {
         running = run;
         // Trying to use more AP than you have ends your turn
-        if (!this.CompareTag("Player") && unit.GetAP() == 1 && !run)
+        if (!this.CompareTag("Player") && unit.ap == 1 && !run)
         {
             unit.EndTurn();
             return;

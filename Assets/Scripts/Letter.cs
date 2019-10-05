@@ -14,6 +14,8 @@ public class Letter : MonoBehaviour
     private GraphicRaycaster raycaster;
     private SpriteRenderer sr;
     private Image img;
+    private Sprite current;
+    private Sprite nullSprite;
     private bool isUI;
     private char charValue;
     private MenuNode node;
@@ -21,29 +23,32 @@ public class Letter : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
-        if(GetComponent<SpriteRenderer>() != null)
+        if (GetComponent<SpriteRenderer>() != null)
         {
             isUI = false;
             sr = GetComponent<SpriteRenderer>();
+
+            Color c = sr.color;
+            c.a = 0.5f;
+            sr.color = c;
         }
         else if (GetComponent<Image>() != null)
         {
             raycaster = gameObject.AddComponent<GraphicRaycaster>();
             isUI = true;
             img = GetComponent<Image>();
+
         }
     }
 
     private void Start()
     {
-        if(morseMode)
-            MorseReader.onLetter += _OnActivate;
+        MorseReader.onLetter += _OnActivate;
     }
 
     private void OnDestroy()
     {
-        if(morseMode)
-            MorseReader.onLetter -= _OnActivate;
+        MorseReader.onLetter -= _OnActivate;
     }
 
     // Update is called once per frame
@@ -75,16 +80,23 @@ public class Letter : MonoBehaviour
     {
         c = c.ToString().ToLower()[0];
         charValue = c;
+        current = MenuManager.instance.GetSprites()[c - 'a'];
+
         if(isUI)
-            img.sprite = MenuManager.instance.GetSprites()[c - 'a'];
+            img.sprite = morseMode ? current : MenuManager.instance.GetSprites()[26];
         else
-            sr.sprite = MenuManager.instance.GetSprites()[c - 'a'];
+            sr.sprite = morseMode ? current : MenuManager.instance.GetSprites()[26];
     }
 
     public void OnMouseDown()
     {
         if(!morseMode && !isUI)
             _OnActivate(charValue);
+    }
+
+    public void RefreshSprite()
+    {
+        SetLetter(charValue);
     }
 
     public void _OnActivate(char c)
@@ -94,23 +106,7 @@ public class Letter : MonoBehaviour
         {
             if (!isUI)
             {
-                switch (MenuManager.context)
-                {
-                    case MenuManager.Context.MapMove:
-                        int distance = Grapher.ManhattanDistance(PlayerMover.instance.transform.position, transform.position);
-                        bool sprinting = MenuNode.GetCurrent() == "Sprint";
-
-                        PlayerMover.instance.GetComponent<FieldUnit>().ConsumeAP(distance * (sprinting ? 1 : 2));
-
-                        MenuManager.instance.ClearOptions();
-                        PlayerMover.instance.GetComponent<Navigator>().SetDestination(transform.position, MenuNode.GetCurrent() == "Sprint");
-                        break;
-                    case MenuManager.Context.UnitSelect:
-                        MenuManager.instance.ClearOptions();
-                        Debug.Log("Trying to shoot enemy");
-                        break;
-                }
-                
+                CommandManager.MapCommand(MenuManager.context, transform.position);
             }
             if (isUI)
             {

@@ -20,7 +20,7 @@ public class GridMover : MonoBehaviour
     public delegate void VoidVector2Param(Vector2 position);
     public VoidVector2Param onTileSnap;
 
-    public float moveSpeed = 1f;
+    public float moveSpeed = 8f;
 
     private bool canTurn = true;
     private char boundDirection;
@@ -80,8 +80,10 @@ public class GridMover : MonoBehaviour
         transform.position = new Vector2(Mathf.RoundToInt(transform.position.x), Mathf.RoundToInt(transform.position.y));
         canTurn = true;
         rb.velocity = Vector2.zero;
-        if (GetComponent<SightVisualizer>() != null)
+        if (GetComponent<SightVisualizer>())
             GetComponent<SightVisualizer>().UpdateVisualizer();
+        if (GetComponent<AutoMover>())
+            GetComponent<AutoMover>().StopWaiting();
     }
 
     // Returns true if movement was produced
@@ -151,6 +153,11 @@ public class GridMover : MonoBehaviour
     public Vector2 GetDiscretePosition()
     {
         return nextDiscretePosition;
+    }
+
+    public Rotator GetRotator()
+    {
+        return rotator;
     }
 
 }

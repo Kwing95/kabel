@@ -5,23 +5,26 @@ using UnityEngine;
 public class Shooter : MonoBehaviour
 {
 
-    public static Material white;
+    public Material white;
+    public GameObject noise;
     public AudioClip gunshot;
 
     private FieldUnit unit;
     private AudioSource source;
-    private GridMover target;
-    private float marginOfError = 15;
-    private LayerMask mask = ~(1 << 9);
-    public Rotator rotator;
-    private float peripheralVision = 30;
+
+    //private static float peripheralVision = 30;
+
+    static Shooter()
+    {
+        
+    }
 
     // Start is called before the first frame update
     void Start()
     {
-        unit = GetComponent<FieldUnit>();
+        white = Resources.Load("Materials/White.mat", typeof(Material)) as Material;
         source = GetComponent<AudioSource>();
-        target = PlayerMover.instance.GetComponent<GridMover>();
+        //SoundManager.onGunshot += 
     }
 
     // Update is called once per frame
@@ -38,81 +41,79 @@ public class Shooter : MonoBehaviour
      *      accuracy (float)
      
          */
-    public static void FireShot(GameObject shooter, GameObject target)
+
+    public void GunAttack(GameObject shooter, GameObject target)
     {
-        LayerMask mask = ~(1 << 9); // <- FIXME
-        float peripheralVision = 30;
-        float marginOfError = 15;
+        StartCoroutine(GunAttackHelper(shooter, target));
+    }
+
+    private void FireShot(GameObject shooter, GameObject target, int memberIndex)
+    {
+        Vector2 shotOrigin = (Vector2)shooter.transform.position + shooter.GetComponent<GridMover>().GetRotator().FrontOffset();
+
+        // 3 Focus -> 10 deg Error, 2 Focus -> 20 deg Error
+        // 1 Focus -> 30 deg Error, 0 Focus -> Can't attack
+        float marginOfError = 10 + (10 * (3 - shooter.GetComponent<FieldUnit>().party[memberIndex].focus));
 
         // Calculate if there's a clear line of sight
         Vector2 direction = target.transform.position - shooter.transform.position;
-        RaycastHit2D hit = Physics2D.Raycast(shooter.transform.position, direction, 9, mask);
-        float angle = Vector2.Angle(shooter.GetComponent<Rotator>().FrontOffset(), direction);
+        RaycastHit2D hit = Physics2D.Raycast(shotOrigin, direction, 9);
+        float angle = Vector2.Angle(shooter.GetComponent<GridMover>().GetRotator().FrontOffset(), direction);
 
-        if (hit.collider == null || !hit.collider.CompareTag("Player") || angle > peripheralVision)
+        if (hit.collider == null || hit.collider.GetComponent<FieldUnit>() == null /* || angle > peripheralVision*/)
             return;
 
         // Generate an actual shot
-        angle += Random.Range(0, marginOfError) * (Random.Range(0, 2) == 0 ? 1 : -1);
-        direction = Quaternion.AngleAxis(angle, Vector3.forward) * direction;
-
-        hit = Physics2D.Raycast(shooter.transform.position, direction, 9, mask);
+        angle += Random.Range(0, marginOfError) * (Random.Range(0, 2) == 0 ? 1 : -1); // add margin of error
+        //direction = Quaternion.AngleAxis(angle, Vector3.forward) * direction; // This flattens the shot somehow
+        hit = Physics2D.Raycast(shotOrigin, direction, 9);
         if (hit.collider != null && Vector3.Distance(shooter.transform.position, target.transform.position) > 1)
         {
             //source.PlayOneShot(gunshot);
             Camera.main.GetComponent<Jerk>().Shake(1);
-            if (hit.collider.CompareTag("Player"))
+
+            FieldUnit targetHit = hit.collider.GetComponent<FieldUnit>();
+            if (targetHit != null)
             {
-                // Replace this with target.playSomeAnimation(); somehow
-                target.gameObject.GetComponent<Flasher>().Flash(1);
-                target.gameObject.GetComponent<Health>().TakeDamage();
+                targetHit.TakeDamage(shooter.GetComponent<FieldUnit>().party[memberIndex]);
             }
+
+            // Generate noise graphic
+            GameObject tempNoise = Instantiate(noise, transform.position, Quaternion.identity);
+            tempNoise.GetComponent<Noise>().Initialize(CompareTag("Player"), 10);
 
             // Generate bullet graphic
             GameObject shotObject = new GameObject();
             AutoVanish vanisher = shotObject.AddComponent<AutoVanish>();
-            vanisher.timeToLive = 0.05f;
+            vanisher.timeToLive = 0.1f;
             LineRenderer shotLine = shotObject.AddComponent<LineRenderer>();
             shotLine.SetPositions(new Vector3[] { shooter.transform.position + new Vector3(0, 0, -1), (Vector3)hit.point + new Vector3(0, 0, -1) });
             shotLine.sortingLayerName = "ForegroundFX";
             shotLine.material = white;
-            shotLine.startWidth = shotLine.endWidth = 0.03f;
+            shotLine.startWidth = shotLine.endWidth = 0.07f;
         }
     }
 
-    public void FireShot()
+    IEnumerator GunAttackHelper(GameObject shooter, GameObject target)
     {
-        Vector2 direction = target.transform.position - transform.position;
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, direction, 9, mask);
-        float angle = Vector2.Angle(rotator.FrontOffset(), direction);
-        
-        if (hit.collider == null || !hit.collider.CompareTag("Player") || angle > peripheralVision)
-            return;
+        shooter.GetComponent<GridMover>().rotator.FacePoint(target.transform.position);
 
-        angle += Random.Range(0, marginOfError) * (Random.Range(0, 2) == 0 ? 1 : -1);
-        direction = Quaternion.AngleAxis(angle, Vector3.forward) * direction;
-        
-        hit = Physics2D.Raycast(transform.position, direction, 9, mask);
-
-        if(hit.collider != null && Vector3.Distance(transform.position, target.transform.position) > 1)
+        for (int i = 0; i < shooter.GetComponent<FieldUnit>().party.Count; ++i)
         {
-            source.PlayOneShot(gunshot);
-            Camera.main.GetComponent<Jerk>().Shake(1);
-            if (hit.collider.CompareTag("Player"))
-            {
-                //target.gameObject.GetComponent<ParticleSystem>().Play();
-                target.gameObject.GetComponent<Flasher>().Flash(1);
-                target.gameObject.GetComponent<Health>().TakeDamage();
-            }
-            GameObject shotObject = new GameObject();
-            AutoVanish vanisher = shotObject.AddComponent<AutoVanish>();
-            vanisher.timeToLive = 0.05f;
-            LineRenderer shotLine = shotObject.AddComponent<LineRenderer>();
-            shotLine.SetPositions(new Vector3[] { transform.position + new Vector3(0, 0, -1), (Vector3)hit.point + new Vector3(0, 0, -1) });
-            shotLine.sortingLayerName = "ForegroundFX";
-            shotLine.material = white;
-            shotLine.startWidth = shotLine.endWidth = 0.03f;
-        } 
+            FireShot(shooter, target, i);
+            if (!target)
+                break;
+            
+            yield return new WaitForSeconds(0.25f);
+        }
+
+        if (shooter.GetComponent<PlayerMover>())
+        {
+            if (PlayerMover.instance.GetComponent<FieldUnit>().ap <= 0)
+                CommandManager.EndTurn();
+            else
+                MenuNode.RefreshMenu();
+        }
     }
 
 }

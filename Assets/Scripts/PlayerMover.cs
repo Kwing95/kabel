@@ -12,8 +12,6 @@ public class PlayerMover : MonoBehaviour
     private GridMover mover;
     private FieldUnit unit;
 
-    public GameObject noise;
-    public GameObject enemies;
     private AudioSource source;
     private Navigator nav;
     public int runSpeed = 6;
@@ -50,13 +48,6 @@ public class PlayerMover : MonoBehaviour
                 mover.moveSpeed = 3;
 
             nav.SetDestination((Vector2)transform.position + input);
-
-            /*if (mover.ChangeDirection(input) && mover.moveSpeed == 6)
-            {
-                source.pitch = Random.Range(1f, 1.2f);
-                source.Play();
-                Instantiate(noise, transform.position, Quaternion.identity);
-            }*/
                 
         }
             
@@ -71,7 +62,7 @@ public class PlayerMover : MonoBehaviour
 
     public void RefreshText()
     {
-        apText.text = "AP: " + unit.GetAP() + "/" + unit.GetMaxAP();
+        apText.text = "AP: " + unit.ap + "/" + unit.maxAP;
     }
 
 }

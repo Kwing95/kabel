@@ -19,29 +19,17 @@ public class GameManager : MonoBehaviour
     private static int numSalts = 3;
     public static int numFrag = 0;
     public static int numSmoke = 0;
-
+    
     // Start is called before the first frame update
     void Start()
     {
-        
+        Screen.orientation = ScreenOrientation.LandscapeLeft;
     }
 
     // Update is called once per frame
     void Update()
     {
         
-    }
-
-    public static void UseGauze(int target)
-    {
-        health[target] = Mathf.Min(3, health[target] + 1);
-        numGauze -= 1;
-    }
-
-    public static void UseSalts(int target)
-    {
-        focus[target] = Mathf.Min(3, focus[target] + 1);
-        numSalts -= 1;
     }
 
 }

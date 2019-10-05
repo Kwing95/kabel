@@ -44,6 +44,14 @@ public class Rotator : MonoBehaviour
         sprite.transform.rotation = Quaternion.Euler(Vector3.forward * ang);
     }
 
+    public void FacePoint(Vector2 point)
+    {
+        float rawAngle = Vector2.Angle(Vector2.up, point - (Vector2)transform.position);
+        int cardinalAngle = 180 + Mathf.RoundToInt(rawAngle / 90) * 90;
+
+        Rotate(cardinalAngle);
+    }
+
     public Vector2 FrontOffset()
     {
         switch (angle)
