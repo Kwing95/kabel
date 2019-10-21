@@ -62,7 +62,13 @@ public class FieldUnit : MonoBehaviour
         {
             party[targetedUnit].health -= 1;
             // This needs to be much more complicated
-            if (AllDown())
+            if (OneDown() && GetComponent<PlayerMover>())
+            {
+                Instantiate(corpse, transform.position, Quaternion.identity);
+                GetComponentInChildren<SpriteRenderer>().enabled = false;
+                enabled = false;
+            }
+            if (AllDown() && GetComponent<AutoMover>())
             {
                 Instantiate(corpse, transform.position, Quaternion.identity);
                 DestroyImmediate(gameObject);

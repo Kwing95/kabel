@@ -60,7 +60,7 @@ public class LetterManager : MonoBehaviour
     {
         ClearMenu();
 
-        List<Vector2> tilesInRange = Grapher.instance.MakeGraph(startPoint, radius);
+        List<Vector2> tilesInRange = Grapher.instance.Diamond(startPoint, radius);
 
         for (int i = 1; i < tilesInRange.Count; ++i)
         {

@@ -82,7 +82,7 @@ public class MenuNode
                 MenuManager.instance.ShowMenu(parent.children);
                 break;
             case "root":
-                Debug.Log("Executed root menu.");
+                //Debug.Log("Executed root menu.");
                 break;
         }
 

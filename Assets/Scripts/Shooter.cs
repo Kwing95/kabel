@@ -49,6 +49,8 @@ public class Shooter : MonoBehaviour
 
     private void FireShot(GameObject shooter, GameObject target, int memberIndex)
     {
+        shooter.GetComponent<BoxCollider2D>().enabled = false;
+
         Vector2 shotOrigin = (Vector2)shooter.transform.position + shooter.GetComponent<GridMover>().GetRotator().FrontOffset();
 
         // 3 Focus -> 10 deg Error, 2 Focus -> 20 deg Error
@@ -57,19 +59,23 @@ public class Shooter : MonoBehaviour
 
         // Calculate if there's a clear line of sight
         Vector2 direction = target.transform.position - shooter.transform.position;
-        RaycastHit2D hit = Physics2D.Raycast(shotOrigin, direction, 9);
+        RaycastHit2D hit = Physics2D.Raycast(shotOrigin, direction, 9/*, mask*/);
         float angle = Vector2.Angle(shooter.GetComponent<GridMover>().GetRotator().FrontOffset(), direction);
 
-        if (hit.collider == null || hit.collider.GetComponent<FieldUnit>() == null /* || angle > peripheralVision*/)
+        if (hit.collider.gameObject != target /*||  hit.collider.GetComponent<FieldUnit>() == null  || angle > peripheralVision*/)
+        {
+            //DrawLine(shooter, hit);
             return;
+        }
 
         // Generate an actual shot
         angle += Random.Range(0, marginOfError) * (Random.Range(0, 2) == 0 ? 1 : -1); // add margin of error
         //direction = Quaternion.AngleAxis(angle, Vector3.forward) * direction; // This flattens the shot somehow
-        hit = Physics2D.Raycast(shotOrigin, direction, 9);
-        if (hit.collider != null && Vector3.Distance(shooter.transform.position, target.transform.position) > 1)
+        hit = Physics2D.Raycast(shotOrigin, direction, 9/*, mask*/);
+
+        if (hit.collider != null)
         {
-            //source.PlayOneShot(gunshot);
+            source.PlayOneShot(gunshot);
             Camera.main.GetComponent<Jerk>().Shake(1);
 
             FieldUnit targetHit = hit.collider.GetComponent<FieldUnit>();
@@ -82,21 +88,28 @@ public class Shooter : MonoBehaviour
             GameObject tempNoise = Instantiate(noise, transform.position, Quaternion.identity);
             tempNoise.GetComponent<Noise>().Initialize(CompareTag("Player"), 10);
 
-            // Generate bullet graphic
-            GameObject shotObject = new GameObject();
-            AutoVanish vanisher = shotObject.AddComponent<AutoVanish>();
-            vanisher.timeToLive = 0.1f;
-            LineRenderer shotLine = shotObject.AddComponent<LineRenderer>();
-            shotLine.SetPositions(new Vector3[] { shooter.transform.position + new Vector3(0, 0, -1), (Vector3)hit.point + new Vector3(0, 0, -1) });
-            shotLine.sortingLayerName = "ForegroundFX";
-            shotLine.material = white;
-            shotLine.startWidth = shotLine.endWidth = 0.07f;
+            DrawLine(shotOrigin, hit.point);
         }
+
+        shooter.GetComponent<BoxCollider2D>().enabled = true;
+    }
+
+    private void DrawLine(Vector2 shotOrigin, Vector2 hitPoint)
+    {
+        GameObject shotObject = new GameObject();
+        AutoVanish vanisher = shotObject.AddComponent<AutoVanish>();
+        vanisher.timeToLive = 0.25f;
+        LineRenderer shotLine = shotObject.AddComponent<LineRenderer>();
+        shotLine.SetPositions(new Vector3[] { (Vector3)shotOrigin + new Vector3(0, 0, -1), (Vector3)hitPoint + new Vector3(0, 0, -1) });
+        shotLine.sortingLayerName = "ForegroundFX";
+        shotLine.material = white;
+        shotLine.startWidth = shotLine.endWidth = 0.07f;
     }
 
     IEnumerator GunAttackHelper(GameObject shooter, GameObject target)
     {
         shooter.GetComponent<GridMover>().rotator.FacePoint(target.transform.position);
+        //LayerMask mask = LayerMask.NameToLayer(shooter.GetComponent<PlayerMover>() ? "Enemy" : "Player");
 
         for (int i = 0; i < shooter.GetComponent<FieldUnit>().party.Count; ++i)
         {
@@ -107,6 +120,7 @@ public class Shooter : MonoBehaviour
             yield return new WaitForSeconds(0.25f);
         }
 
+        yield return new WaitForSeconds(0.25f);
         if (shooter.GetComponent<PlayerMover>())
         {
             if (PlayerMover.instance.GetComponent<FieldUnit>().ap <= 0)
@@ -114,6 +128,8 @@ public class Shooter : MonoBehaviour
             else
                 MenuNode.RefreshMenu();
         }
+        if (shooter.GetComponent<AutoMover>())
+            shooter.GetComponent<AutoMover>().StopWaiting();
     }
 
 }

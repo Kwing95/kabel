@@ -115,10 +115,13 @@ public class MenuManager : MonoBehaviour
     // Generate map letters for moving to a new location
     public void MoveMenu(Vector2 startPoint, int radius)
     {
-        List<Vector2> tilesInRange = Grapher.instance.MakeGraph(startPoint, radius);
+        //List<Vector2> tilesInRange = Grapher.instance.MakeGraph(startPoint, radius);
+        List<Vector2> tilesInRange = Grapher.instance.Diamond(startPoint, radius);
 
         for (int i = 1; i < tilesInRange.Count; ++i)
         {
+            // Maybe call some function that trims points occupied by units
+            //if(tilesInRange.Point)
             GameObject newLetter = Instantiate(letterObject, tilesInRange[i], Quaternion.identity);
             newLetter.GetComponent<Letter>().SetLetter(AssignLetter());
             currentOptions.Add(newLetter);

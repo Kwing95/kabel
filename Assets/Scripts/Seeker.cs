@@ -44,18 +44,27 @@ public class Seeker : MonoBehaviour
             targetSighted = false;
 
             float angle = Vector2.Angle(rotator.FrontOffset(), direction);
-            if (angle < peripheralVision)
+
+            // If player is in cone of vision, and there is an uninterrupted view
+            // Or, if player is touching
+            if ((angle < peripheralVision && ClearShot(origin, direction))
+            || GridMover.Touching(gameObject, player.gameObject))
             {
-                RaycastHit2D hit = Physics2D.Raycast(origin, direction, sightDistance, mask);
-                if (hit.collider != null && hit.collider.CompareTag("Player"))
-                {
-                    targetSighted = true;
-                    location = player.GetDiscretePosition();
-                    // AutoMover should determine what to do with this information
-                    mover.SetDestination(player.GetDiscretePosition(), true);
-                    mover.SetChasing(true);
-                }
+                //rotator.FacePoint(player.GetDiscretePosition());
+                targetSighted = true;
+                location = player.GetDiscretePosition();
+                // AutoMover should determine what to do with this information
+                mover.SetDestination(player.GetDiscretePosition(), true);
+                mover.SetChasing(true);
             }
+
+            /*if(Vector2.Distance(transform.position, player.transform.position) < 1.5f)
+            {
+                targetSighted = true;
+                location = player.GetDiscretePosition();
+                rotator.FacePoint(player.GetDiscretePosition());
+                mover.SetChasing(true);
+            }*/
         //}
     }
 
@@ -69,6 +78,12 @@ public class Seeker : MonoBehaviour
                 Debug.Log("Player detected!");
             }
         }
+    }
+
+    public bool ClearShot(Vector2 origin, Vector2 direction)
+    {
+        RaycastHit2D hit = Physics2D.Raycast(origin, direction, sightDistance, mask);
+        return hit.collider != null && hit.collider.CompareTag("Player");
     }
 
     public bool GetSighted()

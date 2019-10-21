@@ -12,7 +12,7 @@ public class Follower : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        transform.position = subject.transform.position;
     }
 
     // Update is called once per frame

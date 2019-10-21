@@ -33,12 +33,17 @@ public class Navigator : MonoBehaviour
 
         if (mover.GetCanTurn())
         {
-            List<int> path = Grapher.FindPath(Grapher.VectorToIndex((Vector2)transform.position), Grapher.VectorToIndex(destination));
+            //if (Grapher.ManhattanDistance(transform.position, destination) < 1)
+            //    return;
+
+            List<Vector2> path = Grapher.FindPath((Vector2)transform.position, destination);
+            //List<int> path = Grapher.FindPath(Grapher.VectorToIndex((Vector2)transform.position), Grapher.VectorToIndex(destination));
 
             if (path.Count > 1)
             {
                 moving = true;
-                mover.ChangeDirection(Grapher.graph[path[1]] - (Vector2)transform.position);
+                //mover.ChangeDirection(Grapher.graph[path[1]] - (Vector2)transform.position);
+                mover.ChangeDirection(path[1] - (Vector2)transform.position);
                 if (running)
                 {
                     GameObject tempNoise = Instantiate(noise, transform.position, Quaternion.identity);

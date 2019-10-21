@@ -26,6 +26,7 @@ public class GridMover : MonoBehaviour
     private char boundDirection;
     private float bound;
     private Rigidbody2D rb;
+    private Vector2 prevDiscretePosition;
     private Vector2 nextDiscretePosition;
     public Rotator rotator;
 
@@ -77,6 +78,7 @@ public class GridMover : MonoBehaviour
     private void FinishMove()
     {
         //onTileSnap(transform.position);
+        Grapher.graph2[(int)prevDiscretePosition.y, (int)prevDiscretePosition.x] = true;
         transform.position = new Vector2(Mathf.RoundToInt(transform.position.x), Mathf.RoundToInt(transform.position.y));
         canTurn = true;
         rb.velocity = Vector2.zero;
@@ -84,6 +86,12 @@ public class GridMover : MonoBehaviour
             GetComponent<SightVisualizer>().UpdateVisualizer();
         if (GetComponent<AutoMover>())
             GetComponent<AutoMover>().StopWaiting();
+    }
+
+    public static bool Touching(GameObject a, GameObject b)
+    {
+        return Mathf.Abs(a.transform.position.x - b.transform.position.x) <= 1 &&
+            Mathf.Abs(a.transform.position.y - b.transform.position.y) <= 1;
     }
 
     // Returns true if movement was produced
@@ -130,6 +138,9 @@ public class GridMover : MonoBehaviour
             }
             if (GetComponent<SightVisualizer>() != null)
                 GetComponent<SightVisualizer>().UpdateVisualizer();
+
+            prevDiscretePosition = transform.position;
+            Grapher.graph2[(int)transform.position.y, (int)transform.position.x] = false;
 
             canTurn = false;
             return true;

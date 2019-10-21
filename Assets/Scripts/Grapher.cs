@@ -12,7 +12,11 @@ public class Grapher : MonoBehaviour
     public static readonly List<Vector2> cardinals =
         new List<Vector2>(new Vector2[] { Vector2.right, Vector2.left,
             Vector2.up, Vector2.down });
-    public static List<Vector2> graph;
+
+    public static int mapHeight = 50;
+    public static int mapWidth = 50;
+
+    public static bool[,] graph2 = new bool[mapHeight, mapWidth];
 
     public Vector2 entryPoint;
 
@@ -26,7 +30,7 @@ public class Grapher : MonoBehaviour
         }
         instance = this; // We DO want the object to be destroyed on load
 
-        graph = MakeGraph(entryPoint);
+        ResetGraph();
     }
 
     // Update is called once per frame
@@ -35,24 +39,65 @@ public class Grapher : MonoBehaviour
         
     }
 
-    public static List<Vector2> GetGraph()
+    // POINTS AND DISTANCES
+
+    public void ResetGraph()
     {
-        return graph;
+        for (int y = 0; y < mapHeight; ++y)
+            for (int x = 0; x < mapWidth; ++x)
+                graph2[y, x] = PointIsClear(entryPoint + new Vector2(x, y));
     }
 
-    // FLOOD FILL FUNCTIONS
+    private static bool InBounds(Vector2 point)
+    {
+        return point.x >= 0 && point.y >= 0 && point.x < mapWidth && point.y < mapHeight;
+    }
 
-    public List<Vector2> MakeGraph(Vector2 start, int radius = INFINITY)
+    public bool CheckGraph(Vector2 point)
+    {
+        if (!InBounds(point))
+            return false;
+        return graph2[(int)point.y, (int)point.x];
+    }
+
+    public static int ManhattanDistance(Vector2 pointA, Vector2 pointB)
+    {
+        return (int)(Mathf.Abs(pointA.x - pointB.x) + Mathf.Abs(pointA.y - pointB.y));
+    }
+
+    private bool PointIsClear(Vector2 point)
+    {
+        RaycastHit2D hit = Physics2D.Raycast(point, Vector2.zero, 0/*, mask*/);
+        if (hit.collider != null)
+        {
+            //return false;
+            return !hit.collider.CompareTag("Wall");
+        }
+        return true;
+    }
+
+    // Returns true if there is no wall and no FieldUnit
+    private bool IsVacant(Vector2 point)
+    {
+        if (!PointIsClear(point))
+            return false;
+
+        RaycastHit2D hit = Physics2D.Raycast(point, Vector2.zero, 0/*, mask*/);
+        return !(hit.collider && hit.collider.GetComponent<FieldUnit>());
+    }
+
+    // DIAMOND FUNCTIONS
+
+    public List<Vector2> Diamond(Vector2 start, int radius)
     {
         List<Vector2> visited = new List<Vector2>(new Vector2[] { start });
         Queue<Vector2> queue = new Queue<Vector2>(new Vector2[] { start });
 
-        //int graphSize = 0;
         while (queue.Count > 0 && queue.Count <= QUEUE_MAX)
         {
             Vector2 newPoint = queue.Dequeue();
 
-            if(ManhattanDistance(newPoint, start) >= radius)
+            if (ManhattanDistance(newPoint, start) >= radius)
                 return visited;
 
             AddAdjacent(queue, visited, newPoint);
@@ -72,120 +117,93 @@ public class Grapher : MonoBehaviour
         }
     }
 
-    public static int ManhattanDistance(Vector2 pointA, Vector2 pointB)
-    {
-        return (int)(Mathf.Abs(pointA.x - pointB.x) + Mathf.Abs(pointA.y - pointB.y));
-    }
-
-    private bool PointIsClear(Vector2 point)
-    {
-        RaycastHit2D hit = Physics2D.Raycast(point, Vector2.zero, 0/*, mask*/);
-        if (hit.collider != null)
-        {
-            return !hit.collider.CompareTag("Wall");
-        }
-        return true;
-    }
-
     // PATHFINDING FUNCTIONS
 
-    public static List<int> FindPath(int start, int end)
+    public static List<Vector2> FindPath(Vector2 start, Vector2 end)
     {
-        List<int> path = new List<int>();
-        List<int> queue = new List<int>();
-        
-        List<int> dist = new List<int>();
-        List<int> prev = new List<int>();
+        List<Vector2> path = new List<Vector2>();
+        List<Vector2> queue = new List<Vector2>();
 
-        for (int i = 0; i < graph.Count; ++i)
-        {
-            queue.Add(i);
-            dist.Add(INFINITY);
-            prev.Add(-1);
-        }
+        int[,] dist = new int[mapHeight, mapWidth];
+        Vector2[,] prev = new Vector2[mapHeight, mapWidth];
 
-        int startingIndex = -1;
-        for (int i = 0; i < graph.Count; ++i)
+        // Initialize memo
+        for (int x = 0; x < graph2.GetLength(0); ++x)
         {
-            if (graph[i] == graph[start]) // if this works, change to i == start
+            for (int y = 0; y < graph2.GetLength(1); ++y)
             {
-                startingIndex = i;
-                break;
+                dist[y, x] = INFINITY;
+                prev[y, x] = new Vector2(-1, -1);
+                if (graph2[y, x])
+                    queue.Add(new Vector2(x, y));
             }
         }
-        if (startingIndex == -1)
-            return path;
-        dist[startingIndex] = 0;
 
-        while (queue.Count > 0)
+        // Handle starting point
+        if (!InBounds(start))
+            return path; // RETURN IF START POINT IS INVALID
+
+        dist[(int)start.y, (int)start.x] = 0;
+
+        // Loop through queue
+        while(queue.Count > 0)
         {
-
-            int u = ClosestPoint(queue, dist);
+            Vector2 u = ClosestPoint(queue, dist);
             queue.Remove(u);
 
-            if (u == end && (prev[u] != -1 || u == startingIndex))
+            // Handle case where a path is found
+            if (u == end && (prev[(int)u.y, (int)u.x] != new Vector2(-1, -1) || u == start))
             {
-                while (u != -1)
+                while (u != new Vector2(-1, -1))
                 {
                     path.Insert(0, u);
-                    u = prev[u];
+                    u = prev[(int)u.y, (int)u.x];
                 }
-                dist.Clear();
-                prev.Clear();
-                return path;
+
+                return path; // RETURN WHEN PATH IS FOUND
             }
 
-            List<int> neighbors = GetNeighbors(queue, graph[u]);
+            List<Vector2> neighbors = GetNeighbors(queue, u);
             for (int v = 0; v < neighbors.Count; ++v)
             {
-                int alt = dist[u] + 1;
-                if (alt < dist[neighbors[v]])
+                int alt = dist[(int)u.y, (int)u.x] + 1;
+                if (alt < dist[(int)neighbors[v].y, (int)neighbors[v].x])
                 {
-                    dist[neighbors[v]] = alt;
-                    prev[neighbors[v]] = u;
+                    dist[(int)neighbors[v].y, (int)neighbors[v].x] = alt;
+                    prev[(int)neighbors[v].y, (int)neighbors[v].x] = u;
                 }
             }
         }
 
+        // RETURN IF NO PATH IS FOUND
         return path;
     }
 
-    private static List<int> GetNeighbors(List<int> queue, Vector2 point)
+    // New 2D array implementation
+    private static List<Vector2> GetNeighbors(List<Vector2> queue, Vector2 point)
     {
-        List<int> neighbors = new List<int>();
-        for (int i = 0; i < queue.Count; ++i)
-            if (Vector2.Distance(graph[queue[i]], point) == 1)
+        List<Vector2> neighbors = new List<Vector2>();
+
+        for(int i = 0; i < queue.Count; ++i)
+            if(Vector2.Distance(queue[i], point) == 1)
                 neighbors.Add(queue[i]);
+
         return neighbors;
     }
 
-    // Requires that "distances" and "graph" have same length
-    // REMEMBER: dist and prev are the size of the ENTIRE graph, not just queue
-    private static int ClosestPoint(List<int> queue, List<int> dist)
+    private static Vector2 ClosestPoint(List<Vector2> queue, int[,] dist)
     {
         int minimum = INFINITY;
-        int closestPoint = -1;
-        for (int i = 0; i < queue.Count; ++i)
-            if (dist[queue[i]] < minimum) // replace with queue[i] ? ? ?
-            {
-                minimum = dist[queue[i]];
-                closestPoint = queue[i];
-            }
-        return closestPoint;
-    }
+        Vector2 closest = new Vector2(-1, -1);
 
-    public static int VectorToIndex(Vector2 point)
-    {
-        for (int i = 0; i < graph.Count; ++i)
-        {
-            if (Mathf.RoundToInt(graph[i].x) == Mathf.RoundToInt(point.x) &&
-                Mathf.RoundToInt(graph[i].y) == Mathf.RoundToInt(point.y))
+        for(int i = 0; i < queue.Count; ++i)
+            if(dist[(int)queue[i].y, (int)queue[i].x] < minimum)
             {
-                return i;
+                minimum = dist[(int)queue[i].y, (int)queue[i].x];
+                closest = queue[i];
             }
-        }
 
-        return -1;
+        return closest;
     }
 
 }

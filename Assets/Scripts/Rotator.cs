@@ -40,14 +40,20 @@ public class Rotator : MonoBehaviour
 
     public void Rotate(int ang)
     {
-        angle = ang;
-        sprite.transform.rotation = Quaternion.Euler(Vector3.forward * ang);
+        angle = mod(ang, 360);
+        sprite.transform.rotation = Quaternion.Euler(Vector3.forward * angle);
+    }
+
+    public static int mod(int x, int m)
+    {
+        int r = x % m;
+        return r < 0 ? r + m : r;
     }
 
     public void FacePoint(Vector2 point)
     {
-        float rawAngle = Vector2.Angle(Vector2.up, point - (Vector2)transform.position);
-        int cardinalAngle = 180 + Mathf.RoundToInt(rawAngle / 90) * 90;
+        float rawAngle = Vector2.SignedAngle(Vector2.up, point - (Vector2)transform.position);
+        int cardinalAngle = Mathf.RoundToInt(rawAngle / 90) * 90;
 
         Rotate(cardinalAngle);
     }

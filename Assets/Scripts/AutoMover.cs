@@ -68,52 +68,72 @@ public class AutoMover : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
-        float distanceToPlayer = Vector2.Distance(transform.position, player.GetDiscretePosition());
-
-        if(TouchingPlayer())
-        {
-            SetChasing(true);
-            SetDestination(player.transform.position, true);
-        }
-
         // This should run once every time the enemy moves
-        if (!waiting && (unit.ap > 0 && mover.GetCanTurn() && (distanceToPlayer > 1 || !chasing)))
+        // (distanceToPlayer > 1 || !chasing) needs to be changed at some point
+        if (!waiting && unit.ap > 0 && mover.GetCanTurn())
         {
+            /*if (TouchingPlayer())
+            {
+                SetChasing(true);
+                rotator.FacePoint(player.transform.position);
+                //SetDestination(player.transform.position, true);
+            }*/
+
             EnemyTurn();
         }
+    }
+
+    private void OnDestroy()
+    {
+        Destroy(crossInstance);
     }
 
     private void EnemyTurn()
     {
         float distanceToPlayer = Vector2.Distance(transform.position, player.GetDiscretePosition());
 
-        if (seeker.GetSighted() || chasing)
-        {
-            //destination = seeker.SubjectLocation();
-            chasing = true;
-        }
-        //visualizer.SetAlert(chasing);
+        //if(distanceToPlayer < 3 && seeker.GetSighted())
+        //   unit.ap = 0;
 
-        if (unit.ap > 2 && seeker.GetSighted())
+        /*if (seeker.GetSighted() || TouchingPlayer())
+        {
+            rotator.FacePoint(player.transform.position);
+            SetChasing(true);
+        }*/
+            
+
+        if (unit.ap >= 2 && chasing && (TouchingPlayer() || seeker.ClearShot(transform.position, player.transform.position - transform.position)))
         {
             EnemyAttack();
         }
-        if(unit.ap > 0 && (distanceToPlayer > 1 || !chasing))
-        {
+
+        // Move if enemy has AP, player is not sighted, and (enemy is not chasing or distance to player > 1)
+        else if(unit.ap > 0 && (distanceToPlayer > 1 || !chasing))
             EnemyMove();
-        }
+
         if (unit.ap <= 0)
-        {
             EnemyList.SetEnemiesMoving(false);
-        }
+            
     }
 
     private void EnemyMove()
     {
 
+        /*if (TouchingPlayer())
+        {
+            rotator.FacePoint(player.transform.position);
+            return;
+        }*/
+        
+        // If the enemy is not chasing the player
         if (!chasing)
         {
+            if (unit.ap == 1)
+            {
+                unit.ap = 0;
+                return;
+            }
+
             destination = route[routeProgress % route.Count];
             if (Vector2.Distance(transform.position, destination) == 0)
             {
@@ -124,13 +144,17 @@ public class AutoMover : MonoBehaviour
         }
 
         unit.ap -= chasing ? 1 : 2;
-        List<int> path = Grapher.FindPath(Grapher.VectorToIndex((Vector2)transform.position), Grapher.VectorToIndex(destination));
+        List<Vector2> path = Grapher.FindPath((Vector2)transform.position, destination);
+
+        //List<int> path = Grapher.FindPath(Grapher.VectorToIndex((Vector2)transform.position), Grapher.VectorToIndex(destination));
+
         // If unit has somewhere it wants to go
         if (path.Count > 1)
         {
             waiting = true;
-            int nextTileIndex = path[1];
-            Vector2 nextTile = Grapher.GetGraph()[nextTileIndex];
+            //int nextTileIndex = path[1];
+            //Vector2 nextTile = Grapher.GetGraph()[nextTileIndex];
+            Vector2 nextTile = path[1];
             navigator.SetDestination(nextTile, chasing);
         }
         else
@@ -139,11 +163,19 @@ public class AutoMover : MonoBehaviour
             {
                 crossInstance.GetComponent<SpriteRenderer>().enabled = false;
             }
-            SetChasing(false);
-            if (route.Count == 1)
+
+            if (TouchingPlayer())
             {
-                unit.EndTurn();
+                rotator.FacePoint(player.transform.position);
+                Debug.Log("Facing player");
             }
+            else
+            {
+                SetChasing(false);
+                if (route.Count == 1)
+                    unit.EndTurn();
+            }
+
             destination = route[routeProgress % route.Count];
         }
     }
@@ -157,7 +189,11 @@ public class AutoMover : MonoBehaviour
     {
         if(unit.ap >= 2)
         {
+            if (TouchingPlayer())
+                rotator.FacePoint(player.transform.position);
+
             unit.ap -= 2;
+            waiting = true;
             GetComponent<Shooter>().GunAttack(gameObject, player.gameObject);
         }
     }
@@ -174,7 +210,7 @@ public class AutoMover : MonoBehaviour
         {
             if (!source.isPlaying)
             {
-                source.PlayOneShot(alarm);
+                //source.PlayOneShot(alarm);
                 source.Play();
             }
         }
