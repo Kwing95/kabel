@@ -1,0 +1,69 @@
+PROLOGUE
+	Biggs
+	  Established marksman of Bane's fireteam.
+	Wedge
+	  New recruit and navigator of Bane's fireteam.
+	Bane
+	  Captain of the fireteam.
+	Saito
+	  Explosives expert of Bane's fireteam.
+	  Thane's father
+	  Veteran of Cheminan civil war.
+GHENI
+	Thane			BILINGUAL
+	  Son of Saito Belikoff
+	  Ex-military
+	  Ex-subject of Project GHILLIE
+	Asra
+	  Combat medic in military reserve
+	  Thane's partner
+	Dagan
+	  Thane's uncle
+	  Saito's older brother
+	  Ex-war correspondent of Civil War
+	  Journalist
+	Officer
+	Watchman
+CHALT
+	Fayth
+	  Escort from Chalt
+	Malik
+	  Black market trader from Chalt
+	Soldier
+	Somoza
+	  Dictator of Chemina
+	  Ex-Debonese intelligence agent
+	Receptionist
+	Stablehand
+	Ludo
+	  Thane's former squadmate
+NENEGI
+	Vanna
+	  Black market trader from Nenegi
+	  Longtime supplier for Asra
+	Soldier 2
+	Peleg			BILINGUAL
+	  Erawan prisoner of war
+	  Human test subject for Ribatol
+TRIPSI
+	Flint
+	  Cheminan soldier stranded in Tripsi
+	Old Man			FOREIGN
+	  Erawan civilian
+	Boy				FOREIGN
+	  Son of Erawan civilian
+	Oda				FOREIGN
+	  Thane's maternal aunt
+	Guard
+REGA
+	Siegfried
+	  Leader of imaginary revolution; hallucination
+	Kilan
+	  Member of imaginary revolution
+	Ondine
+	  Member of imaginary revolution
+VENHA
+	Sailor
+	Captain
+	Officer
+	  Debonese police officer
