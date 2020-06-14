@@ -49,23 +49,29 @@ mom wanted Dad to turn her in. She said it was only a matter of time before they
 took her anyway, but if he was the one that did it, the goverment would trust
 that he was raising me right.
 
-NENEGI CORRECTIONS FACILITY GOALS
+NENEGI CORRECTIONS FACILITY GOALS =============================================
 
-* Peleg is not present long enough for a really deep personality to emerge; a
-strong personality will still be interesting
+POSSIBILITIES
 
 * Peleg can introduce information about Erawa, or Nenegi Corrections Facility,
 including treatment of prisoners there
-
 * Peleg introduces the audience to what an extremely strong evincer can do under
 extreme circumstances (training, experimentation, sensory deprivation)
-
 * The audience may learn more about Dagan's relationship with Phaedra
-
 * Peleg may have some involvement in how Thane and Dagan escape to Tripsi
 
+OBSERVATIONS
+
+* Peleg is not present long enough for a really deep personality to emerge; a
+strong personality will still be interesting
 * For Peleg to be an interesting character, the reader must know something about
-  him.
+  him. The reader won't know unless he shares; he won't share unless there is
+  common ground between him and others.
+  
+INVARIANTS
+
+* Peleg is bilingual and is versed in Cheminan culture
+
   - The reader will not know anything about him unless he shares information.
   - The character will not share information unless there is common ground.
     * Peleg speaks both Cheminan and Erawan
@@ -82,6 +88,12 @@ extreme circumstances (training, experimentation, sensory deprivation)
     exist. Peleg may get closure on the squadmate he's looking for, perhaps they
 	encounter other Erawan soldiers storming the prison. This can introduce
 	conflicts and decisions to make the setting of this scene relevant.
+  - Peleg wants to raid an unguarded supply of Pronsi, a drug whose withdrawal
+    symptoms cause death, used to keep prisoners under control.
+  - Does Peleg have to be a soldier? Yes, no other explanation for him being a
+    prisoner. Unless he's been imprisoned since Civil War - Cheminan citizen?
+  - Does Peleg's friend have to be a soldier? Could be fellow prisoner that
+    helped him.
 
 * How might Thane be forced to go to Tripsi?
   - Peleg has a friend that carries Thane there unconscious
