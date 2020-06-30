@@ -1,3 +1,6 @@
+UNKNOWN DATE ===================================================================
+Solving Asra vs Vanna showdown =================================================
+
 INVARIANTS
 
 * Asra must trust Vanna enough to seek her help
@@ -13,10 +16,8 @@ INVARIANTS
 * Vanna must attempt to turn Asra in to law enforcement
   - Vanna's guest(s) must have the ability to pressure her into cooperation
   
-  
-Dagan: If you're in it for the long haul, kill their kids and educate your own.
-  
-ADDITIONAL INFO
+UNKNOWN DATE ===================================================================
+Vanna/Thane backstory ==========================================================
 
 Thane: Hey. How are you holding up?
 
@@ -49,7 +50,8 @@ mom wanted Dad to turn her in. She said it was only a matter of time before they
 took her anyway, but if he was the one that did it, the goverment would trust
 that he was raising me right.
 
-NENEGI CORRECTIONS FACILITY GOALS =============================================
+UNKNOWN DATE ===================================================================
+NENEGI CORRECTIONS FACILITY GOALS ==============================================
 
 POSSIBILITIES
 
@@ -102,3 +104,47 @@ INVARIANTS
     - 
   - The Erawan attack involves pinching space to shorten the distance between
     Nenegi and Tripsi
+	
+JUNE 21 ========================================================================
+REGA MENTAL BREAKDOWN ==========================================================
+
+- Thane shoots homeless man in sewers?
+
+Asra: This is all your fucking fault!
+
+Thane: How? How is any of this my fault?
+
+Asra: If you hadn't shot that officer in the trainyard, we would have made it to
+Nenegi that same night! No one outside of Gheni would have known who we were,
+and Vanna would have helped us!
+
+JUNE 23 ========================================================================
+ASRA BACKGROUND ================================================================
+
+Can add some at start of Cargo Inspection
+Introduce some arguments in which Asra knows more than Dagan
+
+JUNE 24 ========================================================================
+
+If Thane's transformation is faster and more obvious, is Peleg needed? Basically
+only there for fanservice. Does Peleg need to be mentally unhinged? How?
+
+JUNE 27 ========================================================================
+
+Peleg can have PTSD flashback causing a series of hallucinations ending with
+Dagan dying. Perhaps he was tortured with electricity and Peleg's flashback
+recreates the scene.
+
+Asra may have more humanistic view of Somoza supporters due to her parents;
+perhaps they had other redeeming qualities.
+
+On developing Asra: Dagan's views are "too perfect," introduce some fallacies as
+well as some ignorance that Asra has particular knowledge about. Her perspective
+can tell the audience who she is.
+
+Asra: You turned me into a killer!
+
+JUNE 28 =======================================================================
+
+* WHy is Peleg so strong?
+* Why is Peleg avoiding Erawans?
