@@ -1,0 +1,82 @@
+﻿using System;
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.EventSystems;
+
+public class ClickManager : MonoBehaviour
+{
+    public delegate void ClickHandler(Vector2 position);
+    public static ClickHandler handler;
+
+    private static bool isMobile = false;
+    private static bool mouseDown = false;
+    private static bool initialClick = true;
+
+    // Start is called before the first frame update
+    void Start()
+    {
+        // Debug.Log("instance of ClickManager running on " + gameObject.name);
+        DetectPlatform();
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        if (Input.GetMouseButton(0) && initialClick && !MouseOverUI())
+        {
+            initialClick = false;
+
+            handler(GetMousePosition());
+
+            /**
+            // Testing enemy response to noise
+            GameObject tempNoise = Instantiate(Globals.NOISE, transform.position, Quaternion.identity);
+            tempNoise.transform.position = GetMousePosition();
+            tempNoise.GetComponent<Noise>().Initialize(true, 3.5f);
+            /**/
+        }
+
+        if (!Input.GetMouseButton(0))
+            initialClick = true;
+    }
+
+    public static Vector2 GetMousePosition()
+    {
+        return (Vector3)Vector3Int.RoundToInt(Camera.main.ScreenToWorldPoint(Input.mousePosition));
+    }
+
+    public static void DetectPlatform()
+    {
+        isMobile = Application.platform == RuntimePlatform.Android ||
+            Application.platform == RuntimePlatform.IPhonePlayer;
+    }
+
+    // Returns true if mouse is down
+    public static bool GetMouseDown()
+    {
+        if (isMobile)
+            return Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Ended;
+        else
+            return Input.GetKeyDown(KeyCode.Mouse0);
+    }
+
+    // Returns true if clicked world and not UI element
+    public static bool GetValidMouseDown()
+    {
+        if (isMobile)
+            return GetMouseDown() && !EventSystem.current.IsPointerOverGameObject(Input.GetTouch(0).fingerId);
+        else
+            return GetMouseDown() && !EventSystem.current.IsPointerOverGameObject();
+    }
+
+    public static bool MouseOverUI()
+    {
+        if (isMobile)
+            return EventSystem.current.IsPointerOverGameObject(Input.GetTouch(0).fingerId);
+        else
+            return EventSystem.current.IsPointerOverGameObject();
+    }
+
+}

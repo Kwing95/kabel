@@ -20,66 +20,103 @@ public class GridMover : MonoBehaviour
     public delegate void VoidVector2Param(Vector2 position);
     public VoidVector2Param onTileSnap;
 
-    public float moveSpeed = 8f;
+    public float baseWalkSpeed = 4f;
+    public float baseRunSpeed = 6f;
 
+    private float walkSpeed;
+    private float runSpeed;
+
+    private bool blocksGraph = false;
     private bool canTurn = true;
+
+    // Bounds are thresholds for how far GridMover must go before it's done with a move operation
     private char boundDirection;
     private float bound;
+
     private Rigidbody2D rb;
     private Vector2 prevDiscretePosition;
     private Vector2 nextDiscretePosition;
-    public Rotator rotator;
+    private Vector2 heldVelocity;
+    private Rotator rotator;
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
+        rotator = GetComponent<Rotator>();
         rb = GetComponent<Rigidbody2D>();
+        heldVelocity = Vector2.zero;
+        nextDiscretePosition = transform.position;
+
+        ModifySpeed(0);
     }
 
     // Update is called once per frame
     void Update()
     {
         if (!canTurn)
+            CheckForFinishMove();
+    }
+
+    private void OnDisable()
+    {
+        // Debug.Log("disabling gridmover");
+        heldVelocity = rb.velocity;
+        rb.velocity = Vector2.zero;
+    }
+
+    private void OnEnable()
+    {
+        rb.velocity = heldVelocity;
+    }
+
+    private void CheckForFinishMove()
+    {
+        switch (boundDirection)
         {
-            switch (boundDirection)
-            {
-                case 'U':
-                    if (transform.position.y >= bound)
-                    {
-                        transform.position = new Vector2(transform.position.x, bound);
-                        FinishMove();
-                    }
-                    break;
-                case 'D':
-                    if (transform.position.y <= bound)
-                    {
-                        transform.position = new Vector2(transform.position.x, bound);
-                        FinishMove();
-                    }
-                    break;
-                case 'R':
-                    if (transform.position.x >= bound)
-                    {
-                        transform.position = new Vector2(bound, transform.position.y);
-                        FinishMove();
-                    }
-                    break;
-                case 'L':
-                    if (transform.position.x <= bound)
-                    {
-                        transform.position = new Vector2(bound, transform.position.y);
-                        FinishMove();
-                    }
-                    break;
-            }
+            case 'U':
+                if (transform.position.y >= bound)
+                {
+                    transform.position = new Vector2(transform.position.x, bound);
+                    FinishMove();
+                }
+                break;
+            case 'D':
+                if (transform.position.y <= bound)
+                {
+                    transform.position = new Vector2(transform.position.x, bound);
+                    FinishMove();
+                }
+                break;
+            case 'R':
+                if (transform.position.x >= bound)
+                {
+                    transform.position = new Vector2(bound, transform.position.y);
+                    FinishMove();
+                }
+                break;
+            case 'L':
+                if (transform.position.x <= bound)
+                {
+                    transform.position = new Vector2(bound, transform.position.y);
+                    FinishMove();
+                }
+                break;
         }
     }
 
     private void FinishMove()
     {
         //onTileSnap(transform.position);
-        Grapher.graph2[(int)prevDiscretePosition.y, (int)prevDiscretePosition.x] = true;
         transform.position = new Vector2(Mathf.RoundToInt(transform.position.x), Mathf.RoundToInt(transform.position.y));
+
+        //Grapher.PrintGraph();
+        if (blocksGraph)
+        {
+            Grapher.graph[(int)prevDiscretePosition.y, (int)prevDiscretePosition.x] = true;
+            Grapher.graph[(int)nextDiscretePosition.y, (int)nextDiscretePosition.x] = false;
+        }
+        //Grapher.PrintGraph();
+
         canTurn = true;
         rb.velocity = Vector2.zero;
         if (GetComponent<SightVisualizer>())
@@ -94,10 +131,13 @@ public class GridMover : MonoBehaviour
             Mathf.Abs(a.transform.position.y - b.transform.position.y) <= 1;
     }
 
+    // Move a single tile in "direction"
     // Returns true if movement was produced
-    public bool ChangeDirection(Vector2 direction)
+    public bool ChangeDirection(Vector2 direction, bool running=false)
     {
-        if (canTurn && RaycastClear(direction))
+        float moveSpeed = running ? runSpeed : walkSpeed;
+        
+        if (canTurn && PointClear(direction))
         {
             if(direction.y > 0)
             {
@@ -105,7 +145,7 @@ public class GridMover : MonoBehaviour
                 nextDiscretePosition = (Vector2)transform.position + Vector2.up;
                 bound = transform.position.y + 1;
                 boundDirection = 'U';
-                rotator.Rotate(0);
+                Rotate(0);
             }
             else if(direction.y < 0)
             {
@@ -113,7 +153,7 @@ public class GridMover : MonoBehaviour
                 nextDiscretePosition = (Vector2)transform.position + Vector2.down;
                 bound = transform.position.y - 1;
                 boundDirection = 'D';
-                rotator.Rotate(180);
+                Rotate(180);
             }
             else if(direction.x > 0)
             {
@@ -121,7 +161,7 @@ public class GridMover : MonoBehaviour
                 nextDiscretePosition = (Vector2)transform.position + Vector2.right;
                 bound = transform.position.x + 1;
                 boundDirection = 'R';
-                rotator.Rotate(270);
+                Rotate(270);
             }
             else if(direction.x < 0)
             {
@@ -129,18 +169,25 @@ public class GridMover : MonoBehaviour
                 nextDiscretePosition = (Vector2)transform.position + Vector2.left;
                 bound = transform.position.x - 1;
                 boundDirection = 'L';
-                rotator.Rotate(90);
+                Rotate(90);
             }
             else
             {
-                Debug.Log(gameObject.name + " did nothing");
+                // Debug.Log(gameObject.name + " did nothing");
                 return false;
             }
-            if (GetComponent<SightVisualizer>() != null)
-                GetComponent<SightVisualizer>().UpdateVisualizer();
 
             prevDiscretePosition = transform.position;
-            Grapher.graph2[(int)transform.position.y, (int)transform.position.x] = false;
+            if(blocksGraph)
+                Grapher.graph[(int)transform.position.y, (int)transform.position.x] = false;
+
+            // Debug.Log("calling ChangeDirection");
+
+            if (!enabled || false)
+            {
+                heldVelocity = rb.velocity;
+                rb.velocity = Vector2.zero;
+            }
 
             canTurn = false;
             return true;
@@ -148,12 +195,20 @@ public class GridMover : MonoBehaviour
         return false;
     }
 
-    private bool RaycastClear(Vector2 direction)
+    // Returns true if transform.position + direction is empty
+    private bool PointClear(Vector2 direction)
     {
         LayerMask mask = ~(1 << 11) & ~(1 << 5);
         if (gameObject.CompareTag("Enemy"))
             mask = mask & ~(1 << 9);
-        return Physics2D.Raycast((Vector2)transform.position + (direction * 0.5f), direction, 0.5f, mask).collider == null;
+
+        return Physics2D.Raycast((Vector2)transform.position + direction, Vector2.up, 0f, mask).collider == null;
+    }
+
+    public void ModifySpeed(float penalty)
+    {
+        walkSpeed = baseWalkSpeed - penalty;
+        runSpeed = baseRunSpeed - penalty;
     }
 
     public bool GetCanTurn()
@@ -166,9 +221,16 @@ public class GridMover : MonoBehaviour
         return nextDiscretePosition;
     }
 
-    public Rotator GetRotator()
+    // Wrapper for rotator.Rotate function
+    private void Rotate(int ang)
+    {
+        if(rotator != null)
+            rotator.Rotate(ang);
+    }
+
+    /*public Rotator GetRotator()
     {
         return rotator;
-    }
+    }*/
 
 }

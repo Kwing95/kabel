@@ -1,86 +1,84 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Threading;
 
 public class AutoMover : MonoBehaviour
 {
     public const int INFINITY = 1073741823;
-    public const int QUEUE_MAX = 45;
-    public readonly Vector2 NULL_VECTOR = new Vector2(-INFINITY, -INFINITY);
-    public static readonly List<Vector2> cardinals = 
-        new List<Vector2>(new Vector2[] { Vector2.right, Vector2.left,
-            Vector2.up, Vector2.down });
-    public bool verbose = false;
 
     public List<Vector2> route;
     public AudioClip alarm;
     public AudioClip punch;
-    public GameObject cross;
-    public Rotator rotator;
-    public SightVisualizer visualizer;
-    public Navigator navigator;
-    private FieldUnit unit;
 
-    private GridMover mover;
+    private Rotator rotator;
+
+    public float sightDistance = 10;
+    public float attackRate = 1;
+    private float attackCooldown = 0;
+
     private GridMover player;
     private GameObject crossInstance;
-
-    private Seeker seeker;
+    private LayerMask mask;
+    private GridMover mover;
+    private Navigator navigator;
+    private FieldUnit unit;
 
     private AudioSource source;
     private int startAngle;
     private int routeProgress = 0;
-    private List<Vector2> graph;
-    private List<int> dist = new List<int>();
-    private List<int> prev = new List<int>();
-    private Vector2 destination;
     private bool chasing = false;
     public bool waiting = false;
-    private Shooter shooter;
-
-    private Vector2 savedDestination;
+    private FieldOfView fieldOfView;
 
    // public GameObject marker;
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         //EnemyList.numEnemies += 1; // EnemyList counts this itself
-        crossInstance = Instantiate(cross, transform.position, Quaternion.identity);
-        crossInstance.GetComponent<SpriteRenderer>().enabled = false;
+        // crossInstance = Instantiate(Globals.WAYPOINT, transform.position, Quaternion.identity);
+        mask = LayerMask.GetMask(new string[] { "Default", "Player" });
 
+        fieldOfView = GetComponentInChildren<FieldOfView>();
+        rotator = GetComponent<Rotator>();
         unit = GetComponent<FieldUnit>();
-        navigator = GetComponent<Navigator>();
         mover = GetComponent<GridMover>();
+        navigator = GetComponent<Navigator>();
         source = GetComponent<AudioSource>();
-        shooter = GetComponent<Shooter>();
-        seeker = GetComponent<Seeker>();
         player = PlayerMover.instance.GetComponent<GridMover>();
-        startAngle = rotator.GetAngle();
+
+        startAngle = Mathf.RoundToInt(transform.rotation.eulerAngles.z); // rotator.GetDestinationAngle();
+        transform.rotation = Quaternion.Euler(Vector3.zero);
+
         if (route.Count == 0)
             route.Add(transform.position);
 
         //mover = GetComponent<GridMover>();
-        destination = transform.position;
         SetChasing(false);
     }
 
     // Update is called once per frame
     void Update()
     {
+        attackCooldown -= Time.deltaTime;
         // This should run once every time the enemy moves
         // (distanceToPlayer > 1 || !chasing) needs to be changed at some point
-        if (!waiting && unit.ap > 0 && mover.GetCanTurn())
-        {
-            /*if (TouchingPlayer())
-            {
-                SetChasing(true);
-                rotator.FacePoint(player.transform.position);
-                //SetDestination(player.transform.position, true);
-            }*/
+        EnemyTurn();
+    }
 
-            EnemyTurn();
-        }
+    private void OnDisable()
+    {
+        mover.enabled = false;
+        rotator.enabled = false;
+        fieldOfView.enabled = false;
+    }
+
+    private void OnEnable()
+    {
+        mover.enabled = true;
+        rotator.enabled = true;
+        fieldOfView.enabled = true;
     }
 
     private void OnDestroy()
@@ -90,94 +88,96 @@ public class AutoMover : MonoBehaviour
 
     private void EnemyTurn()
     {
-        float distanceToPlayer = Vector2.Distance(transform.position, player.GetDiscretePosition());
-
-        //if(distanceToPlayer < 3 && seeker.GetSighted())
-        //   unit.ap = 0;
-
         /*if (seeker.GetSighted() || TouchingPlayer())
         {
             rotator.FacePoint(player.transform.position);
             SetChasing(true);
         }*/
-            
 
-        if (unit.ap >= 2 && chasing && (TouchingPlayer() || seeker.ClearShot(transform.position, player.transform.position - transform.position)))
+        CheckForTarget();
+
+        // Attack the player if applicable
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, player.transform.position - transform.position, sightDistance, mask);
+        bool clearShot = hit.collider != null && hit.collider.CompareTag("Player");
+        
+        if (attackCooldown <= 0 && chasing && (TouchingPlayer() || clearShot))
         {
+            navigator.SetDestination(player.GetDiscretePosition(), true);
             EnemyAttack();
         }
 
-        // Move if enemy has AP, player is not sighted, and (enemy is not chasing or distance to player > 1)
-        else if(unit.ap > 0 && (distanceToPlayer > 1 || !chasing))
-            EnemyMove();
+        // Resolve direction enemy should be facing (lock onto player while alerted)
+        Vector2 destination = navigator.GetDestination();
+        hit = Physics2D.Raycast(transform.position, destination - (Vector2)transform.position, sightDistance, mask);
 
-        if (unit.ap <= 0)
-            EnemyList.SetEnemiesMoving(false);
+        if (chasing && (hit.collider == null || hit.collider.CompareTag("Player")))
+            rotator.EnableLock(destination);
+        else
+            rotator.DisableLock();
+
+        // Move toward position (maybe create EnemyNavigator derived from Navigator, replaces AutoMover)
+        float distanceToPlayer = Vector2.Distance(transform.position, player.GetDiscretePosition());
+        if (distanceToPlayer > 1 || !chasing)
+            EnemyMove();
             
     }
 
     private void EnemyMove()
     {
-
-        /*if (TouchingPlayer())
+        if (TouchingPlayer())
         {
             rotator.FacePoint(player.transform.position);
-            return;
-        }*/
-        
-        // If the enemy is not chasing the player
-        if (!chasing)
-        {
-            if (unit.ap == 1)
-            {
-                unit.ap = 0;
-                return;
-            }
+            SetChasing(true);
+        }
 
-            destination = route[routeProgress % route.Count];
+        //Debug.Log(navigator.path);
+
+        if (chasing)
+        {
+            if (navigator.GetIdle())
+            {
+                navigator.SetDestination(route[routeProgress], false);
+                SetChasing(false);
+            }
+        }
+        // If the enemy is not chasing the player, patrol duty
+        else if (navigator.GetIdle())
+        {
+            Vector2 destination = route[routeProgress];
+            navigator.SetDestination(destination, false);
             if (Vector2.Distance(transform.position, destination) == 0)
             {
-                ++routeProgress;
+                routeProgress = (routeProgress + 1) % route.Count;
+
+                // If returning to stationary post
                 if (route.Count == 1 && !chasing)
                     rotator.Rotate(startAngle);
             }
         }
+    }
 
-        unit.ap -= chasing ? 1 : 2;
-        List<Vector2> path = Grapher.FindPath((Vector2)transform.position, destination);
+    private void CheckForTarget()
+    {
+        Vector2 direction = player.transform.position - transform.position;
 
-        //List<int> path = Grapher.FindPath(Grapher.VectorToIndex((Vector2)transform.position), Grapher.VectorToIndex(destination));
+        // Check for clear line of sight
+        LayerMask mask = mask = LayerMask.GetMask(new string[] { "Default", "Player" });
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, direction, sightDistance, mask);
+        bool clearShot = hit.collider != null && hit.collider.CompareTag("Player");
 
-        // If unit has somewhere it wants to go
-        if (path.Count > 1)
+        // If player is within view or touching
+        float angleToPlayer = Vector2.Angle(Vector2.up, direction); // arg1 formerly rotator.FrontOffset()
+        float enemyAngle = Rotator.mod((int)-rotator.GetCurrentAngle(), 360);
+
+        // Debug.Log(enemyAngle + " - " + angleToPlayer + " = " + (enemyAngle - angleToPlayer));
+
+        if (Mathf.Abs(enemyAngle - angleToPlayer) < fieldOfView.viewAngle / 2 && clearShot)
         {
-            waiting = true;
-            //int nextTileIndex = path[1];
-            //Vector2 nextTile = Grapher.GetGraph()[nextTileIndex];
-            Vector2 nextTile = path[1];
-            navigator.SetDestination(nextTile, chasing);
+            //Debug.Log("player spotted!");
+            navigator.SetDestination(player.GetDiscretePosition(), true);
+            SetChasing(true);
         }
-        else
-        {
-            if (chasing)
-            {
-                crossInstance.GetComponent<SpriteRenderer>().enabled = false;
-            }
-
-            if (TouchingPlayer())
-            {
-                rotator.FacePoint(player.transform.position);
-                Debug.Log("Facing player");
-            }
-            else
-            {
-                SetChasing(false);
-                if (route.Count == 1)
-                    unit.EndTurn();
-            }
-
-            destination = route[routeProgress % route.Count];
-        }
+            
     }
 
     public void StopWaiting()
@@ -187,15 +187,13 @@ public class AutoMover : MonoBehaviour
 
     private void EnemyAttack()
     {
-        if(unit.ap >= 2)
-        {
-            if (TouchingPlayer())
-                rotator.FacePoint(player.transform.position);
+        // might need to add cooldown
+        if (TouchingPlayer())
+            rotator.FacePoint(player.transform.position);
 
-            unit.ap -= 2;
-            waiting = true;
-            GetComponent<Shooter>().GunAttack(gameObject, player.gameObject);
-        }
+        waiting = true;
+        ActionManager.Gun(gameObject, player.transform.position);
+        attackCooldown = attackRate;
     }
 
     private bool TouchingPlayer()
@@ -206,27 +204,16 @@ public class AutoMover : MonoBehaviour
 
     public void SetChasing(bool value)
     {
-        if (value)
+        /*if (value)
         {
             if (!source.isPlaying)
             {
                 //source.PlayOneShot(alarm);
                 source.Play();
             }
-        }
-
+        }*/
         chasing = value;
-        visualizer.SetAlert(value);
-    }
-
-    public void SetDestination(Vector2 dest, bool detected=false)
-    {
-        destination = dest;
-        if (detected)
-        {
-            crossInstance.transform.position = dest;
-            crossInstance.GetComponent<SpriteRenderer>().enabled = true;
-        }
+        // visualizer.SetAlert(value);
     }
 
 }

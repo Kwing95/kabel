@@ -2,46 +2,70 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/* Rotates one or more objects, either manually (set rotation) or automatically (lock onto position) */
+
 public class Rotator : MonoBehaviour
 {
 
-    public GameObject sprite;
-    private int angle = 0;
+    public List<GameObject> subjects;
+
+    private int destinationAngle = 0;
+    private float currentAngle = 0;
+    private bool lockedOnTarget = false;
+    private Vector2 lockOnPosition;
 
     // Start is called before the first frame update
     void Awake()
     {
-        angle = Mathf.RoundToInt(transform.rotation.eulerAngles.z);
-        Rotate(angle);
+        destinationAngle = Mathf.RoundToInt(transform.rotation.eulerAngles.z);
+        Rotate(destinationAngle);
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
-        
+        if (lockedOnTarget)
+        {
+            Vector2 destination = lockOnPosition;
+            destinationAngle = (int)Vector2.SignedAngle(Vector2.up, lockOnPosition - (Vector2)transform.position);
+        }
+
+        currentAngle = Quaternion.Lerp(Quaternion.Euler(0, 0, currentAngle), Quaternion.Euler(0, 0, destinationAngle), Time.deltaTime * 10).eulerAngles.z;
+
+        foreach (GameObject elt in subjects)
+            elt.transform.rotation = Quaternion.Euler(Vector3.forward * currentAngle);
+            
     }
 
     // Maybe put FaceDirection inside its own Rotator class?
     public void Rotate(Vector2 direction)
     {
+        if (lockedOnTarget)
+            return;
+
         // 45 degrees means error
-        angle = 45;
+        currentAngle = 45;
 
         if (direction.x > 0)
-            angle = 270;
+            currentAngle = 270;
         else if (direction.x < 0)
-            angle = 90;
+            currentAngle = 90;
         else if (direction.y > 0)
-            angle = 0;
+            currentAngle = 0;
         else if (direction.y < 0)
-            angle = 180;
-        Rotate(angle);
+            currentAngle = 180;
+
+        Rotate(destinationAngle);
     }
 
     public void Rotate(int ang)
     {
-        angle = mod(ang, 360);
-        sprite.transform.rotation = Quaternion.Euler(Vector3.forward * angle);
+        // If locked onto a specific target, don't look in a different direction
+        if (lockedOnTarget)
+            return;
+
+        destinationAngle = mod(ang, 360);
+        //sprite.transform.rotation = Quaternion.Euler(Vector3.forward * currentAngle);
     }
 
     public static int mod(int x, int m)
@@ -58,9 +82,10 @@ public class Rotator : MonoBehaviour
         Rotate(cardinalAngle);
     }
 
+    // Returns the offset of the tile relative to the direction it's facing
     public Vector2 FrontOffset()
     {
-        switch (angle)
+        switch (currentAngle)
         {
             case 0:
                 return Vector2.up / 2;
@@ -74,9 +99,26 @@ public class Rotator : MonoBehaviour
         return Vector2.zero;
     }
 
-    public int GetAngle()
+    // TODO: Figure out when current angle is needed instead
+    public int GetDestinationAngle()
     {
-        return angle;
+        return destinationAngle;
+    }
+
+    public float GetCurrentAngle()
+    {
+        return currentAngle;
+    }
+
+    public void EnableLock(Vector2 position)
+    {
+        lockedOnTarget = true;
+        lockOnPosition = position;
+    }
+
+    public void DisableLock()
+    {
+        lockedOnTarget = false;
     }
 
 }

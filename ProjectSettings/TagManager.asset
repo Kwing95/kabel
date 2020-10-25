@@ -22,7 +22,7 @@ TagManager:
   - Obstacle
   - Effects
   - Player
-  - 
+  - NonSolid
   - 
   - 
   - 
@@ -68,4 +68,7 @@ TagManager:
     locked: 0
   - name: UI
     uniqueID: 455839121
+    locked: 0
+  - name: Transitioner
+    uniqueID: 2269855495
     locked: 0

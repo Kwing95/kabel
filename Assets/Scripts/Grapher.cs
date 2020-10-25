@@ -16,9 +16,10 @@ public class Grapher : MonoBehaviour
     public static int mapHeight = 50;
     public static int mapWidth = 50;
 
-    public static bool[,] graph2 = new bool[mapHeight, mapWidth];
+    public static bool[,] graph = new bool[mapHeight, mapWidth];
 
     public Vector2 entryPoint;
+    private static LayerMask mask;
 
     // Start is called before the first frame update
     void Start()
@@ -31,6 +32,7 @@ public class Grapher : MonoBehaviour
         instance = this; // We DO want the object to be destroyed on load
 
         ResetGraph();
+        mask = LayerMask.GetMask("Default");
     }
 
     // Update is called once per frame
@@ -39,13 +41,28 @@ public class Grapher : MonoBehaviour
         
     }
 
+    public static void PrintGraph()
+    {
+        string dump = "";
+        for (int y = 0; y < mapHeight; ++y)
+        {
+            string line = "";
+            for (int x = 0; x < mapWidth; ++x)
+            {
+                line += (graph[y, x] ? " " : "X");
+            }
+            dump = line + "\n" + dump;
+        }
+        Debug.Log(dump);
+    }
+
     // POINTS AND DISTANCES
 
     public void ResetGraph()
     {
         for (int y = 0; y < mapHeight; ++y)
             for (int x = 0; x < mapWidth; ++x)
-                graph2[y, x] = PointIsClear(entryPoint + new Vector2(x, y));
+                graph[y, x] = PointIsClear(entryPoint + new Vector2(x, y));
     }
 
     private static bool InBounds(Vector2 point)
@@ -53,11 +70,12 @@ public class Grapher : MonoBehaviour
         return point.x >= 0 && point.y >= 0 && point.x < mapWidth && point.y < mapHeight;
     }
 
-    public bool CheckGraph(Vector2 point)
+    // Returns true if the specified point is vacant and available
+    public static bool CheckGraph(Vector2 point)
     {
         if (!InBounds(point))
             return false;
-        return graph2[(int)point.y, (int)point.x];
+        return graph[(int)point.y, (int)point.x];
     }
 
     public static int ManhattanDistance(Vector2 pointA, Vector2 pointB)
@@ -65,7 +83,7 @@ public class Grapher : MonoBehaviour
         return (int)(Mathf.Abs(pointA.x - pointB.x) + Mathf.Abs(pointA.y - pointB.y));
     }
 
-    private bool PointIsClear(Vector2 point)
+    private static bool PointIsClear(Vector2 point)
     {
         RaycastHit2D hit = Physics2D.Raycast(point, Vector2.zero, 0/*, mask*/);
         if (hit.collider != null)
@@ -74,16 +92,6 @@ public class Grapher : MonoBehaviour
             return !hit.collider.CompareTag("Wall");
         }
         return true;
-    }
-
-    // Returns true if there is no wall and no FieldUnit
-    private bool IsVacant(Vector2 point)
-    {
-        if (!PointIsClear(point))
-            return false;
-
-        RaycastHit2D hit = Physics2D.Raycast(point, Vector2.zero, 0/*, mask*/);
-        return !(hit.collider && hit.collider.GetComponent<FieldUnit>());
     }
 
     // DIAMOND FUNCTIONS
@@ -117,24 +125,88 @@ public class Grapher : MonoBehaviour
         }
     }
 
+    // Add tiles to a path every unit of 1 distance; if two tiles are diagonal, make a stepping stone
+    // Returns a path from start to end, assuming unobstructed line of sight between them
+    private static List<Vector2> FindDirectPath(Vector2 start, Vector2 end)
+    {
+        List<Vector2> path = new List<Vector2>();
+        Vector2 step = Vector3.Normalize(end - start);
+        Vector2 diagonal = new Vector2(AbsCeil(step.x), AbsCeil(step.y));
+        Vector2 lineProgress = start;
+
+        path.Add(start);
+
+        while (RoundedVector(lineProgress) != end)
+        {
+            Vector2 oldTile = RoundedVector(lineProgress);
+            Vector2 newTile = RoundedVector(lineProgress + step);
+            
+            // If new tile differs on two axes (diagonal step,) a tile has been skipped
+            if(newTile.x != oldTile.x && newTile.y != oldTile.y)
+            {
+                int pathLength = path.Count;
+
+                if (CheckGraph(oldTile + new Vector2(diagonal.x, 0)))
+                    path.Add(RoundedVector(oldTile + new Vector2(diagonal.x, 0)));
+                else if (CheckGraph(oldTile + new Vector2(0, diagonal.y)))
+                    path.Add(RoundedVector(oldTile + new Vector2(0, diagonal.y)));
+
+                // If no tile was added, no path exists
+                if (pathLength == path.Count)
+                    return new List<Vector2>();
+            }
+
+            // Add the tile one step forward
+            if (CheckGraph(newTile))
+                path.Add(RoundedVector(newTile));
+            else
+                return new List<Vector2>();
+
+            lineProgress += step;
+        }
+
+        path.Add(end);
+        return path;
+    }
+
+    public static float AbsCeil(float number)
+    {
+        return number > 0 ? Mathf.Ceil(number) : Mathf.Floor(number);
+    }
+
+    public static Vector2 RoundedVector(Vector2 vector)
+    {
+        return new Vector2(Mathf.Round(vector.x), Mathf.Round(vector.y));
+    }
+
     // PATHFINDING FUNCTIONS
 
-    public static List<Vector2> FindPath(Vector2 start, Vector2 end)
+    public static List<Vector2> FindPath(Vector2 start, Vector2 end, int maxPathLength = -1)
+    {
+        List<Vector2> path = FindDirectPath(start, end);
+        return path.Count == 0 ? FindIndirectPath(start, end, maxPathLength) : path;
+    }
+
+    // Returns a list of positions from start to end detailing a path (Dijkstra's algorithm)
+    public static List<Vector2> FindIndirectPath(Vector2 start, Vector2 end, int maxPathLength=-1)
     {
         List<Vector2> path = new List<Vector2>();
         List<Vector2> queue = new List<Vector2>();
+
+        if(!CheckGraph(start) || !CheckGraph(end))
+            return path;
 
         int[,] dist = new int[mapHeight, mapWidth];
         Vector2[,] prev = new Vector2[mapHeight, mapWidth];
 
         // Initialize memo
-        for (int x = 0; x < graph2.GetLength(0); ++x)
+        for (int x = 0; x < graph.GetLength(0); ++x)
         {
-            for (int y = 0; y < graph2.GetLength(1); ++y)
+            for (int y = 0; y < graph.GetLength(1); ++y)
             {
                 dist[y, x] = INFINITY;
                 prev[y, x] = new Vector2(-1, -1);
-                if (graph2[y, x])
+                if (graph[y, x] || ((int)start.y == y && (int)start.x == x))
                     queue.Add(new Vector2(x, y));
             }
         }
@@ -149,6 +221,9 @@ public class Grapher : MonoBehaviour
         while(queue.Count > 0)
         {
             Vector2 u = ClosestPoint(queue, dist);
+            if (u == new Vector2(-1, -1))
+                return path;
+            
             queue.Remove(u);
 
             // Handle case where a path is found
@@ -167,6 +242,11 @@ public class Grapher : MonoBehaviour
             for (int v = 0; v < neighbors.Count; ++v)
             {
                 int alt = dist[(int)u.y, (int)u.x] + 1;
+
+                // If there is a maximum path length, adhere to it
+                if (maxPathLength != -1 && alt > maxPathLength)
+                    return path;
+
                 if (alt < dist[(int)neighbors[v].y, (int)neighbors[v].x])
                 {
                     dist[(int)neighbors[v].y, (int)neighbors[v].x] = alt;

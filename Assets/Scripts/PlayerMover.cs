@@ -6,18 +6,21 @@ using UnityEngine.UI;
 public class PlayerMover : MonoBehaviour
 {
 
-    public static PlayerMover instance;
-    public Text apText;
+    public float maxSmartMoveDistance = 10;
 
+    public static PlayerMover instance;
+
+    private Rotator rotator;
     private GridMover mover;
     private FieldUnit unit;
 
     private AudioSource source;
     private Navigator nav;
-    public int runSpeed = 6;
+
+    private bool initialClick = true;
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         if (instance != null && instance != this)
         {
@@ -26,43 +29,71 @@ public class PlayerMover : MonoBehaviour
         }
         instance = this; // Intentionally not using DestroyOnLoad
 
+        rotator = GetComponent<Rotator>();
         unit = GetComponent<FieldUnit>();
-        unit.ResetAP();
         source = GetComponent<AudioSource>();
         mover = GetComponent<GridMover>();
         nav = GetComponent<Navigator>();
+
+        ClickManager.handler += _OnClick;
+        // ClickHandler.DetectPlatform();
+    }
+
+    private void OnDestroy()
+    {
+        ClickManager.handler -= _OnClick;
     }
 
     // Update is called once per frame
     void Update()
     {
-
-        RefreshText();
-
-        Vector2 input = GetInput();
-        if (input != Vector2.zero)
+        /*
+        if (Time.timeScale == 0)
+            return;
+        
+        // If raycast is clear, construct a basic path. If not, smart path with maximum distance
+        if (Input.GetMouseButton(0) && initialClick && !ClickHandler.MouseOverUI())
         {
-            if (Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift))
-                mover.moveSpeed = 6;
-            else
-                mover.moveSpeed = 3;
+            initialClick = false;
 
-            nav.SetDestination((Vector2)transform.position + input);
-                
+            _OnClick(GetMousePosition());
         }
-            
+
+        if (!Input.GetMouseButton(0))
+            initialClick = true;
+            */
     }
 
-    Vector2 GetInput()
+    public void _OnClick(Vector2 mousePosition)
     {
-        float horizontalInput = Input.GetAxisRaw("Horizontal");
-        float verticalInput = horizontalInput == 0 ? Input.GetAxisRaw("Vertical") : 0;
-        return new Vector2(horizontalInput, verticalInput);
+        if (ActionManager.GetState() != ActionManager.State.Moving)
+            return;
+
+        float distance = Vector2.Distance(transform.position, mousePosition);
+
+        LayerMask mask = LayerMask.GetMask("Default");
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, mousePosition - (Vector2)transform.position, distance, mask);
+
+        nav.SetDestination(mousePosition, Sidebar.GetRunning());
     }
 
-    public void RefreshText()
+    private void OnDisable()
     {
-        apText.text = "AP: " + unit.ap + "/" + unit.maxAP;
+        mover.enabled = false;
+        rotator.enabled = false;
     }
+
+    private void OnEnable()
+    {
+        mover.enabled = true;
+        rotator.enabled = true;
+    }
+
+    // Returns the tile that the mouse is positioned over
+    public static Vector2 GetMousePosition()
+    {
+        return (Vector3)Vector3Int.RoundToInt(Camera.main.ScreenToWorldPoint(Input.mousePosition));
+    }
+
 
 }

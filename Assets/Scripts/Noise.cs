@@ -38,7 +38,9 @@ public class Noise : MonoBehaviour
                 AutoMover mover = enemies.transform.GetChild(i).GetComponent<AutoMover>();
                 if (mover != null)
                 {
-                    mover.SetDestination(transform.position, true);
+                    Navigator navigator = mover.GetComponent<Navigator>();
+                    //GridMover player = PlayerMover.instance.GetComponent<GridMover>();
+                    navigator.SetDestination(transform.position, true);
                     mover.SetChasing(true);
                 }
 
@@ -49,7 +51,7 @@ public class Noise : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.localScale = transform.localScale * 1.01f;
+        transform.localScale = transform.localScale + (Vector3.one * Time.deltaTime);
         color.a -= 0.5f * Time.deltaTime;
         GetComponent<SpriteRenderer>().color = color;
         if (color.a <= 0)
