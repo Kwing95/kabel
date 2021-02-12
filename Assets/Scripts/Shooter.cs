@@ -136,8 +136,8 @@ public class Shooter : MonoBehaviour
             else
                 MenuNode.RefreshMenu();*/
         }
-        if (shooter.GetComponent<AutoMover>())
-            shooter.GetComponent<AutoMover>().StopWaiting();
+        //if (shooter.GetComponent<AutoMover>())
+        //    shooter.GetComponent<AutoMover>().StopWaiting();
     }
 
 }

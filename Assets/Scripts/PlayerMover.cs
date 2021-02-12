@@ -66,7 +66,8 @@ public class PlayerMover : MonoBehaviour
 
     public void _OnClick(Vector2 mousePosition)
     {
-        if (ActionManager.GetState() != ActionManager.State.Moving)
+        ActionManager.State state = ActionManager.GetState();
+        if (state != ActionManager.State.Moving && state != ActionManager.State.ConfirmMove)
             return;
 
         float distance = Vector2.Distance(transform.position, mousePosition);

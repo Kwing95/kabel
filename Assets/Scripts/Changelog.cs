@@ -57,14 +57,53 @@ October 24, 2020
  + Placeholders replaced with figures
  + Shooter completely phased out
  + Action button properly disabled during pause
+
+October 27, 2020
+ + Can now select "escape" destination before attack occurs
+ + Player can always set escape location
+ + Enemies can now investigate Noise object at non-integer position
+
+November 2, 2020
+ + Navigators no longer go through walls
+ + Enemies now show white/yellow/red depending on alert status
+ + Enemies now track properly; sight cone locks on when spotted
+ + Enemies will not chase player if too close
+
+November 4, 2020
+ + Enemy lock-on persists when enemy is stationary
+
+November 8, 2020
+ + Grenade preview shows area of effect and units affected
+
+November 12, 2020
+ + Bounding boxes now function as health indicators
+ + Enemies now have "corner" boxes; player has solid box
+
+February 2, 2021
+ + Enemies should lock onto correct spot
+
+February 5, 2021
+ + Enemies have confused lookaround
+ + Enemies have randomPatrol
+
+February 9, 2021
+ + Enemies beccome more territorial with leashLength
+
+February 11, 2021
+ + Enemies may add up to [pointsMemory] points to a patrol
+ - Enemies sometimes freeze in Suspicious when chasing (UNKNOWN)
+
+ - Let enemies "take cover"; find area with no line of sight to player
+ - Touching enemies is weird (not important if sound is added for walking too)
+ - Enemies can probably hit overlapping enemies (make gun start projected one tile out)
  - Actions other than Gun not implemented
- - Navigators sometimes go into walls
- - Enemies should stop at a distance from player
  - Pathfinding should include hybrid of Dijkstra's and direct
  - Cooldown and movement based on health (-1 HP = -1 move, -1 focus = +1 act cooldown)
+   - Replace Focus with status ailment? Reduce movement/increase cooldown?
  - Limit ammunition
  - Limit player's field of view
- - Allow player to select escape route after acting
+ - Stationary enemies have "leashLength" so they guard certain points
+ - Implement player stun (pauses action cooldown AND movement)
 
  */
 
@@ -77,9 +116,8 @@ Flushing: Enemy will check all points within N tiles of the spot
           is within the direct line of sight of the enemy while
           performing a flushing operation.
 
-Coroutine pathfinding: When paths are generated, enemies freeze
-                       instead of game freezing; pathfinding is
-                       computed inside of a coroutine.
+Backup: Enemies will add corpse position to patrol circuit, call in
+        backup to patrol area by corpse, or both.
 
 Enemy behavior: Enemies pause in confusion after losing player
                 Enemies may pause after reaching waypoint in route
@@ -106,6 +144,14 @@ Frag Grenade: Deals damage to surrounding area
 Stun Grenade: Renders targets unable to act for some time
 Smoke Grenade: A cloud that blocks enemy vision
 Gauze: Restores health and cures limping status
+
+BONUS FEATURES:
+ Hardcore Mode - Enemies have no cones; player's line of sight is limited
+ Cinema Mode - Autoplay all cutscenes
+ Encyclopedia - Appendix of game lore
+ Jukebox - Play all game music
+ Commentary Mode - Play game with commentary from developers
+ Gun Bar Mode - Replaces gun sounds with battle rap voices
 
 https://docs.unity3d.com/ScriptReference/Resources.Load.html
 https://answers.unity.com/questions/917138/text-file-not-loading-after-building-the-game.html

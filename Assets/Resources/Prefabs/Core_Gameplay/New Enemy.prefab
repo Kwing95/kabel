@@ -341,7 +341,6 @@ MonoBehaviour:
   punch: {fileID: 8300000, guid: fce0cbffcf5adc249b88745fd600f404, type: 3}
   sightDistance: 10
   attackRate: 1
-  waiting: 0
 --- !u!114 &8545447538481007053
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -480,7 +479,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f12da14ba2f4f1f4bb1f109dc29b2f99, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  healthIndicator: {fileID: 5664321338174155051}
+  healthIndicator: {fileID: 2088820370063722288}
   focusIndicator: {fileID: 8396739959346617829}
   maxHealth: 3
   maxFocus: 3
@@ -695,3 +694,15 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 5377842731371561036}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2088820370063722288 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6223152764121122684, guid: 7d44c712f56b97b43b9e6a68fdb6551e,
+    type: 3}
+  m_PrefabInstance: {fileID: 5377842731371561036}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa1e24117aacd28459d7587c9197dd84, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

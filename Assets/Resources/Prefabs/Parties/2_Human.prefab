@@ -10,8 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 4523686130178883476}
   - component: {fileID: 3796805854739401149}
+  - component: {fileID: 4207613632783606413}
   m_Layer: 0
-  m_Name: Duet
+  m_Name: 2_Human
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -75,7 +76,7 @@ SpriteRenderer:
   m_SortingLayerID: 60354375
   m_SortingLayer: 5
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: f387ad4fda4d7344e921003b7adfe3c6, type: 3}
+  m_Sprite: {fileID: 21300000, guid: d332a27462adbcf43859bdb188f77555, type: 3}
   m_Color: {r: 0, g: 0.8392157, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -86,6 +87,23 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &4207613632783606413
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2100007390225515667}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa1e24117aacd28459d7587c9197dd84, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  colors:
+  - {r: 1, g: 0, b: 0, a: 1}
+  - {r: 1, g: 0, b: 0, a: 1}
+  - {r: 1, g: 1, b: 0, a: 1}
+  - {r: 0, g: 1, b: 0, a: 1}
 --- !u!1 &2439187160868721418
 GameObject:
   m_ObjectHideFlags: 0

@@ -20,13 +20,12 @@ public class Navigator : MonoBehaviour
     private Vector2 destination;
     private bool running = false;
     private bool pausePathFinding = false;
-    private FieldUnit unit;
     private GameObject waypoint;
 
-    List<Vector2> path;
-    private int pathProgress = 1;
-    private bool destinationQueued = false;
-    private bool idle = true;
+    private List<Vector2> path;
+    private int pathProgress = 1; // Index along path currently being navigated to
+    private bool destinationQueued = false; // Happens when destination has been changed but path has not been generated yet
+    private bool idle = true; // Set to true after Navigator finishes moving along path
 
     private int nonce = 0;
 
@@ -35,7 +34,6 @@ public class Navigator : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        unit = GetComponent<FieldUnit>();
         mover = GetComponent<GridMover>();
         destination = transform.position;
         path = new List<Vector2>();
@@ -44,39 +42,38 @@ public class Navigator : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // float distToDest = Vector2.Distance(transform.position, destination);
-
-        if (mover.GetCanTurn() && !pausePathFinding)
+        // If destination has been set recently, generate a new path
+        // destinationQueued is true when "destination" is outdated and a new path must be generated
+        if (destinationQueued)
         {
-            // If destination has been set recently, generate a new path
-            // destinationQueued is true when "destination" is outdated and a new path must be generated
-            if(destinationQueued)
-            {
-                path = Grapher.FindPath(transform.position, destination, maxPathLength);
+            Vector2 position = mover.GetDiscretePosition();
+            path = Grapher.FindPath(position, destination, maxPathLength);
 
-                if(path.Count > 0 && waypointEnabled)
-                {
-                    Destroy(waypoint);
-                    waypoint = Instantiate(Globals.WAYPOINT, destination, Quaternion.identity);
-                }
-                    
-                pathProgress = 1;
-                destinationQueued = false;
+            if (path.Count > 0 && waypointEnabled)
+            {
+                Destroy(waypoint);
+                waypoint = Instantiate(Globals.WAYPOINT, destination, Quaternion.identity);
             }
+
+            pathProgress = 1;
+            destinationQueued = false;
 
             // If path does not exist, stop trying to navigate there
             if (path.Count == 0)
             {
-                if(waypointEnabled)
+                if (waypointEnabled)
                     Destroy(waypoint);
                 pausePathFinding = true;
             }
-                
+        }
+
+        if (mover.GetCanTurn() && !pausePathFinding && ActionManager.GetState() == ActionManager.State.Moving)
+        {                
             // Move along path
             if (path.Count > 1){
                 if (pathProgress < path.Count)
                 {
-                    //mover.
+                    //Debug.Log("Moving from " + transform.position + " to " + path[pathProgress] + " path index " + pathProgress);
                     mover.ChangeDirection(path[pathProgress] - (Vector2)transform.position, running);
                     pathProgress += 1;
 
@@ -158,6 +155,21 @@ public class Navigator : MonoBehaviour
             idle = false;
             pausePathFinding = false;
         }
+    }
+
+    public void Pause(bool setPaused=true)
+    {
+        pausePathFinding = setPaused;
+    }
+
+    public bool GetPaused()
+    {
+        return pausePathFinding;
+    }
+
+    public int GetPathLength()
+    {
+        return path.Count;
     }
 
     // Used to determine what AutoMover does when enemy is idle

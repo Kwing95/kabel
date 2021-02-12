@@ -26,7 +26,6 @@ public class Rotator : MonoBehaviour
     {
         if (lockedOnTarget)
         {
-            Vector2 destination = lockOnPosition;
             destinationAngle = (int)Vector2.SignedAngle(Vector2.up, lockOnPosition - (Vector2)transform.position);
         }
 
@@ -38,25 +37,6 @@ public class Rotator : MonoBehaviour
     }
 
     // Maybe put FaceDirection inside its own Rotator class?
-    public void Rotate(Vector2 direction)
-    {
-        if (lockedOnTarget)
-            return;
-
-        // 45 degrees means error
-        currentAngle = 45;
-
-        if (direction.x > 0)
-            currentAngle = 270;
-        else if (direction.x < 0)
-            currentAngle = 90;
-        else if (direction.y > 0)
-            currentAngle = 0;
-        else if (direction.y < 0)
-            currentAngle = 180;
-
-        Rotate(destinationAngle);
-    }
 
     public void Rotate(int ang)
     {
@@ -72,6 +52,17 @@ public class Rotator : MonoBehaviour
     {
         int r = x % m;
         return r < 0 ? r + m : r;
+    }
+
+    public Vector2 GetCurrentAngleVector()
+    {
+        return Quaternion.Euler(0, 0, currentAngle) * Vector2.up;
+    }
+
+    // Binds angle within [0, 360] range
+    public static int SignedAngle(float angle)
+    {
+        return mod((int)-angle, 360);
     }
 
     public void FacePoint(Vector2 point)
@@ -110,15 +101,10 @@ public class Rotator : MonoBehaviour
         return currentAngle;
     }
 
-    public void EnableLock(Vector2 position)
+    public void ToggleLock(bool isLocked, Vector2 position)
     {
-        lockedOnTarget = true;
+        lockedOnTarget = isLocked;
         lockOnPosition = position;
-    }
-
-    public void DisableLock()
-    {
-        lockedOnTarget = false;
     }
 
 }

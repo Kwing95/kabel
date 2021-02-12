@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -9,6 +10,7 @@ public class Sidebar : MonoBehaviour
 
     public static Sidebar instance;
 
+    public TextMeshProUGUI toast;
     public List<GameObject> menus;
     public List<Sprite> sprites;
 
@@ -18,15 +20,17 @@ public class Sidebar : MonoBehaviour
     private List<int> menuPath;
 
     public List<Button> mainButtons;
-    public List<Button> confirmButtons;
+    public List<Button> actionConfirmButtons;
+    public List<Button> moveConfirmButtons;
     public List<Button> zoomButtons;
 
-    public Image moveIcon;
+    public List<Image> moveIcons;
     public Image pauseDisplay;
 
     public List<int> cameraZooms;
     private int currentZoom = 0;
 
+    private static int toastNonce = 0;
     private static bool canAttack = true;
     private static bool menuPaused = false;
     private static bool actionPaused = false;
@@ -41,6 +45,7 @@ public class Sidebar : MonoBehaviour
         menuPath = new List<int>();
         currentZoom = cameraZooms.Count - 1;
         ZoomOut();
+        RefreshRunning();
         camera = Camera.main.GetComponent<Zoomer>();
     }
 
@@ -81,6 +86,8 @@ public class Sidebar : MonoBehaviour
     {
         menuPaused = !menuPaused;
 
+
+        // SetState(menuPaused ? ActionManager.State.MenuPause : );
         foreach (Button button in mainButtons)
             button.interactable = !menuPaused;
 
@@ -131,7 +138,14 @@ public class Sidebar : MonoBehaviour
     public void ToggleRunning()
     {
         running = !running;
-        moveIcon.sprite = running ? sprites[3] : sprites[2];
+        StartCoroutine(Toast("Movement speed set to " + (running ? "run" : "walk")));
+        RefreshRunning();
+    }
+
+    private void RefreshRunning()
+    {
+        foreach(Image icon in moveIcons)
+            icon.sprite = running ? sprites[3] : sprites[2];
     }
 
     public static bool GetRunning()
@@ -168,9 +182,14 @@ public class Sidebar : MonoBehaviour
         ActionManager.SetSelectedAction(actionType);
     }
 
+    public void ConfirmAim()
+    {
+
+    }
+
     public void StartAction()
     {
-        foreach (Button button in confirmButtons)
+        foreach (Button button in moveConfirmButtons)
             button.interactable = false;
         
         ActionManager.ExecuteAction();
@@ -185,7 +204,7 @@ public class Sidebar : MonoBehaviour
         SetState("Moving");
         ActionPause(false);
 
-        foreach (Button button in confirmButtons)
+        foreach (Button button in moveConfirmButtons)
             button.interactable = true;
     }
 
@@ -193,6 +212,22 @@ public class Sidebar : MonoBehaviour
     {
         // State { Moving, Paused, ActionMenu, AimedConfirm, NonAimConfirm };
         ActionManager.SetState(state);
+    }
+
+    public void ToastWrapper(string message)
+    {
+        StartCoroutine(Toast(message));
+    }
+
+    public IEnumerator Toast(string message, float duration=3)
+    {
+        int currentToast = ++toastNonce;
+        toast.text = message;
+
+        yield return new WaitForSeconds(duration);
+
+        if(currentToast == toastNonce)
+            toast.text = "";
     }
 
 }

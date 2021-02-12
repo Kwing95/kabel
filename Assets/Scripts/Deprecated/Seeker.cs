@@ -54,7 +54,7 @@ public class Seeker : MonoBehaviour
                 targetSighted = true;
                 location = player.GetDiscretePosition();
                 // AutoMover should determine what to do with this information
-                mover.SetChasing(true);
+                //mover.SetChasing(true);
             }
 
             /*if(Vector2.Distance(transform.position, player.transform.position) < 1.5f)

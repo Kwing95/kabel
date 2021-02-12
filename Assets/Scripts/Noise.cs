@@ -38,10 +38,11 @@ public class Noise : MonoBehaviour
                 AutoMover mover = enemies.transform.GetChild(i).GetComponent<AutoMover>();
                 if (mover != null)
                 {
-                    Navigator navigator = mover.GetComponent<Navigator>();
+                    mover.AlertToPosition(Grapher.RoundedVector(transform.position));
+                    //Navigator navigator = mover.GetComponent<Navigator>();
                     //GridMover player = PlayerMover.instance.GetComponent<GridMover>();
-                    navigator.SetDestination(transform.position, true);
-                    mover.SetChasing(true);
+                    //navigator.SetDestination(Grapher.RoundedVector(transform.position), true);
+                    // mover.SetChasing(true);
                 }
 
             }

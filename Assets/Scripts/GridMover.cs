@@ -119,10 +119,6 @@ public class GridMover : MonoBehaviour
 
         canTurn = true;
         rb.velocity = Vector2.zero;
-        if (GetComponent<SightVisualizer>())
-            GetComponent<SightVisualizer>().UpdateVisualizer();
-        if (GetComponent<AutoMover>())
-            GetComponent<AutoMover>().StopWaiting();
     }
 
     public static bool Touching(GameObject a, GameObject b)
@@ -137,7 +133,7 @@ public class GridMover : MonoBehaviour
     {
         float moveSpeed = running ? runSpeed : walkSpeed;
         
-        if (canTurn && PointClear(direction))
+        if (canTurn /*&& PointClear(direction)*/)
         {
             if(direction.y > 0)
             {

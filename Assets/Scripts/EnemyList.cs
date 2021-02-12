@@ -21,4 +21,21 @@ public class EnemyList : MonoBehaviour
 
     }
 
+    public static List<GameObject> GetAllEnemies()
+    {
+        List<GameObject> enemies = new List<GameObject>();
+        for (int i = 0; i < instance.transform.childCount; ++i)
+            enemies.Add(instance.transform.GetChild(i).gameObject);
+
+        return enemies;
+    }
+
+    public static List<GameObject> GetAllUnits()
+    {
+        List<GameObject> units = GetAllEnemies();
+        units.Add(PlayerMover.instance.gameObject);
+        
+        return units;
+    }
+
 }

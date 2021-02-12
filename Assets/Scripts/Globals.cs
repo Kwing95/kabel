@@ -15,6 +15,11 @@ public class Globals : MonoBehaviour
     public static readonly Material WHITE = Resources.Load<Material>("Materials/White");
     public static readonly Material BRIGHT_WHITE = Resources.Load<Material>("Materials/Bright_White");
     public static readonly Material RED = Resources.Load<Material>("Materials/Red");
+    public static readonly Material BRIGHT_RED = Resources.Load<Material>("Materials/Bright_Red");
+    public static readonly Material ORANGE = Resources.Load<Material>("Materials/Orange");
+    public static readonly Material YELLOW = Resources.Load<Material>("Materials/Yellow");
+    public static readonly Material BRIGHT_YELLOW = Resources.Load<Material>("Materials/Bright_Yellow");
+    public static readonly Material BRIGHT_BLUE = Resources.Load<Material>("Materials/Bright_Blue");
 
     // SPRITES
     public static readonly Sprite RUN_ICON = Resources.Load<Sprite>("Graphics/menu_buttons_6");

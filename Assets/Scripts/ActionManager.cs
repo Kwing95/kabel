@@ -13,8 +13,9 @@ using Random = UnityEngine.Random;
 public class ActionManager : MonoBehaviour
 {
     [Serializable]
-    public enum State { Moving, MenuPause, ActionPause, Confirm, Acting }
+    public enum State { Moving, ActionPause, Aiming, ConfirmMove, Acting }
     private static State state;
+    private static bool paused;
 
     [Serializable]
     // 0 Gun, 1 Frag, 2 Smoke, 3 Stun, 4 Distract, 5 Gauze, 6 Backstab
@@ -24,6 +25,10 @@ public class ActionManager : MonoBehaviour
     private static GameObject cursor;
     private static List<GameObject> previewObjects;
     private static ActionManager instance;
+
+    private static float grenadeRedRange = 1.5f;
+    private static float grenadeOrangeRange = 3f;
+    private static float grenadeYellowRange = 4.5f;
 
     // Start is called before the first frame update
     void Start()
@@ -52,12 +57,14 @@ public class ActionManager : MonoBehaviour
     public static void SetState(State newState)
     {
         state = newState;
-        if (state != State.Confirm)
+
+        if (state != State.Aiming && state != State.ConfirmMove)
         {
-            Sidebar.instance.confirmButtons[1].interactable = false;
+            Sidebar.instance.actionConfirmButtons[1].interactable = false;
             ClearPreview();
             cursor.SetActive(false);
-        } else if(state == State.Moving)
+        }
+        else if (state == State.Moving)
         {
             Sidebar.instance.ActionPause(false);
         }
@@ -76,7 +83,7 @@ public class ActionManager : MonoBehaviour
     public static void SetSelectedAction(Action action)
     {
         if(action == Action.Gauze)
-            Sidebar.instance.confirmButtons[1].interactable = true;
+            Sidebar.instance.actionConfirmButtons[1].interactable = true;
         
         selectedAction = action;
     }
@@ -193,39 +200,107 @@ public class ActionManager : MonoBehaviour
     private static void PreviewAction()
     {
         ClearPreview();
-        Vector2 start = PlayerMover.instance.transform.position;
-        Vector2 direction = cursorPosition - start;
-        RaycastHit2D hit = Physics2D.Raycast(start, direction, 30, ~LayerMask.GetMask("Player"));
 
         switch (selectedAction)
         {
             case Action.Backstab:
                 break;
             case Action.Gun:
-
-                GameObject coneObject = new GameObject();
-                FieldOfView cone = coneObject.AddComponent<FieldOfView>();
-                cone.viewRadius = 30;
-                cone.viewAngle = 30;
-                coneObject.transform.position = start;
-                float destinationAngle = (int)Vector2.SignedAngle(Vector2.up, cursorPosition - start);
-                coneObject.transform.eulerAngles = new Vector3(0, 0, destinationAngle);
-                previewObjects.Add(coneObject);
-
-                GameObject lineOfFire = DrawLine(start, hit.point);
-                LineRenderer renderer = lineOfFire.GetComponent<LineRenderer>();
-                renderer.material = Globals.RED;
-                renderer.startWidth = renderer.endWidth = 0.07f;
-                previewObjects.Add(lineOfFire);
-
-                // Add left and right bounds
-
+                PreviewGun();
+                break;
+            case Action.Frag:
+            case Action.Smoke:
+            case Action.Stun:
+                PreviewGrenade();
                 break;
         }
 
     }
 
-    public static GameObject DrawLine(Vector2 shotOrigin, Vector2 hitPoint, Transform parent=null)
+    private static void PreviewGrenade()
+    {
+        Vector2 playerPosition = PlayerMover.instance.transform.position;
+        float distance = Vector2.Distance(playerPosition, cursorPosition);
+        RaycastHit2D throwHit = Physics2D.Raycast(playerPosition, cursorPosition - playerPosition, Mathf.Min(10, distance), ~LayerMask.GetMask("Player"));
+        Vector2 center = throwHit.collider == null ? cursorPosition : throwHit.point;
+
+        LineRenderer throwLine = DrawLine(playerPosition, center).GetComponent<LineRenderer>();
+        throwLine.material = DistanceToColor(distance);
+        previewObjects.Add(throwLine.gameObject);
+
+        LineRenderer redCircle = DrawCircle(center, grenadeRedRange).GetComponent<LineRenderer>();
+        redCircle.material = Globals.BRIGHT_RED;
+        previewObjects.Add(redCircle.gameObject);
+        
+        LineRenderer orangeCircle = DrawCircle(center, grenadeOrangeRange).GetComponent<LineRenderer>();
+        orangeCircle.material = Globals.ORANGE;
+        previewObjects.Add(orangeCircle.gameObject);
+
+        LineRenderer yellowCircle = DrawCircle(center, grenadeYellowRange).GetComponent<LineRenderer>();
+        yellowCircle.material = Globals.BRIGHT_YELLOW;
+        previewObjects.Add(yellowCircle.gameObject);
+
+        // Circle should emanate from throw point, not cursor pos
+        
+        List<GameObject> units = EnemyList.GetAllEnemies();
+        foreach(GameObject unit in units)
+        {
+            if (Vector2.Distance(unit.transform.position, center) > grenadeYellowRange)
+                continue;
+
+            RaycastHit2D hit = Physics2D.Raycast(center, (Vector2)unit.transform.position - center, grenadeYellowRange);
+            if(hit.collider != null && hit.collider.gameObject == unit)
+            {
+                LineRenderer hitLine = DrawLine(center, unit.transform.position).GetComponent<LineRenderer>();
+                distance = Vector2.Distance(center, unit.transform.position);
+                hitLine.material = DistanceToColor(distance);
+
+                previewObjects.Add(hitLine.gameObject);
+            }
+            else
+            {
+                LineRenderer blueLine = DrawLine(center, hit.point).GetComponent<LineRenderer>();
+                blueLine.material = Globals.BRIGHT_BLUE;
+                previewObjects.Add(blueLine.gameObject);
+            }
+        }
+
+    }
+
+    private static Material DistanceToColor(float distance)
+    {
+        if (distance < grenadeRedRange)
+            return Globals.BRIGHT_RED;
+        else if (distance < grenadeOrangeRange)
+            return Globals.ORANGE;
+        else if(distance < grenadeYellowRange)
+            return Globals.BRIGHT_YELLOW;
+
+        return Globals.BRIGHT_WHITE;
+    }
+
+    private static void PreviewGun()
+    {
+        Vector2 start = PlayerMover.instance.transform.position;
+        Vector2 direction = cursorPosition - start;
+        RaycastHit2D hit = Physics2D.Raycast(start, direction, 30, ~LayerMask.GetMask("Player"));
+
+        GameObject coneObject = new GameObject();
+        FieldOfView cone = coneObject.AddComponent<FieldOfView>();
+        cone.viewRadius = 30;
+        cone.viewAngle = 30;
+        coneObject.transform.position = start;
+        float destinationAngle = (int)Vector2.SignedAngle(Vector2.up, cursorPosition - start);
+        coneObject.transform.eulerAngles = new Vector3(0, 0, destinationAngle);
+        previewObjects.Add(coneObject);
+
+        LineRenderer renderer = DrawLine(start, hit.point).GetComponent<LineRenderer>();
+        renderer.material = Globals.BRIGHT_RED;
+        renderer.startWidth = renderer.endWidth = 0.07f;
+        previewObjects.Add(renderer.gameObject);
+    }
+
+    public static GameObject DrawLine(Vector2 shotOrigin, Vector2 hitPoint, Transform parent=null, float width=0.07f)
     {
         GameObject shotObject = new GameObject();
         if(parent != null)
@@ -234,6 +309,7 @@ public class ActionManager : MonoBehaviour
         LineRenderer shotLine = shotObject.AddComponent<LineRenderer>();
         shotLine.SetPositions(new Vector3[] { (Vector3)shotOrigin + new Vector3(0, 0, -1), (Vector3)hitPoint + new Vector3(0, 0, -1) });
 
+        shotLine.startWidth = shotLine.endWidth = width;
         shotLine.sortingLayerName = "Effects";
         // shotLine.material = Globals.brightWhite;
         // shotLine.startWidth = shotLine.endWidth = 0.07f;
@@ -241,10 +317,11 @@ public class ActionManager : MonoBehaviour
         return shotObject;
     }
 
-    public static GameObject DrawCircle(Vector2 center, float radius, int segments=50)
+    public static GameObject DrawCircle(Vector2 center, float radius, int segments=50, float width=0.07f)
     {
         GameObject circleObject = new GameObject();
         LineRenderer line = circleObject.AddComponent<LineRenderer>();
+        line.startWidth = line.endWidth = width;
         line.positionCount = segments + 1;
         line.sortingLayerName = "Effects";
 
@@ -255,10 +332,7 @@ public class ActionManager : MonoBehaviour
             float x = Mathf.Sin(Mathf.Deg2Rad * angle) * radius; // xRadius for ellipse
             float y = Mathf.Cos(Mathf.Deg2Rad * angle) * radius;
 
-            Debug.Log(new Vector2(x, y));
-
-            line.SetPosition(i, new Vector3(x, y, -1));
-
+            line.SetPosition(i, new Vector3(center.x + x, center.y + y, -1));
             angle += (360f / segments);
         }
 
@@ -269,9 +343,12 @@ public class ActionManager : MonoBehaviour
 
     public void _OnClick(Vector2 mousePosition)
     {
-        if (state == State.Confirm && selectedAction != Action.Gauze)
+        if (Sidebar.GetMenuPaused())
+            return;
+        
+        if (state == State.Aiming && selectedAction != Action.Gauze)
         {
-            Sidebar.instance.confirmButtons[1].interactable = true;
+            Sidebar.instance.actionConfirmButtons[1].interactable = true;
             cursor.SetActive(true);
             cursor.transform.position = new Vector3(mousePosition.x, mousePosition.y, -2);
             cursorPosition = mousePosition;

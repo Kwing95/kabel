@@ -78,9 +78,9 @@ public class Grapher : MonoBehaviour
         return graph[(int)point.y, (int)point.x];
     }
 
-    public static int ManhattanDistance(Vector2 pointA, Vector2 pointB)
+    public static float ManhattanDistance(Vector2 pointA, Vector2 pointB)
     {
-        return (int)(Mathf.Abs(pointA.x - pointB.x) + Mathf.Abs(pointA.y - pointB.y));
+        return Mathf.Abs(pointA.x - pointB.x) + Mathf.Abs(pointA.y - pointB.y);
     }
 
     private static bool PointIsClear(Vector2 point)
@@ -244,8 +244,10 @@ public class Grapher : MonoBehaviour
                 int alt = dist[(int)u.y, (int)u.x] + 1;
 
                 // If there is a maximum path length, adhere to it
+                // "Out of bounds" return empty list
                 if (maxPathLength != -1 && alt > maxPathLength)
                     return path;
+                    
 
                 if (alt < dist[(int)neighbors[v].y, (int)neighbors[v].x])
                 {

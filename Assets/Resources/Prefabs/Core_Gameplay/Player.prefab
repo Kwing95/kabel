@@ -117,8 +117,6 @@ GameObject:
   - component: {fileID: 1529958948040857633}
   - component: {fileID: 1529958948040857644}
   - component: {fileID: 1529958948040857635}
-  - component: {fileID: 3890057516698334028}
-  - component: {fileID: 3527596514183042670}
   - component: {fileID: 8515613969148716906}
   - component: {fileID: 8273678527297759423}
   - component: {fileID: 9187710994000035648}
@@ -236,34 +234,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.9, y: 0.9}
   m_EdgeRadius: 0
---- !u!114 &3890057516698334028
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1529958948040857645}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fcea1992ab928784d8c491d84c1a234c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  renderer: {fileID: 0}
---- !u!114 &3527596514183042670
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1529958948040857645}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7f69678d16df97e4281f7f183233ab4b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bar: {fileID: 0}
-  maxHealth: 3
-  maxFocus: 3
 --- !u!82 &8515613969148716906
 AudioSource:
   m_ObjectHideFlags: 0
@@ -414,7 +384,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f12da14ba2f4f1f4bb1f109dc29b2f99, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  healthIndicator: {fileID: 8610715957212856357}
+  healthIndicator: {fileID: 1933459305839369604}
   focusIndicator: {fileID: 5294319652000412122}
   maxHealth: 5
   maxFocus: 3
@@ -651,6 +621,12 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 3796805854739401149, guid: ccad962969062c34f845680c57b6eeb8,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: f387ad4fda4d7344e921003b7adfe3c6,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ccad962969062c34f845680c57b6eeb8, type: 3}
 --- !u!224 &4089918392152784883 stripped
@@ -659,3 +635,15 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 433774426232062055}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1933459305839369604 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2076183018125172195, guid: ccad962969062c34f845680c57b6eeb8,
+    type: 3}
+  m_PrefabInstance: {fileID: 433774426232062055}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa1e24117aacd28459d7587c9197dd84, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

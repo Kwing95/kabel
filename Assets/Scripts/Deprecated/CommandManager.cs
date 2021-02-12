@@ -163,7 +163,7 @@ public class CommandManager : MonoBehaviour
         switch (MenuManager.context)
         {
             case MenuManager.Context.MapMove:
-                int distance = Grapher.ManhattanDistance(PlayerMover.instance.transform.position, position);
+                int distance = (int)Grapher.ManhattanDistance(PlayerMover.instance.transform.position, position);
                 bool sprinting = MenuNode.GetCurrent() == "Sprint";
 
                 MenuManager.instance.ClearOptions();

@@ -21,6 +21,7 @@ public class FieldOfView : MonoBehaviour
     public float edgeDstThreshold;
     public string meshSortingLayer;
 
+    private MeshRenderer renderer;
     private MeshFilter viewMeshFilter;
     Mesh viewMesh;
 
@@ -31,7 +32,7 @@ public class FieldOfView : MonoBehaviour
         
         viewMeshFilter = gameObject.AddComponent<MeshFilter>();
 
-        MeshRenderer renderer = gameObject.AddComponent<MeshRenderer>();
+        renderer = gameObject.AddComponent<MeshRenderer>();
         renderer.material = Globals.WHITE;
         renderer.shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.Off;
         renderer.receiveShadows = false;
@@ -68,6 +69,29 @@ public class FieldOfView : MonoBehaviour
     void LateUpdate()
     {
         DrawFieldOfView();
+    }
+
+    // Change the material of the cone to match the alert level of the enemy
+    public void SetAlert(int alertLevel)
+    {
+        switch (alertLevel)
+        {
+            case 0:
+                SetMaterial(Globals.WHITE);
+                break;
+            case 1:
+                SetMaterial(Globals.YELLOW);
+                break;
+            case 2:
+                SetMaterial(Globals.RED);
+                break;
+        }
+    }
+
+    private void SetMaterial(Material material)
+    {
+        if(renderer.material != material)
+            renderer.material = material;
     }
 
     void FindVisibleTargets()
