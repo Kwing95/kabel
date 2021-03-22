@@ -10,20 +10,28 @@ public class UnitStatus : MonoBehaviour
 
     public int maxHealth = 3;
     public int maxFocus = 3;
+    public float gasDuration = 10;
     private int health;
     private int focus;
+    private float gasCounter = 0;
+    private bool isPlayer;
 
     // Start is called before the first frame update
     void Start()
     {
         health = maxHealth;
         focus = maxFocus;
+        isPlayer = GetComponent<PlayerMover>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        gasCounter -= Time.deltaTime;
+        if(gasCounter <= 0 && isPlayer)
+        {
+
+        }
     }
 
     public void Heal(int amount=1)
@@ -90,6 +98,21 @@ public class UnitStatus : MonoBehaviour
     {
         healthIndicator.SetColor(health);
         focusIndicator.SetColor(focus);
+    }
+
+    public void InflictGas()
+    {
+        gasCounter = gasDuration;
+        if (isPlayer)
+        {
+            // visionRadius.SetGassed(true);
+            // menu can query action button for enabled?
+        }
+    }
+
+    public bool IsGassed()
+    {
+        return gasCounter > 0;
     }
 
 }

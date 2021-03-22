@@ -6,6 +6,7 @@ public class EnemyList : MonoBehaviour
 {
 
     public static EnemyList instance;
+    public static List<GameObject> unitList;
     //public static int numEnemies = 0;
 
     // Start is called before the first frame update

@@ -12,6 +12,7 @@ using Random = UnityEngine.Random;
 
 public class ActionManager : MonoBehaviour
 {
+
     [Serializable]
     public enum State { Moving, ActionPause, Aiming, ConfirmMove, Acting }
     private static State state;
@@ -19,9 +20,10 @@ public class ActionManager : MonoBehaviour
 
     [Serializable]
     // 0 Gun, 1 Frag, 2 Smoke, 3 Stun, 4 Distract, 5 Gauze, 6 Backstab
-    public enum Action { Gun, Frag, Smoke, Stun, Distract, Gauze, Backstab };
+    public enum Action { Gun, Frag, Smoke, Gas, Distract, Gauze, Backstab };
     private static Action selectedAction;
     private static Vector2 cursorPosition;
+    private static Vector2 attackPosition;
     private static GameObject cursor;
     private static List<GameObject> previewObjects;
     private static ActionManager instance;
@@ -29,6 +31,20 @@ public class ActionManager : MonoBehaviour
     private static float grenadeRedRange = 1.5f;
     private static float grenadeOrangeRange = 3f;
     private static float grenadeYellowRange = 4.5f;
+
+    /*
+     Quick reference
+       Click Action: ActionPause true, SetState actionPause, ShowMenu 1
+       Click Firearm: ShowMenu 3, SelectAction Gun, SetState Aiming
+       Click Confirm: StartAction
+            StartAction calls ExecuteAction in ActionManager; implementation inside switch/case
+
+        Previewing grenades:
+            Frag - Show damage rings
+            Stun - Show damage (stun) rings
+            Smoke - Show circle
+         
+         */
 
     // Start is called before the first frame update
     void Start()
@@ -39,12 +55,12 @@ public class ActionManager : MonoBehaviour
         cursor.SetActive(false);
         previewObjects = new List<GameObject>();
 
-        ClickManager.handler += _OnClick;
+        ClickManager.releaseHandler += _OnClick;
     }
 
     private void OnDestroy()
     {
-        ClickManager.handler -= _OnClick;
+        ClickManager.releaseHandler -= _OnClick;
     }
 
     // STATE MANAGERS ==========================================================
@@ -60,12 +76,14 @@ public class ActionManager : MonoBehaviour
 
         if (state != State.Aiming && state != State.ConfirmMove)
         {
+            // When navigating away from aiming, preview UI must reset
             Sidebar.instance.actionConfirmButtons[1].interactable = false;
             ClearPreview();
             cursor.SetActive(false);
         }
         else if (state == State.Moving)
         {
+            // Unpause action if state is Moving
             Sidebar.instance.ActionPause(false);
         }
     }
@@ -90,34 +108,20 @@ public class ActionManager : MonoBehaviour
 
     // ACTION FUNCTIONS ========================================================
 
-    public static void TakeAction(GameObject unit, Vector2 target, Action action)
-    {
-        switch (action)
-        {
-            case Action.Backstab:
-                break;
-            case Action.Distract:
-                break;
-            case Action.Frag:
-                break;
-            case Action.Gauze:
-                break;
-            case Action.Gun:
-                Gun(unit, target);
-                break;
-            case Action.Smoke:
-                break;
-            case Action.Stun:
-                break;
-        }
-    }
-
     public static void ExecuteAction()
     {
         switch (selectedAction)
         {
             case Action.Gun:
                 instance.StartCoroutine(instance.Gun(PlayerMover.instance.gameObject, cursorPosition, 3));
+                break;
+            case Action.Frag:
+                instance.StartCoroutine(instance.Grenade(PlayerMover.instance.gameObject, attackPosition));
+                break;
+            case Action.Smoke:
+                break;
+            case Action.Gas:
+                instance.StartCoroutine(instance.GasGrenade(PlayerMover.instance.gameObject, attackPosition));
                 break;
         }
     }
@@ -170,15 +174,13 @@ public class ActionManager : MonoBehaviour
                 targetHit.DamageHealth(); // formerly memberIndex
             }
 
-            GameObject noise = Globals.NOISE;
-            GameObject tempNoise = Instantiate(noise, unit.transform.position, Quaternion.identity);
+            GameObject tempNoise = Instantiate(Globals.NOISE, unit.transform.position, Quaternion.identity);
             tempNoise.GetComponent<Noise>().Initialize(unit.CompareTag("Player"), 10);
 
             // Create and format line
-            GameObject shotLine = DrawLine(shotOrigin, hit.point, unit.transform);
+            GameObject shotLine = DrawLine(shotOrigin, hit.point, Globals.BRIGHT_WHITE, unit.transform);
             shotLine.transform.parent = unit.transform;
             LineRenderer shotRenderer = shotLine.GetComponent<LineRenderer>();
-            shotRenderer.material = Globals.BRIGHT_WHITE;
             shotRenderer.startWidth = shotRenderer.endWidth = 0.07f;
 
             shotLine.AddComponent<AutoVanish>().timeToLive = 0.1f;
@@ -210,50 +212,109 @@ public class ActionManager : MonoBehaviour
                 break;
             case Action.Frag:
             case Action.Smoke:
-            case Action.Stun:
+            case Action.Gas:
                 PreviewGrenade();
                 break;
         }
 
     }
 
+    private static void PreviewSmoke()
+    {
+
+    }
+
+    public IEnumerator Grenade(GameObject unit, Vector2 target)
+    {
+        // Animate grenade
+        GameObject grenadeSprite = Instantiate(Globals.PROJECTILE, unit.transform.position, Quaternion.identity);
+        grenadeSprite.GetComponent<PointFollower>().target = target;
+
+        yield return new WaitForSeconds(1);
+
+        GameObject explosion = Instantiate(Globals.EXPLOSION, target, Quaternion.identity);
+        explosion.transform.localScale = (0.2f + (0.4f * grenadeYellowRange)) * Vector2.one;
+
+        GameObject tempNoise = Instantiate(Globals.NOISE, target, Quaternion.identity);
+        tempNoise.GetComponent<Noise>().Initialize(unit.CompareTag("Player"), 10);
+
+        List<GameObject> units = EnemyList.GetAllUnits();
+        foreach(GameObject elt in units)
+        {
+            UnitStatus status = elt.GetComponent<UnitStatus>();
+            if (status)
+                status.DamageHealth(DistanceToLevel(Vector2.Distance(elt.transform.position, target)));
+        }
+
+        if (unit.GetComponent<PlayerMover>())
+        {
+            yield return new WaitForSeconds(0.25f);
+            Sidebar.instance.FinishAction();
+        }
+    }
+
+    public IEnumerator GasGrenade(GameObject unit, Vector2 target)
+    {
+        // Animate grenade
+        GameObject grenadeSprite = Instantiate(Globals.PROJECTILE, unit.transform.position, Quaternion.identity);
+        grenadeSprite.GetComponent<PointFollower>().target = target;
+
+        yield return new WaitForSeconds(1);
+
+        GameObject explosion = Instantiate(Globals.EXPLOSION, target, Quaternion.identity);
+        explosion.transform.localScale = (0.2f + (0.4f * grenadeYellowRange)) * Vector2.one;
+
+        GameObject tempNoise = Instantiate(Globals.NOISE, target, Quaternion.identity);
+        tempNoise.GetComponent<Noise>().Initialize(unit.CompareTag("Player"), 5);
+
+        GameObject gasCloud = Instantiate(Globals.GAS_CLOUD, target, Quaternion.identity);
+
+        if (unit.GetComponent<PlayerMover>())
+        {
+            yield return new WaitForSeconds(0.25f);
+            Sidebar.instance.FinishAction();
+        }
+    }
+
     private static void PreviewGrenade()
     {
+        // Generate point where grenade will land
         Vector2 playerPosition = PlayerMover.instance.transform.position;
         float distance = Vector2.Distance(playerPosition, cursorPosition);
         RaycastHit2D throwHit = Physics2D.Raycast(playerPosition, cursorPosition - playerPosition, Mathf.Min(10, distance), ~LayerMask.GetMask("Player"));
         Vector2 center = throwHit.collider == null ? cursorPosition : throwHit.point;
+        attackPosition = center;
 
-        LineRenderer throwLine = DrawLine(playerPosition, center).GetComponent<LineRenderer>();
-        throwLine.material = DistanceToColor(distance);
-        previewObjects.Add(throwLine.gameObject);
+        int damageLevel = DistanceToLevel(Vector2.Distance(playerPosition, center));
 
-        LineRenderer redCircle = DrawCircle(center, grenadeRedRange).GetComponent<LineRenderer>();
-        redCircle.material = Globals.BRIGHT_RED;
-        previewObjects.Add(redCircle.gameObject);
-        
-        LineRenderer orangeCircle = DrawCircle(center, grenadeOrangeRange).GetComponent<LineRenderer>();
-        orangeCircle.material = Globals.ORANGE;
-        previewObjects.Add(orangeCircle.gameObject);
+        if (selectedAction != Action.Frag)
+        {
+            previewObjects.Add(DrawLine(playerPosition, center, damageLevel > 0 ? Globals.BRIGHT_RED : Globals.BRIGHT_WHITE)); // player-to-grenade line
+            previewObjects.Add(DrawCircle(center, grenadeYellowRange, Globals.BRIGHT_WHITE));
+            return;
+        }
 
-        LineRenderer yellowCircle = DrawCircle(center, grenadeYellowRange).GetComponent<LineRenderer>();
-        yellowCircle.material = Globals.BRIGHT_YELLOW;
-        previewObjects.Add(yellowCircle.gameObject);
+        previewObjects.Add(DrawLine(playerPosition, center, LevelToColor(damageLevel))); // player-to-grenade line
+        previewObjects.Add(DrawCircle(center, grenadeYellowRange, Globals.BRIGHT_YELLOW));
+        previewObjects.Add(DrawCircle(center, grenadeOrangeRange, Globals.ORANGE));
+        previewObjects.Add(DrawCircle(center, grenadeRedRange, Globals.BRIGHT_RED));
 
         // Circle should emanate from throw point, not cursor pos
-        
+        // Does this include player?
         List<GameObject> units = EnemyList.GetAllEnemies();
         foreach(GameObject unit in units)
         {
-            if (Vector2.Distance(unit.transform.position, center) > grenadeYellowRange)
+            damageLevel = DistanceToLevel(Vector2.Distance(unit.transform.position, center));
+            if (damageLevel == 0)
                 continue;
 
             RaycastHit2D hit = Physics2D.Raycast(center, (Vector2)unit.transform.position - center, grenadeYellowRange);
             if(hit.collider != null && hit.collider.gameObject == unit)
             {
+                // Possibly use ternary for damage/stunTime with smoke/stun grenade, OR use damage for both
                 LineRenderer hitLine = DrawLine(center, unit.transform.position).GetComponent<LineRenderer>();
                 distance = Vector2.Distance(center, unit.transform.position);
-                hitLine.material = DistanceToColor(distance);
+                hitLine.material = LevelToColor(damageLevel);
 
                 previewObjects.Add(hitLine.gameObject);
             }
@@ -267,16 +328,34 @@ public class ActionManager : MonoBehaviour
 
     }
 
-    private static Material DistanceToColor(float distance)
+    // Converts distance from grenade to target to damage level (0 = miss, 3 = point-blank)
+    private static int DistanceToLevel(float distance)
     {
         if (distance < grenadeRedRange)
-            return Globals.BRIGHT_RED;
+            return 3;
         else if (distance < grenadeOrangeRange)
-            return Globals.ORANGE;
-        else if(distance < grenadeYellowRange)
-            return Globals.BRIGHT_YELLOW;
+            return 2;
+        else if (distance < grenadeYellowRange)
+            return 1;
 
-        return Globals.BRIGHT_WHITE;
+        return 0;
+    }
+
+    // Converts damage level (see DistanceToLevel() to corresponding material color)
+    private static Material LevelToColor(int level)
+    {
+        switch (level)
+        {
+            case 1:
+                return Globals.BRIGHT_YELLOW;
+            case 2:
+                return Globals.ORANGE;
+            case 3:
+                return Globals.BRIGHT_RED;
+            case 0:
+            default:
+                return Globals.BRIGHT_WHITE;
+        }
     }
 
     private static void PreviewGun()
@@ -300,7 +379,7 @@ public class ActionManager : MonoBehaviour
         previewObjects.Add(renderer.gameObject);
     }
 
-    public static GameObject DrawLine(Vector2 shotOrigin, Vector2 hitPoint, Transform parent=null, float width=0.07f)
+    public static GameObject DrawLine(Vector2 shotOrigin, Vector2 hitPoint, Material material=null, Transform parent=null, float width=0.07f)
     {
         GameObject shotObject = new GameObject();
         if(parent != null)
@@ -311,16 +390,17 @@ public class ActionManager : MonoBehaviour
 
         shotLine.startWidth = shotLine.endWidth = width;
         shotLine.sortingLayerName = "Effects";
-        // shotLine.material = Globals.brightWhite;
+        shotLine.material = (material == null ? Globals.BRIGHT_WHITE : material);
         // shotLine.startWidth = shotLine.endWidth = 0.07f;
 
         return shotObject;
     }
 
-    public static GameObject DrawCircle(Vector2 center, float radius, int segments=50, float width=0.07f)
+    public static GameObject DrawCircle(Vector2 center, float radius, Material material, int segments=50, float width=0.07f)
     {
         GameObject circleObject = new GameObject();
         LineRenderer line = circleObject.AddComponent<LineRenderer>();
+        line.material = material;
         line.startWidth = line.endWidth = width;
         line.positionCount = segments + 1;
         line.sortingLayerName = "Effects";
@@ -342,10 +422,7 @@ public class ActionManager : MonoBehaviour
     // LISTENERS ===============================================================
 
     public void _OnClick(Vector2 mousePosition)
-    {
-        if (Sidebar.GetMenuPaused())
-            return;
-        
+    {        
         if (state == State.Aiming && selectedAction != Action.Gauze)
         {
             Sidebar.instance.actionConfirmButtons[1].interactable = true;

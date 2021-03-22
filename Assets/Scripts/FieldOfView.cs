@@ -12,6 +12,7 @@ public class FieldOfView : MonoBehaviour
 
     public LayerMask targetMask;
     public LayerMask obstacleMask;
+    public Material defaultMaterial;
 
     [HideInInspector]
     public List<Transform> visibleTargets = new List<Transform>();
@@ -21,11 +22,11 @@ public class FieldOfView : MonoBehaviour
     public float edgeDstThreshold;
     public string meshSortingLayer;
 
-    private MeshRenderer renderer;
+    private new MeshRenderer renderer;
     private MeshFilter viewMeshFilter;
     Mesh viewMesh;
 
-    void Start()
+    void Awake()
     {
         if (useDefaultSettings)
             RestoreDefaultSettings();
@@ -33,7 +34,7 @@ public class FieldOfView : MonoBehaviour
         viewMeshFilter = gameObject.AddComponent<MeshFilter>();
 
         renderer = gameObject.AddComponent<MeshRenderer>();
-        renderer.material = Globals.WHITE;
+        renderer.material = defaultMaterial;
         renderer.shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.Off;
         renderer.receiveShadows = false;
         renderer.sortingLayerName = meshSortingLayer;

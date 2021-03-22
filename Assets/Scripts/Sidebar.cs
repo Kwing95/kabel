@@ -19,10 +19,11 @@ public class Sidebar : MonoBehaviour
     public enum Menu { Main, Action, Grenade, Confirm };
     private List<int> menuPath;
 
-    public List<Button> mainButtons;
+    public List<Button> allButtons;
     public List<Button> actionConfirmButtons;
     public List<Button> moveConfirmButtons;
     public List<Button> zoomButtons;
+    public Button actionButton;
 
     public List<Image> moveIcons;
     public Image pauseDisplay;
@@ -36,17 +37,17 @@ public class Sidebar : MonoBehaviour
     private static bool actionPaused = false;
     private static bool running = false;
 
-    private new Zoomer camera;
+    private Zoomer zoomer;
 
     // Start is called before the first frame update
     void Start()
     {
         instance = this;
         menuPath = new List<int>();
-        currentZoom = cameraZooms.Count - 1;
+        zoomer = Camera.main.GetComponent<Zoomer>();
+        currentZoom = 0;
         ZoomOut();
         RefreshRunning();
-        camera = Camera.main.GetComponent<Zoomer>();
     }
 
     // Update is called once per frame
@@ -57,8 +58,8 @@ public class Sidebar : MonoBehaviour
 
     public void ZoomIn()
     {
-        if(currentZoom > 0)
-            camera.destinationZoom = cameraZooms[--currentZoom];
+        if (currentZoom > 0)
+            zoomer.SetDestination(cameraZooms[--currentZoom]);
 
         zoomButtons[1].interactable = true;
         RefreshZoomButtons();
@@ -67,7 +68,7 @@ public class Sidebar : MonoBehaviour
     public void ZoomOut()
     {
         if (currentZoom < cameraZooms.Count - 1)
-            camera.destinationZoom = cameraZooms[++currentZoom];
+            zoomer.SetDestination(cameraZooms[++currentZoom]);
 
         zoomButtons[0].interactable = true;
         RefreshZoomButtons();
@@ -86,12 +87,12 @@ public class Sidebar : MonoBehaviour
     {
         menuPaused = !menuPaused;
 
-
         // SetState(menuPaused ? ActionManager.State.MenuPause : );
-        foreach (Button button in mainButtons)
-            button.interactable = !menuPaused;
+        foreach (Button button in allButtons)
+            button.gameObject.SetActive(!menuPaused);
+            // button.interactable = !menuPaused;
 
-        mainButtons[3].interactable = canAttack && !menuPaused;
+        actionButton.interactable = canAttack && !menuPaused;
         if (!menuPaused)
             RefreshZoomButtons();
 
@@ -102,9 +103,9 @@ public class Sidebar : MonoBehaviour
     // Disable the action button for a bit following an action
     public IEnumerator DisableActions()
     {
-        mainButtons[3].interactable = canAttack = false;
+        actionButton.interactable = canAttack = false;
         yield return new WaitForSeconds(actionCooldown);
-        mainButtons[3].interactable = canAttack = true;
+        actionButton.interactable = canAttack = true;
     }
 
     // Pauses the player and all enemies (does not modify timeScale)

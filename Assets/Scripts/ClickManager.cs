@@ -8,11 +8,16 @@ using UnityEngine.EventSystems;
 public class ClickManager : MonoBehaviour
 {
     public delegate void ClickHandler(Vector2 position);
-    public static ClickHandler handler;
+    public static ClickHandler pressHandler;
+    public static ClickHandler releaseHandler;
 
+    private static float minDragLength = 1;
     private static bool isMobile = false;
     private static bool mouseDown = false;
     private static bool initialClick = true;
+    private static bool uiClick = false;
+    private static bool hasDragged = false;
+    private Vector2 initialPosition;
 
     // Start is called before the first frame update
     void Start()
@@ -24,22 +29,44 @@ public class ClickManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetMouseButton(0) && initialClick && !MouseOverUI())
+        // On press
+        if (Input.GetMouseButton(0))
         {
-            initialClick = false;
+            if (initialClick)
+            {
+                uiClick = MouseOverUI();
+                initialClick = false;
+                initialPosition = Camera.main.transform.position;
+                initialClick = false;
+                hasDragged = false;
 
-            handler(GetMousePosition());
+                if (uiClick)
+                    return;
 
-            /**
-            // Testing enemy response to noise
-            GameObject tempNoise = Instantiate(Globals.NOISE, transform.position, Quaternion.identity);
-            tempNoise.transform.position = GetMousePosition();
-            tempNoise.GetComponent<Noise>().Initialize(true, 3.5f);
-            /**/
+                pressHandler?.Invoke(GetMousePosition());
+
+                /**
+                // Testing enemy response to noise
+                GameObject tempNoise = Instantiate(Globals.NOISE, transform.position, Quaternion.identity);
+                tempNoise.transform.position = GetMousePosition();
+                tempNoise.GetComponent<Noise>().Initialize(true, 3.5f);
+                /**/
+            }
+            if(Vector2.Distance(initialPosition, Camera.main.transform.position) >= minDragLength)
+            {
+                hasDragged = true;
+            }
         }
 
         if (!Input.GetMouseButton(0))
+        {
+            if (!initialClick && !hasDragged && !uiClick)
+            {
+                releaseHandler?.Invoke(GetMousePosition());
+            }
+            
             initialClick = true;
+        }
     }
 
     public static Vector2 GetMousePosition()
@@ -77,6 +104,11 @@ public class ClickManager : MonoBehaviour
             return EventSystem.current.IsPointerOverGameObject(Input.GetTouch(0).fingerId);
         else
             return EventSystem.current.IsPointerOverGameObject();
+    }
+
+    public static bool IsDrag(Vector2 pressPosition, Vector2 releasePosition)
+    {
+        return Vector2.Distance(pressPosition, releasePosition) > minDragLength;
     }
 
 }

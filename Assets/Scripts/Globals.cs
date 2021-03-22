@@ -7,9 +7,12 @@ public class Globals : MonoBehaviour
 
     // PREFABS
     public static readonly GameObject CORPSE = Resources.Load<GameObject>("Prefabs/Core_Gameplay/Corpse");
+    public static readonly GameObject EXPLOSION = Resources.Load<GameObject>("Prefabs/Core_Gameplay/Explosion");
     public static readonly GameObject NOISE = Resources.Load<GameObject>("Prefabs/Core_Gameplay/Noise");
+    public static readonly GameObject PROJECTILE = Resources.Load<GameObject>("Prefabs/Core_Gameplay/Projectile");
     public static readonly GameObject CURSOR = Resources.Load<GameObject>("Prefabs/UI/Cursor");
     public static readonly GameObject WAYPOINT = Resources.Load<GameObject>("Prefabs/UI/Waypoint");
+    public static readonly GameObject GAS_CLOUD = Resources.Load<GameObject>("Prefabs/Core_Gameplay/Gas_Cloud");
 
     // MATERIALS
     public static readonly Material WHITE = Resources.Load<Material>("Materials/White");

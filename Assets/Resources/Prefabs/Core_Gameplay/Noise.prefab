@@ -11,6 +11,8 @@ GameObject:
   - component: {fileID: 2668141482787250843}
   - component: {fileID: 2668141482787250842}
   - component: {fileID: 8733181632254924444}
+  - component: {fileID: 4855644702613849585}
+  - component: {fileID: 8302931597466615989}
   m_Layer: 0
   m_Name: Noise
   m_TagString: Sound
@@ -94,3 +96,28 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   friendly: 1
   hearDistance: 3.3
+--- !u!114 &4855644702613849585
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2668141482787250845}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80dac0cc441216542bc9e71d1b1af8aa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  growthRate: 1
+--- !u!114 &8302931597466615989
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2668141482787250845}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 841338265d7da774992839dfd46593cc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

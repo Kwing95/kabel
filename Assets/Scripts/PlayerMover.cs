@@ -35,13 +35,13 @@ public class PlayerMover : MonoBehaviour
         mover = GetComponent<GridMover>();
         nav = GetComponent<Navigator>();
 
-        ClickManager.handler += _OnClick;
+        ClickManager.releaseHandler += _OnClick;
         // ClickHandler.DetectPlatform();
     }
 
     private void OnDestroy()
     {
-        ClickManager.handler -= _OnClick;
+        ClickManager.releaseHandler -= _OnClick;
     }
 
     // Update is called once per frame
@@ -67,7 +67,10 @@ public class PlayerMover : MonoBehaviour
     public void _OnClick(Vector2 mousePosition)
     {
         ActionManager.State state = ActionManager.GetState();
-        if (state != ActionManager.State.Moving && state != ActionManager.State.ConfirmMove)
+        if (state != ActionManager.State.Moving && state != ActionManager.State.ConfirmMove && state != ActionManager.State.Acting)
+            return;
+
+        if (Sidebar.GetMenuPaused())
             return;
 
         float distance = Vector2.Distance(transform.position, mousePosition);

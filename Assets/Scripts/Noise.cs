@@ -9,12 +9,11 @@ public class Noise : MonoBehaviour
     public float hearDistance = 3.3f;
     private GameObject enemies;
     //private CircleCollider2D collider;
-    private Color color;
 
     // Start is called before the first frame update
     void Start()
     {
-        color = GetComponent<SpriteRenderer>().color;
+
     }
 
     public void Initialize(bool isFriendly, float volume)
@@ -52,10 +51,6 @@ public class Noise : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.localScale = transform.localScale + (Vector3.one * Time.deltaTime);
-        color.a -= 0.5f * Time.deltaTime;
-        GetComponent<SpriteRenderer>().color = color;
-        if (color.a <= 0)
-            Destroy(gameObject);
+
     }
 }

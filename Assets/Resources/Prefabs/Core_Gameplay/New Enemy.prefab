@@ -186,7 +186,7 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
+  m_MaskInteraction: 1
   m_SpriteSortPoint: 0
 --- !u!114 &5664321338174155051
 MonoBehaviour:
@@ -337,8 +337,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   route: []
-  alarm: {fileID: 8300000, guid: 40901cb731189ce48b4e4f2f7c23384b, type: 3}
-  punch: {fileID: 8300000, guid: fce0cbffcf5adc249b88745fd600f404, type: 3}
+  leashLength: -1
+  randomPatrol: 0
+  pointMemory: 0
   sightDistance: 10
   attackRate: 1
 --- !u!114 &8545447538481007053
@@ -483,6 +484,7 @@ MonoBehaviour:
   focusIndicator: {fileID: 8396739959346617829}
   maxHealth: 3
   maxFocus: 3
+  gasDuration: 10
 --- !u!114 &1333094116810465314
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -554,6 +556,7 @@ MonoBehaviour:
   obstacleMask:
     serializedVersion: 2
     m_Bits: 1
+  defaultMaterial: {fileID: 2100000, guid: ec6141ad00ea94541a30dcbb49feb2b1, type: 2}
   visibleTargets: []
   meshResolution: 1
   edgeResolveIterations: 4

@@ -93,6 +93,48 @@ February 11, 2021
  + Enemies may add up to [pointsMemory] points to a patrol
  - Enemies sometimes freeze in Suspicious when chasing (UNKNOWN)
 
+February 21, 2021
+ + Most buttons permanently docked on right side of screen
+ + Mask to hide things outside player's field of view; augmented camera zoom levels
+ + Player can set destination during attack phase
+ + All lbuttons except pause hidden during true pause
+
+February 25, 2021
+ + Refactored zoom code to accomodate PanZoom
+ + ClickManager differentiates press and release now
+ + Can pan around map, snaps again when player moves
+ + Pinch zoom implemented for mobile
+ + Zoomer and Follower can pause depending on PanZoom state
+ + Interactions trigger on release instead of on press
+
+March 1, 2021
+ + Refactored some ActionManager code
+ + Can no longer drag and return camera to release
+
+March 8, 2021
+ + Incomplete grenade implementation
+
+March 10, 2021
+ + Grenade rolling animation
+ + Noise now has visual effects moved to Fader and Expander
+
+March 14, 2021
+ + Grenade damage fixed
+ + Fixed issues with UI clicks registered as world clicks
+
+March 21, 2021
+ + Units can interact with tear gas clouds
+
+ - Enemies sometimes freeze during patrol (yellow cone)
+ - Tear gas was invented in 20s; rubber bullets, mace, and stun grenades not until 60s and later
+ - Grenade can sometimes be thrown infinite distance (probably when aiming farther than max)
+ - Enable console/keyboard controls
+    D-pad to move           X to act/confirm        O to cancel     L1/R1 to zoom
+    Square to walk/run      Start to pause          R stick to pan
+ - Disable on release if camera is dragged but returned to same point
+ - Possibly refactor PanZoom to use ClickManager, refactor ClickManager for general use?
+
+ - Stealth kill for stationary enemies?
  - Let enemies "take cover"; find area with no line of sight to player
  - Touching enemies is weird (not important if sound is added for walking too)
  - Enemies can probably hit overlapping enemies (make gun start projected one tile out)
