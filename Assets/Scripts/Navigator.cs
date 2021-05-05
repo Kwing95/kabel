@@ -19,12 +19,16 @@ public class Navigator : MonoBehaviour
     // AutoMover also uses it to see if destination is unobstructed
     private Vector2 destination;
     private bool running = false;
+    [SerializeField]
     private bool pausePathFinding = false;
     private GameObject waypoint;
 
+    [SerializeField]
     private List<Vector2> path;
     private int pathProgress = 1; // Index along path currently being navigated to
+    [SerializeField]
     private bool destinationQueued = false; // Happens when destination has been changed but path has not been generated yet
+    [SerializeField]
     private bool idle = true; // Set to true after Navigator finishes moving along path
 
     private int nonce = 0;
@@ -63,7 +67,7 @@ public class Navigator : MonoBehaviour
             {
                 if (waypointEnabled)
                     Destroy(waypoint);
-                pausePathFinding = true;
+                Pause(true);
             }
         }
 
@@ -86,7 +90,7 @@ public class Navigator : MonoBehaviour
                 else
                 {
                     // Upon losing sight of player or reaching waypoint
-                    idle = true;
+                    SetIdle(true);
                 }
             }
         }
@@ -116,9 +120,10 @@ public class Navigator : MonoBehaviour
         running = run; // check
         destination = dest;
         destinationQueued = true; // only needed while single-threading
-        idle = false; // check
+        SetIdle(false); // check
 
-        pausePathFinding = false; // check
+        Pause(false); // check
+
     }
 
     // Multi-threaded implementation
@@ -152,8 +157,8 @@ public class Navigator : MonoBehaviour
             path = newPath;
             pathProgress = 1;
             running = run;
-            idle = false;
-            pausePathFinding = false;
+            SetIdle(false);
+            Pause(false);
         }
     }
 
@@ -170,6 +175,11 @@ public class Navigator : MonoBehaviour
     public int GetPathLength()
     {
         return path.Count;
+    }
+
+    public void SetIdle(bool value)
+    {
+        idle = value;
     }
 
     // Used to determine what AutoMover does when enemy is idle

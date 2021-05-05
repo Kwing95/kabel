@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Globals : MonoBehaviour
 {
+    // CONSTANTS
+    public static readonly int INFINITY = 1073741823;
 
     // PREFABS
     public static readonly GameObject CORPSE = Resources.Load<GameObject>("Prefabs/Core_Gameplay/Corpse");

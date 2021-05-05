@@ -37,6 +37,7 @@ public class AutoMover : MonoBehaviour
     private FieldOfView fieldOfView;
 
     public enum State { Stun, Idle, Confuse, Suspicious, Alert } // stun 0, alert 4
+    [SerializeField]
     private State awareness;
     // PRIORITY: Stun > Alert > Suspicious > Idle
     // Idle -> Suspicious, Alert, Stun              Standing, patroling, or returning to patrol
@@ -213,6 +214,8 @@ public class AutoMover : MonoBehaviour
         navigator.SetDestination(GetDestination(), false); // comment out?
         canAddPoints = true;
         SetAwareness(State.Idle);
+        navigator.SetIdle(true);
+        navigator.Pause(false);
     }
     
     private Vector2 GetDestination()
@@ -282,14 +285,14 @@ public class AutoMover : MonoBehaviour
             if (canAddPoints && pointMemory > 0)
             {
                 canAddPoints = false;
-                extraPoints.Add(player.transform.position);
+                extraPoints.Add(Grapher.RoundedVector(player.transform.position));
                 if (extraPoints.Count > pointMemory)
                     extraPoints.RemoveAt(0);
             }
             SetAwareness(State.Alert);
             // Don't chase player when close
 
-            bool tooClose = Grapher.ManhattanDistance(player.transform.position, transform.position) <= 4;
+            bool tooClose = ClearView(player.GetDiscretePosition()) && Grapher.ManhattanDistance(player.transform.position, transform.position) <= 4;
             if (tooClose || tooFar)
             {
                 navigator.Pause();
@@ -342,6 +345,11 @@ public class AutoMover : MonoBehaviour
                 fieldOfView.SetAlert(2);
                 break;
         }
+    }
+
+    public State GetAwareness()
+    {
+        return awareness;
     }
 
 }

@@ -125,6 +125,20 @@ March 14, 2021
 March 21, 2021
  + Units can interact with tear gas clouds
 
+May 3, 2021
+ + Knife implemented
+
+May 4, 2021
+ + Fixes to AI freeze: Set idle to true and pause to false, ensured extraPoints were integers
+ + Fixes to AI stopping: If enemy can't see player's NEXT point, investigate that point
+
+ - Reproduce AI freeze: Let enemy see you at close range, walk around corner. Note navigator idle bool is false
+    Point memory? Doesn't look like it, problem remains with pointMemory = 0
+    pausePathFinding sometimes true, path count sometimes 0
+    path count 0 when destination is non-integer
+    pausePathFinding stuck to true if LookAround is called twice?
+    navigator wouldn't set destination because destination was a duplicate, so Pause(false) was never run
+
  - Enemies sometimes freeze during patrol (yellow cone)
  - Tear gas was invented in 20s; rubber bullets, mace, and stun grenades not until 60s and later
  - Grenade can sometimes be thrown infinite distance (probably when aiming farther than max)

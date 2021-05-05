@@ -20,7 +20,7 @@ public class ActionManager : MonoBehaviour
 
     [Serializable]
     // 0 Gun, 1 Frag, 2 Smoke, 3 Stun, 4 Distract, 5 Gauze, 6 Backstab
-    public enum Action { Gun, Frag, Smoke, Gas, Distract, Gauze, Backstab };
+    public enum Action { Gun, Frag, Smoke, Gas, Distract, Gauze, Knife };
     private static Action selectedAction;
     private static Vector2 cursorPosition;
     private static Vector2 attackPosition;
@@ -31,6 +31,7 @@ public class ActionManager : MonoBehaviour
     private static float grenadeRedRange = 1.5f;
     private static float grenadeOrangeRange = 3f;
     private static float grenadeYellowRange = 4.5f;
+    private static float knifeRange = 3;
 
     /*
      Quick reference
@@ -123,9 +124,13 @@ public class ActionManager : MonoBehaviour
             case Action.Gas:
                 instance.StartCoroutine(instance.GasGrenade(PlayerMover.instance.gameObject, attackPosition));
                 break;
+            case Action.Knife:
+                instance.StartCoroutine(instance.Knife(PlayerMover.instance.gameObject, cursorPosition));
+                break;
         }
     }
 
+    // Coroutine for player firing gun
     public IEnumerator Gun(GameObject unit, Vector2 target, int numShots)
     {
         for(int i = 0; i < numShots; ++i)
@@ -137,6 +142,7 @@ public class ActionManager : MonoBehaviour
         Sidebar.instance.FinishAction();
     }
 
+    // Single gunshot, usable by both player and enemy
     public static void Gun(GameObject unit, Vector2 target)
     {
         // Prevent attacker from hitting themselves
@@ -205,7 +211,8 @@ public class ActionManager : MonoBehaviour
 
         switch (selectedAction)
         {
-            case Action.Backstab:
+            case Action.Knife:
+                PreviewKnife();
                 break;
             case Action.Gun:
                 PreviewGun();
@@ -274,6 +281,66 @@ public class ActionManager : MonoBehaviour
             yield return new WaitForSeconds(0.25f);
             Sidebar.instance.FinishAction();
         }
+    }
+
+    public IEnumerator Knife(GameObject unit, Vector2 target)
+    {
+        Vector2 origin = unit.transform.position;
+        Vector2 direction = target - (Vector2)unit.transform.position;
+        RaycastHit2D hit = Physics2D.Raycast(origin, direction, knifeRange, ~LayerMask.GetMask("Player"));
+
+        if (hit.collider != null)
+        {
+            UnitStatus targetHit = hit.collider.GetComponent<UnitStatus>();
+            UnitStatus attacker = unit.GetComponent<UnitStatus>();
+            if (targetHit != null)
+            {
+                targetHit.DamageHealth(3);
+                // There is a risk of being hurt attempting to knife an enemy
+                if(attacker && Random.Range(0, 11) == 0)
+                    attacker.DamageHealth(1);
+            }
+
+            // May want to make amount of noise random
+            GameObject tempNoise = Instantiate(Globals.NOISE, unit.transform.position, Quaternion.identity);
+            tempNoise.GetComponent<Noise>().Initialize(unit.CompareTag("Player"), 5);
+
+            // Create and format line
+            GameObject shotLine = DrawLine(origin, hit.point, Globals.BRIGHT_RED, unit.transform);
+            shotLine.transform.parent = unit.transform;
+            LineRenderer shotRenderer = shotLine.GetComponent<LineRenderer>();
+            shotRenderer.startWidth = shotRenderer.endWidth = 0.07f;
+
+            shotLine.AddComponent<AutoVanish>().timeToLive = 0.1f;
+        }
+
+        yield return new WaitForSeconds(0.25f);
+        Sidebar.instance.FinishAction();
+    }
+
+    private static void PreviewKnife()
+    {
+        Vector2 start = PlayerMover.instance.transform.position;
+        Vector2 direction = cursorPosition - start;
+        RaycastHit2D hit = Physics2D.Raycast(start, direction, knifeRange, ~LayerMask.GetMask("Player"));
+        Vector2 end = hit.collider ? hit.point : start + (direction.normalized * knifeRange);
+
+        LineRenderer renderer = DrawLine(start, end).GetComponent<LineRenderer>();
+
+        bool targetInRange = hit.collider != null && hit.collider.CompareTag("Enemy");
+        bool targetUnaware = targetInRange && hit.collider.gameObject.GetComponent<AutoMover>() && hit.collider.gameObject.GetComponent<AutoMover>().GetAwareness() != AutoMover.State.Alert;
+
+        if (!targetInRange)
+            Sidebar.instance.ToastWrapper("No target in range");
+        else if(!targetUnaware)
+            Sidebar.instance.ToastWrapper("Cannot knife alerted target");
+        else
+            Sidebar.instance.ToastWrapper("Valid target selected");
+
+        renderer.material = (targetInRange && targetUnaware) ? Globals.BRIGHT_RED : Globals.BRIGHT_WHITE;
+        
+        renderer.startWidth = renderer.endWidth = 0.07f;
+        previewObjects.Add(renderer.gameObject);
     }
 
     private static void PreviewGrenade()
@@ -379,6 +446,7 @@ public class ActionManager : MonoBehaviour
         previewObjects.Add(renderer.gameObject);
     }
 
+    // Draw a single line between two points
     public static GameObject DrawLine(Vector2 shotOrigin, Vector2 hitPoint, Material material=null, Transform parent=null, float width=0.07f)
     {
         GameObject shotObject = new GameObject();
@@ -396,6 +464,7 @@ public class ActionManager : MonoBehaviour
         return shotObject;
     }
 
+    // Draw a circle given a center and radius
     public static GameObject DrawCircle(Vector2 center, float radius, Material material, int segments=50, float width=0.07f)
     {
         GameObject circleObject = new GameObject();
