@@ -15,6 +15,7 @@ public class Globals : MonoBehaviour
     public static readonly GameObject CURSOR = Resources.Load<GameObject>("Prefabs/UI/Cursor");
     public static readonly GameObject WAYPOINT = Resources.Load<GameObject>("Prefabs/UI/Waypoint");
     public static readonly GameObject GAS_CLOUD = Resources.Load<GameObject>("Prefabs/Core_Gameplay/Gas_Cloud");
+    public static readonly GameObject WALL = Resources.Load<GameObject>("Prefabs/Environment/Wall");
 
     // MATERIALS
     public static readonly Material WHITE = Resources.Load<Material>("Materials/White");
