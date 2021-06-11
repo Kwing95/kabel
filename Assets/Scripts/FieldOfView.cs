@@ -34,6 +34,8 @@ public class FieldOfView : MonoBehaviour
         viewMeshFilter = gameObject.AddComponent<MeshFilter>();
 
         renderer = gameObject.AddComponent<MeshRenderer>();
+        if (!defaultMaterial)
+            defaultMaterial = Globals.WHITE;
         renderer.material = defaultMaterial;
         renderer.shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.Off;
         renderer.receiveShadows = false;

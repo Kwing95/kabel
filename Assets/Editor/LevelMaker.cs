@@ -13,10 +13,7 @@ public class LevelMaker : Editor
     {
         base.OnInspectorGUI();
 
-        if (GUILayout.Button("Toggle placement - Currently " + (placingBlocks ? "ON" : "OFF")))
-        {
-            placingBlocks = !placingBlocks;
-        }
+        placingBlocks = EditorGUILayout.Toggle("Placing Blocks", placingBlocks);
 
     }
 
@@ -33,8 +30,10 @@ public class LevelMaker : Editor
         Vector2 mousePosition = Event.current.mousePosition;
         Ray ray = HandleUtility.GUIPointToWorldRay(mousePosition);
         mousePosition = Grapher.RoundedVector(ray.origin);
-
-        if (Event.current.type == EventType.MouseDown || (Event.current.type == EventType.MouseDrag && lastToggledTile != mousePosition))
+        
+        if (Event.current.button == 0 &&
+            (Event.current.type == EventType.MouseDown ||
+                (Event.current.type == EventType.MouseDrag && lastToggledTile != mousePosition)))
         {
             lastToggledTile = mousePosition;
 
@@ -78,14 +77,5 @@ public class LevelMaker : Editor
         return returnVec2;
     }
 
-    [MenuItem("MyTools/CreateGameObjects")]
-    static void Create()
-    {
-        for (int x = 0; x != 10; x++)
-        {
-            GameObject go = new GameObject("MyCreatedGO" + x);
-            go.transform.position = new Vector3(x, 0, 0);
-        }
-    }
 
 }

@@ -2,6 +2,26 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System.Threading;
+using Unity.Jobs;
+using Unity.Collections;
+using Unity.Burst;
+
+public struct PathfindingJob : IJob
+{
+    public NativeList<Vector2> path;
+    public Vector2 start;
+    public Vector2 dest;
+    public int maxPathLength;
+    public int jobId;
+    public bool running;
+
+    public void Execute()
+    {
+        List<Vector2> rawPath = Grapher.FindPath(start, dest, maxPathLength);
+        foreach (Vector2 elt in rawPath)
+            path.Add(elt);
+    }
+}
 
 public class Navigator : MonoBehaviour
 {
@@ -23,6 +43,7 @@ public class Navigator : MonoBehaviour
     private bool pausePathFinding = false;
     private GameObject waypoint;
 
+    List<KeyValuePair<JobHandle, PathfindingJob>> activeJobs;
     [SerializeField]
     private List<Vector2> path;
     private int pathProgress = 1; // Index along path currently being navigated to
@@ -38,14 +59,26 @@ public class Navigator : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        activeJobs = new List<KeyValuePair<JobHandle, PathfindingJob>>();
         mover = GetComponent<GridMover>();
         destination = transform.position;
         path = new List<Vector2>();
     }
 
+    public void OnDestroy()
+    {
+        foreach(KeyValuePair<JobHandle, PathfindingJob> job in activeJobs)
+        {
+            // WARNING: Game could slow down if enemy is destroyed during pathfinding operation
+            job.Key.Complete();
+            job.Value.path.Dispose();
+        }
+    }
+
     // Update is called once per frame
     void Update()
     {
+        CheckJobs();
         // If destination has been set recently, generate a new path
         // destinationQueued is true when "destination" is outdated and a new path must be generated
         if (destinationQueued)
@@ -98,7 +131,7 @@ public class Navigator : MonoBehaviour
 
     public void SetDestination(Vector2 dest, bool run=false)
     {
-        if (dest == destination)
+        if (dest == destination || activeJobs.Count > 0)
             return;
 
         // TODO testing
@@ -109,7 +142,8 @@ public class Navigator : MonoBehaviour
         }*/
 
         if (usesMultithreading)
-            StartCoroutine(SetDestinationMulti(dest, run));
+            SetDestinationJob(dest, run);
+            //StartCoroutine(SetDestinationMulti(dest, run));
         else
             SetDestinationSingle(dest, run);
     }
@@ -124,6 +158,69 @@ public class Navigator : MonoBehaviour
 
         Pause(false); // check
 
+    }
+
+    public void CheckJobs()
+    {
+        for (int i = 0; i < activeJobs.Count;)
+        {
+            if (activeJobs[i].Key.IsCompleted)
+            {
+                activeJobs[i].Key.Complete();
+
+                //Debug.Log(name + "'s job finished with nonce = " + nonce + " and jobId = " + activeJobs[i].Value.jobId);
+                if (nonce == activeJobs[i].Value.jobId/* || true*/)
+                {
+                    destination = activeJobs[i].Value.dest;
+
+                    List<Vector2> convertedList = new List<Vector2>();
+                    foreach (Vector2 elt in activeJobs[i].Value.path)
+                        convertedList.Add(elt);
+                    path = convertedList;
+
+                    pathProgress = 1;
+                    running = activeJobs[i].Value.running;
+                    SetIdle(false);
+                    Pause(false);
+                }
+
+                activeJobs[i].Value.path.Dispose();
+                activeJobs.Remove(activeJobs[i]);
+            }
+            else
+            {
+                ++i;
+            }
+        }
+    }
+
+    public void SetDestinationJob(Vector2 dest, bool run = false)
+    {
+        nonce += 1;
+        int lastKnownNonce = nonce;
+
+        NativeList<Vector2> rawList = new NativeList<Vector2>(Allocator.TempJob);
+
+        //Debug.Log(name + "'s job started with jobId = " + lastKnownNonce);
+
+        // Set up the job data
+        PathfindingJob fetcher = new PathfindingJob
+        {
+            start = mover.GetDiscretePosition(),
+            dest = dest,
+            maxPathLength = maxPathLength,
+            path = rawList,
+            jobId = lastKnownNonce,
+            running = run
+        };
+
+        // Schedule the job
+        JobHandle handle = fetcher.Schedule();
+
+        activeJobs.Add(new KeyValuePair<JobHandle, PathfindingJob>(handle, fetcher));
+
+        //if (!usesMultithreading)
+        //    handle.Complete();
     }
 
     // Multi-threaded implementation
@@ -147,7 +244,7 @@ public class Navigator : MonoBehaviour
         }).Start();
 
         while (!done)
-            yield return null;
+            yield return new WaitForEndOfFrame();
 
         // Debug.Log("Generated path of length " + newPath.Count + " from " + newPath[0] + " to " + newPath[newPath.Count - 1]);
 

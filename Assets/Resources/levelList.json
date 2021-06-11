@@ -1,0 +1,42 @@
+﻿{
+	"chapter1": [
+		{
+			"title": "[1-1] Classroom",
+			"playable": false,
+			"scene": "1-1",
+			"hasHardmode": false
+		},
+		{
+			"title": "[1-2] Horseback",
+			"playable": false,
+			"scene": "1-2",
+			"hasHardmode": false
+		},
+		{
+			"title": "[1-3] Merad Valley",
+			"playable": true,
+			"scene": "1-3",
+			"hasHardmode": false
+		}
+	]
+	"chapter2": [
+		{
+			"title": "[1-1] Classroom",
+			"playable": false,
+			"scene": "1-1",
+			"hasHardmode": false
+		},
+		{
+			"title": "[1-2] Horseback",
+			"playable": false,
+			"scene": "1-2",
+			"hasHardmode": false
+		},
+		{
+			"title": "[1-3] Merad Valley",
+			"playable": true,
+			"scene": "1-3",
+			"hasHardmode": false
+		}
+	]
+}

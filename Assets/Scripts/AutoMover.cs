@@ -32,7 +32,7 @@ public class AutoMover : MonoBehaviour
     private FieldUnit unit;
 
     private AudioSource source;
-    private int startAngle;
+    public int startAngle = 0;
     private int routeProgress = 0;
     private FieldOfView fieldOfView;
 
@@ -58,7 +58,7 @@ public class AutoMover : MonoBehaviour
     void Awake()
     {
         mask = LayerMask.GetMask(new string[] { "Default", "Player" });
-
+        
         extraPoints = new List<Vector2>();
         fieldOfView = GetComponentInChildren<FieldOfView>();
         rotator = GetComponent<Rotator>();
@@ -68,7 +68,6 @@ public class AutoMover : MonoBehaviour
         source = GetComponent<AudioSource>();
         player = PlayerMover.instance.GetComponent<GridMover>();
 
-        startAngle = Mathf.RoundToInt(transform.rotation.eulerAngles.z); // rotator.GetDestinationAngle();
         transform.rotation = Quaternion.Euler(Vector3.zero);
 
         if (route.Count == 0)
@@ -237,10 +236,11 @@ public class AutoMover : MonoBehaviour
     // Returns true if player is within enemy's cone of vision
     private bool CanSeePlayer()
     {
+        // Check that player is within view angle
         Vector2 direction = player.transform.position - transform.position;
         float angleToPlayer = Mathf.Abs(Vector2.SignedAngle(direction, rotator.GetCurrentAngleVector()));
 
-        return angleToPlayer < fieldOfView.viewAngle / 2 && clearView;
+        return angleToPlayer < fieldOfView.viewAngle / 2 && clearView && Vector2.Distance(player.transform.position, transform.position) <= sightDistance;
     }
 
     // Returns true if there are no obstructions between enemy and player

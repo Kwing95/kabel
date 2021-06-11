@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Unity.Collections;
 
 public class Grapher : MonoBehaviour
 {
@@ -13,8 +14,8 @@ public class Grapher : MonoBehaviour
         new List<Vector2>(new Vector2[] { Vector2.right, Vector2.left,
             Vector2.up, Vector2.down });
 
-    public static int mapHeight = 50;
-    public static int mapWidth = 50;
+    public static int mapHeight = 100;
+    public static int mapWidth = 100;
 
     public static bool[,] graph = new bool[mapHeight, mapWidth];
 
@@ -125,6 +126,54 @@ public class Grapher : MonoBehaviour
         }
     }
 
+    private static NativeList<Vector2> NativeFindDirectPath(Vector2 start, Vector2 end)
+    {
+        NativeList<Vector2> path = new NativeList<Vector2>(Allocator.Temp);
+        Vector2 step = Vector3.Normalize(end - start);
+        Vector2 diagonal = new Vector2(AbsCeil(step.x), AbsCeil(step.y));
+        Vector2 lineProgress = start;
+
+        path.Add(start);
+
+        while (RoundedVector(lineProgress) != end)
+        {
+            Vector2 oldTile = RoundedVector(lineProgress);
+            Vector2 newTile = RoundedVector(lineProgress + step);
+
+            // If new tile differs on two axes (diagonal step,) a tile has been skipped
+            if (newTile.x != oldTile.x && newTile.y != oldTile.y)
+            {
+                int pathLength = path.Length;
+
+                if (CheckGraph(oldTile + new Vector2(diagonal.x, 0)))
+                    path.Add(RoundedVector(oldTile + new Vector2(diagonal.x, 0)));
+                else if (CheckGraph(oldTile + new Vector2(0, diagonal.y)))
+                    path.Add(RoundedVector(oldTile + new Vector2(0, diagonal.y)));
+
+                // If no tile was added, no path exists
+                if (pathLength == path.Length)
+                {
+                    path.Clear();
+                    return path;
+                }
+            }
+
+            // Add the tile one step forward
+            if (CheckGraph(newTile))
+                path.Add(RoundedVector(newTile));
+            else
+            {
+                path.Clear();
+                return path;
+            }
+
+            lineProgress += step;
+        }
+
+        path.Add(end);
+        return path;
+    }
+
     // Add tiles to a path every unit of 1 distance; if two tiles are diagonal, make a stepping stone
     // Returns a path from start to end, assuming unobstructed line of sight between them
     private static List<Vector2> FindDirectPath(Vector2 start, Vector2 end)
@@ -181,10 +230,113 @@ public class Grapher : MonoBehaviour
 
     // PATHFINDING FUNCTIONS
 
+    public static NativeList<Vector2> NativeFindPath(Vector2 start, Vector2 end, int maxPathLength = -1)
+    {
+        NativeList<Vector2> path = NativeFindDirectPath(start, end);
+        if(path.Length == 0)
+        {
+            path.Dispose();
+            return NativeFindIndirectPath(start, end, maxPathLength);
+        }
+        else
+            return path;
+    }
+
     public static List<Vector2> FindPath(Vector2 start, Vector2 end, int maxPathLength = -1)
     {
         List<Vector2> path = FindDirectPath(start, end);
         return path.Count == 0 ? FindIndirectPath(start, end, maxPathLength) : path;
+    }
+
+    public static NativeList<Vector2> NativeFindIndirectPath(Vector2 start, Vector2 end, int maxPathLength = -1)
+    {
+        NativeList<Vector2> path = new NativeList<Vector2>(Allocator.Temp);
+        NativeList<Vector2> queue = new NativeList<Vector2>(Allocator.Temp);
+
+        if (!CheckGraph(start) || !CheckGraph(end))
+        {
+            queue.Dispose();
+            return path;
+        }
+
+        int[,] dist = new int[mapHeight, mapWidth];
+        Vector2[,] prev = new Vector2[mapHeight, mapWidth];
+
+        // Initialize memo
+        for (int x = 0; x < graph.GetLength(0); ++x)
+        {
+            for (int y = 0; y < graph.GetLength(1); ++y)
+            {
+                dist[y, x] = INFINITY;
+                prev[y, x] = new Vector2(-1, -1);
+                if (graph[y, x] || ((int)start.y == y && (int)start.x == x))
+                    queue.Add(new Vector2(x, y));
+            }
+        }
+
+        // Handle starting point
+        if (!InBounds(start))
+        {
+            queue.Dispose();
+            return path; // RETURN IF START POINT IS INVALID
+        }
+
+        dist[(int)start.y, (int)start.x] = 0;
+
+        // Loop through queue
+        while (queue.Length > 0)
+        {
+            Vector2 u = NativeClosestPoint(queue, dist);
+            if (u == new Vector2(-1, -1))
+            {
+                queue.Dispose();
+                return path;
+            }
+
+            queue.RemoveAt(queue.IndexOf(u));
+
+            // Handle case where a path is found
+            if (u == end && (prev[(int)u.y, (int)u.x] != new Vector2(-1, -1) || u == start))
+            {
+                while (u != new Vector2(-1, -1))
+                {
+                    path.Add(u);
+                    u = prev[(int)u.y, (int)u.x];
+                }
+
+                NativeList<Vector2> reversedList = new NativeList<Vector2>(Allocator.Temp);
+                for (int i = path.Length - 1; i <= 0; --i)
+                    reversedList.Add(path[i]);
+
+                queue.Dispose();
+                path.Dispose();
+                return reversedList; // RETURN WHEN PATH IS FOUND
+            }
+
+            NativeList<Vector2> neighbors = NativeGetNeighbors(queue, u);
+            for (int v = 0; v < neighbors.Length; ++v)
+            {
+                int alt = dist[(int)u.y, (int)u.x] + 1;
+
+                // If there is a maximum path length, adhere to it
+                // "Out of bounds" return empty list
+                if (maxPathLength != -1 && alt > maxPathLength)
+                {
+                    return path;
+                }
+
+                if (alt < dist[(int)neighbors[v].y, (int)neighbors[v].x])
+                {
+                    dist[(int)neighbors[v].y, (int)neighbors[v].x] = alt;
+                    prev[(int)neighbors[v].y, (int)neighbors[v].x] = u;
+                }
+            }
+            neighbors.Dispose();
+        }
+
+        // RETURN IF NO PATH IS FOUND
+        queue.Dispose();
+        return path;
     }
 
     // Returns a list of positions from start to end detailing a path (Dijkstra's algorithm)
@@ -261,6 +413,17 @@ public class Grapher : MonoBehaviour
         return path;
     }
 
+    private static NativeList<Vector2> NativeGetNeighbors(NativeList<Vector2> queue, Vector2 point)
+    {
+        NativeList<Vector2> neighbors = new NativeList<Vector2>(Allocator.Temp);
+
+        for (int i = 0; i < queue.Length; ++i)
+            if (Vector2.Distance(queue[i], point) == 1)
+                neighbors.Add(queue[i]);
+
+        return neighbors;
+    }
+
     // New 2D array implementation
     private static List<Vector2> GetNeighbors(List<Vector2> queue, Vector2 point)
     {
@@ -271,6 +434,21 @@ public class Grapher : MonoBehaviour
                 neighbors.Add(queue[i]);
 
         return neighbors;
+    }
+
+    private static Vector2 NativeClosestPoint(NativeList<Vector2> queue, int[,] dist)
+    {
+        int minimum = INFINITY;
+        Vector2 closest = new Vector2(-1, -1);
+
+        for (int i = 0; i < queue.Length; ++i)
+            if (dist[(int)queue[i].y, (int)queue[i].x] < minimum)
+            {
+                minimum = dist[(int)queue[i].y, (int)queue[i].x];
+                closest = queue[i];
+            }
+
+        return closest;
     }
 
     private static Vector2 ClosestPoint(List<Vector2> queue, int[,] dist)
