@@ -47,7 +47,8 @@ public class UnitStatus : MonoBehaviour
         if (GetComponent<PlayerMover>())
         {
             gameObject.SetActive(false);
-            TransitionFader.instance.Transition(0);
+            // TODO: Game Over menu
+            //TransitionFader.instance.Transition(0);
         }
         else if (GetComponent<AutoMover>())
         {

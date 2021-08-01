@@ -132,6 +132,15 @@ May 4, 2021
  + Fixes to AI freeze: Set idle to true and pause to false, ensured extraPoints were integers
  + Fixes to AI stopping: If enemy can't see player's NEXT point, investigate that point
 
+June 12, 2021
+ + AI can think without freezing game
+
+July 5, 2021
+ + Can use pause menu to navigate between scenes
+
+ - AI sometimes walks through/into walls
+ - Parallax foreground 3D walls
+ - Image type: Radial 360, amount for Action cooldown
  - Reproduce AI freeze: Let enemy see you at close range, walk around corner. Note navigator idle bool is false
     Point memory? Doesn't look like it, problem remains with pointMemory = 0
     pausePathFinding sometimes true, path count sometimes 0

@@ -10,15 +10,13 @@ public class Sidebar : MonoBehaviour
 
     public static Sidebar instance;
 
-    public TextMeshProUGUI toast;
-    public List<GameObject> menus;
     public List<Sprite> sprites;
 
     public float actionCooldown = 3;
 
     public enum Menu { Main, Action, Grenade, Confirm };
-    private List<int> menuPath;
 
+    public GameObject pauseMenu;
     public List<Button> allButtons;
     public List<Button> actionConfirmButtons;
     public List<Button> moveConfirmButtons;
@@ -27,11 +25,11 @@ public class Sidebar : MonoBehaviour
 
     public List<Image> moveIcons;
     public Image pauseDisplay;
+    private MenuNavigator menuNavigator;
 
     public List<int> cameraZooms;
     private int currentZoom = 0;
 
-    private static int toastNonce = 0;
     private static bool canAttack = true;
     private static bool menuPaused = false;
     private static bool actionPaused = false;
@@ -43,10 +41,13 @@ public class Sidebar : MonoBehaviour
     void Start()
     {
         instance = this;
-        menuPath = new List<int>();
+        ResetStatics();
+
+        menuNavigator = GetComponent<MenuNavigator>();
         zoomer = Camera.main.GetComponent<Zoomer>();
         currentZoom = 0;
-        ZoomOut();
+        if(zoomer)
+            ZoomOut();
         RefreshRunning();
     }
 
@@ -54,6 +55,14 @@ public class Sidebar : MonoBehaviour
     void Update()
     {
         
+    }
+
+    private void ResetStatics()
+    {
+        canAttack = true;
+        menuPaused = false;
+        actionPaused = false;
+        running = false;
     }
 
     public void ZoomIn()
@@ -87,6 +96,7 @@ public class Sidebar : MonoBehaviour
     {
         menuPaused = !menuPaused;
 
+        pauseMenu.SetActive(menuPaused);
         // SetState(menuPaused ? ActionManager.State.MenuPause : );
         foreach (Button button in allButtons)
             button.gameObject.SetActive(!menuPaused);
@@ -139,7 +149,7 @@ public class Sidebar : MonoBehaviour
     public void ToggleRunning()
     {
         running = !running;
-        StartCoroutine(Toast("Movement speed set to " + (running ? "run" : "walk")));
+        Toast.ToastWrapper("Movement speed set to " + (running ? "run" : "walk"));
         RefreshRunning();
     }
 
@@ -152,30 +162,6 @@ public class Sidebar : MonoBehaviour
     public static bool GetRunning()
     {
         return running;
-    }
-
-    public void MenuBack()
-    {
-        int prevMenu = menuPath.Count >= 2 ? menuPath[menuPath.Count - 2] : 0;
-        if(menuPath.Count > 0)
-            menuPath.RemoveAt(menuPath.Count - 1);
-        ShowMenu(prevMenu);
-    }
-
-    // Shows the menu at menuIndex
-    public void ShowMenu(int menuIndex)
-    {
-        // If navigating to root (0) menu, delete menuPath
-        if (menuIndex == 0)
-            menuPath.Clear();
-        
-        // Don't re-add the same item
-        else if(menuPath.Count == 0 || menuPath[menuPath.Count - 1] != menuIndex)
-            menuPath.Add(menuIndex);
-
-        // Actually display menu
-        for(int i = 0; i < menus.Count; ++i)
-            menus[i].SetActive(i == menuIndex);
     }
 
     public void SelectAction(string actionType)
@@ -200,7 +186,7 @@ public class Sidebar : MonoBehaviour
     // Reset the menu options when an action finishes
     public void FinishAction()
     {
-        ShowMenu(0);
+        menuNavigator.ShowMenu(0);
         StartCoroutine(DisableActions());
         SetState("Moving");
         ActionPause(false);
@@ -213,22 +199,6 @@ public class Sidebar : MonoBehaviour
     {
         // State { Moving, Paused, ActionMenu, AimedConfirm, NonAimConfirm };
         ActionManager.SetState(state);
-    }
-
-    public void ToastWrapper(string message)
-    {
-        StartCoroutine(Toast(message));
-    }
-
-    public IEnumerator Toast(string message, float duration=3)
-    {
-        int currentToast = ++toastNonce;
-        toast.text = message;
-
-        yield return new WaitForSeconds(duration);
-
-        if(currentToast == toastNonce)
-            toast.text = "";
     }
 
 }

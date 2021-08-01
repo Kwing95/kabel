@@ -1,0 +1,3336 @@
+KABEL
+GAME SCRIPT WRITTEN BY KEVIN WANG
+
+UPDATED 7/31/2021
+
+CHAPTER 1
+
+Intro
+
+<S1-1>
+(Fade into an elementary school classroom. A teacher stands before about 20 children (aged roughly 10-12) lecturing. A crude timeline is scribbled onto the blackboard behind her.)
+
+Teacher: Construction on Chemina's railway system exploded in the early 1890s, and its growth continued to accelerate until Erawa invaded in 1907. We're fortunate that Somoza took office before then. If he hadn't weeded out the Erawan spies, we'd surely have lost the war before it began.
+
+Child 1: Why did Erawa attack us?
+
+Teacher: Take a look at what was happening at the time. In the past century we'd invented the steam engine and electrical power. Erawa's culture is extremely regressive. They rely on witchcraft because it's the only thing they've ever known. Our society was changing rapidly, and it scared them. They hate our way of life and want to destroy it.
+
+Keola: Teacher?
+
+Teacher: Yes?
+
+Keola: My mom said Somoza was the one that started the war. Is that true?
+
+Teacher: That was certainly the narrative the Erawan Department of Intelligence told. As I was saying earlier, Erawa had planted a lot of spies. Many of them had infiltrated the media to spread misinformation and rile up Erawan sympathizers.
+
+Keola: ... I see.
+
+Teacher: Oh, and Keola? I'd like to speak with you after class.
+
+Keola: Yes, teacher.
+
+Teacher: Anyway, our railroads are still growing, just not as fast. The same can be said of our other developments. For instance, the war effort has forced the government to cut funding for medical research. Of course, if Erawa had its way, we'd still be using crystal healing and leeches. Chemina leads the future. So you can see how important it is for us to support our troops.
+</S1-1>
+
+Horseback
+
+<S1-2>
+(The scene fades into a tropical jungle. Four men traverse a rough trail on horseback.)
+
+Biggs: Can't stand these damned beasts. I've found corpses that didn't smell this bad.
+
+Wedge: You know, Biggs, I've found corpses that smelled better than you, too.
+
+Bane: They're the best mounts we have for the mission. An armored vehicle just isn't going to cut it on this terrain. Not to mention how much racket the engine would make if we rolled through here in a Vollmer.
+
+Wedge: We haven't seen signs of life in hours, Captain. There's no one around to hear us.
+
+Bane: Don't sound so disappointed. We’ve barely crossed the border into Merad.
+
+(Wedge's horse inadvertently splashes muddy water on Saito.)
+
+Bane: Shit. Saito, that didn't splash the dynamite, did it?
+
+Saito: No, sir. Still dry.
+
+Biggs: I still don't get why we're trusting him with that stuff. Wasn't his wife an Erawan?
+
+Saito: (Does he really have to bring that up every chance he gets?)
+
+Bane: Saito is the only explosives expert here. The mission depends on his expertise. Unless you have a better way of causing an avalanche?
+
+Biggs: ...
+
+Wedge: Captain, ahead!
+
+(The group stops and looks in the direction Wedge is pointing.)
+
+Saito: I only see one. If he's got any squadmates, they're lurking just out of sight.
+
+Bane: Wedge, did intel say anything about another way around?
+
+Wedge: No, sir. One way in, one way out.
+
+Bane: Alright, men. We'll take this one out, then continue on foot.
+</S1-2>
+
+* * *
+
+GAMEPLAY SECTION: The group neutralizes a handful of Erawan militia, whose numbers are generally sparse. Since there is a party of four and all are well-equipped, this is meant to serve as an easy in-game tutorial. Sneaking up on enemies is methodical but not overly difficult.
+
+Innocents
+
+<S1-3>
+(Biggs finishes off an Erawan soldier after they attempt to throw an explosive at them.)
+
+Wedge: Fuck, those things are loud. What are they?
+
+Saito: The projectiles are called flat bombs. The basic concept is you compress an object to a fraction of its original size, and when you let it expand again, it explodes.
+
+Biggs: Sounds like a bunch of black magic to me.
+
+Saito: You're not far off. You have to trick your own perception to make it shrink. Whether or not it works depends on-
+
+Biggs: Don't care.
+
+Bane: Stay on task. The supply base is at the bottom of the hill. The point serves as an intermediary between manufacturing and the barracks.
+
+Wedge: Wait, why do they need munitions? Can't they just make these "flat bombs" whenever they need one?
+
+Saito: They're probably stashing sharpnel.
+
+Wedge: Shrapnel?
+
+Saito: Sharp-nel. Two-dimensional blades. Razor sharp. You can't even feel it go through you, but the stuff cuts to the bone. Takes time to prepare, though, so they mass-produce it ahead of time.
+
+Biggs: Enough of this shit. Let's blow it up.
+
+Wedge: Is there a way to specifically target the base? Looks like a lot of those are civilian buildings.
+
+Saito: Not the way we're doing it. If we blast the mountainside, we'll wipe out half the village.
+
+Biggs: So much the better. Only good Erawan's a dead Erawan.
+
+Wedge: Captain?
+
+Bane: The briefing says nothing about minimizing collateral damage. Our objective is to destroy the supply base, so that's what we're going to do.
+
+Saito: (Guess I shouldn't be surprised.)
+
+Bane: Don't look at me like that. The supply base is in the middle of the village for a purpose. They're banking on us shying away from civilian casualties... and holding their own people hostage in the process.
+
+Saito: You think proving them wrong is that important? There must be hundreds of people down there.
+
+Bane: (Sigh) Leave the storybook idealism at the door. This isn't a fairytale. It's war. Biggs and I will cover you in case someone else comes through.
+</S1-3>
+
+Avalanche
+
+<S1-4>
+(Saito and Wedge walk along the edge of the cliff.)
+
+Wedge: Can he do that? Those poor people are about to get buried alive!
+
+Saito: No use arguing over it. My son's back home and if I ever want to see him again I've gotta keep my head down.
+
+(Beat)
+
+Wedge: Biggs sure can be a shithead, yeah?
+
+Saito: I hardly even hear it anymore. Why should I care what he thinks?
+
+Wedge: What was your wife like? If you don't mind me asking, of course.
+
+Saito: Strong-willed. Huge rebellious streak. It's one of the reasons she came to Chemina in the first place. But she still had a lot of respect for where she came from, if that makes sense.
+
+Wedge: I take it things went south when the war started?
+
+Saito: Yeah. She was hauled off, probably to some labor camp in Nenegi. Haven't heard from her since.
+
+Wedge: I'm sorry.
+
+Saito: We need to find a hole along a fault line in the rock, otherwise it's not going to bring anything down. That one would work if we could reach it.
+
+(Saito gestures to a long, vertical crack, several meters away horizontally.)
+
+Wedge: What are you talking about? That's an easy traverse.
+
+Saito: You sure about that? One slip and you'd be toast. And this fuse is only good for 30 seconds.
+
+Wedge: Watch and learn, my friend.
+
+(Wedge traverses to a small landing and prepares to light the fuse. Gunshots can be heard in the distance.)
+
+Saito: Hey, Wedge? I heard gunshots!
+
+Wedge: Then cover me. I'm a little busy, if you couldn't-
+
+Saito: Look out!
+
+(An Erawan higher on the cliff fires off several flat bombs, blasting Wedge off the cliff.)
+
+Saito: Shit!
+</S1-4>
+
+* * *
+
+GAMEPLAY SECTION: Saito scrabbles to find Bane and Biggs while under attack. Enemies here are more numerous and are constantly drawn to the player's position. While not hard to kill, the gameplay is more frantic and desperate.
+
+Regroup
+
+<S1-5>
+(Saito encounters Biggs trading fire with an Erawan from behind cover. Saito shoots the distracted Erawan and joins Biggs behind cover.)
+
+Saito: (Never thought I'd be happy to see Biggs.)
+
+Biggs: Hey! Where's Wedge?
+
+Saito: He...
+
+(Saito looks down and shakes his head.)
+
+Biggs: Fuck.
+
+Saito: What about Bane?
+
+Biggs: No clue. There was an ambush and we got separated.
+
+Saito: Great. Well, we blew the mountainside. Let's get the fuck out of here.
+
+(A tree shrivels to the size of a twig, revealing a child soldier, who uproots it and throws it at them.)
+
+Biggs: Shit!!
+
+(Saito is sent flying and Biggs is impaled on a branch. The Erawan inspects Biggs' body. Saito draws a grenade, pulls the pin, but it explodes instantly.)
+</S1-5>
+
+Infirmary
+
+<S1-6>
+Saito: (Fuck this hurts! I can barely think. What happened? My grenade... went off in my hand? And then...? I'm... in a hospital bed. And that tapping... Someone's using a telegraph.)
+
+???: ... R HAND. 3RD DEG BURNS ON ARM. TRAUM BRAIN INJ. MULT FRACTURES.
+
+???: CAN RECOVER?
+
+???: STABLE, BUT FULL RECOVERY IMPOSSIBLE.
+
+???: CAN HE FIGHT?
+
+???: NO.
+
+???: PUT HIM DOWN.
+
+(Beat)
+
+???: ARE YOU SURE?
+
+???: YES.
+
+Saito: (Is this how it ends? Mauled by a defective grenade and euthanized in a medical tent? No, they can't be talking about me.)
+
+(Footsteps approach the hospital curtain.)
+
+Saito: (Well I'm not going down without a fight.)
+
+(Saito feigns sleep. When the nurse swabs his arm, he jerks up and strikes her in the chest. Blood gushes from Saito's right arm, only a stump. He screams.)
+
+Saito: My... hand!?
+
+(The nurse finishes injecting Saito and he collapses.)
+</S1-6>
+
+Chapter 2
+
+Death Letter
+
+<S2-1>
+(The scene fades into a bedroom. A young couple sits at the foot of a bed, the man holding a letter. Standing at the window looking out is another, middle-aged man.)
+
+Thane: "I regret to inform you that Saito Belikoff was reported killed in action while deployed in Merad, Erawa. I hope you can find solace in the knowledge of his heroic service to the state. I extend my deepest sympathy to you."
+
+(Beat)
+
+Thane: Dad...
+
+Asra: I'm so sorry, Thane.
+
+Thane: No. This can't... why?
+
+(Asra takes Thane's hand and squeezes it.)
+
+Dagan: It's time to leave. There's nothing left for us here.
+
+Thane: But... what if they're lying?
+
+Dagan: So what if they are? Maybe he's dead. Maybe he was captured. Maybe they fucking euthanized him. Asra said they've started doing that when soldiers can't fight anymore. It doesn't matter what happened. He's not coming home, and that means it's time to pack up.
+
+Thane: What do you mean it doesn't matter? He's your brother!
+
+Dagan: And? Brother or not, we're leaving.
+
+Thane: But... Why now?
+
+Asra: If we wait too long I'll be next. Wasn't Saito deployed right after you came back? How long were you here before he left?
+
+Thane: I don't know, a week? It was asinine. He was gone before I could finish unpacking.
+
+Asra: (Sigh) Typical Somoza bullshit. Can't even leave without abandoning family.
+
+Dagan: I rest my case. Get the books from the cellar. I don't want them laying around after we leave. Last thing we need is for them to find contraband if we're caught jumping the border.
+
+Thane: I feel like we should be talking about-
+
+Dagan: There's nothing to talk about. We've discussed this all already. Your father is dead, and we're going to Debony. I was ready for this letter to come the moment he was drafted, so let's get moving.
+
+Asra: Whoa, that is completely uncalled for! Can't you give him five fucking minutes to grieve?
+
+Thane: It's okay, Asra. He's right.
+</S2-1>
+
+Dagan's Apathy
+
+<S2-2>
+(Asra follows Thane down the stairs from the bedroom.)
+
+Asra: What is the matter with him?
+
+Thane: Dagan's lost a lot of family. He doesn't have the energy to grieve anymore. But you shouldn't take that to mean that he doesn't care.
+
+Asra: And what about you? Are you going to be okay?
+
+Thane: I don't know. I'm kind of in shock. It's gonna take some time to process everything that's going through my head right now. What about you?
+
+Asra: Is it bad if I say I'm really ready to leave this place?
+
+Thane: No. You're in the military reserve. I'm sure you're thinking how easily that letter could have been about you instead.
+
+Asra: Kind of? Mostly I just want to forget about my whole life here and start over. But I feel like that's mentally pushing your dad under the rug.
+
+Thane: I can't expect you to feel the same way about my dad as I do. You barely knew him. Besides, Dagan seems pretty ready to leave, too.
+
+Asra: Guess that's one thing we have in common.
+
+(Dagan comes downstairs and sees Thane.)
+
+Dagan: What's the matter? Is the vent stuck?
+
+Thane: No, I haven't been down to the cellar yet.
+
+Dagan: I told you to get those books. We need to make sure they're gone before we leave.
+
+(Asra sighs and leaves the room.)
+
+Thane: Are you going to be okay traveling with Asra? I don't want any drama while we're on the road.
+
+Dagan: What's the alternative, leave her behind? Asra's the only one with connections that could get us out of here. Plus she knows you're half Erawan. If she stays she'll be taken into custody, and then what?
+
+Thane: She wouldn't tell them anything.
+
+Dagan: I won't sicken you with horror stories, but you should really know better. We're bringing her along. For her sake and yours.
+
+Thane: That wasn't my... Ugh, nevermind.
+</S2-2>
+
+* * *
+
+GAMEPLAY SECTION: The player can now control Thane and may roam around the house freely. Next to the kitchen is a vent. Interacting with it will progress the story.
+
+Book Cellar
+
+<S2-3>
+(Thane moves a grate covering a vent in the living room, revealing a crawl space. He crawls through, emerging in a cellar. Against one wall is a bookshelf. On the other, the old Cheminan flag. Transparent images of Thane and Saito appear before him.)
+
+Thane: (Why do you keep this old thing? You do realize what would happen if someone found it down here, right?)
+
+Saito: (Of course. That's why it's here.)
+
+Thane: (Do you have a death wish or something?)
+
+Saito: (You're not old enough to remember just how little is left from before Somoza's reign. They burned every flag they could get their hands on. It's a miracle this one survived. So no, I'm not getting rid of it.)
+
+Thane: (It's a miracle you survived, too. Isn't that worth something?)
+
+Saito: (Somoza's mantra is "Chemina leads the future." No one admits that it burns the past in the process. If you knew how things used to be, you would understand.)
+
+Asra: Whoa. This place is crazy.
+
+Thane: Ah!
+
+(The transparent figures vanish.)
+
+Asra: Sorry, I didn't mean to startle you. You were down here a while. Still bringing this stuff back up?
+
+Thane: Yeah, but... It seems like such a waste to burn them.
+
+Asra: Would you rather be tried as a renegade or traitor? If we get caught, these are the difference between the gallows and thumbscrews. They have to go.
+
+Thane: But they're Dad's.
+
+(Asra puts a hand on Thane's shoulder and speaks softly.)
+
+Asra: Thane, he's not coming back.
+
+Thane: Fuck. I can't... I can't do this...
+
+Asra: Deep breaths, Thane.
+
+(Asra embraces Thane.)
+
+Asra: Shh... I've got you.
+
+(Thane cries silently into her shoulder.)
+
+Asra: We'll get through this. I promise.
+
+(Thane's breathing eventually slows.)
+
+Thane: Thank you.
+
+(The two hold each other in silence until Thane eventually breaks away from the hug.)
+
+Asra: This is my first time being in here. Now I see why the regular basement is so small. Did Saito do all this himself?
+
+Thane: Most of it. He was the one that bricked it up the basement and made it two rooms. Mom made the secret entrance for this half.
+
+Asra: That must have been a long time ago. Did Dagan help, too?
+
+Thane: He refused. I guess he didn't agree with them keeping contraband in the first place.
+
+Asra: I knew you guys had a collection of banned books, but I never imagined it would look this cool. I wish I'd come down here earlier. That flag looks like an antique.
+
+Thane: It's not that much older than we are. Probably just looks like it because we never see them anymore.
+
+Asra: I can't believe your dad fought against Somoza's regime back before he rose to power. Your family's so much cooler than mine.
+
+Thane: Didn't do them much good, did it? Mom died in the internment camps, and now Dad's... I'm sorry. It's not like you haven't lost family yourself.
+
+Asra: I'm still grateful, you know. After the Rega Massacre you were all I had left. There were a lot of people that had nowhere to go. I'm lucky you were there to take me in. Thank you.
+
+Thane: Asra, I love you. You know I love you. Did you really think I'd just hang you out to dry?
+
+Asra: I'm still thankful.
+</S2-3>
+
+* * *
+
+GAMEPLAY SECTION: The player may roam around the cellar. Erawa at a Glance, Colonialization in Lamenir, Erawan Scriptures, and A Brief History sit next to each other and trigger their respective cutscenes when interacted with.
+
+<S2-4>
+Erawa At a Glance
+
+(Asra approaches the bookshelf and selects Erawa at a Glance.)
+
+Asra: I've always wanted to know more about Erawa. I mean, aside from what I learned in school.
+
+Thane: Asra, you know what we were taught was-
+
+Asra: I know, I know.
+
+(Asra opens the book.)
+
+Asra: "Paranormal phenomena were first observed in Erawa in the sixth century, though their nature has been closely guarded by the Erawan Empire. Nearly half a millennia passed before it was observed that the magnitude and frequency of these events correlated with their proximity to the center of the peninsula."
+
+Asra: "Legends of Erawan magicians known as 'evincers' have existed for centuries. However, it wasn't until defected practitioners were interviewed that scientists theorized the center of Erawa's landmass contained a 'subjective fracture in objective reality,' which enabled the temporary suspension of physical law."
+
+Asra: I was always told it was some kind of electric charge that hovered in the air.
+
+Thane: Yeah. Not even my mom would have described it the way this book does. She just said the land was sacred.
+
+Asra: "Evincers trained to exploit the Fracture, primarily by manipulating the natural tundra into a tropical rainforest suitable for agriculture and resource production, as well as a source of military power during the period of Cheminan colonization."
+
+Asra: Wait, I've heard of the Fracture. Although I don't really understand how it works.
+
+Thane: It's sort of like a zone where reality becomes increasingly unstable. But to be honest, I don't completely understand it myself.
+
+Asra: "The exact nature of the Fracture is unknown - reality becomes increasingly unstable as one approaches it. Within a forty-mile radius, objects from an observer's imagination begin to materialize, and objects not being actively observed may dematerialize. Beyond a thirty mile radius, unconscious eye movements cause earthquakes, and measurement tools such as rulers begin to malfunction. Experienced evincers are able to dampen these effects, but there are no confirmed records of the center having been reached."
+
+Asra: I didn't realize the center was so dangerous.
+
+Thane: According to Mom, it's kind of a double-edged sword. It's more dangerous, but evincers are more powerful there. The whole country is based around how close people live to the middle. Poor people on the coast, politicians and clergy farther inland.
+</S2-4>
+
+Colonialization in Lamenir
+
+<S2-5>
+(Thane picks up a book.)
+
+Thane: "Lamenir has a unique ecological history; it is the only landmass with no natural hunters. As all of its native meat-eaters have instead adapted to living as scavengers, aggressive behavior is not observed among wildlife or people."
+
+Thane: "It is the lack of aggression in the Lamenir people for which its subjugation is often attributed. Indeed, it took less than a century for 40% of its total population to be enslaved by Debon colonialists."
+
+Thane: "In recent years, mining of raw materials in Lamenir has become a staple in the global economy, supplying Chemina with coal and iron which are refined into consumer goods and shipped around the globe."
+
+Asra: Ugh. Are you sure fleeing to Debony is a good idea?
+
+Thane: We're Cheminan. That's different.
+
+Asra: But... Debony sounds just as evil as Chemina. Maybe worse.
+
+Thane: It's not really about good or evil. Chemina wants us on the battlefield. Debony wants us for production.
+
+Asra: That sounds like something Dagan would say. "Life is misery. A job is misery... WITH compensation."
+
+Thane: (Laughs) I don't think he's quite THAT nihilistic. But you're right. He told me that when Dad was drafted. The part about going to Debony, I mean.
+
+Asra: Wait, he wanted to leave while Saito was on active duty!?
+
+Thane: Well, no. He said we needed a contingency plan in case something happened to him. I didn't want to talk about it at the time, but here we are.
+
+Asra: Does Dagan care about ANYONE?
+
+Thane: He was really close with my mom, back when she was still around. And he does care about me. He's just not good at showing it. And as insensitive as he can be, he's usually right.
+
+Asra: He can be right all he wants. I just wish he wasn't such an ass about it.
+
+Thane: Yeah, me too.
+</S2-5>
+
+Erawan Scriptures
+
+<S2-6>
+(Asra hands the Erawan Scriptures to Thane.)
+
+Asra: Can you read this?
+
+Thane: The last time anyone could've read it was when Mom was around.
+
+Asra: I thought you knew Erawan.
+
+Thane: My mom taught me some growing up, but only spoken. I don't know how to read at all.
+
+Asra: So why keep the scriptures after Phaedra was taken?
+
+Thane: Dad didn't want to let go of anything that reminded him of her. It's definitely not the safest decision he's made. All of these are banned, but Erawan literature would be the biggest liability by far.
+</S2-6>
+
+A Brief History
+
+<S2-7>
+Asra: Have you read all of these?
+
+Thane: Most, but my dad pushed me to read the ones about Chemina's history the most. A Brief History of Cheminan-Erawan Relations was his favorite.
+
+(Thane picks another book from the shelf.)
+
+Thane: "Due to the Erawan Empire's reliance on a natural landmark which proved ineffective outside of the local territory, the state adopted isolationist policies, much to the detriment of foreign relations."
+
+Thane: "Erawan-Cheminan diplomacy only soured in the wake of Chemina's industrialization, during which engineers proposed using the Fracture to construct a perpetual energy machine."
+
+Thane: "This sparked outrage among Erawan activists who considered technological exploitation of the Fracture heresy, escalating political tensions to an all-out war."
+
+Asra: Wait, what!? I knew this was a resource war, but perpetual motion? That's crazy!
+
+Thane: Well, you're still a step ahead of everyone that thinks Erawa started the war.
+
+Asra: I don't know whether to be flattered or depressed.
+
+Thane: "While Chemina has no shortage of allies due to its extensive trade partnerships around the globe, the probability of foreign intervention in the Cheminan-Erawan conflict appears slim."
+
+Thane: "Developed countries have expressed concerns over Chemina's political instability and the risk of its supreme leader Farid Somoza using the Fracture to wage a world war, were it ever secured. Consequently, the two nations have been locked in a stalemate."
+
+Thane: There's a tear on the page. Dad wouldn't read me part of it because he was afraid I'd talk about it in school. I threw a tantrum and tried to grab it out of his hand.
+
+Asra: How old were you?
+
+Thane: Five.
+
+Asra: Damn. That's pretty young to be lecturing your kid about politics.
+
+Thane: He said all the children's books were "nationalistic garbage" so he read these to me instead. Even though he had to paraphrase most of it. Guess he's not here to protect the book from me this time.
+
+Asra: You shouldn't think of it that way. Those books made you who you are. They've served their purpose. We're burning them now because we're making room or a new life - one where we can be safe from Somoza and this stupid war. If Saito could see you now he'd be proud.
+
+Thane: How would you know? You barely knew him.
+
+Asra: Okay. What would he really think of you?
+
+Thane: I guess... He would have been proud. Probably.
+
+Asra: See? This is the best thing we can do right now.
+
+Thane: ... I'm going to miss him.
+
+Asra: I know.
+</S2-7>
+
+Book Burning
+
+<S2-8>
+(Thane stands at the fireplace. The flag from the basement has been tied into a bindle holding the books, which Thane holds.)
+
+Thane: Does anyone want to look at these one last time?
+
+(Beat)
+
+(Thane sighs, then thrusts the books into the fire. Dagan leaves the room.)
+
+Asra: Guess the censors won.
+
+Thane: Weren't you just saying we had to get rid of these?
+
+Asra: Yeah, but still. Dagan can't be too happy about this, either. Wasn't he one of the guys trying to get the truth out about the Civil War?
+
+Thane: Well, kind of. He was a war correspondent, but things got... weird.
+
+Asra: What, because he pledged loyalty to Somoza?
+
+Thane: No. Even before Somoza won, Dagan wanted to stay neutral. He mostly just reported numbers and took photos.
+
+Asra: You said he liked Phaedra, right? Surely he cared that she was taken away?
+
+Thane: By the time Mom was captured, it was clear Somoza was going to win. I guess Dagan wanted to be on the winning side. Even Dad did, although he kind of had to for my sake.
+
+Asra: Saito... He lost his wife, pledged his loyalty to the man that had her killed, and after all that Somoza forced him back onto the battlefield. That's so fucked up.
+
+Thane: Asra, I really don't want to think about that right now...
+
+Asra: And now all Dagan does is write pro-Somoza propaganda.
+
+Thane: I don't know what to tell you. He's a good writer and it pays the bills. Neither of us would be here if it weren't for him. But yeah, a lot of those books were his. You'd think he'd at least care a little about burning them.
+
+Asra: He didn't want to keep contraband in the house in the first place, right? We all have feelings but we can't let them get in the way of doing what has to be done.
+</S2-8>
+
+Police State
+
+<S2-9>
+(There's a loud knock at the door.)
+
+Asra: What the-
+
+Thane: Who's there?
+
+Officer: Gheni Police Department. Open up!
+
+(Thane reluctantly opens the door, revealing two officers.)
+
+Officer: We're looking for a Thane Belikoff.
+
+Thane: Uh...
+
+Officers: You need to come with us.
+
+Thane: Hold on, I'm in-
+
+(One officer raises a gun.)
+
+Officers: If you don't cooperate, we are authorized to use force.
+
+(Two gunshots sound and the officers collapse, dead. Dagan stands behind Thane, holding a rifle.)
+
+Asra: Holy shit!
+
+Thane: Fuck! Fuck! Dagan, what the fuck?
+
+(Dagan drags both bodies inside and shuts the door.)
+
+Dagan: Quit standing around. We have to move!
+
+(Dagan hands Asra the rifle, then takes one of the guns from the officers and gives it to Thane.)
+
+Asra: Dagan, you know I'm a medic, right? I can't shoot.
+
+(Dagan fetches three backpacks and checks their contents while speaking.)
+
+Dagan: Thane can teach you later. For now, just hold onto it.
+
+Thane: You just shot two officers. What-
+
+Dagan: It was either that or let them haul you away to some black site.
+
+Thane: Where did this gun even come from?
+
+Dagan: Your father was a bit of a kleptomaniac. When it was clear Somoza was winning the war, he started collecting weapons from fallen enemies. Once the war was over his service weapon was taken but he was able to hide that one.
+
+(Dagan points to the gun he gave to Asra.)
+
+Thane: I had no idea. Wait, shouldn't that have been in the book cellar?
+
+Dagan: (Shrug) Saito hid it in the bedroom. Pretty reckless considering what would have happened if we'd ever been raided, but I guess keeping it handy finally paid off.
+
+Asra: Good thing we're already packed.
+
+Thane: What did they even want from me?
+
+Dagan: Who knows? Maybe they double-checked Saito's family records and realized you were half Erawan. No use worrying about it now. But we really do have to get out of here.
+
+Thane: Just to be clear, we're headed for Nenegi, right?
+
+Asra: Yeah. That's where Vanna is. She can smuggle us out.
+
+(Dagan rushes to the back door and opens it.)
+
+Dagan: Shit. It's after curfew. Look, in case things go to shit-
+
+Asra: They already have.
+
+Dagan: (Sigh) Think before you shoot. The last thing we need is half the police department breathing down our necks. If we see someone, we go around. If we can't, we deal with them silently.
+
+Asra: Don't patronize me. I'm not stupid.
+</S2-9>
+
+* * *
+
+GAMEPLAY SECTION: The player must navigate the streets of Gheni. The area is open and exposed, but mostly empty as well. Encounters with officers can often be avoided, but confronting them head-on is likely to happen at least once or twice. Skirmishes are intense and one side is usually killed very fast.
+
+KNEW: Defeat in Merad
+
+<S2-10>
+(This scene triggers if the player interacts with a newspaper lying near a bottleneck in the level design. Thane picks up a newspaper and begins to read.)
+
+Thane: "Our valiant soldiers continue their tug of war over Merad. Nineteen Cheminan casualties were reported on the battlefields this past week. However, General Jaromir assures us that victory is simply a matter of patience."
+
+Asra: Patience! What is it, three years we've been fighting over that miserable little town? I'm sure "be patient" is what every mother wants to hear when her son gets shipped back with half of his limbs blown off.
+
+Dagan: You think reading it's bad? Imagine having to write it.
+
+Thane: Does this kind of stuff really raise morale?
+
+Dagan: Who knows? We don't exactly do A/B testing.
+
+Asra: Do you think they're talking about Saito's unit?
+
+Dagan: Doubt it. Saito was an explosives expert. They wouldn't stick him on the front lines.
+
+Asra: How did he end up doing that?
+
+Dagan: Past experience. He got plenty of practice blowing stuff up during the Civil War.
+
+Asra: Wait, Saito was a terrorist!?
+
+Dagan: (Laughs) You could say that.
+</S2-10>
+
+
+* * *
+
+GAMEPLAY SECTION: From this point on, I-Troops are mixed in with regular officers. They are more aggressive and often show up while Thane is already fighting other officers, but rely heavily on using tear gas to disable the player rather than using live ammunition.
+
+Trainyard
+
+<S2-11>
+(The group sneaks into a trainyard.)
+
+Dagan: We'll need to be really careful here. First sign of trouble and you can bet they'll search every nook and cranny before another train leaves.
+
+Asra: We also need to figure out which ones are headed to Nenegi.
+
+(The group sneaks between cars for a bit, eventually finding a tank car.)
+
+Thane: Nenegi's a military town. Any tanker car carrying nitro or poison gas would be headed there.
+
+Dagan: Most are probably just petrol, in which case they could be going anywhere.
+
+Thane: The valves up top should have different warnings depending on the contents. We can climb up and check.
+</S2-11>
+
+* * *
+
+GAMEPLAY SECTION: This is a stealth-only section in which the player may not use firearms at all. The density of officers is a bit higher than previous levels, but more importantly the trainyard is a confined space where running and hiding is difficult. The player must climb up onto several tankers to progress the story.
+
+Narrow Escape
+
+<S2-12>
+(Asra is on top of one of the tanker cars, with Thane and Dagan waiting below.)
+
+Watchman: You there! Hands where I can see them!
+
+(A guard approaches, gun aimed at Asra. Thane and Dagan retreat into the shadows. Asra slowly turns toward the watchman and raises her hands.)
+
+Watchman: Bit past your bedtime, isn't it, miss? Get down from there. Now.
+
+(Asra slowly climbs down and turns to face the watchman.)
+
+Watchman: What were you doing up there?
+
+Asra: ...
+
+Watchman: Not a talker, eh?
+
+(The watchman slams the butt of his rifle into Asra's gut, causing her to fall to the ground. Thane raises his gun, but Dagan stops him and shakes his head.)
+
+Watchman: Still don't feel like talking?
+
+(The watchman brings his boot down between Asra's legs and digs his heel into her.)
+
+Thane: Bastard!
+
+(Thane shoves Dagan off of him and shoots the watchman in the head, then rushes over to Asra.)
+
+Dagan: Thane, you idiot!
+
+Thane: Are you alright?
+
+Asra: ... Yeah. We need to get out of here.
+
+(Thane helps Asra to her feet, only for the train to begin moving almost immediately.)
+
+Dagan: What the-
+
+Asra: Get on! That tanker's carrying nitro.
+
+(The group grabs onto a ladder and climbs up onto a car carrying lumber. Asra slips beneath a tarp covering the car.)
+
+Asra: Peekaboo!
+
+Thane: (She sure is resilient.)
+
+(Thane and Dagan follow suit and join her inside the train car.)
+
+Dagan: Mind telling me why you led us into this death trap? There's no way the conductor heard a gunshot and decided to just ignore it.
+
+Asra: I think that's exactly what happened. Sure beats having to spend several hours giving the police a statement and then explaining to his boss why a shipment is late.
+
+Dagan: If that is what happened, we're damn lucky the conductor was already in the pilot. Thane, what the fuck were you thinking?
+
+Thane: Are you being serious right now? What was I supposed to do, just sit by and watch?
+
+Dagan: He had his back to you. You could have held him at gunpoint without firing. You could have used your knife. Shooting him was beyond reckless.
+
+Asra: Nine times out of ten, something like that would have gotten us killed.
+
+Thane: I don't believe what I'm hearing. This is the thanks I get for saving you?
+
+Asra: No, that's not... (Sigh) You did save me, and I'm grateful for that. Really, I mean it. But there are better ways you could have handled that.
+
+(Beat)
+
+Thane: I know it was impulsive. I just couldn't... I really want to keep you safe. Even if I'm bad at it. Sorry.
+
+Asra: You're not bad at it. You probably saved my life a dozen times over tonight. But what happened just now was a big lapse of judgment. Please don't do it again.
+
+(Thane nods. There's a pause, then Asra curls up into a ball.)
+
+Thane: You cold?
+
+Asra: Sore, more than anything. Speaking of which, don’t get kicked in the pussy. It’s uh… not recommended.
+
+Thane: I’ll keep that in mind.
+
+Asra: Though now that you mention it I am getting kind of cold. And tired.
+
+(Thane wraps his arms around Asra, and she leans back into him and falls asleep.)
+</S2-12>
+
+Chapter 3
+
+Cargo Inspection
+
+<S3-1>
+(Thane, Dagan, and Asra look out onto the landscape from the train as its pace slows.)
+
+Asra: Where is this? Chalt?
+
+Dagan: Yeah. See that big shadow? That's the Capital Spire.
+
+Asra: You know the city?
+
+Dagan: I spent a lot of time here during the war. Chalt was a big tipping point. Conquering it was a huge feat, and one of the biggest reasons Somoza saw fit to make it the new capital. Hence the spire.
+
+Asra: Either that or he's compensating for something.
+
+(Thane speaks while still gazing out into the distance.)
+
+Thane: That's just a Debon stereotype.
+
+Asra: Debon? Isn't Somoza Cheminan?
+
+Dagan: Only half. He grew up here, but he's Debon-Cheminan by blood.
+
+Asra: Seriously? His whole platform is Cheminan nationalism. Well, that and industrialization.
+
+Dagan: There's a little more to it than that. Somoza couldn't have done all that without major support. Most of which came from Debony's public sector. Unofficially, of course.
+
+Asra: So the civil war...
+
+Dagan: Yeah. Bought and paid for by Debony.
+
+Asra: (Sigh) Can't believe my parents listened to him.
+
+Thane: A lot of people did.
+
+Dagan: A lot of idiots, you mean.
+
+(Asra makes an annoyed glance at Dagan.)
+
+Asra: Dagan... If you knew all that, why are we going to Debony? Won't they just send us back?
+
+Dagan: No. Debony wants Cheminan engineers. Somoza was supposed to send the R&D back home, but that's not how it worked out. Fuckface wanted it all to himself. As you might guess, he's not exactly on good terms with Debony anymore.
+
+Asra: It's a miracle we're not at war with them, too.
+
+Dagan: Not really. Neither side wants to go to war. Sure, Debony has the manpower to get the job done, but at what cost? It's safer for them to keep trading with us and reverse engineer our goods over time.
+
+Asra: You really think they'd win? Come on, Dagan. We've got the strongest military in Kabel.
+
+Dagan: (Laughs) Who told you that?
+
+(Asra gives Dagan an annoyed look.)
+
+Asra: (Sigh) Go on, rub it in. You should smile more anyway.
+
+(Asra looks over at Thane, who's staring off into the distance.)
+
+Asra: Something on your mind, Thane? You're been awfully quiet.
+
+Thane: Just thinking about Dad.
+
+Asra: Do you want to talk about it?
+
+Thane: What's there to talk about? He's gone.
+
+(Asra squeezes Thane's hand until the train slows to a stop. Flashlights probe through the darkness.)
+
+Dagan: Cargo inspection. Time to go.
+
+Thane: Where? It's still past curfew.
+
+Dagan: We'll have to figure that out later.
+</S3-1>
+
+* * *
+
+GAMEPLAY SECTION: Officers in this section seem to passively pursue the player; they do a meticulous sweep of the area, making stealth difficult, but do not actively know where the player is unless they reveal themselves. Bloodhounds may also track the player, making it difficult to hide.
+
+KNEW: Night Patrol Killed
+
+<S3-2>
+(This scene triggers if the player interacts with a newspaper placed within the level. Thane unfolds a newspaper and begins to read)
+
+Thane: "Early this morning, two police officers were found shot to death in a private residence on the south side of Gheni. A third officer was found dead at Gheni Transit Center. Investigators believe both of these incidents to be related."
+
+Dagan: Let me guess. A reward-
+
+Thane: "A reward of up to 1,000 lauves shall be off anyone providing evidence leading to the capture of the suspects Thane Belikoff, Dagan Belikoff, and Asra Sacco. All three are considered to be armed and dangerous."
+
+Dagan: Perfect, they already know who we are.
+</S3-2>
+
+Ruins
+
+<S3-3>
+(The group escapes a good distance away from the train tracks.)
+
+Thane: Hey Dagan, do you have a plan for where we're actually going?
+
+Dagan: Anywhere we can settle down for the night. If we keep running around after hours we're gonna get ourselves killed.
+
+Asra: You sure that's a good idea? The longer it takes to get there, the more risk there is of being caught.
+
+Dagan: What's the alternative? We can't make it to Nenegi tonight, and it's far safer to travel by day.
+
+Thane: Suppose we sleep here. Where do we go?
+
+Dagan: There's an area just east of here that was burnt to the ground during the war. I'm sure we can find a place to squat there.
+
+Asra: That would have been 20 years ago. It may have been rebuilt since then.
+
+Dagan: When's the last time you saw Somoza rebuild anything?
+
+Asra: Point taken.
+
+Thane: I thought you used to live here. Don’t you have any connections?
+
+Dagan: I didn't stay in contact with anyone after the war, and even if I did, Somoza killed every dissident he could find. Entire families, actually, kids included.
+
+Asra: Shit.
+
+Thane: Ruins it is.
+
+(Dagan nods, then turns and leads the group off into the distance.)
+</S3-3>
+
+Settling Down
+
+<S3-4>
+(The group reaches the burnt neighborhood. The houses are in complete disrepair.)
+
+Thane: Well, that's one problem solved.
+
+Dagan: Provided nothing caves in on top of us.
+
+(Dagan approaches one of the houses. The door has long since fallen off its hinges. The three click on their flashlights and go inside.)
+
+Thane: Sure is drafty in here.
+
+Asra: Maybe we should build a fire.
+
+Thane: Very funny.
+
+(Asra takes a blanket from her pack and lays it down in the middle of a doorway.)
+
+Thane: You want to sleep there?
+
+Asra: Safest place to be if something collapses.
+
+(Asra sits down on the blanket. Thane sits beside her. Dagan lays down his own blanket in a doorway several feet away and sits facing them, but flinches in pain.)
+
+Thane: You alright?
+
+Dagan: Yeah. Just my back acting up.
+
+(Dagan fishes around his pack, but doesn't find anything.)
+
+Dagan: Shit. Hey Thane, do you have any painkillers?
+
+Thane: I've got some Ribatol if it's really bad.
+
+Dagan: What? Isn't that the stuff they gave you in the evincer program? The hallucinogen?
+
+Thane: Yeah, but it can work for pain relief too.
+
+Asra: Wait, what? Thane...
+
+Thane: What? Quit looking at me like that.
+
+Asra: Sorry. It's just... hallucinogens are scary.
+
+Thane: Why? Did you have a bad experience or something?
+
+Asra: Not me, but yeah. A while back, one of my friends started experimenting with mushrooms. Something happened. He started having relapses, even after he'd stopped taking them. The doctor diagnosed him with something. Can't remember what he called it.
+
+Thane: It's called HPPD – hallucinogen persisting perception disorder. One of the guys in the evincer program ended up getting it, too. But there were twenty of us and he was the only one that seemed to react badly to it.
+
+Asra: Fuck. I can't believe they would take a risk like that. Why would they want to drug you to begin with?
+
+Thane: Evincing is all about changing your perception to make it reality. Ribatol is supposed to facilitate that. The goal was to induce hallucinations that the user could control, and that was supposed to manifest them in reality.
+
+Asra: Did it work?
+
+Thane: Honestly, no. Although it was hard to tell. Some people seemed to get better at evincing when using it, just not me.
+
+Asra: I guess I see the logic. Still, it's fucked up that they're using Cheminan civilians to test stuff like that.
+
+Dagan: They probably tested it on prisoners of war first.
+
+Asra: Oh. Well in that case it's fine.
+
+Thane: So... you want some?
+
+Dagan: Nah, I'll just sleep it off.
+
+Thane: Sure?
+
+Dagan: Yeah, I'm sure. I'll let you know if it gets worse.
+
+(Dagan rests his head on his pack, wraps himself in his blanket, and goes to sleep. Asra turns to Thane.)
+
+Asra: So how was your day?
+
+Thane: Sucked ass. You?
+
+Asra: Well at first it sucked ass. Then it started blowing ass. Then it started sucking again until there was more spit than ass. And then it started blowing again.
+
+Thane: (Laughs) That sounds about right.
+
+(Beat)
+
+Asra: Thane, I need to talk to you about something. I've been trying so hard not to think about it but it's driving me crazy.
+
+Thane: What's going on?
+
+Asra: (Sigh) I'm a murderer now. I tried to tell myself they were people. With their own lives, their own families. But right before I pulled the trigger... It was gone. All I cared about was hitting them. Like it was some kind of game.
+
+Dagan: So much the better. Hesitation is death.
+
+(Asra's voice turns to a hostile whisper.)
+
+Asra: Shut up and go to sleep.
+
+(Dagan grunts and rolls onto his other side. Thane and Asra make eye contact.)
+
+Thane: I don't know what to tell you. I don't like doing it either. But we don't really have a choice.
+
+Asra: That's the thing, I don't NOT like it. I should feel worse, but I don't. And that feels really gross. (Sigh) I never wanted to be in the medical unit, but at least I never felt bad about what I did. This... this is awful, and somehow it feels natural at the same time. I don't want to get used to it, but it's already happening.
+
+Thane: This is a temporary thing. Vanna's gonna get us out of here and then we're done.
+
+Asra: And then what? I can't just forget about this and move on like it never happened.
+
+Thane: Don't try to figure everything out right now. I can't promise everything will be perfect, but you CAN come to peace with this. Give it time. You can worry about it once we escape. I know that sounds shitty and dismissive but there's literally no other option right now.
+
+(Beat)
+
+Asra: (Sigh) How do you and Dagan do it? How does it not affect you?
+
+Thane: It does affect us. At least, it affects me. If I'm being honest, this is way worse than the army. Back then I had a captain, a base, some semblance of a plan...
+
+Asra: Feels like forever ago, doesn't it?
+
+Thane: (Sigh) Yeah.
+
+(Asra forces a smile.)
+
+Asra: I still remember the first time we met. Well, I'm not sure if it counts, since you were unconscious on the stretcher. Just talking about it makes it sound like the opening to some bad soap opera.
+
+Thane: And the first thing I saw when I came to were those stormy gray eyes. And then you nursed me back to health and we lived-
+
+Asra: Oh, shut up.
+
+Thane: You're the one that brought up soap operas.
+
+Asra: You call this happily ever after? Man, I'd hate to see what your idea of a downer ending is.
+
+Thane: It's not much of an ending at all. We still have to make it to Debony first. But it could be worse.
+
+Asra: Could be a lot better, too. What if we'd left before those officers showed up? We'd already be in Nenegi by now and no one would be after us.
+
+Thane: They'd still be after me. You and Dagan would be in the clear though.
+
+Asra: Ah, right...
+
+Thane: But seriously, think about how shitty it would be to do this alone. Not to mention borderline suicidal. Having you here makes a world of difference.
+
+(Asra cuddles up to Thane and closes her eyes.)
+
+Asra: Yeah, me too. I couldn't have done this without you.
+</S3-4>
+
+Leaving Chalt
+
+<S3-5>
+(The trio huddles together in a doorway, sharing a can of food in the abandoned house.)
+
+Thane: So, what's the plan for today?
+
+Dagan: That's a damn good question. After the debacle at the trainyard there's no way we can go back and hitch a ride to Nenegi. Our best bet might be going by horseback.
+
+Asra: What about a car?
+
+Dagan: How would that work? None of us can drive. Besides, even renting one would be outside of our price range.
+
+Thane: Horseback should work just fine. Let's head downtown and see what we can find.
+
+Dagan: I haven't been here in quite some time, but there used to be tons of stables in old town. We're probably better off looking there first.
+
+Thane: Alright, we can start there. You think anyone in Chalt is going to be looking for us yet?
+
+Asra: Maybe. They might still think we're in Gheni.
+
+(Dagan stands up and puts on his pack. Thane and Asra do the same.)
+
+Dagan: I wouldn't worry too much about it. Even if they know we're here, there's more than enough crime in Chalt to keep the cops busy.
+
+Asra: Is it really that bad? You'd think Somoza would want the capital to be... I don't know, nicer?
+
+Dagan: It's plenty nice by all the government buildings and tourist attractions. Only the residential districts look like a dump. Which I'm sure suits him just fine.
+
+(The group leaves the house and begins making their way into town.)
+</S3-5>
+
+* * *
+
+GAMEPLAY SECTION: The player can wander around the city without risk of combat. On the way to boarding the trolley is a newspaper which triggers a cutscene. Boarding a trolley at the station triggers the cutscene at the rally.
+
+(3.6) KNEW: Remembrance of the Rega Massacre
+
+(Thane opens a newspaper and begins to read)
+
+Thane: "Today marks the one year anniversary of the Rega Massacre, a tragic event in which 413 civilians and 588 soldiers were killed in an unprovoked assault on Cheminan territory."
+
+Asra: Hard to believe it's been a year already.
+
+Thane: "General Jaromir reminds our brave soldiers that the enemy is ruthless and underhanded, and that it is tragedies such as these that demand our troops remain steadfast in protecting our great nation."
+
+Dagan: Ugh, Jaromir... The sooner that leech dies, the better.
+
+Asra: ... What?
+
+Dagan: You heard me.
+
+Asra: Politics aside, Jaromir's one of the best tacticians we have. Do you know how many of our soldiers would be dead if it weren't for him?
+
+Dagan: Does it matter? It's one thing to be a strategist. It's another to play the part of some news celebrity and propagandize the war. I don't understand why you're getting behind a patriotic narrative like this.
+
+Asra: It's not about patriotism! My parents died that day! I don't like the war either, but it's not like we could just call for a ceasefire tomorrow and Erawa would stop attacking us.
+
+Dagan: I'm not talking about the damned massacre, I'm talking about the article! Jaromir isn't from Rega; he's from Chalt. He doesn't give a shit about your parents, he's just using the massacre as an excuse to draw support.
+
+Asra: It IS the anniversary of the massacre. What are they supposed to do, just pretend it never happened?
+
+Dagan: No. I'm saying it's wrong to stand on the bodies of your parents to rattle off war propaganda.
+
+Asra: That's pretty rich coming from you. You write shit like this all the time!
+
+Dagan: It's not as though I enjoy writing that garbage. You know as well as I do that you have to toe the party line to make it in this country. I did what I had to do to support Thane. And you, in case you forgot.
+
+Asra: So only you're allowed to be a bootlicker. Got it.
+
+Dagan: That's literally my job. Jaromir's a general. He-
+
+Thane: Dagan, enough.
+
+(3.7) Rally
+
+(The group steps out of the trolley into a vast downtown plaza. There's a massive gathering. At the far end, Somoza stands at a podium.)
+
+Farid Somoza: "On this day, one year ago, Cleric Gael Mancini saw fit to send an army to our homeland, slaughtering hundreds of innocents. This is a travesty of justice that our people must never forget. But neither shall we forget the bravery shown by those who laid down their lives that day protecting their neighbors.
+
+"Tragedies such as these show an inherent difference in values. In Erawa, I see barbaric acts taken against non-combatants. I see the cowardice of an enemy that cannot fight with honor. But in Chemina – in you - I see courage! Courage to stand against such an enemy, to defend our homeland, and most importantly, to rebuild and prosper anew amidst the threat we face.
+
+"When I first came to lead Chemina, I was faced with a great deal of opposition. I saw the looming threat of invasion, but soft-hearted apologists assured me that such concerns were unnecessary. Many were blind to the enemy which threatened to destroy us from within. It is chilling to imagine the scope of destruction we undoubtedly would have faced had such naivety been the prevailing mentality when Erawa first invaded. Our children may well be speaking Erawan in school, or forced to adopt their occult practices.
+
+"Erawa is the antithesis of all that we stand for. They are a people dependent upon their archaic witchcraft. Their society is one of stagnation, and for all their history, they have nothing to show for the time they have had to grow as a people and civilize themselves.
+
+"The same cannot be said about us.Progress and cooperation are Chemina's foundation, and while the fight ahead of us may be long and arduous, I encourage you also to look at how far we have come. Why, just within my lifetime, I have seen the genesis of motor vehicles and aircraft, the proliferation of electrical power in the form of various appliances, and a country that has become ever more interconnected thanks to railroads and the telegraph.
+
+"It is because of these things that our triumph over Erawa is inevitable. Our country marches onward and our technology becomes ever more advanced, while Erawa is much the same as it has always been, and is doomed to remain as such.
+
+"It is also for this reason that we are righteous in this conflict. For not only have we transformed ourselves, the entirety of Kabel has been transformed by the fruits of our innovation! We toil not just for ourselves, but for the benefit of all humanity. Standing before me I do not see engineers and soldiers, but pioneers of a new age and guardians of our destiny. Chemina leads the future!"
+
+(A wave of cheers erupts throughout the square. When the cheering dies down, Thane looks around.)
+
+Thane: Oh, shit.
+
+Asra: What is it?
+
+Thane: On my left. I know that guy. We were squadmates. I have to get out of here before he recognizes me.
+
+Asra: Do you think he knows the authorities are looking for you?
+
+Dagan: Doesn't matter. We shouldn't risk hanging around here. There's a bar on the top floor of Knox Tower. We'll be out of sight, plus we can look around to see if there are any stables downtown while we're up there.
+
+(The trio slink off and enters Knox Tower)
+
+Receptionist: Are you here for Knox Bar and Grill? You can take the elevator to the top floor.
+
+Dagan: We'll take the stairs, thanks.
+
+Receptionist: If you insist.
+
+(The trio enters the stairwell of the Knox Tower.)
+
+Thane: What's that all about?
+
+Dagan: Thane already recognized one person here. No reason to risk bumping into another familiar face, least of all in a closed space.
+
+(The group begins climbing the stairs.)
+
+(3.8) Economics
+
+Asra: Do you think Somoza's right about us moving into a new age?
+
+Dagan: Partially. But Somoza's biting off more than he can chew. If he keeps trying to trade technology like gold and spices it's going to blow up in his face.
+
+Thane: Why? He's been supreme leader my whole life and I've never seen anything so much as threaten his rule.
+
+Dagan: It's not about politics, it's about the technology itself. It's taken all of 40 years to go from steam engines to biplanes. If Chemina can do it, so can anyone else.
+
+Asra: You said yourself Chemina has the most advanced engineers in Kabel. Who do you think could compete with us?
+
+Dagan: The Republic of Debony is already reverse engineering our technology. It might be in the early stages, but as long as we keep trading with them, they'll keep catching up.
+
+Thane: You say that like we're just handing over everything we have. Debony's still using muskets and we've got machine guns.
+
+Dagan: I'm sure Somoza is thinking the same thing, but that's exactly why his rule isn't going to last. Whether he realizes it or not, the changes he's talking about are bigger than weapons or national identity.
+
+Asra: You've lost me. Even if Debony's engineering becomes more advanced, how does that affect us?
+
+Dagan: It affects us because engineering is our whole economy. They'll stop buying our exports, and since they control Lamenir, they'll be able to charge us whatever they want for iron and coal. We'll go bankrupt.
+
+Thane: That doesn't mean we'll collapse completely. Plenty of countries that do just fine without being economic giants.
+
+Asra: It could be really bad news for the war.
+
+Dagan: That's an understatement. We'd be crushed.
+
+(3.9) Iron Sights
+
+(Thane approaches a window, then waves them over.)
+
+Thane: Hey, come look at this.
+
+(Somoza, still speaking, is visible through the window. Asra looks around.)
+
+Asra: He’s just… exposed? No bullet proof glass? No sharpshooters?
+
+Thane: Yeah. How could this just happen? Negligence?
+
+Dagan: Not for something this big. I don’t believe it.
+
+Asra: So… Are you going to?
+
+Thane: What? Are you insane? I… (Beat) I could.
+
+(Thane looks at his gun.)
+
+Dagan: Thane, listen to me closely. If you shoot him, all of us will die. I'm not saying it's wrong, but you need to understand that.
+
+Asra: Somoza sent both of his parents away to die! If it were me I’d have pulled the trigger already.
+
+Thane: Everything they did was to protect me. Is this really how I should repay them?
+
+Asra: It’s not just you. What about everyone else? Somoza won’t even admit how many people have died fighting his stupid war. Don’t they deserve justice too?
+
+Dagan: What difference does it make? Shooting Somoza won’t bring them back or end the war. Killing bad guys doesn’t magically make the world a better place. You kill him, his son takes power and nothing changes.
+
+Asra: Argh, I can’t… Those police we killed, they were just doing their job, and now they’re dead because you thought us escaping was more important. But now we’re talking about someone that… with so much blood on his hands… and we’re just gonna let him go!?
+
+Dagan: (Shrug) Ask Thane.
+
+Thane: What? Why do I have to decide? You just said we’d all die!
+
+Dagan: You’re the tiebreaker.
+
+GAMEPLAY SECTION: The player chooses whether or not to shoot Somoza. Shooting him plays Shooting Somoza; sparing him plays Sparing Somoza and Spare: Meltdown.
+
+(3.10) Shooting Somoza
+
+(Thane shoots Somoza. Below, the crowd erupts into chaos.)
+
+Dagan: Well, it was nice knowing you guys.
+
+(Above, a door is flung open and footsteps are heard descending the stairs.)
+
+Asra: Move!
+
+Thane: (Not much point in running, but I guess it's better than standing around until we get arrested or shot.)
+
+(The trio flees the tower to the street. Above, a blimp floats into view.)
+
+Dagan: Shit.
+
+Asra: If this is where I die, I'm not going down without a fight. Come on, Thane!
+
+Dagan: Just run! Guns won't do anything against that airship!
+
+(3.11) Sparing Somoza
+
+(Thane lowers his gun.)
+
+Thane: I’m sorry, Asra. I can't put you in danger. Not after we've come so far. Besides, Dagan is right. No one would be better off if I shot him.
+
+Asra: We had a chance. An impossible, one in a million chance, dropped in our lap. And if we get caught trying to escape… passing up that chance will have been for nothing.
+
+Thane: I’m sorry. (Beat) Come on, I think I saw stables on the other end of the plaza.
+
+(The trio make their way back to the street and make their way to the stables.)
+
+(3.12) Spare: Meltdown
+
+(The trio approach the stables.)
+
+Dagan: Hey. We're looking to rent three horses for the day.
+
+Thane: Make it two. I don't know how to ride.
+
+Dagan: Wait, what?
+
+Asra: Don’t worry about it. Thane and I can ride double.
+
+Stablehand: Two, then?
+
+Dagan: Yeah, two's fine.
+
+Stablehand: You said just for the day, right? That's five lauves, but I'll need another 25 as collateral.
+
+Thane: Ouch.
+
+Dagan: I'll have a look at the horses, if you don't mind.
+
+Stablehand: Of course.
+
+(Dagan examines the horses for a moment, then reaches into his pocket, hands over the money, and signs with a fake name.)
+
+Asra: I didn't know you carried that kind of cash around.
+
+Dagan: Saito and I put aside savings in case we ever had to fund a little adventure like this. We’re luckier than most.
+
+(Dagan mounts his horse, then Asra, and Thane behind her.)
+
+Stablehand: I'll need these back by sundown tomorrow.
+
+Dagan: Got it.
+
+(The trio begin riding down the street.)
+
+Thane: Poor bastard.
+
+Asra: Can't be helped. At least he’ll keep the collateral.
+
+Thane: Shit, there he is again.
+
+(Thane presses himself against Asra and looks the other way.)
+
+Asra: The guy that knows you?
+
+Thane: Yeah. His name is Ludo.
+
+Asra: Don’t look. He's coming this way.
+
+Ludo: Get down!! Those are the criminals from Gheni!
+
+(Ludo draws his weapon and aims it in the direction of the trio. A few soldiers draw their own guns, while civilians scatter.)
+
+Dagan: Run!
+
+(Thane pulls out a pistol and fires toward Ludo. He misses, but Ludo dives for cover. Asra and Dagan pick up speed. Shots ring behind them.)
+
+Asra: Damn it, Thane! I knew it! I fucking knew it! We should have shot him when we had the chance!
+
+Thane: Save it for later! We have to move!
+
+GAMEPLAY SECTION: The player must flee the scene quickly, with police in pursuit. If the player shoots Somoza, an airship will be firing on them from above the entire time. If the player does not shoot Somoza, they traverse the map on horseback and move much faster.
+
+(3.13) Armored Car
+
+(An armored military vehicle (called a Vollmer) with a mounted turret rolls onto the street and fires at them. The horses are hit, sending the trio sprawling onto the street. Thane scatters.)
+
+Thane: Fuck. We can’t... There's no way. We’re dead.
+
+Asra: Come on, Thane! We can do this! I won't let you die here, so quit moping and fucking move!
+
+GAMEPLAY SECTION: The player must neutralize an armored vehicle by shooting the gunner, then using a smoke grenade and baiting the car into crashing. If the player shot Somoza, they must do this while being shot at by the airship. If this happens, Shoot: Blimp Down is shown at the end of the fight.
+
+(3.14) Shoot: Blimp Down
+
+(The trio rushes the Vollmer and drags the driver out. They rush inside, the blimp still firing at them from above.)
+
+Asra: Thane, the turret!
+
+Thane: What?
+
+Asra: It fires incendiary rounds! Shoot the blimp!
+
+(Thane climbs on top of the car and fires at the blimp, which erupts in flames instantly.)
+
+Thane: What the-?
+
+Asra: Yeah!! Take that!
+
+(3.15) Roadtrip
+
+(Asra starts driving away, bullets glancing off the rear of the vehicle.)
+
+Thane: I thought you couldn't drive?
+
+Asra: Shh, don't jinx it.
+
+Dagan: How are we still alive?
+
+Asra: Don’t jinx that, either. How are you holding up, Thane?
+
+Thane: I, uh... Thanks.
+
+Asra: Huh? For what?
+
+Thane: For making me get my shit together. I really thought we were dead.
+
+Asra: What was I supposed to do, tell you to lie down and die? Fuck that. No one gets to take you away from me. We’re escaping together.
+
+Thane: Escape...? We're not just a couple criminals running from city to city. They're going to see us as domestic terrorists. It doesn't matter where we drive, we'll be shot on sight.
+
+Asra: We ditch the Vollmer when we reach Nenegi and hope that no one there has seen our faces on a wanted poster yet.
+
+Thane: What's the point? Escaping at this point is impossible.
+
+Dagan: Might as well try. We’ve got nothing to lose.
+
+Asra: Exactly. Come on, Thane. Where's all this coming from?
+
+Thane: What do you think!? Did you see what happened back there? Like, can we talk about what that means for a second?
+
+Dagan: Fine. The whole country is after us now. We're probably going to die. Is that what you wanted to hear?
+
+(Asra takes Thane's hand in hers and squeezes, her other hand still on the wheel.)
+
+Asra: Thane, listen. I don’t care how bad it gets. I want to get out of here and start a new life. I’m not giving up on that, but I can’t do it alone, either. So please, help me.
+
+Thane: (Quietly) Okay.
+
+(The Vollmer rides off into the distance.)
+
+Chapter 4
+
+(4.1) Arriving in Nenegi
+
+(Dagan, Asra, and Thane ride past trees and smokestacks in the Vollmer Armored Car.)
+
+Thane: I always wanted to see your hometown. Never thought it would happen like this, though.
+
+Asra: You never wanted to roll into Nenegi in a tank? You need to dream bigger.
+
+Thane: You know what I mean. I wish I'd gotten to know your parents.
+
+Asra: Stop romanticizing it like that, Thane. I already told you they were… provincial. If they'd known I was seeing some half-Erawan guy…
+
+Thane: It might have led to some uncomfortable conversations, but would it really have been that bad?
+
+Asra: I don’t know. I wouldn’t have put it past Mom to tell a soldier that you hurt me or something like that.
+
+Dagan: Probably for the best that they’re not around, then.
+
+Thane: Hey, hold on-
+
+Asra: Do you get some kind of kick out of disrespecting the dead? I shouldn’t be surprised after what you said about Saito, but you’re being a real piece of shit.
+
+Dagan: And they weren’t?
+
+Asra: (Sigh) It’s not like they were all bad. My parents were racist, but they were good people. My grandfather got dementia and they took care of him for three years, even when he started attacking them. So what if they were flawed? They were human beings.
+
+Dagan: You know who else were human beings? Tens of thousands of Erawan-Cheminans that died in labor camps. And it was people just like your parents that rounded them up. So fuck them and fuck their beliefs. The world is better off without them.
+
+(Asra brakes hard and the Vollmer comes skidding to a halt.)
+
+Asra: What, just because you don't agree with them? What makes you so much better than them?
+
+Dagan: Well for starters, I’ve never been complicit in genocide. I’d say that makes me a great deal better than them.
+
+Thane: Guys…
+
+Asra: Thane, stay out of this. (To Dagan) You can’t just write people off because you think their views are wrong. Otherwise it’s just a bunch of people fighting over their beliefs like every historical conflict ever.
+
+Dagan: You think maybe there’s a reason for that? Or do you think you've personally figured out something that no one in the course of human history has ever understood?
+
+Asra: So what, we’re just supposed to kill each other? Do you believe in compromise at all!?
+
+Dagan: You could ask the Nationalist Party the same thing! No amount of compromise on my part would have been enough to save Phaedra. So fuck them, fuck your parents, and fuck you for defending them!
+
+Asra: Then fuck you too! You don’t get to have a monopoly on grief! I miss my parents too!
+
+(After a long silence, Asra looks back at the road and starts driving again.)
+
+Thane: ... Can we please talk about something else?
+
+(Beat)
+
+Asra: Do you think you'll be able to do any evincing in Nenegi?
+
+Thane: Maybe. Nenegi is pretty close to the Erawan border. I could try something simple. Control a coin flip, maybe.
+
+Asra: How exactly does that work?
+
+Thane: I don’t know how to explain it. It’s kind of like… forcing yourself to expect stuff? I was never good at it.
+
+Asra: Really? I thought you’d be really good at it. You know, ‘cause of your mom.
+
+Thane: Gheni’s too far from the Fracture, so she couldn't have taught me if she'd wanted to. But she did talk about the spiritual aspect a bit.
+
+Asra: That’s interesting. I’m guessing that’s the exact opposite of what the evincer program was like?
+
+Thane: Definitely. The training was secular, obviously. It was just twenty of us, and the whole thing was supposed to be top secret. They started with drugs and showing us optical illusions.
+
+Asra: I know I’m asking a lot of questions, but… what does that do?
+
+Thane: It’s like… Things happen when you believe they’re already happening. So for instance, if you see a pencil in a glass of water and it looks broken because of refraction, you can snap it in half for real.
+
+Asra: Whoa.
+
+Thane: Yeah. It’s weird enough explaining it, but seeing it firsthand kind of broke my brain.
+
+Asra: Wait, it was still a military program, right? So eventually you learned to fight?
+
+Thane: That was the idea, but it’s like really, really, ridiculously hard. Evincing in front of other people sort of dilutes your power, and when someone is actively working against you it’s even harder. Most of the time you just cancel each other out. Like I said, I was never great at it. That, and there was the whole medical discharge thing, so I never finished the program.
+
+Asra: Yeah, what was that about? You've never explained why that happened.
+
+Thane: That's because I don't understand it myself. They kept saying I was sick, but I felt totally fine. They didn’t even suggest treatment, just discharged me immediately.
+
+Asra: Whoa. Half the time they’ll put you back on the battlefield even if you’re half dead. I've never heard of something like that happening.
+
+Thane: Yeah. It was bizarre.
+
+(Asra points into the distance.)
+
+Asra: We’re getting close to Nenegi, so we should probably ditch this thing and travel the rest of the way on foot.
+
+Thane: (And to think I almost forgot how fucked we are.)
+
+Dagan: There's probably a patrol waiting to cut us off when we get there. They must have seen us heading for Nenegi when we made it outside city limits.
+
+Asra: It won’t make much difference. The checkpoints into the city have pretty tight security regardless.
+
+Dagan: Then what are we doing here!?
+
+Asra: There’s a handful of unmapped routes that smugglers use. I can lead us through one of those.
+
+Dagan: And border security doesn't know about them?
+
+Asra: They don't care. Officers trade on the black market at least as much as anyone else, so they're happy to turn a blind eye.
+
+Thane: That's not exactly reassuring. There’s a bounty on our heads. You think a smuggler would pass that up?
+
+Asra: Well, if it does come down to that, we can expect more running and hiding. Not saying I'm looking forward to it, but it's nothing we haven't already done.
+
+(Asra parks the Vollmer and motions for the others to get out.)
+
+GAMEPLAY SECTION: The player navigates a mostly empty natural landscape with very few guards. If backup is called, the difficulty escalates significantly, but the level is otherwise fairly easy and often allows the player to skip confrontations entirely.
+
+(4.2) Passing Through Nenegi
+
+(Asra leads the group through the city.)
+
+Thane: How close are we to your old house?
+
+Asra: Not very. We came in through the northwest side of the city and we're headed due south. Our house was southeast, by all the industrial factories.
+
+Dagan: So much the better. I'll bet it's crawling with cops by now.
+
+Thane: You really think so? It's been almost a year since Asra lived there.
+
+Dagan: Better safe than sorry.
+
+Asra: Honestly, we'd probably be safer if we were farther east. The military base stretches all along the west border.
+
+Thane: We could just go around and approach from the east.
+
+Asra: Not worth the trouble. They're about to turn this city upside down looking for us. We want to be out of here before that happens.
+
+GAMEPLAY SECTION: The player is now inside the city of Nenegi. There are far more officers inside city limits, making the patrols congested. The level design is otherwise similar to other cities.
+
+(4.3) Meeting Vanna
+
+(Asra leads the group to an apartment.)
+
+Dagan: Who is this Vanna, anyway?
+
+Asra: She was my parents' supplier here in Nenegi.
+
+Thane: I didn't realize you had those kinds of connections.
+
+Asra: What do you mean? Everyone has a supplier somewhere or other. My dad wasn't a revolutionary but it's not like we were model citizens. I've known Vanna since I was eleven.
+
+Dagan: Hold on, how did your parents die in the Rega Massacre if you lived in Nenegi?
+
+Asra: They commuted to Rega every day for work. Dad got carried away with all the fear mongering and insisted we live in Nenegi. Said it'd be safer.
+
+Thane: Guess he was right.
+
+Asra: Yeah. I was at home during the attack.
+
+Thane: Did Vanna give you any help after your parents passed?
+
+Asra: I never asked. When you offered for me to move in, all I really had to do was pack my things and get a train ticket. But she's the next person I would have gone to.
+
+Dagan: So you're sure we can trust her?
+
+Asra: She owes me a huge favor. I don't see her turning us down.
+
+Dagan: I hope you know what you're doing. We're putting a lot of trust in her.
+
+Asra: (Sigh) Vanna was in Rega during the attack. Overseeing some shipments, I think. Once the fighting started she tried to flee but she almost got blown up by a flat bomb. My mom saved her life, right before she died trying to save Dad.
+
+Dagan: That doesn’t mean-
+
+(Asra knocks, and a woman opens the door, a pistol at each hip.)
+
+Vanna: Asra. Didn't think I'd see you again. And you brought company, too.
+
+Asra: Hey, Vanna. This is my partner Thane and his uncle Dagan. We need some help.
+
+Vanna: Could have guessed that one. Come in. Weapons stay by the door.
+
+(Vanna waves the group inside, and after Asra nods, Thane and Dagan set their guns down.)
+
+Vanna: You scared the shit out of me showing up in those uniforms. I thought I was getting raided until I recognized you. Speaking of... What's it been, a year? Where have you been?
+
+Asra: Gheni, ever since the Massacre.
+
+Vanna: Makes sense. So, what do you need?
+
+Asra: We're trying to get to the Debony.
+
+Vanna: Oh, fuck off. It's never the easy stuff with you, is it?
+
+Asra: Does that mean you can't help us?
+
+Vanna: (Sighs) I've got some friends that can help you. But right now it's past curfew. Stay here for the night. I'll give you directions in the morning.
+
+Thane: Thank you so much.
+
+Asra: We actually made arrangements to stay with a friend. Would we be able to use your telegraph to tell them we're not coming?
+
+(Beat)
+
+Vanna: I was taking care of some business in the study when you knocked. Give me a few minutes to finish up first.
+
+Asra: Of course. Take your time.
+
+(Vanna enters her study and locks it behind her)
+
+Dagan: What was that about?
+
+Asra: (Whispers) Something's wrong. I think someone's here.
+
+Thane: What? How do you know?
+
+Asra: Vanna doesn't dress like that unless she's meeting with some high-ranking official. And I'm pretty sure only one of the guns she was carrying was hers; she hates Pfanger pistols.
+
+Thane: Why does it matter that she's got someone else's gun?
+
+Asra: We left our weapons at the door, remember? If she wanted us to think she was alone, she could have taken the other person’s gun. She also asked where we've been. So she's pretending she doesn't know we're on the run.
+
+Dagan: Pretending? The fiasco in Chalt just happened. I'm sure some people are on the lookout for us, but someone that's not paying attention would honestly have no idea we're here.
+
+Asra: Vanna's always paying attention. She's constantly exchanging telegraphs and staying up to date. There's no way she doesn't know about Chalt.
+
+Thane: So what does that mean?
+
+Asra: If someone else is here and she wants us to have our guard down? It probably means she's going to turn us in.
+
+Dagan: Then what the fuck are we doing here? You said we could trust her!
+
+Asra: I wasn't expecting this!
+
+Thane: Is there any other reason for Vanna carrying a gun she doesn't like, or the other stuff you mentioned? Or a good reason for her to sell us out?
+
+Asra: Maybe some really contrived reason? The most straightforward explanation is some higher-up is pressuring her to turn us in.
+
+Thane: Then why don’t we leave?
+
+Asra: Sneaking around Nenegi after curfew is too dangerous. I'd rather be sure something's wrong first.
+
+Thane: By the time we're sure it might be too late.
+
+Dagan: It might be too late already. The telegraph is in her study, right? They might be calling for help right now.
+
+(Beat)
+
+Asra: Thane, get your gun, go down the hall past the study - past the first door on the left - and wait there. When Vanna comes back, check if anyone’s inside the study.
+
+Thane: What are you going to do?
+
+Asra: I’m going to cause a distraction.
+
+Thane: And if the study really is empty?
+
+Asra: (Shrugs) Then I’ll come up with a lame excuse and we’ll have an awkward situation.
+
+Thane: Alright.
+
+(Thane retrieves his gun and walks down the hall.)
+
+Asra: (Mutters) Sorry, Vanna.
+
+(Asra tips a large jar off of a shelf, causing it to shatter on the floor. After a moment, Vanna leaves the study.)
+
+Asra: Shit! Vanna, I’m so sorry.
+
+Vanna: What? Oh damn it, you broke-?
+
+(Thane slips into the study. Barely two seconds later, signs of a struggle and a gunshot can be heard. Dagan immediately rushes to grab his gun. Vanna moves to pull her own pistol out of her holster. Asra rushes forward and grab’s Vanna’s arm. Vanna grabs Asra and hurls her to the ground, drawing both pistols and pointing them at Asra and Dagan.)
+
+Asra: You… You ungrateful bitch! Your corpse should be rotting in Rega right now!
+
+Vanna: This... This wasn't what I wanted! You just had to come at the worst fucking time, didn't you?
+
+Asra: What are you talking about? This is stupid. Just let us leave. I'm begging you, Vanna. It doesn't have to be like this.
+
+Vanna: It's too late. I’ve just called in three units, and I will not let it be known that I was complicit in-
+
+(Thane sneaks up behind Vanna and shoots her in the head.)
+
+Dagan: Shit!
+
+Thane: Is everyone okay?
+
+Asra: Yeah, I'm... Fuck... Vanna... Thane... What the fuck!?
+
+Thane: We're running out of time.
+
+(Asra looks at Vanna's corpse.)
+
+Asra: ... Vanna?
+
+Dagan: You heard her. We need to move, now.
+
+GAMEPLAY SECTION: A huge number of officers converge on the player’s starting location. The player has a short grace period before they arrive, but must break through a huge line of enemies and continue running.
+
+(4.4) Capture
+
+(A stun grenade explodes, throwing Asra to the ground, unconscious. As Thane kneels next to her, gunshots erupt, forcing him and Dagan to flee to cover. An officer rushes to grab her body.)
+
+Thane: No!!
+
+(Thane fires at the officer, forcing him back behind cover. A second grenade is thrown at Thane and Dagan. When Thane looks back again, two more officers are already dragging Asra away.)
+
+Thane: Asra!!
+
+(Several officers start advancing on them. Thane fires at them.)
+
+Dagan: We have to run!
+
+Thane: No!
+
+Dagan: There's nothing we can do!
+
+Thane: (This isn't happening. This can't be happening.)
+
+GAMEPLAY SECTION: Similar to the last section, but the player is doing more running than fighting.
+
+(4.5) Regroup
+
+(Thane and Dagan come across a river.)
+
+Dagan: Into the river!
+
+(They dive in and are swept away almost instantly. Eventually, they crawl up onto the riverbank.)
+
+Thane: What the fuck do we do now?
+
+Dagan: Well... We need to get these clothes dried before hypothermia sets in. I'd make a fire but we can't risk being caught.
+
+(Dagan begins gathering dried leaves off the ground and stuffing them under his clothes.)
+
+Dagan: There's a cave by that hill. We can spend the night there.
+
+Thane: We have to go back for Asra.
+
+Dagan: … What? How? Thane, get a grip. There’s nothing we can do.
+
+Thane: There has to be something.
+
+Dagan: Like what? You want to take on the entire Cheminan military on your own? It’s done. She’s gone.
+
+(Thane sighs, then begins gathering leaves for himself.)
+
+Dagan: Let’s check out that cave.
+
+Thane: If anything's living in there, we're fucked.
+
+Dagan: If we stay out here, we're fucked.
+
+(Thane and Dagan head into the cave, which is empty.)
+
+Thane: It's freezing in here.
+
+Dagan: Can't be helped. We can either stay up all night or huddle together.
+
+(Thane cozies up to Dagan awkwardly.)
+
+Thane: So what happens now?
+
+Dagan: Didn't Asra's parents have planned to stow away at one point? We might be able to do that.
+
+Thane: I'm talking about Asra, you fuck.
+
+Dagan: Are you asking me to tell you what you already know? There's nothing we can do for her. She'll be interrogated, then executed. Our best bet is to head for Rega.
+
+Thane: I can't do that.
+
+Dagan: You have to.
+
+Thane: Then go without me.
+
+Dagan: Thane, wake up! You're not some kind of superhero! Asra's probably in the Nenegi Corrections Facility by now. Name one good plan for saving her. You can’t.
+
+(Beat)
+
+Thane: I’ve heard most of the cargo ships that dock in Rega have tropical barnacles on them. But the Republic of Debony is too close to the arctic circle to get them, so that’s how you can identify them.
+
+Dagan: Assuming we make it onto the ship in the first place. Still, it's a start.
+
+Thane: Does it matter?
+
+Dagan: Yes. Life will be better there.
+
+Thane: What about Asra? How's anything going to be better without her?
+
+Dagan: It’s up to you to deal with that. But if you can't accept that, neither one of us is going to make it out of this alive.
+
+Thane: So?
+
+Dagan: Fine. You don't have to be reasonable right now. We can talk in the morning.
+
+Thane: Fuck... Fuck!
+
+Dagan: (Sigh) I’m sorry this happened. Let’s get some sleep.
+
+(4.6) Deus Ex Machina
+
+(Thane is running through a forest in the dark. His leg is bleeding, and unseen pursuers draw closer. One of the pursuers opens fire, shooting him in the back. Thane collapses. As he rolls over, he sees a soldier loom over him, face obscured by a visor. They point their gun at him and fire.)
+
+(Thane wakes with a start, naked and cold, to the sound of a civil defense siren in the distance. Dagan is already awake.)
+
+Dagan: Thane, get up. Something's happening.
+
+(There are explosions in the distance.)
+
+Thane: This doesn't have anything to do with us, does it? Wait, what the...? Those sound like flat bombs.
+
+Dagan: What, like… Erawan flat bombs?
+
+Thane: Yeah.
+
+(Thane picks up his clothes and puts them on.)
+
+Thane: Yuck. They’re still wet.
+
+Dagan: Yeah, so are mine.
+
+(The two hike toward the noise. They eventually reach the top of a hill overlooking a massive walled city. Armored vehicles swarm the perimeter.)
+
+Thane: The prison’s under attack. And Asra’s probably right in the middle of it...
+
+Dagan: I know I'm going to regret saying this, but... If you want to look for her, this is as good a chance as we're ever going to get.
+
+Thane: We? You're offering to help?
+
+Dagan: You'd do this whether or not I came with, right?
+
+Thane: Well, yeah.
+
+Dagan: Neither of us are going to survive if we try to split up. So we go together.
+
+Thane: I... really appreciate that.
+
+Dagan: But just to be clear, our chances of finding her are pretty bad. She might not even be here at all.
+
+Thane: A slim chance is still better than no chance at all.
+
+Dagan: I figured you'd say something like that. Just don't get too hopeful. If things start looking bad, like really bad, just get out.
+
+GAMEPLAY SECTION: There is no combat in this section, only a slow walk to the prison. If the player killed Somoza, a newspaper can be found en route, triggering Risto Somoza’s Succession.
+
+(4.7) Shoot: KNEW: Risto Somoza's Succession
+
+(Thane picks up a newspaper.)
+
+Dagan: This should be interesting. How do you think Somoza died? Random heart attack? Rescuing orphans from a burning building?
+
+Thane: "Supreme leader Farid Somoza was shot by radical Erawan militia while delivering a speech in Chalt. He was rushed to the Cheminan Medical Center and later pronounced dead. The primary suspect has been identified as Thane Belikoff, an Erawan nationalist born to illegal alien and terrorist Phaedra Stutz, who raised Belikoff with the intent of destabilizing our sovereign nation from within."
+
+Dagan: That's actually more clever than I expected. Good for them.
+
+Thane: (Sigh) Wasn't sending Mom to the death camps enough? Do they have to desecrate her memory, too?
+
+Dagan: (Smirks) The ironic part is you actually were raised by a terrorist. They just picked the wrong one.
+
+Thane: "This morning, Risto Somoza was inaugurated in his father's place as the new supreme leader. Thousands cheered as the former chairman of the Department of Domestic Security was sworn in."
+
+Dagan: (Laughs) Of course!
+
+Thane: What?
+
+Dagan: I was wondering why it was so easy for you to shoot him. I should have guessed. Junior was getting impatient.
+
+Thane: (Sigh) It really didn't matter, did it?
+
+Dagan: Well, he is dead. That's what you wanted, right?
+
+Thane: But the war’s not over. People are still dying. And Chemina's still ruled under the same regime.
+
+Dagan: If peace were as easy as killing the bad guy, it would have happened a long time ago. I did tell you this would happen, didn't I?
+
+Thane: Are you mad that I killed him?
+
+Dagan: No. Farid Somoza deserved to die. I just thought it would be suicide to kill him. "Miracle" isn't a strong enough word to describe us getting out of there in one piece.
+
+Thane: (Sigh) Let's go find Asra.
+
+Dagan: If we somehow survive this, you need to cool it on these suicide missions. This is getting ridiculous.
+
+GAMEPLAY SECTION: The player approaches the prison. Cheminan soldiers are present, but ignore the player in favor of rushing toward the prison or holding their position.
+
+(4.8) The Camps
+
+(Thane and Dagan approach the prison. A massive hole has been torn through one of the walls. Further west, everything appears to be distorted.)
+
+Dagan: What the fuck is that?
+
+Thane: What the...? They pinched the whole city?
+
+Dagan: Pinched?
+
+Thane: Basically, uh… It’s a way of making two locations closer together. Like the space between them gets squished. They’re called pinch tunnels. Erawans use them for surprise attacks like this because it lets them attack without warning.
+
+(Thane and Dagan make their way into the prison, blending parallel with several Cheminan soldiers. Inside, gunshots and explosions can be heard. The inside of the compound is massive; less of a prison than a town with walls.)
+
+Thane: This... is gigantic. Did you know about this?
+
+Dagan: I knew about the camps, but this is...
+
+(Skeletally thin prisoners cower as soldiers trade fire.)
+
+Thane: It's not a prison. It's a walled city. How are we ever going to find Asra in all of this? I feel like throwing up. This is too much.
+
+Dagan: You sure you want to do this?
+
+Thane: Yeah.
+
+Dagan: Right. We should make for one of the watchtowers first so we at least know where we are.
+
+Thane: Wait, is that...?
+
+(Thane turns to an Erawan, then begins sprinting toward her.)
+
+Thane: Mom!!
+
+Dagan: What...
+
+(Dagan chases after Thane, looking around to see if anyone is about to open fire on them. Thane grabs the woman.)
+
+Thane: Mom! It's me. It's your son. Mom!
+
+(Dagan grabs Thane's face and forces him to make eye contact.)
+
+Dagan: Thane, that's not Phaedra.
+
+Thane: What are you-
+
+Dagan: That's. Not. Your. Mother.
+
+Thane: But she's right...
+
+(Thane turns back to the shaken woman, realizing she's a complete stranger.)
+
+Thane: I...
+
+Dagan: What the fuck is wrong with you? Are you trying to get us killed? (Beat) I don't know what's happening to you right now, but if you can't function, we're leaving. This is dangerous enough without you losing your mind.
+
+(Thane blinks hard.)
+
+Thane: No. I can do this. I have to.
+
+Dagan: Make me trust you.
+
+Thane: We're heading for the watchtowers. We’re gonna figure out where we are and where we should look.
+
+Dagan: Let's go. (Mutters) Fuck.
+
+GAMEPLAY SECTION: Cheminan and Erawan soldiers fight all across the landscape. Most Cheminan soldiers ignore Thane, but there is a high risk of being hit by stray fire. The player is incentivized to stay as far from both sides as possible.
+
+(4.9) Mapping the Prison
+
+(Thane and Dagan make it up the watchtower.)
+
+Thane: This is horrible.
+
+Dagan: I was expecting this place to look smaller from a bird's eye view. This is worse than anything I could have imagined.
+
+Thane: ... And Mom died in a place like this.
+
+Dagan: ... Yes, she did.
+
+Thane: Looks like there's a pretty good distribution of buildings here. Offices, factories, prison blocks, warehouses... That small building just below us looks like it could contain prisoners. Might be a good place to start.
+
+Dagan: All four of those buildings look like cell blocks. Let’s try those. If we don't find Asra by then... Well, we can cross that bridge when we come to it.
+
+Thane: Please be safe, wherever you are. We're coming.
+
+(4.10) The Erawan Private
+
+(Thane and Dagan walk through a prison block.)
+
+Dagan: Sensory Deprivation Block? What's that?
+
+Thane: They explained these when I was in training. It's how evincers are prevented from using their powers to escape.
+
+Dagan: So there's a prisoner in here?
+
+(Dagan approaches a tank and slides open a porthole.)
+
+Thane: Hey, don't-
+
+(The porthole glows with white light, then begins to rock back and forth violently before different components are thrown across the room with an ear-splitting sound.)
+
+Dagan: Holy shit!
+
+Thane: Dagan! Are you alright?
+
+Dagan: My ears are ringing, but I'm fine. What just happened?
+
+Thane: I don’t know, but those tanks keep prisoners from using their powers to escape.
+
+Dagan: Does that mean…?
+
+(The dust clears, revealing an Erawan man. He looks toward Dagan, then staggers to a piece of debris and picks it up, shrinking it in preparation.)
+
+Prisoner: Cheminan!
+
+Thane: Wait! We're not military!
+
+Prisoner: You expect me to believe that?
+
+Thane: (in Erawan) My mother was Erawan.
+
+Prisoner: Then who are you?
+
+Thane: I'm Thane. This is Dagan. We were looking for… someone else.
+
+(The man appears to calm himself down.)
+
+Peleg: I'm Peleg, Private of Erawa's 3rd Battalion. Thane... You are looking for your mother?
+
+Thane: No, someone else. My mother is... gone.
+
+Peleg: I see. There is someone here I must find as well. Finding her is my first priority. I know this prison well. I can guide you.
+
+Thane: Really? That's... thank you, so much.
+
+Peleg: But just to be sure…
+
+(Peleg shrinks a huge piece of debris and holds it up. Thane and Dagan back away.)
+
+Peleg: You know what this is, right?
+
+Thane: Yeah…?
+
+Peleg: If I'm killed or knocked unconscious, this will kill both of you.
+
+(Peleg tucks the flatbomb under his clothes.)
+
+Dagan: Erawan soldiers are storming the prison right now. This place is a warzone. One stray bullet could hit you and we'd all be toast. Fuck that.
+
+Peleg: I have no reason to trust you. That is my offer. Take it or leave it.
+
+Dagan: Shitty offer.
+
+Thane: We don't know where we're going. He does.
+
+Dagan: ... Fine.
+
+GAMEPLAY SECTION: Peleg is added to the party for this section of the game. He does not carry a firearm, but can throw an unlimited number of flatbombs, effectively giving the player infinite frag grenades.
+
+(4.11) Pronsi
+
+(Peleg surveys the battleground that is the prison town, then points into the distance.)
+
+Peleg: There's a warehouse full of Pronsi just north of here. We should grab some while all the guards are busy fighting.
+
+Dagan: Pronsi?
+
+Peleg: You don't know? It's a stimulant designed to produce lethal withdrawal symptoms. Here in the prison it's used as a sort of currency to keep people under control.
+
+Thane: Currency? You mean if you don't work they'll just let you keel over and die?
+
+Dagan: You just described Somoza's regime in one sentence.
+
+Peleg: Well, it's not just Chemina. Debony uses it on slave miners in Lamenir.
+
+Dagan: I assume you want enough to survive after you escape?
+
+Peleg: No, not for me. For a cellmate. When I was first captured I had a broken arm and couldn't work. She gave me half of the Pronsi she earned until I healed.
+
+Thane: Wait, but if you're not taking any for yourself, does that mean you're just gonna let the drug kill you?
+
+Peleg: It depends on how much is in that warehouse. But it kills everyone eventually. The best you can do is buy time, and in this case, we'll have to ration it between three people.
+
+Thane: Three?
+
+Peleg: Your friend will need some too.
+
+Thane: Asra? I... Oh no. But she was only captured yesterday.
+
+Dagan: They're probably planning to execute her. If that's the case, I doubt they'd bother with something like that.
+
+Peleg: Yesterday? You're very lucky to have made it here so soon.
+
+GAMEPLAY SECTION: Similar to the last section.
+
+(4.12) Common Ground
+
+(The group approaches the warehouse.)
+
+Peleg: The warehouse uses an electronic lock. It's how they keep the prisoners from evincing the door open.
+
+Dagan: I don't see any power lines.
+
+Peleg: The power runs underground so it's nearly impossible to cut it off from the source. But if the building draws too much power, it'll trip the circuit breakers.
+
+(Peleg faces a flood lamp outside the warehouse. It flickers on, glows brighter, then makes a loud pop and burns out. He casually approaches the warehouse and opens it. The three of them enter the warehouse.)
+
+Thane: For being Erawan, you know a lot about Cheminan technology.
+
+Peleg: I should hope so. I spent a year abroad studying history at the University of Gheni.
+
+Thane: Wait, that's where I'm from! I studied engineering there!
+
+Peleg: For real? I don't suppose you were in Loden Dorms?
+
+Thane: No, I lived close enough that I didn't need university housing. I had a few friends in Loden though. So, how'd you end up in prison?
+
+Peleg: My main field of study was foreign relations. I was interested in opening trade routes with Chemina. The Divine Ministry didn't like that, so they stuck me on the battlefield instead.
+
+Dagan: Figures. Thane's mother came to Chemina to get away from that kind of leadership. Then Somoza took power and it wasn't any better here, either.
+
+(Peleg passes through several now-defunct locked doors and grabs a handful of bottles from a shelf, before opening one and dry swallowing a pill.)
+
+Peleg: This should be enough to last for a few months. Grab as much of it as you can. We're hitting the prison block.
+
+GAMEPLAY SECTION: Cheminan enemies are greater in number closer to the prison blocks, and clearing this section requires more direct confrontation than usual.
+
+(4.13) Breaking Point
+
+(The group walks through the prison, checking the cells one at a time.)
+
+Thane: I'm surprised there's no one here. Isn't the whole point of the attack to free the prisoners?
+
+Peleg: Not the ones in here. This block is all Cheminan, so your friend should be here too.
+
+Thane: Wait, so the person you're looking for is Cheminan too?
+
+Peleg: Yes. The only reason we shared a cell is that we were both being experimented on. When the Ribatol made her sick, they transferred her here. But when I got too strong, they stuck me in Sensory Deprivation.
+
+Thane: And that's why you're so powerful?
+
+(Dagan approaches a heavier door with no windows.)
+
+Dagan: Hey, this one looks different.
+
+(Thane approaches the door and evinces it open. Inside is a torture rack and electrical equipment.)
+
+Thane: Ugh...
+
+Peleg: Ah! I can't... Not again...
+
+(Thane turns to see Peleg crumple to the ground, screaming. He then turns to see a second Peleg on the rack, a prison guard torturing him with electricity.)
+
+Peleg: No! NO!!
+
+Dagan: What... what the fuck's going on?
+
+Thane: I don't know!
+
+(Thane runs over to the guard torturing Peleg on the rack, then looks back at the first Peleg just as he falls unconscious.)
+
+Dagan: Thane, the flat-
+
+(A massive explosion shakes the room, throwing Thane against the wall. When he looks around, the rack is empty and the guard is gone. Peleg is dead, and Dagan lies in a pool of his own blood. Thane rushes to Dagan and begins tearing out some bandages.)
+
+Thane: Dagan! I've got you! Hold on!
+
+Dagan: I... Thane, you can't be serious. Look at me.
+
+Thane: You're gonna be fine. Everything's gonna be okay.
+
+Dagan: No, I'm not.
+
+Thane: No! Fuck you, the reason I came here in the first place was so we could all escape Chemina together. I'm not leaving you! I... I can't do this alone...
+
+Dagan: (Sigh) You don't have a choice. So suck it up and get out of here.
+
+(Thane pushes up Dagan's shirt. His chest has multiple wounds and bits of debris from the flat bomb.)
+
+Thane: Keep talking. I'll get you out of here.
+
+(Dagan's voice slowly becomes weaker and raspier.)
+
+Dagan: Stop ignoring me.
+
+(Thane puts Dagan's arm over one of the wounds and presses.)
+
+Thane: Keep as much pressure here as you can. I'm going to dress the wound. We're getting out of here together. This is non-negotiable. Dagan? Dagan, stay with me! Dagan! Fucking wake up! Wake up! You can't die!
+
+(Thane continues pressing on one of the bandaged wounds. Tears begin to form.)
+
+Thane: This isn't happening. Dagan, please. I can't do this alone. I can't. I can't. Please, I'm begging you.
+
+(Beat)
+
+Thane: No... No! Dagan! Don't leave me!
+
+(Thane collapses in tears. After some time, Thane's hand closes around his gun. He points the barrel under his chin and closes his eyes.)
+
+Thane: (Whispering) I can't do this... I can't do this... I can't... Fuck...
+
+(Thane begins hyperventilating. He forces himself to hold his breath... and hears a voice call out in the distance.)
+
+Asra: Thane!
+
+Thane: What...? Asra?
+
+(Thane looks down at Dagan, then gets up and sprints toward the noise. He arrives at a cell holding Asra.)
+
+Thane: Asra!
+
+Asra: Thane, what are you doing here?
+
+Thane: I'll explain in a minute. Hold on.
+
+(Thane yanks on the door.)
+
+Thane: Shit! Come on, think...
+
+(Thane presses his hand against the door and closes his eyes. The door opens on its own.)
+
+Asra: Whoa. How did you do that?
+
+Thane: Hold on. Dagan's hurt.
+
+(Thane and Asra rush out to kneel beside Dagan.)
+
+Asra: He's fading, but there's still a pulse. He needs rest.
+
+Thane: There’s no time. We need to move now.
+
+Asra: Yeah, I figured.
+
+(Thane turns to Asra, and the two embrace.)
+
+Thane: I was so scared. I didn't think I'd ever see you again.
+
+Asra: Yeah, me too.
+
+Thane: I'll never let you out of my sight again. I promise.
+
+(Asra kisses Thane on the cheek before turning back to Dagan.)
+
+Asra: Let's get him up.
+
+(Asra and Thane hoist Dagan to his feet. Dagan stirs slightly.)
+
+Dagan: Shit, I'm still alive?
+
+Asra: Don't sound so disappointed. How are you feeling?
+
+Dagan: Awful.
+
+Thane: Well, let's get you up. We're not out of the woods yet.
+
+(4.14) Pinch Tunnel
+
+(Multiple Vollmers now roll through the prison. Erawans and Cheminans exchange fire. The breach in the wall is heavily fortified with Cheminan forces.)
+
+Asra: You went through all this to find me? Thane, you're really stupid, you know that?
+
+Thane: You're welcome.
+
+Dagan: Any ideas for how we're getting out of here?
+
+(Beat)
+
+Thane: The pinch tunnel! We can use it to escape!
+
+Dagan: You sure we'll make it in one piece?
+
+Thane: I think so. It's almost impossible to shoot someone once they’re inside.
+
+(The trio approaches the breach in the wall cautiously, passing Cheminan soldiers who mostly ignore them.)
+
+Thane: Alright, think we make it from here?
+
+Asra: Yeah.
+
+Thane: Alright, move!
+
+(The group charges as quickly as they can into the center of the distortion. The city of Nenegi passes in a strange blur, then suddenly gives way to tropical forest.)
+
+Thane: We should be far enough. Here, follow me!
+
+(Thane turns left and runs directly back into the wall of distortion. On the other side, the forest appears clear and normal.)
+
+Chapter 5
+
+(5.1) Behind Enemy Lines
+
+(The trio walk through a forest, then slow to a stop.)
+
+Dagan: This is Erawa?
+
+Thane: Has to be. Chemina never gets this warm. Never thought I’d end up here again.
+
+(They emerge from the trees into the ruins of a small village.)
+
+Thane: I haven't been to Tripsi in almost five years... This place is in utter ruin.
+
+Soldier: (in Erawan) The enemy!
+
+(Erawans begin throwing flat bombs at the trio.)
+
+Asra: You've gotta be kidding me!
+
+Thane: (in Erawan) Leave us alone, damn it!
+
+Soldier: (in Erawan) Die, Cheminan scum!
+
+Dagan: What are you waiting for!? Move!
+
+GAMEPLAY SECTION: The Erawans the player fights use flat bombs, which function as area of effect attacks. The map is fairly open and enemies do not coordinate attacks, making it only moderately difficult.
+
+(5.2) Stranger
+
+(The trio is fleeing from an Erawan with a gun. The Erawan is shot from behind, and a Cheminan soldier approaches. Thane raises his gun.)
+
+Cheminan: Whoa, calm down! I'm on your side!
+
+(Thane lowers his gun.)
+
+Thane: ... Sorry.
+
+Cheminan: You alright? You look like shit.
+
+Thane: Yeah.
+
+(The Cheminan offers a hand to Thane, but he refuses and stands on his own.)
+
+Cheminan: Didn't think there were any of us left out here. I don't recognize you from our unit. Who are you?
+
+Thane: You don't know who I am?
+
+Dagan: You just had to ask, didn't you?
+
+Cheminan: Am I supposed to? I don't recall Jaromir sending any celebrities on a counterassault mission.
+
+Thane: I'm not a celebrity, I... Call me Jin.
+
+Flint: I'm Flint. So, how'd you end up out here alone?
+
+Thane: I'm not alone.
+
+Flint: You know what I mean. Where's the rest of your platoon?
+
+Thane: It's a long story.
+
+Flint: Can't have been too long. The Erawan assault just happened.
+
+Thane: I don't want to talk about it.
+
+Flint: Suit yourself. As for me, the enemy baited our Vollmer into a ditch. All went downhill from there, no pun intended. We scattered and broke formation. Not sure what happened to everyone else.
+
+Thane: Anything can happen in a pinch tunnel. Two steps in the wrong direction could put you miles away from the rest of your team.
+
+Flint: How about we go try and round up whoever's left?
+
+Thane: I can't do that. There's something I need to handle on my own.
+
+Flint: Are you nuts? You won't make it alone.
+
+Thane: Please, back off.
+
+(Beat)
+
+Flint: Well, I suppose I can't force you.
+
+Thane: I'm going to go now.
+
+Flint: Alright. Be safe out there.
+
+(The trio walks away.)
+
+Asra: That was close. We're really lucky he didn't know who we were.
+
+Thane: Maybe he does. Keep an eye out in case he decides to follow us.
+
+GAMEPLAY SECTION: Similar to the last section, but by now the enemies are thinning out, making this a fairly easy section. The player can sneak by this entire level without fighting if they want.
+
+(5.3) Bad Blood
+
+(The trio make their way into an abandoned house.)
+
+Dagan: There’s probably nothing in here.
+
+Thane: Doesn’t matter. We need rest.
+
+(Thane enters the kitchen and sees fresh fruit in a bowl on the table.)
+
+Thane: Can't be more than a few days old.
+
+Asra: I don't like this. We should-
+
+Old Man: (in Erawan) Cheminan!
+
+Thane: What-
+
+Old Man: (in Erawan) Haven't you taken enough from us already?
+
+Thane: (in Erawan) Wait! I'm not-
+
+(The man grabs a knife from the counter, fashions it into a flat bomb, and throws it.)
+
+Old Man: (in Erawan) Die!
+
+(Thane reflexively raises his hand and deflects the knife, which bounces back toward the man.)
+
+Thane: No!
+
+Old Man: (in Erawan) How-
+
+(Thane tackles Asra to the floor just as it explodes violently.)
+
+Thane: You okay?
+
+Asra: Yeah. Dagan?
+
+Dagan: I’m fine.
+
+Asra: What... just happened?
+
+(The trio get back up. The old man is dead, a shard of metal embedded in his forehead.)
+
+Thane: I tried to delay the explosion. And I guess it worked.
+
+Asra: You can do that?
+
+Thane: I... I did it without thinking.
+
+(As Dagan surveys the man's wounds, a teenage boy enters the kitchen from another room.)
+
+Boy: (in Erawan) Dad!
+
+(The boy looks at Thane, then screams and starts attacking him with his fists.)
+
+Boy: (in Erawan) Killer! Why won't you people just leave us alone!?
+
+(Thane tries to push the boy away. The boy persists, Thane shoves him backward and fires warning shots, causing the boy to fall silent, then flee the house.)
+
+Thane: Fuck.
+
+(Thane sits down on the floor, leaning on the wall, and breaks down crying.)
+
+Thane: I can't take this anymore! Why did any of this have to happen? Why didn't we just go somewhere else!?
+
+(Thane leans over the man.)
+
+Thane: I'm so sorry. You never asked for this. I didn't mean to…
+
+GAMEPLAY SECTION: Mostly the same as the last section, but even more sparsely populated.
+
+(5.4) Family Ties
+
+(The trio enter another old house, Thane holding a flashlight.)
+
+Dagan: This place looks like bad news.
+
+Thane: We don't have a choice. Sooner or later we’ll have to sleep.
+
+(As they make their way through a hall, a door opens and a woman steps out.)
+
+Thane: (in Erawan) Get back!
+
+Woman: (in Erawan) What...?
+
+Thane: (in Erawan) I said get the fuck away from me!
+
+Woman: (in Erawan) Are you okay? You look terrible.
+
+(Thane pauses before answering. He sounds less panicked, but still tense.)
+
+Thane: (in Erawan) We were just looking for a place to sleep. I didn't realize someone was living here. Please just let us leave.
+
+Woman: (in Erawan) You can stay here. You'll be safe for the night.
+
+Thane: (in Erawan) ... What?
+
+Woman: (in Erawan) That's what you need, isn't it?
+
+Thane: (in Erawan) Yes, but-
+
+Oda: (in Erawan) Then make yourself at home. There's too few of us left here in this town for us not to take care of each other.
+
+Thane: (in Erawan) But... we're Cheminan.
+
+Oda: (in Erawan) Doesn't make much difference to me. If you wanted to kill me, I'd be dead already, right? I'm Oda, by the way. Oda Stutz. And you are?
+
+(Thane takes several deep breaths and tries to calm himself.)
+
+Thane: (in Erawan) I'm Thane Belikoff.
+
+Asra: Asra Sacco. It's a pleasure to meet you.
+
+Dagan: Dagan Belikoff.
+
+Oda: (in Erawan) Belikoff? I don't suppose you know a man named Saito by any chance?
+
+Thane: (in Erawan) What...? That's my father!
+
+Oda: (in Erawan) I see. Then you are Phaedra's son?
+
+Thane: (in Erawan) Who... are you?
+
+Oda: (in Erawan) Phaedra is my little sister. How is she doing?
+
+Thane: (in Erawan) My mother was... taken away. I haven't seen her since I was little.
+
+Oda: (in Erawan) I should have expected as much. When your mother defected to Chemina, I was imprisoned as punishment, as was the rest of the family. I was afraid to contact her after that.
+
+Thane: (in Erawan) How did you end up in Tripsi? Aren't you from Merad?
+
+Oda: (in Erawan) The locals of Merad were not kind to me when I was released. I had nothing, so this was where I ended up. The rest of my family was... less fortunate.
+
+Thane: (in Erawan) I'm so sorry.
+
+Oda: (in Erawan) I suppose I should ask what you're doing here in Erawa.
+
+Thane: (in Erawan) We’re trying to escape to Debony but we got a bit sidetracked. It's a long story.
+
+Oda: (in Erawan) I guess the grass is always greener on the other side, isn't it? First my sister runs off to Chemina, and now you're trying to escape, too.
+
+Thane: (in Erawan) A lot changed after Somoza seized power. At least, that's what my dad told me. Are you sure you don't want to come with us?
+
+Oda: (in Erawan) I would love to, Thane. Trust me, I would. But there's no country in Kabel that wants to take in an Erawan refugee. Besides, it looks like you've had quite the adventure. I doubt I'm in good enough health for that sort of thing. (Beat) Go get some rest. I’m sure you need it.
+
+(5.5) Reminiscing About Vanna
+
+(The trio settle down in a small room, Thane and Asra on a bed. Dagan sleeps in an armchair.)
+
+Thane: Hey, Asra? I’m… really sorry about what happened back in Nenegi. With Vanna, I mean. (Sigh) I wasn’t thinking about it at the time, but I do remember some of the stuff you told me about how close the two of you were. Like how she had a little sister that was a medic. I remember you telling me that she treated people on both sides during the Civil War, and how Somoza’s men eventually gunned down the medical tent and killed her. I remember you saying it felt like Vanna was trying to be an older sister to you. Like if you could grow up and be tough, Vanna wouldn’t have to feel guilty anymore. I’m really, really sorry.
+
+(Beat)
+
+Thane: You know, the first time you told me that story, it made me think of Dagan. He and Mom were really close. Like, looking back as an adult I'm pretty sure they had a thing. When she was taken away, something about him changed. He was always kind of strict, but there were several years after Mom left when I was actually afraid of him. I guess losing someone you love can do that to you. But Mom… wanted to be turned in. (Sigh) You remember Dagan talking about how they killed kids just because their parents were dissidents? I was almost one of those. Mom said if Dad turned her in, it would prove I was being "raised right." And now Dad's gone, too…
+
+(Beat)
+
+Thane: Everyone's made these sacrifices for me, and it's like... why? So I can get my head blown off trying to jump the border? What's all of this for? Is my life really worth that much more than everyone else’s? (Sigh) Sorry to ramble on like this. I should be letting you sleep.
+
+(5.6) Nightmare
+
+(Asra stands on a gallows in a line of prisoners. There are tears in her eyes. Thane stands in a crowd, pushing his way to the front.)
+
+Thane: Wait! Please, I'm begging you!
+
+(People in the crowd shove him back angrily. The executioner begins opening the trapdoors of prisoners one at a time.)
+
+Thane: Asra!!
+
+(Thane forces the last person away, draws his gun and aims at the executioner. There are no bullets in his gun.)
+
+Asra: I'm sorry, Thane.
+
+(Soldiers grab Thane from both sides before he can climb onto the platform.)
+
+Thane: No!
+
+(The platform below Asra opens, and she falls. Thane wakes with a start, breathing heavily. Dagan and Asra lay beside him.)
+
+(5.7) Goodbye Oda
+
+(The trio prepare to leave.)
+
+Oda: (in Erawan) Where are you headed?
+
+Thane: (in Erawan) Back toward the border. We’re headed for Rega.
+
+Oda: (in Erawan) You'll be going south, then. What did your mother tell you about the Lucinde tribe?
+
+Thane: (in Erawan) Uhh... She said they're poor and live farther from the Fracture. The Igrid clergy are usually more powerful evincers, and they treat the Lucinde like dirt.
+
+(Oda nods.)
+
+Oda: (in Erawan) It's a life of poverty here, and often crime. War has made Tripsi especially bad. You should be careful of anyone you come across, especially in that uniform. If the Lucinde Mafia sees you they might shoot you on sight.
+
+Thane: (in Erawan) Shoot? Like with guns?
+
+Oda: (in Erawan) Yes. It's common for them to comb through corpses after battles looking for Cheminan weapons.
+
+Thane: (in Erawan) So they'll be fighting me using flat bombs and guns?
+
+Oda: (in Erawan) Please avoid fighting if you can. Most of them are just kids.
+
+Thane: (in Erawan) You said they might shoot me on sight.
+
+Oda: (in Erawan) You have to understand that between the Igrid tribe and being invaded by the Cheminan military, these children have lost everything.
+
+Thane: (in Erawan) Okay, but what am I supposed to do if I'm being shot at!?
+
+(Beat)
+
+Oda: (in Erawan) If you can, run. If you can't... I suppose you'll do what you have to.
+
+Thane (in Erawan): I'll try. Thank you so much for everything.
+
+Oda (in Erawan): No, thank you. It was a blessing to meet my nephew, and to know what happened to my sister... Even if she is gone. Be safe, Thane.
+
+(Oda and Thane embrace. The trio leaves Oda's house and heads south.)
+
+GAMEPLAY SECTION: The area is completely devoid of life. No civilians, no soldiers.
+
+(5.8) Erawan Gangs
+
+(The trio walks through the ruins of Tripsi. A two teenage boys approach them.)
+
+Teen 1: Hey!
+
+(Asra and Dagan exchange glances. Thane ignores him and continues walking.)
+
+Teen 1: Hey, I'm talking to you!
+
+Teen 2: Maybe he only kills old people.
+
+(Thane stops walking but says nothing.)
+
+Asra: Uh, Thane?
+
+Teen 1: Listen to me, bitch!
+
+Teen 2: (in Erawan) I think he's deaf.
+
+Teen 1: (in Erawan) Let's blow his head off.
+
+(The two teenagers pace in a slow circle around the trio.)
+
+Dagan: Thane, they're gonna kill you. Do something!
+
+Thane: (in Erawan) Leave me alone.
+
+Teen 2: You think you're smart, speaking our language? (Mocking) Chemina leads the future! (in Erawan) Fucking cockroach!
+
+(The teen spits at Thane.)
+
+Thane: Leave me alone!
+
+Teen 2: Why? So you can kill our parents, too? Fuck you!
+
+Thane: I didn't kill him! He blew himself up!
+
+(One of the teens laughs. Thane starts walking again.)
+
+Teen 2: (in Erawan) Fuck him up!
+
+(Two more kids, both with guns, jump out from behind a shelled hut and open fire on Thane. Thane runs for cover.)
+
+Teen 2: Run, bitch, run!
+
+GAMEPLAY SECTION: Four kids chase the player using a mix of flat bombs and guns. Any cover the player hides behind will be destroyed by flat bombs; eventually there is no more cover and the player must kill them.
+
+(5.9) Collateral Damage
+
+(Thane approaches the gang leader on the ground, bleeding from a gunshot wound.)
+
+Teen: (in Erawan) Wait, wait! Please don't kill me. I don't want to die.
+
+Dagan: Don't fall for it! He'll kill you if you give him an inch!
+
+Asra: He's already done for. Finish it already.
+
+Thane: I don't...
+
+Dagan: Do it! Now!
+
+(Thane shoots the gang leader, then sinks to his knees and drops his gun in despair.)
+
+Dagan: You did the right-
+
+Thane: Shut up! Fucking shut up! Get the fuck away from me and leave me alone!
+
+GAMEPLAY SECTION: The area is again devoid of life.
+
+(5.10) Border Security
+
+(The trio sees a checkpoint ahead.)
+
+Dagan: There’s no way through. Security in Rega is already high, but after the attack on Nenegi there's no way we'll make it across.
+
+Thane: We're all Cheminan, aren't we? We can just say we were taken prisoner and escaped.
+
+Asra: So what happens after that? Cheminan or not, we're dead as soon as they identify us.
+
+Thane: They're probably not expecting us in Rega. Maybe that's good enough? Or we could just bribe them.
+
+Dagan: That's not going to work.
+
+Thane: Actually... I just had an idea.
+
+(Thane pulls a locket from his pack and opens it. One half contains a photo of Saito. The other is a mirror.)
+
+Thane: You know those illusions where you stare at something for several seconds and the image gets burned into your eyes?
+
+Asra: Yeah, I think it's called iconic memory? Wait, you said illusion. Does that mean you can use evincing to disguise yourself?
+
+Thane: It's worth a shot.
+
+(Thane stares at the photo of Saito, then into the mirror. After a few tries, he takes on Saito's appearance.)
+
+Thane: Hopefully this lasts long enough for us to cross the border. But what about you two?
+
+Asra: Wait, I know!
+
+(Asra digs around in her pack and pulls out a wallet taken from a fallen soldier. Thane takes it and removes an ID card and family photograph.)
+
+Thane: Alright, stand still.
+
+(Thane repeats the process with both Asra and Dagan.)
+
+Dagan: Did it work?
+
+Thane: Yes, but try not to look at each other. If you expect to see each others' normal faces it might undo the change.
+
+Dagan: What about when border security looks at us?
+
+Thane: They don't know what we're supposed to look like, so it shouldn't matter.
+
+(The trio finally approach the checkpoint and are greeted by border security.)
+
+Guard: You look like shit. Where are you coming from?
+
+Thane: There was a prison break in Merad. We barely escaped with our lives.
+
+(The guard looks at Thane suspiciously.)
+
+Guard: And you were the only one that made it out?
+
+Thane: Just us, yeah.
+
+Guard: "Us?"
+
+Thane: Yeah.
+
+Guard: Name and identification?
+
+Thane: My name is Jin Knox. Our IDs were confiscated when we were captured.
+
+Guard: No one crosses without identification.
+
+Thane: Alright then. How about this?
+
+(Thane hands the guard a stack of lauves.)
+
+Guard: Welcome to Chemina.
+
+(As the trio cross the border, Dagan and Asra glance at each other. Their faces begin to change back.)
+
+Chapter 6
+
+GAMEPLAY SECTION: The area is populated mostly with soldiers, with a few bloodhounds and cavalry. There is a fairly large density of enemies here.
+
+(2.11) I-Troops
+
+(This scene triggers upon a certain amount of progress made in-game. Uniformed figures chase down the trio and throw a canister of tear gas. Thane sprints behind cover before succumbing to the gas and vomiting.)
+
+Asra: Thane! Are you okay?
+
+Thane: Ugh... Damned tear gas!
+
+Asra: Wait, what-
+
+(Thane continues vomiting.)
+
+Dagan: Asra, grab him. We need to get him somewhere safe.
+
+Thane: No, I'm okay. Let's keep moving.
+
+Asra: Are you sure?
+
+Thane: Yeah... Shit, there's more!
+
+(More troops approach.)
+
+GAMEPLAY SECTION: The player must fight I-Troops, armed with tear gas, flat bombs, and an ability to appear and disappear in seemingly impossible ways. Normal enemies will often be alerted by the player’s attempts to deal with them.
+
+(6.2) Phantoms
+
+(The group takes refuge inside an abandoned warehouse. After looking around, they enter a small office and Thane shuts the door behind them.)
+
+Thane: What the fuck is going on!?
+
+Asra: Those guys were Cheminan, right? How are they using flat bombs?
+
+Dagan: Where are they coming from!?
+
+Thane: I don’t know! Let me think!
+
+Asra: They’re still hunting us! We can’t stay here.
+
+Thane: So where do we go? The port’s not open at night.
+
+Asra: Thane, look out!
+
+(Thane whirls around and sees an I-Troop inside the office with them raising a gun. Almost instantly, Thane shoots him several times. Activity can be heard just outside the office.)
+
+Dagan: How did they get here so fast?
+
+Thane: Fuck, fuck, fuck, fuck!
+
+GAMEPLAY SECTION: The player is trapped in the warehouse with I-Troops and must fight his way out. The level design is tight, enclosed, and has a high density of enemies.
+
+(6.1) Rescue
+
+(The trio makes it outside the warehouse, only to come face to face with five I-Troops, all with their guns drawn.)
+
+Soldier: Drop your weapons!
+
+Thane: Shit…
+
+Soldier: I said drop your weapons! Now!
+
+(Several shots ring out, all of the troops crumpling to the ground instantly. Thane looks around. A man approaches the trio.)
+
+Man: Thane Belikoff?
+
+Thane: What is this?
+
+Man: We can discuss the details when we’re somewhere safe. For now, all you need to know is that we’re on your side.
+
+Thane: Why should I believe you?
+
+(The man gestures to the dead soldiers.)
+
+Man: I just saved your life, didn’t I? Get moving. We don’t have much time.
+
+GAMEPLAY SECTION: Orric joins the party, and the player must travel through the city to the sewer system. Virtually all of the enemies encountered are I-Troops.
+
+(6.2) Rebellion
+
+(The trio make their way down into the sewers. Thane takes out a flashlight.)
+
+Asra: Your hideout is in the sewers?
+
+Orric: It gives us access to most of the city and keeps us hidden.
+
+Thane: Okay, enough. Who are you and what do you want?
+
+Orric: My name is Orric. I brought you here on behalf of a group of people like yourselves - young men and women committed to change.
+
+Thane: I’m not interested in joining anything.
+
+Dagan: How did you find us? WHY did you find us?
+
+Orric: We have ears in many places.
+
+(The following line appears if the player killed Somoza.)
+
+Orric: You must understand why the assassins of Farid Somoza would draw my interest. And, of course...
+
+Orric: The ability to defeat and commandeer a Vollmer on foot is no small feat. We need people like you on our side.
+
+Thane: All we’ve been doing is trying to stay alive. I don’t care about being on a side. I just want to be left alone.
+
+Orric: You don’t stand a chance out there on your own. The I-Troops will tear you to pieces.
+
+Thane: I-Troops?
+
+Orric: You don’t know? They’re a secret military unit. One you might have been a part of, had you not been discharged.
+
+Thane: How do you know all that? Is that how they’re using flat bombs?
+
+Orric: Yes. They also have the ability to remain hidden in plain sight.
+
+Asra: Fuck.
+
+Dagan: It doesn’t matter. Either way we’ll still have to go back out there.
+
+Orric: You're in Rega because you're planning to stow away on a cargo ship, yes? The port is closed until tomorrow. I can offer you shelter for the night. All I ask in return is that you listen to what I have to say.
+
+Asra: Why should we trust you?
+
+Orric: I didn’t have to save you, you know. Come this way.
+
+(The group is led to a small room with a bare mattress.)
+
+Orric: It's not much, but it's what we have.
+
+Asra: Thanks.
+
+Orric: It's late, and I have some business to attend to. I've held up my half of the deal. We can discuss the other half tomorrow.
+
+(Orric leaves the trio alone.)
+
+Thane: I don't like this. We're too vulnerable here.
+
+Asra: We'd be just as vulnerable anywhere else.
+
+Dagan: We have no idea who these people are!
+
+Asra: Nothing we can do about it.
+
+Dagan: There’s also nothing we can do if someone kills us in our sleep.
+
+(Thane pulls two cans of food out of his pack and stacks them in front of the door.)
+
+Thane: There. At least we'll know if someone comes in.
+
+(6.2) Extortion
+
+(Dagan lies on the floor of the Nenegi prison, twitching as he bleeds to death. Thane leans over his body.)
+
+Thane: Dagan, please... Don't leave me. Not like this.
+
+(A figure approaches. It's Asra, with an eerie grin and blood on her face. She points a gun at Dagan and shoots him, then aims at Thane and shoots again. Thane awakens with a start.)
+
+(Later, the trio sit on a dingy bed, sharing a can of pork and beans.)
+
+Thane: I can't believe we're almost there. We could be at sea before sunset. (Sigh) It's about time we started travelling before curfew.
+
+Dagan: About time you stopped trying to get us killed, you mean.
+
+(Beat)
+
+Thane: Asra, I know it’s kind of early to talk about this, but… When we escape, do you want things to be more serious? Like, marriage?
+
+Asra: … I don’t know. Let’s talk about it later.
+
+(Orric enters the room, then closes the door behind him.)
+
+Orric: Sleep well?
+
+Thane: Sure.
+
+Orric: As I said earlier, I’d like for you to hear me out. It’s only fair.
+
+Asra: Are you a terrorist organization?
+
+(Orric scowls.)
+
+Orric: Somoza’s men can stop you, search you, take your property and even your life, just like that. THAT’S terrorism. WE’RE the counter terrorists. We're sick of this pointless war. We're sick of the draconian labor camps, kin punishment, public execution, and constant surveillance. We aim to overthrow the regime and give the country back to its people.
+
+Dagan: You guys must have a death wish.
+
+Orric: I would rather die fighting for myself and my loved ones than for a dictator sending me off to slaughter child soldiers in Erawa.
+
+Asra: Let me think about it.
+
+Dagan: Are you serious!? This isn’t our problem!
+
+Asra: Yes it is! You’ve been bitching about Somoza since I met you, but every time you get the option to do something about it you back down.
+
+Dagan: That’s not what this is about! The only reason we’re here in the first place is that we’re trying not to die! When did you decide you’d rather get yourself killed?
+
+Thane: We don’t deserve to live. Not after Tripsi.
+
+Dagan: Fuck you, that’s not your call to make! If the two of you want to be complete imbeciles, fine, but leave me out of it. I’m leaving this shithole country, with or without you.
+
+Thane: That’s not what I was… (Sigh) I don’t want to join either.
+
+Asra: You just said we don’t deserve to live. Why can’t we die doing something that matters?
+
+Thane: Because I can’t, okay? I can’t fight anymore. I don’t have it in me. I’m done.
+
+Asra: What? But we... (Beat) Okay.
+
+Orric: I can only imagine what you’ve just been through, but there is a silver lining to this. I’m giving you a chance to be part of something larger than yourselves, to fight back when before you could only run and hide. You've been fighting for yourselves. This is a chance to fight for others. Doesn't that mean anything to you?
+
+Thane: I can’t.
+
+Dagan: Come on, let’s get out of here.
+
+Orric: I’m afraid I can’t let you do that. I hoped it would not come to this, but you leave me no other choice. This is my final offer. You join us, or we turn you in.
+
+Asra: Is this some kind of joke? The police are hunting you, too.
+
+Orric: Not all of us.
+
+Dagan: And you think we won't expose your little operation if you do?
+
+Orric: Why do you think we're not letting you leave? Either way you'd expose us under torture if you were captured. If you really won't join us, we'll turn in your corpses.
+
+Thane: You're making a big mistake.
+
+Orric: Me? I'm offering you a choice between fighting an abusive dictatorship and forcing your hand against men and women that only want the same thing you do. It is not too late to reconsider your options.
+
+(Dagan and Thane make eye contact.)
+
+Dagan: Fine. What do you want from us?
+
+Orric: I knew you would come to your senses. Come with me. I'd like you to meet some of our friends.
+
+(Orric motions for the trio to walk in front of them, gun to their backs. When Thane opens the door, the cans of food clatter on the floor. They leave.)
+
+Asra: Well this sucks.
+
+(6.3) Rebel Mission
+
+(Orric leads the group to a junction in the sewers, containing several people sitting around and talking.)
+
+Orric: Morning, Kilan.
+
+Kilan: Hey. I take it these are the guys?
+
+Orric: Yeah, and they agreed to join us, too.
+
+Dagan: Hey-
+
+Kilan: That's excellent. I'm told you guys really know what you're doing. I'm Kilan, by the way.
+
+Thane: Uh...
+
+(Kilan offers a hand to the trio. Dagan shakes his hand awkwardly. Asra refuses.)
+
+Orric: I'd like for them to accompany you and Seraphim to the Rega Coal Plant.
+
+Seraphim: You can't be serious. We don't even know who these people are! Something this important-
+
+Orric: Something this important needs all hands on deck. We're short on manpower and these three will make a critical difference.
+
+Seraphim: And you're sure we can trust them?
+
+Orric: You're better off with them than without them, if that's your concern. I trust you and Kilan can hold your own if something goes wrong.
+
+Kilan: I can take care of myself.
+
+Thane: Mind telling us what this is all about?
+
+Seraphim: We're blowing up a coal plant.
+
+Thane: Wait, what? Five people for a whole power plant? Are you insane!?
+
+Orric: Contain yourself. Somoza always stages attacks on Cheminan soil before drafting more soldiers. That means he's drawing resources away from everything else, including domestic security. Five of us should be enough.
+
+Dagan: Hold on. What do you mean, "stages attacks?"
+
+Orric: The assault on the Nenegi labor camp, of course. You don't actually think Erawa was behind that, do you?
+
+Thane: The attackers were Erawan. We were there. We saw them.
+
+Orric: Erawan mercenaries. On Somoza's payroll, of course. Certainly not conventional military.
+
+Asra: You make it sound like Somoza's done this before.
+
+Orric: Ah... I'd forgotten how your parents died. Yes, the Rega Massacre was Somoza's work as well.
+
+Asra: ...
+
+Seraphim: If you're serious about sending them, we'd better give them a briefing.
+
+Kilan: I can help with that. So did Orric tell you these sewers run under the whole city?
+
+Thane: He mentioned something like that.
+
+Kilan: Okay, good. That's our main method of getting around without being seen. There's a tunnel that leads pretty close to it. Orric is going to wait about an hour and set off some charges on the other side of town as a distraction. That's when we blast our way in. We hit hard and fast, then we get the fuck out. Make sense so far?
+
+Thane: Yeah.
+
+Seraphim: We'll be handling the pyrotechnics, so you three will be providing support fire. We're spreading the enemy as thin as we can, but don't expect this to be a cakewalk. Any questions?
+
+Dagan: Yeah, what happens when we're done?
+
+Orric: We can discuss the specifics afterward.
+
+Dagan: Piece of shit.
+
+Seraphim: If that's it, we should get a move on.
+
+(Orric nods and begins walking down one of the sewer tunnels. Kilan gestures to a different tunnel and motions for the trio to follow. He and Seraphim walk behind them.)
+
+GAMEPLAY SECTION: No combat; the player simply walks down a long section of the sewers.
+
+(6.4) Dead End
+
+(The trio walks through the sewer tunnels, with Seraphim and Kilan behind.)
+
+Asra: How'd you two end up doing this?
+
+Kilan: My parents died in the civil war. I moved in with a family friend and that's how I met Orric. We had a lot of common ground and figured this was the best way forward. I figured if my parents died for nothing, I owed it to them to die for something.
+
+Thane: Asra and I lost a lot of family, too. What about you?
+
+Seraphim: I was trafficked by Somoza's men. When they got bored of me they dumped me out on the street. Orric found me brawling it out with some drunk and I guess he saw something he liked.
+
+(Beat)
+
+Kilan: So, what about you guys?
+
+Thane: Police tried to black bag me and we killed them in self-defense. Been on the run ever since.
+
+Kilan: What'd they want with you in the first place?
+
+Thane: Not your business.
+
+(There is a long silence. Eventually the tunnel comes to a halt, with a ladder leading upward.)
+
+Dagan: Guess this is it.
+
+(Thane climbs the ladder to a manhole.)
+
+Asra: Hey! Where did they go?
+
+(Thane tries the manhole cover, then shines his flashlight on it.)
+
+Thane: What the...? It's bolted shut!
+
+Dagan: Damn it! They set us up!
+
+(Deafening gunshots echo through the tunnels.)
+
+Asra: Take cover!
+
+GAMEPLAY SECTION: There aren’t many enemies in this section, but they know exactly where you are and the narrow tunnel layout makes it nearly impossible to hide and very easy to eat bullets. Advancing is extremely dangerous as there’s minimal cover.
+
+(6.5) Killers
+
+(Kilan and Seraphim collapse in the shallow, bloody water of the sewers.)
+
+Asra: I'm fucking sick of this!
+
+Thane: Asra?
+
+Asra: All we needed to do was go from Gheni to Rega. That's it! But this whole time we've just been killing everyone we come across! Soldiers, revolutionaries, Vanna… even a bunch of kids! I've fucking done!
+
+Thane: Asra, I'm sorry. I've been trying-
+
+Asra: Trying to do what!? Are we trying to save ourselves or massacre everyone else!? Is all this worth it? Are we so important that it doesn't matter how many people have to die for us to escape?
+
+Thane: I... I don't...
+
+Asra: And even if we do make it out of here, what happens then? You think I want to marry a psycho? You think that's who I want raising my kids?
+
+Thane: I didn't have a choice! They made me do it, okay!? You've been here this whole time! You saw everything!
+
+Asra: Yeah, and I wish I hadn’t.
+
+Thane: What other option is there? Where else would you go? We're stuck in this together.
+
+Asra: (Laughs) That's your argument? Staying with you is the only choice I have? That sure makes me want to stick around.
+
+Thane: Shut up, shut up, shut up!!
+
+(More gunshots erupt through the tunnels.)
+
+Dagan: Save it for later!
+
+Thane: There's more of them?
+
+GAMEPLAY SECTION: The tunnels become more maze-like, allowing for the player to go around enemies and sometimes flank them. However, there are more enemies than before, and the tunnels are still narrow, making firefights still very deadly.
+
+(6.6) Out of the Sewers
+
+(The trio emerge from the sewers in the ruins of Rega. Dagan stands on the manhole cover.)
+
+Dagan: Thane, get something heavy to block this. Just in case anyone's still on our tail.
+
+(Thane rushes into a house and rips off a heavy wooden door, which he dumps on top of the drainage cover. Dagan sighs in relief.)
+
+Asra: Well that sucked.
+
+Dagan: Son of a bitch... My ears are still ringing. Give me a minute.
+
+(The group sit and catch their breath.)
+
+Asra: I don't feel like hanging around here too long. Let's get to the port before sundown.
+
+(The trio leaves, passing the grated door.)
+
+Thane: Wait, wasn't this locked before?
+
+GAMEPLAY SECTION: The layout of the map is much more open than the sewers. There are a decent number of enemies, but the area is not nearly as congested.
+
+(6.7) KNEW: Deserter Captured
+
+Thane: "Last week, defector Sara Cosac was detained on charges of illegal emigration, draft evasion, resisting arrest, and unauthorized possession of a firearm. She is scheduled to be publicly executed in Chalt tomorrow morning."
+
+Thane: Shit... That could have been us.
+
+Dagan: No thanks to you.
+
+Thane: ... What?
+
+Dagan: You heard me. We almost died several times over and it's your fault.
+
+Thane: I saved your life!
+
+Dagan: What, back at the prison? What do you think we were doing there in the first place?
+
+Thane: It's not my fault Asra was captured!
+
+Dagan: If you hadn't shot that officer in the trainyard, we would have made it to Nenegi that same night. No one outside of Gheni would have known who we were, and Vanna would have helped us!
+
+Thane: How was I supposed to know that would happen?
+
+Dagan: You put us in danger the second you opened fire! All we had to do is keep a low profile but you just had to start shooting. You've been a liability this whole time! We would have been better off without you.
+
+Thane: That's not true! Asra, you don't agree with him, right?
+
+Asra: Let's keep moving.
+
+GAMEPLAY SECTION: More or less identical to the last section.
+
+(6.8) At the Port
+
+(The trio walk through the port, looking out over the ocean.)
+
+Thane: I really didn't think we'd make it this far.
+
+Dagan: Don't let your guard down. It's not over yet.
+
+Asra: We need to find a cargo ship without tropical barnacles on it. Those are the ones going to Debony.
+
+Thane: Let's take a look around.
+
+Dagan: We really can't afford to be recognized here. There's no room for error if we're seen. These ports shut down at the first sign of trouble, and if that happens we're shit out of luck.
+
+Thane: Hopefully the government is more focused on the attack on Nenegi. I'm sure a lot of their manpower has been redirected to the border.
+
+Asra: They might not even know I've escaped yet. In which case they'd be looking for a group of two.
+
+Dagan: Doesn't matter whether or not they're looking for us. If we're spotted sneaking onto one of these ships, we're fucked.
+
+Thane: Noted.
+
+GAMEPLAY SECTION: The player cannot engage in combat for this section. Making it onto the ship is difficult, requiring the player to strategically distract enemies and navigate the ship carefully.
+
+(6.9) Stowaways
+
+(Thane sneaks onto the ship and makes it below deck. Asra tries to open a door.)
+
+Asra: Locked.
+
+Thane: Hold on.
+
+(Thane presses his hand to the lock and evinces it open before opening it and slipping inside.)
+
+Asra: You're getting better at that.
+
+Thane: Locks are one of the easiest things to manipulate. It's really not that impressive.
+
+Dagan: This must be some kind of machine room. Should be a fun couple of days, assuming it doesn't overheat and bake us alive.
+
+Thane: Better than being shot at.
+
+Asra: It's not too late for both. Someone could come in here at any time.
+
+Chapter 7
+
+(7.1) Ashore
+
+(Thane awakens in the machine room. He looks out the porthole.)
+
+Thane: Guys, get up!
+
+Asra: Did we make it?
+
+Thane: Mhm. See for yourself.
+
+(Asra looks out the window, then smiles and embraces Thane. They kiss.)
+
+Asra: Let's get off this damned boat.
+
+(Thane opens the door, only to be met with a Cheminan sailor.)
+
+Sailor: Hey! What do you think-
+
+(Thane points his gun at the man.)
+
+Thane: We just want to get off. Turn around. Hands on your head.
+
+(The trio make their way off the ship, the sailor walking in front.)
+
+Captain: Those are the terrorists from Chalt! Stop them!
+
+(Several crew members draw guns and shoot at Thane, killing the sailor in front of him.)
+
+Thane: What the...?
+
+Dagan: Move!
+
+GAMEPLAY SECTION: Being the final level, the ship is even more congested than the sewers; the player has some cover, but nowhere to run, and enemies know exactly where the player is. Clever use of grenades are likely to be the only way to clear this area, due to being trapped and heavily outnumbered.
+
+(7.2) Debon Custody
+
+(Thane stands amidst the corpses of the crew.)
+
+Thane: Is... is it over?
+
+(Debon police wait at the dock.)
+
+Officer: You are under arrest for unlawful entry into the Republic of Debony. Surrender your weapon or we will open fire.
+
+Thane: Yes. Finally...
+
+Dagan: Thane! What are you doing? They're going to kill you!
+
+Thane: No... I'm done fighting.
+
+Dagan: You idiot! SHOOT THEM!
+
+Thane: NO! SHUT UP!
+
+Officer: Drop your weapon now! This is your last warning!
+
+(Thane drops his weapon and goes peacefully.)
+
+(7.3) Closure?
+
+Two Weeks Later
+
+(The trio stand on a beach looking at the ocean, though footprints only lead to Thane.)
+
+Thane: Well, you were right, Dagan. We hardly took two steps in the country before they asked me to work for the Intelligence Bureau. Department of Industrial Engineering. I guess I shouldn't be surprised, but the official story is that Debon law enforcement shot us dead. They don't want anyone to know we're here. Not that the Chemina's going to take their word for it.
+
+(Beat)
+
+Thane: Well, it doesn't matter now. We're safe. Asra, we're safe! You don't have to fight anymore. I promised we'd escape together. Now that we can finally focus on each other, I think... I think it's time to start a family.
+
+(The trio are shown in silence for several seconds before Asra and Dagan slowly fade and disappear, showing Thane alone on the beach.)
+

@@ -4,8 +4,24 @@ using UnityEngine;
 
 public class Globals : MonoBehaviour
 {
+    // DATA
+    // public static readonly TextAsset LEVEL_DATA = Resources.Load<TextAsset>("levelList");
+    // public static readonly TextAsset SAVE_DATA = Resources.Load<TextAsset>("saveData");
+    public static readonly TextAsset GAME_SCRIPT = Resources.Load<TextAsset>("gameScript");
+    public static readonly Dictionary<string, LevelData> LEVEL_DATA = new Dictionary<string, LevelData> {
+        // {"1-1", new LevelData(sceneTitle, isPlayable, sceneName, hasHardmode) },
+        {"S1-1", new LevelData("The Classroom", false, "S1-1", false) },
+        {"S1-2", new LevelData("Horseback", false, "S1-2", false) },
+        {"G1-1", new LevelData("Infiltration", true, "G1-1", false) }
+    };
+    public static readonly List<string> AUTOPLAY_LIST = new List<string> { "S1-1", "S1-2", "G1-1", "S1-3", "S1-4", "G1-2", "S1-5", "S1-6" };
+    public static readonly List<string> CINEMA_LIST = new List<string> { "S1-1", "S1-2", "S1-3", "S1-4", "S1-5", "S1-6" };
+
     // CONSTANTS
     public static readonly int INFINITY = 1073741823;
+    public static readonly int NUM_CHAPTERS = 7;
+    public static readonly int NUM_LEVELS = 100;
+    public static readonly float EPSILON = 0.01f;
 
     // PREFABS
     public static readonly GameObject CORPSE = Resources.Load<GameObject>("Prefabs/Core_Gameplay/Corpse");

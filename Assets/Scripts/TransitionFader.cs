@@ -10,7 +10,7 @@ public class TransitionFader : MonoBehaviour
     private Image image;
     public static TransitionFader instance;
     private bool fadeToBlack = false;
-    private int targetScene = 0;
+    private string targetScene = "";
 
     // Start is called before the first frame update
     void Start()
@@ -45,7 +45,25 @@ public class TransitionFader : MonoBehaviour
         }
     }
 
-    public void Transition(int scene)
+    public void FinishLevel()
+    {
+        if (GameManager.cinemaMode)
+        {
+            int sceneIndex = Globals.CINEMA_LIST.IndexOf(SceneManager.GetActiveScene().name);
+            if (sceneIndex > -1)
+                Transition(Globals.CINEMA_LIST[sceneIndex + 1]);
+        } 
+        else if (SaveService.loadedSave.options.autoplay)
+        {
+            int sceneIndex = Globals.AUTOPLAY_LIST.IndexOf(SceneManager.GetActiveScene().name);
+            if(sceneIndex > -1)
+                Transition(Globals.AUTOPLAY_LIST[sceneIndex + 1]);
+        }
+        else
+            Transition("Level_Select");
+    }
+
+    public void Transition(string scene)
     {
         if (!fadeToBlack)
         {
@@ -53,6 +71,11 @@ public class TransitionFader : MonoBehaviour
             fadeToBlack = true;
             targetScene = scene;
         }
+    }
+
+    public void ReloadScene()
+    {
+        Transition(SceneManager.GetActiveScene().name);
     }
 
 }

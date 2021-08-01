@@ -19,6 +19,10 @@ public class ClickManager : MonoBehaviour
     private static bool hasDragged = false;
     private Vector2 initialPosition;
 
+    private static float enter = 0.0f;
+    private static Plane gamePlane = new Plane(Vector3.forward, Vector3.zero);
+    private static Ray ray;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -69,9 +73,20 @@ public class ClickManager : MonoBehaviour
         }
     }
 
-    public static Vector2 GetMousePosition()
+    public static Vector2 GetMousePosition(bool floating=false)
     {
-        return (Vector3)Vector3Int.RoundToInt(Camera.main.ScreenToWorldPoint(Input.mousePosition));
+        ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+
+        if (gamePlane.Raycast(ray, out enter))
+        {
+            Vector3 hitPoint = ray.GetPoint(enter);
+            return floating ? hitPoint : Vector3Int.RoundToInt(hitPoint);
+        }
+
+        Debug.Log("Click did not intersect with gamePlane");
+        return Vector2.zero;
+
+        // return (Vector3)Vector3Int.RoundToInt(Camera.main.ScreenToWorldPoint(Input.mousePosition));
     }
 
     public static void DetectPlatform()

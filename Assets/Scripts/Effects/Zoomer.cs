@@ -24,12 +24,16 @@ public class Zoomer : MonoBehaviour
         if (!paused && Mathf.Abs(destinationZoom - Camera.main.orthographicSize) < snapThreshold)
         {
             Camera.main.orthographicSize = destinationZoom;
+            UpdateFieldOfView();
             RefreshButtons();
             paused = true;
         }
 
         if (!paused)
+        {
             Camera.main.orthographicSize = Camera.main.orthographicSize + ((destinationZoom - Camera.main.orthographicSize) / zoomSpeed);
+            UpdateFieldOfView();
+        }
     }
 
     public void SetDestination(float newDestination)
@@ -72,6 +76,11 @@ public class Zoomer : MonoBehaviour
     {
         Sidebar.instance.zoomButtons[1].interactable = destinationZoom < zooms[zooms.Count - 1] - snapThreshold;
         Sidebar.instance.zoomButtons[0].interactable = destinationZoom > zooms[0] + snapThreshold;
+    }
+
+    public void UpdateFieldOfView()
+    {
+        Camera.main.fieldOfView = 40 + (Camera.main.orthographicSize * 3);
     }
 
 }

@@ -16,7 +16,7 @@ public class PanZoom : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
             canDrag = !ClickManager.MouseOverUI() && !Sidebar.GetMenuPaused();
-            touchStart = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            touchStart = ClickManager.GetMousePosition(true); // Camera.main.ScreenToWorldPoint(Input.mousePosition);
         }
 
         if (Input.touchCount == 2)
@@ -36,7 +36,7 @@ public class PanZoom : MonoBehaviour
         }
         else if (Input.GetMouseButton(0))
         {
-            Vector3 direction = touchStart - Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            Vector3 direction = touchStart - (Vector3)ClickManager.GetMousePosition(true); // Camera.main.ScreenToWorldPoint(Input.mousePosition);
             if(canDrag)
                 Camera.main.transform.position += direction;
         }
@@ -48,6 +48,7 @@ public class PanZoom : MonoBehaviour
     void Zoom(float increment)
     {
         Camera.main.orthographicSize = Mathf.Clamp(Camera.main.orthographicSize - increment, zoomOutMin, zoomOutMax);
+        Camera.main.GetComponent<Zoomer>().UpdateFieldOfView();
     }
 
 

@@ -51,6 +51,7 @@ public class ActionManager : MonoBehaviour
     void Start()
     {
         instance = this;
+        ResetStatics();
 
         cursor = Instantiate(Globals.CURSOR as GameObject);
         cursor.SetActive(false);
@@ -62,6 +63,17 @@ public class ActionManager : MonoBehaviour
     private void OnDestroy()
     {
         ClickManager.releaseHandler -= _OnClick;
+    }
+
+    public void ResetStatics()
+    {
+        state = State.Moving;
+        paused = false;
+        /*private static Vector2 cursorPosition;
+        private static Vector2 attackPosition;
+        private static GameObject cursor;
+        private static List<GameObject> previewObjects;
+        private static ActionManager instance;*/
     }
 
     // STATE MANAGERS ==========================================================
@@ -331,11 +343,11 @@ public class ActionManager : MonoBehaviour
         bool targetUnaware = targetInRange && hit.collider.gameObject.GetComponent<AutoMover>() && hit.collider.gameObject.GetComponent<AutoMover>().GetAwareness() != AutoMover.State.Alert;
 
         if (!targetInRange)
-            Sidebar.instance.ToastWrapper("No target in range");
+            Toast.ToastWrapper("No target in range");
         else if(!targetUnaware)
-            Sidebar.instance.ToastWrapper("Cannot knife alerted target");
+            Toast.ToastWrapper("Cannot knife alerted target");
         else
-            Sidebar.instance.ToastWrapper("Valid target selected");
+            Toast.ToastWrapper("Valid target selected");
 
         renderer.material = (targetInRange && targetUnaware) ? Globals.BRIGHT_RED : Globals.BRIGHT_WHITE;
         
@@ -429,7 +441,7 @@ public class ActionManager : MonoBehaviour
     {
         Vector2 start = PlayerMover.instance.transform.position;
         Vector2 direction = cursorPosition - start;
-        RaycastHit2D hit = Physics2D.Raycast(start, direction, 30, ~LayerMask.GetMask("Player"));
+        RaycastHit2D hit = Physics2D.Raycast(start, direction, 99, ~LayerMask.GetMask("Player"));
 
         GameObject coneObject = new GameObject();
         FieldOfView cone = coneObject.AddComponent<FieldOfView>();
@@ -454,7 +466,7 @@ public class ActionManager : MonoBehaviour
             shotObject.transform.parent = parent;
 
         LineRenderer shotLine = shotObject.AddComponent<LineRenderer>();
-        shotLine.SetPositions(new Vector3[] { (Vector3)shotOrigin + new Vector3(0, 0, -1), (Vector3)hitPoint + new Vector3(0, 0, -1) });
+        shotLine.SetPositions(new Vector3[] { (Vector3)shotOrigin - Globals.EPSILON * Vector3.forward, (Vector3)hitPoint - Globals.EPSILON * Vector3.forward });
 
         shotLine.startWidth = shotLine.endWidth = width;
         shotLine.sortingLayerName = "Effects";
@@ -481,7 +493,7 @@ public class ActionManager : MonoBehaviour
             float x = Mathf.Sin(Mathf.Deg2Rad * angle) * radius; // xRadius for ellipse
             float y = Mathf.Cos(Mathf.Deg2Rad * angle) * radius;
 
-            line.SetPosition(i, new Vector3(center.x + x, center.y + y, -1));
+            line.SetPosition(i, new Vector3(center.x + x, center.y + y, -Globals.EPSILON));
             angle += (360f / segments);
         }
 
@@ -491,12 +503,12 @@ public class ActionManager : MonoBehaviour
     // LISTENERS ===============================================================
 
     public void _OnClick(Vector2 mousePosition)
-    {        
+    {
         if (state == State.Aiming && selectedAction != Action.Gauze)
         {
             Sidebar.instance.actionConfirmButtons[1].interactable = true;
             cursor.SetActive(true);
-            cursor.transform.position = new Vector3(mousePosition.x, mousePosition.y, -2);
+            cursor.transform.position = new Vector3(mousePosition.x, mousePosition.y, -2 * Globals.EPSILON);
             cursorPosition = mousePosition;
             PreviewAction();
         }

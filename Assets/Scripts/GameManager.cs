@@ -9,6 +9,12 @@ public class GameManager : MonoBehaviour
     // Asra, Diego, Thane
     // Diego, Jacques, Thane
 
+    public static bool cinemaMode = false;
+
+    public static float voiceVolume = 0.5f;
+    public static float musicVolume = 0.5f;
+    public static float soundVolume = 0.5f;
+
     public static int actionPoints = 5;
     public static bool running = false;
 
@@ -19,11 +25,15 @@ public class GameManager : MonoBehaviour
     private static int numSalts = 3;
     public static int numFrag = 0;
     public static int numSmoke = 0;
-    
+
     // Start is called before the first frame update
     void Start()
     {
         Screen.orientation = ScreenOrientation.LandscapeLeft;
+        if (SaveService.loadedSave == null)
+        {
+            SaveService.loadedSave = SaveService.LoadData();
+        }
     }
 
     // Update is called once per frame
@@ -31,5 +41,22 @@ public class GameManager : MonoBehaviour
     {
         
     }
+
+    /*public void SaveWrapper()
+    {
+        SaveService.SaveData(loadedSave);
+    }
+
+    public void LoadWrapper()
+    {
+        loadedSave = SaveService.LoadData();
+    }
+
+    public void SaveChanger()
+    {
+        loadedSave.options.musicVolume += 0.1f;
+        Debug.Log("musicVolume: " + loadedSave.options.musicVolume.ToString());
+        Toast.ToastWrapper("musicVolume: " + loadedSave.options.musicVolume.ToString());
+    }*/
 
 }

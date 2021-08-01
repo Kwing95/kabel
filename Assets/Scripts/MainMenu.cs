@@ -16,7 +16,7 @@ public class MainMenu : MonoBehaviour
         
     }
 
-    public void LoadScene(int scene)
+    public void LoadScene(string scene)
     {
         TransitionFader.instance.Transition(scene);
     }

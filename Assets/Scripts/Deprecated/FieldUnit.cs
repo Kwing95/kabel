@@ -54,7 +54,7 @@ public class FieldUnit : MonoBehaviour
                 GetComponentInChildren<SpriteRenderer>().enabled = false;
                 enabled = false;
 
-                TransitionFader.instance.Transition(0);
+                TransitionFader.instance.Transition("");
             }
             if (AllDown() && GetComponent<AutoMover>())
             {
