@@ -13,7 +13,7 @@ public class ClickManager : MonoBehaviour
 
     private static float minDragLength = 1;
     private static bool isMobile = false;
-    private static bool mouseDown = false;
+    // private static bool mouseDown = false;
     private static bool initialClick = true;
     private static bool uiClick = false;
     private static bool hasDragged = false;

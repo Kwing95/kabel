@@ -6,7 +6,7 @@ public class Flasher : MonoBehaviour
 {
 
     private float flashTimer = 0;
-    public SpriteRenderer renderer;
+    public new SpriteRenderer renderer;
     private Color startingColor;
 
     // Start is called before the first frame update

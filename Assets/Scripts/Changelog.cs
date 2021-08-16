@@ -138,7 +138,20 @@ June 12, 2021
 July 5, 2021
  + Can use pause menu to navigate between scenes
 
+Aug 10, 2021
+ + Working dialogue parser for scenes and in-game prompts
+ + Partial implementation for 3D walls
+ + Implemented Distract action
+
+Aug 15, 2021
+ + Prototypes of G1-1 through G1-3
+ + Radial action button refresh
+
+
+ - Enemies can attack while game is paused
+ - Refactor ActionManager
  - AI sometimes walks through/into walls
+ - AI sometimes freezes during yellow patrol
  - Parallax foreground 3D walls
  - Image type: Radial 360, amount for Action cooldown
  - Reproduce AI freeze: Let enemy see you at close range, walk around corner. Note navigator idle bool is false
@@ -148,21 +161,36 @@ July 5, 2021
     pausePathFinding stuck to true if LookAround is called twice?
     navigator wouldn't set destination because destination was a duplicate, so Pause(false) was never run
 
- - Enemies sometimes freeze during patrol (yellow cone)
+ - G1-1:
+     HOW TO: Move, run, change camera, knife
+     FEATURES: Some small obstacles, one stationary enemy (for knifing)
+     RETREAT: 3 advancing enemies, 3 patrolling enemies
+ - G1-2:
+     HOW TO: Avoid enemies, distract, shoot
+     FEATURES: Medium obstacles, 2 moving enemies (for avoiding,) 1 stationary enemy (distract or shoot) inside outpost
+     RETREAT: 2 advancing enemies, 2 stationary enemies, 1 patrolling enemy
+ - G1-3:
+     HOW TO: Deal with multiple enemies, grenade
+     FEATURES: 2 enemies to avoid, 3 enemies to grenade
+     RETREAT: 1 advancing enemy, 3 stationary enemies
+
  - Tear gas was invented in 20s; rubber bullets, mace, and stun grenades not until 60s and later
  - Grenade can sometimes be thrown infinite distance (probably when aiming farther than max)
+
  - Enable console/keyboard controls
     D-pad to move           X to act/confirm        O to cancel     L1/R1 to zoom
-    Square to walk/run      Start to pause          R stick to pan
- - Disable on release if camera is dragged but returned to same point
+    Square to walk/run      Start to pause          R stick to pan camera
+
+    WASD/Arrows move        Spacebar to act         BKSPC cancel    Q/E to zoom
+    Shift to run            ESC to pause            Ctrl + Arrows to pan camera
+
  - Possibly refactor PanZoom to use ClickManager, refactor ClickManager for general use?
 
- - Stealth kill for stationary enemies?
  - Let enemies "take cover"; find area with no line of sight to player
  - Touching enemies is weird (not important if sound is added for walking too)
  - Enemies can probably hit overlapping enemies (make gun start projected one tile out)
- - Actions other than Gun not implemented
  - Pathfinding should include hybrid of Dijkstra's and direct
+ - Figure out health system
  - Cooldown and movement based on health (-1 HP = -1 move, -1 focus = +1 act cooldown)
    - Replace Focus with status ailment? Reduce movement/increase cooldown?
  - Limit ammunition

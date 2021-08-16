@@ -5,7 +5,6 @@ using UnityEngine.UI;
 
 public class PlayerMover : MonoBehaviour
 {
-
     public float maxSmartMoveDistance = 10;
 
     public static PlayerMover instance;
@@ -16,8 +15,6 @@ public class PlayerMover : MonoBehaviour
 
     private AudioSource source;
     private Navigator nav;
-
-    private bool initialClick = true;
 
     // Start is called before the first frame update
     void Awake()

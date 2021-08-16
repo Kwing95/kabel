@@ -9,10 +9,12 @@ public class Sidebar : MonoBehaviour
 {
 
     public static Sidebar instance;
+    public GameObject dialogueSidebarContainer;
 
     public List<Sprite> sprites;
 
     public float actionCooldown = 3;
+    private float currentCooldown = 0;
 
     public enum Menu { Main, Action, Grenade, Confirm };
 
@@ -22,6 +24,7 @@ public class Sidebar : MonoBehaviour
     public List<Button> moveConfirmButtons;
     public List<Button> zoomButtons;
     public Button actionButton;
+    public Image actionIcon;
 
     public List<Image> moveIcons;
     public Image pauseDisplay;
@@ -54,7 +57,9 @@ public class Sidebar : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        currentCooldown -= Time.deltaTime;
+        actionButton.interactable = canAttack = currentCooldown <= 0;
+        actionIcon.fillAmount = 1.0f - Mathf.Max(currentCooldown / actionCooldown, 0);
     }
 
     private void ResetStatics()
@@ -110,14 +115,6 @@ public class Sidebar : MonoBehaviour
         Time.timeScale = menuPaused ? 0 : 1;
     }
 
-    // Disable the action button for a bit following an action
-    public IEnumerator DisableActions()
-    {
-        actionButton.interactable = canAttack = false;
-        yield return new WaitForSeconds(actionCooldown);
-        actionButton.interactable = canAttack = true;
-    }
-
     // Pauses the player and all enemies (does not modify timeScale)
     public void ActionPause(bool paused)
     {
@@ -134,6 +131,13 @@ public class Sidebar : MonoBehaviour
                 autoMover.enabled = !paused;
         }
 
+    }
+
+    public void ToggleInGameDialogue(bool viewingDialogue)
+    {
+        ActionPause(viewingDialogue);
+        dialogueSidebarContainer.SetActive(viewingDialogue);
+        gameObject.SetActive(!viewingDialogue);
     }
 
     public static bool GetMenuPaused()
@@ -187,7 +191,7 @@ public class Sidebar : MonoBehaviour
     public void FinishAction()
     {
         menuNavigator.ShowMenu(0);
-        StartCoroutine(DisableActions());
+        currentCooldown = actionCooldown;
         SetState("Moving");
         ActionPause(false);
 

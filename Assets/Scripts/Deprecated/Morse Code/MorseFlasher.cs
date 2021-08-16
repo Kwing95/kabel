@@ -16,7 +16,7 @@ public class MorseFlasher : MonoBehaviour
     private float letterSpaceLength;
     private float wordSpaceLength;
     
-    private bool visible = false;
+    // private bool visible = false;
 
     private string messageBuffer = "";
     private string charBuffer = "";
@@ -29,7 +29,7 @@ public class MorseFlasher : MonoBehaviour
     // OnLetter is beginning a new letter
     // OnTone is executing longs and shorts inside of a letter
     private enum State { OnLetter, OnTone };
-    private State state = State.OnLetter;
+    // private State state = State.OnLetter;
 
     // Start is called before the first frame update
     void Start()

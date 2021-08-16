@@ -9,14 +9,22 @@ using UnityEngine.UI;
 
 public class DialogueParser : MonoBehaviour
 {
+    public static DialogueParser instance;
+
     public string sceneName;
     public TextMeshProUGUI dialogueBox;
+    public bool isCutscene = true;
 
     private List<string> dialogueList;
     private int currentLine = 0;
 
+    public DialogueParser()
+    {
+        instance = this;
+    }
+
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         dialogueList = new List<string>();
         ParseScene(sceneName);
@@ -40,26 +48,39 @@ public class DialogueParser : MonoBehaviour
     private void IncrementLine(int increment)
     {
         if(currentLine == dialogueList.Count - 1 && increment == 1)
+            CloseDialogue();
+        else
+        {
+            currentLine = Mathf.Clamp(currentLine + increment, 0, dialogueList.Count - 1);
+            dialogueBox.text = dialogueList[currentLine];
+            dialogueBox.pageToDisplay = 1;
+        }
+    }
+
+    private void CloseDialogue()
+    {
+        if (isCutscene)
         {
             dialogueBox.pageToDisplay = dialogueBox.textInfo.pageCount;
             TransitionFader.instance.FinishLevel();
-            return;
         }
-
-        currentLine = Mathf.Clamp(currentLine + increment, 0, dialogueList.Count - 1);
-        dialogueBox.text = dialogueList[currentLine];
-        dialogueBox.pageToDisplay = 1;
+        else
+        {
+            Sidebar.instance.ToggleInGameDialogue(false);
+            dialogueBox.pageToDisplay = 1;
+        }
     }
 
-    private bool CheckTextWidth(string text)
+    public void SetDialogue(string text)
     {
-        return false;
-        /*float preferredWidth = LayoutUtility.GetPreferredWidth(text.rectTransform);
-        float parentWidth = parentRect.rect.width;
-        return (preferredWidth > (parentWidth - longestCharWidth));*/
+        dialogueList = new List<string>();
+        dialogueList.Add(text);
+
+        currentLine = 0;
+        dialogueBox.text = dialogueList[0];
     }
 
-    private void ParseScene(string _sceneName)
+    public void ParseScene(string _sceneName)
     {
         int startIndex = Globals.GAME_SCRIPT.text.IndexOf("<" + _sceneName + ">") + 2 + _sceneName.Length;
         int endIndex = Globals.GAME_SCRIPT.text.IndexOf("</" + _sceneName + ">");

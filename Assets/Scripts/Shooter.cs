@@ -94,7 +94,7 @@ public class Shooter : MonoBehaviour
 
             // Generate noise graphic
             GameObject tempNoise = Instantiate(noise, transform.position, Quaternion.identity);
-            tempNoise.GetComponent<Noise>().Initialize(CompareTag("Player"), 10);
+            // tempNoise.GetComponent<Noise>().Initialize(CompareTag("Player"), 10);
 
             DrawLine(shotOrigin, hit.point);
         }

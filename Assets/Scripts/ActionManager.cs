@@ -16,7 +16,6 @@ public class ActionManager : MonoBehaviour
     [Serializable]
     public enum State { Moving, ActionPause, Aiming, ConfirmMove, Acting }
     private static State state;
-    private static bool paused;
 
     [Serializable]
     // 0 Gun, 1 Frag, 2 Smoke, 3 Stun, 4 Distract, 5 Gauze, 6 Backstab
@@ -68,7 +67,6 @@ public class ActionManager : MonoBehaviour
     public void ResetStatics()
     {
         state = State.Moving;
-        paused = false;
         /*private static Vector2 cursorPosition;
         private static Vector2 attackPosition;
         private static GameObject cursor;
@@ -139,6 +137,9 @@ public class ActionManager : MonoBehaviour
             case Action.Knife:
                 instance.StartCoroutine(instance.Knife(PlayerMover.instance.gameObject, cursorPosition));
                 break;
+            case Action.Distract:
+                instance.StartCoroutine(instance.Grenade(PlayerMover.instance.gameObject, attackPosition, true));
+                break;
         }
     }
 
@@ -193,7 +194,7 @@ public class ActionManager : MonoBehaviour
             }
 
             GameObject tempNoise = Instantiate(Globals.NOISE, unit.transform.position, Quaternion.identity);
-            tempNoise.GetComponent<Noise>().Initialize(unit.CompareTag("Player"), 10);
+            tempNoise.GetComponent<Noise>().Initialize(unit.CompareTag("Player"), Globals.GUN_VOLUME, Noise.Source.Gun);
 
             // Create and format line
             GameObject shotLine = DrawLine(shotOrigin, hit.point, Globals.BRIGHT_WHITE, unit.transform);
@@ -234,6 +235,9 @@ public class ActionManager : MonoBehaviour
             case Action.Gas:
                 PreviewGrenade();
                 break;
+            case Action.Distract:
+                PreviewDistraction();
+                break;
         }
 
     }
@@ -243,7 +247,7 @@ public class ActionManager : MonoBehaviour
 
     }
 
-    public IEnumerator Grenade(GameObject unit, Vector2 target)
+    public IEnumerator Grenade(GameObject unit, Vector2 target, bool isDistraction=false)
     {
         // Animate grenade
         GameObject grenadeSprite = Instantiate(Globals.PROJECTILE, unit.transform.position, Quaternion.identity);
@@ -251,18 +255,26 @@ public class ActionManager : MonoBehaviour
 
         yield return new WaitForSeconds(1);
 
-        GameObject explosion = Instantiate(Globals.EXPLOSION, target, Quaternion.identity);
-        explosion.transform.localScale = (0.2f + (0.4f * grenadeYellowRange)) * Vector2.one;
+        if (!isDistraction)
+        {
+            GameObject explosion = Instantiate(Globals.EXPLOSION, target, Quaternion.identity);
+            explosion.transform.localScale = (0.2f + (0.4f * grenadeYellowRange)) * Vector2.one;
+        }
 
         GameObject tempNoise = Instantiate(Globals.NOISE, target, Quaternion.identity);
-        tempNoise.GetComponent<Noise>().Initialize(unit.CompareTag("Player"), 10);
+        float volume = isDistraction ? Globals.DISTRACTION_VOLUME : Globals.GRENADE_VOLUME;
+        Noise.Source source = isDistraction ? Noise.Source.Distract : Noise.Source.Grenade;
+        tempNoise.GetComponent<Noise>().Initialize(unit.CompareTag("Player"), volume, source, unit.transform.position);
 
-        List<GameObject> units = EnemyList.GetAllUnits();
-        foreach(GameObject elt in units)
+        if (!isDistraction)
         {
-            UnitStatus status = elt.GetComponent<UnitStatus>();
-            if (status)
-                status.DamageHealth(DistanceToLevel(Vector2.Distance(elt.transform.position, target)));
+            List<GameObject> units = EnemyList.GetAllUnits();
+            foreach (GameObject elt in units)
+            {
+                UnitStatus status = elt.GetComponent<UnitStatus>();
+                if (status)
+                    status.DamageHealth(DistanceToLevel(Vector2.Distance(elt.transform.position, target)));
+            }
         }
 
         if (unit.GetComponent<PlayerMover>())
@@ -284,7 +296,7 @@ public class ActionManager : MonoBehaviour
         explosion.transform.localScale = (0.2f + (0.4f * grenadeYellowRange)) * Vector2.one;
 
         GameObject tempNoise = Instantiate(Globals.NOISE, target, Quaternion.identity);
-        tempNoise.GetComponent<Noise>().Initialize(unit.CompareTag("Player"), 5);
+        tempNoise.GetComponent<Noise>().Initialize(unit.CompareTag("Player"), Globals.GAS_VOLUME, Noise.Source.Grenade);
 
         GameObject gasCloud = Instantiate(Globals.GAS_CLOUD, target, Quaternion.identity);
 
@@ -315,7 +327,7 @@ public class ActionManager : MonoBehaviour
 
             // May want to make amount of noise random
             GameObject tempNoise = Instantiate(Globals.NOISE, unit.transform.position, Quaternion.identity);
-            tempNoise.GetComponent<Noise>().Initialize(unit.CompareTag("Player"), 5);
+            tempNoise.GetComponent<Noise>().Initialize(unit.CompareTag("Player"), Globals.KNIFE_VOLUME, Noise.Source.Knife);
 
             // Create and format line
             GameObject shotLine = DrawLine(origin, hit.point, Globals.BRIGHT_RED, unit.transform);
@@ -353,6 +365,18 @@ public class ActionManager : MonoBehaviour
         
         renderer.startWidth = renderer.endWidth = 0.07f;
         previewObjects.Add(renderer.gameObject);
+    }
+
+    private static void PreviewDistraction()
+    {
+        // Generate point where grenade will land
+        Vector2 playerPosition = PlayerMover.instance.transform.position;
+        float distance = Vector2.Distance(playerPosition, cursorPosition);
+        RaycastHit2D throwHit = Physics2D.Raycast(playerPosition, cursorPosition - playerPosition, Mathf.Min(10, distance), ~LayerMask.GetMask("Player"));
+        Vector2 center = throwHit.collider == null ? cursorPosition : throwHit.point;
+        attackPosition = center;
+
+        previewObjects.Add(DrawCircle(center, Globals.DISTRACTION_VOLUME, Globals.BRIGHT_RED));
     }
 
     private static void PreviewGrenade()

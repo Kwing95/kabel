@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class Noise : MonoBehaviour
 {
-
-    public bool friendly; // Friendly indicates the player made the noise
+    public enum Source { Distract, Grenade, Gun, Footsteps, Knife, Ally };
+    private Source source;
+    private Vector2 secondaryPoint;
+    private bool madeByPlayer; // Friendly indicates the player made the noise
     public float hearDistance = 3.3f;
     private GameObject enemies;
     //private CircleCollider2D collider;
@@ -16,34 +18,45 @@ public class Noise : MonoBehaviour
 
     }
 
-    public void Initialize(bool isFriendly, float volume)
+    // Enemies may investigate a secondary position, such as where a grenade was thrown from vs where it landed
+    public void Initialize(bool _madeByPlayer, float volume, Source noiseSource, Vector2 secondaryPosition)
     {
-        friendly = isFriendly;
+        secondaryPoint = secondaryPosition;
+        Initialize(_madeByPlayer, volume, noiseSource);
+    }
+
+    public void Initialize(bool _madeByPlayer, float volume, Source noiseSource)
+    {
+        madeByPlayer = _madeByPlayer;
+        source = noiseSource;
         hearDistance = volume;
         transform.localScale = (0.2f + (0.4f * volume)) * Vector2.one;
 
-        if (friendly)
+        NotifyEnemies();
+    }
+
+    private void Initialize(bool isFriendly, float volume)
+    {
+        madeByPlayer = isFriendly;
+        hearDistance = volume;
+        transform.localScale = (0.2f + (0.4f * volume)) * Vector2.one;
+
+        if (madeByPlayer)
             NotifyEnemies();
     }
 
-    public void NotifyEnemies()
+    private void NotifyEnemies()
     {
         enemies = EnemyList.instance.gameObject;
 
         for (int i = 0; i < enemies.transform.childCount; ++i)
         {
-            if (Vector2.Distance(enemies.transform.GetChild(i).transform.position, transform.position) <= hearDistance)
+            Transform enemy = enemies.transform.GetChild(i);
+            if (Vector2.Distance(enemy.transform.position, transform.position) <= hearDistance)
             {
-                AutoMover mover = enemies.transform.GetChild(i).GetComponent<AutoMover>();
-                if (mover != null)
-                {
+                AutoMover mover = enemy.GetComponent<AutoMover>();
+                if (mover)
                     mover.AlertToPosition(Grapher.RoundedVector(transform.position));
-                    //Navigator navigator = mover.GetComponent<Navigator>();
-                    //GridMover player = PlayerMover.instance.GetComponent<GridMover>();
-                    //navigator.SetDestination(Grapher.RoundedVector(transform.position), true);
-                    // mover.SetChasing(true);
-                }
-
             }
         }
     }

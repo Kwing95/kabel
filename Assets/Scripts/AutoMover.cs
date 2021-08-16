@@ -249,6 +249,7 @@ public class AutoMover : MonoBehaviour
         return ClearView(player.transform.position);
     }
 
+    // Returns true if there are no obstructions between enemy and point
     private bool ClearView(Vector2 point)
     {
         // Don't look farther than distance of point of interest, but don't look farther than sightDistance either
@@ -259,15 +260,72 @@ public class AutoMover : MonoBehaviour
         return returnValue;
     }
 
-    // Makes enemy investigate "point"
-    public void AlertToPosition(Vector2 point)
+    // Return true if point is too far away for unit to investigate
+    private bool GetTooFar(Vector2 point)
     {
         bool tooFar = false;
-        if(route.Count == 1 && leashLength != -1)
+        if (route.Count == 1 && leashLength != -1)
         {
             tooFar = Grapher.ManhattanDistance(route[0], canSeePlayer ? (Vector2)transform.position : point) >= leashLength;
             //tooFar = Grapher.FindIndirectPath(route[0], canSeePlayer ? (Vector2)transform.position : point, leashLength).Count == 0;
         }
+        return tooFar;
+    }
+
+    public void VisualToPosition(Vector2 point)
+    {
+        bool tooFar = GetTooFar(point);
+
+        if (canSeePlayer)
+        {
+            if (canAddPoints && pointMemory > 0)
+            {
+                canAddPoints = false;
+                extraPoints.Add(Grapher.RoundedVector(player.transform.position));
+                if (extraPoints.Count > pointMemory)
+                    extraPoints.RemoveAt(0);
+            }
+            SetAwareness(State.Alert);
+            // Don't chase player when close
+
+            bool tooClose = ClearView(player.GetDiscretePosition()) && Grapher.ManhattanDistance(player.transform.position, transform.position) <= 4;
+            if (tooClose || tooFar)
+            {
+                navigator.Pause();
+                return;
+            }
+        }
+
+        navigator.SetDestination(point, true);
+    }
+
+    public void SoundToPosition(Vector2 point)
+    {
+        bool tooFar = GetTooFar(point);
+
+        // Ignore noises outside of patrol zone... Should they at least look?
+        if (!canSeePlayer && tooFar)
+        {
+            if (clearView)
+            {
+                SetAwareness(State.Suspicious);
+                navigator.SetDestination(route[0], true);
+            }
+            // Possibly call in backup
+            return;
+        }
+        if (!canSeePlayer)
+        {
+            SetAwareness(State.Suspicious);
+        }
+
+        navigator.SetDestination(point, true);
+    }
+
+    // Makes enemy investigate "point"
+    public void AlertToPosition(Vector2 point)
+    {
+        bool tooFar = GetTooFar(point);
 
         // Ignore noises outside of patrol zone... Should they at least look?
         if(!canSeePlayer && tooFar)

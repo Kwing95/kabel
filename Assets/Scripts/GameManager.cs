@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+// [ExecuteInEditMode]
 public class GameManager : MonoBehaviour
 {
 
@@ -11,6 +12,7 @@ public class GameManager : MonoBehaviour
 
     public static bool cinemaMode = false;
 
+    /*
     public static float voiceVolume = 0.5f;
     public static float musicVolume = 0.5f;
     public static float soundVolume = 0.5f;
@@ -24,11 +26,17 @@ public class GameManager : MonoBehaviour
     private static int numGauze = 3;
     private static int numSalts = 3;
     public static int numFrag = 0;
-    public static int numSmoke = 0;
+    public static int numSmoke = 0;*/
 
     // Start is called before the first frame update
     void Start()
     {
+        #if UNITY_EDITOR
+            Screen.SetResolution(1920, 1080, false);
+            QualitySettings.vSyncCount = 0;  // VSync must be disabled
+            Application.targetFrameRate = 45;
+        #endif
+
         Screen.orientation = ScreenOrientation.LandscapeLeft;
         if (SaveService.loadedSave == null)
         {
@@ -39,7 +47,7 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     /*public void SaveWrapper()

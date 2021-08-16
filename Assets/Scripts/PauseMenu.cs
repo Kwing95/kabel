@@ -51,13 +51,13 @@ public class PauseMenu : MonoBehaviour
         // Voice/Music/Sounds
         switch (args[0]){
             case 'V':
-                GameManager.voiceVolume = Mathf.Clamp(GameManager.voiceVolume + increment, 0, 1);
+                SaveService.loadedSave.options.voiceVolume = Mathf.Clamp(SaveService.loadedSave.options.voiceVolume + increment, 0, 1);
                 break;
             case 'M':
-                GameManager.musicVolume = Mathf.Clamp(GameManager.musicVolume + increment, 0, 1);
+                SaveService.loadedSave.options.musicVolume = Mathf.Clamp(SaveService.loadedSave.options.musicVolume + increment, 0, 1);
                 break;
             case 'S':
-                GameManager.soundVolume = Mathf.Clamp(GameManager.soundVolume + increment, 0, 1);
+                SaveService.loadedSave.options.soundVolume = Mathf.Clamp(SaveService.loadedSave.options.soundVolume + increment, 0, 1);
                 break;
         }
 

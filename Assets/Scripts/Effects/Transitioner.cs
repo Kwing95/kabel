@@ -15,7 +15,7 @@ public class Transitioner : MonoBehaviour
     private float sizeNeeded;
     private int expanding = 0;
     private int targetScene;
-    private float easing = 0.2f;
+    // private float easing = 0.2f;
     private float counter = 0;
 
     // Start is called before the first frame update

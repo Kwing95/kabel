@@ -117,7 +117,7 @@ public class Navigator : MonoBehaviour
                     if (running)
                     {
                         GameObject tempNoise = Instantiate(Globals.NOISE, transform.position, Quaternion.identity);
-                        tempNoise.GetComponent<Noise>().Initialize(CompareTag("Player"), 3.5f); // bad
+                        tempNoise.GetComponent<Noise>().Initialize(CompareTag("Player"), Globals.RUN_VOLUME, Noise.Source.Footsteps); // bad
                     }
                 }
                 else

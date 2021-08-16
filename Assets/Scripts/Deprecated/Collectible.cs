@@ -29,7 +29,7 @@ public class Collectible : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Vector2.Distance(PlayerMover.instance.transform.position, transform.position) == 0 && hasLoot)
+        if(Vector2.Distance(transform.position, PlayerMover.instance.transform.position) < 0.5f && hasLoot)
         {
             sr.sprite = noLoot;
         }

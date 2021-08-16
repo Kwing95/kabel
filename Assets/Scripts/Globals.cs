@@ -14,7 +14,8 @@ public class Globals : MonoBehaviour
         {"S1-2", new LevelData("Horseback", false, "S1-2", false) },
         {"G1-1", new LevelData("Infiltration", true, "G1-1", false) }
     };
-    public static readonly List<string> AUTOPLAY_LIST = new List<string> { "S1-1", "S1-2", "G1-1", "S1-3", "S1-4", "G1-2", "S1-5", "S1-6" };
+    public static readonly List<string> AUTOPLAY_LIST = new List<string> { "S1-1", "S1-2", "G1-1", "G1-2", "G1-3", "S1-3",
+        "S1-4", "G1-4", "G1-5", "G1-6", "S1-5", "S1-6" };
     public static readonly List<string> CINEMA_LIST = new List<string> { "S1-1", "S1-2", "S1-3", "S1-4", "S1-5", "S1-6" };
 
     // CONSTANTS
@@ -22,6 +23,13 @@ public class Globals : MonoBehaviour
     public static readonly int NUM_CHAPTERS = 7;
     public static readonly int NUM_LEVELS = 100;
     public static readonly float EPSILON = 0.01f;
+
+    public static readonly float GRENADE_VOLUME = 10;
+    public static readonly float GUN_VOLUME = 10;
+    public static readonly float KNIFE_VOLUME = 5;
+    public static readonly float GAS_VOLUME = 5;
+    public static readonly float DISTRACTION_VOLUME = 5;
+    public static readonly float RUN_VOLUME = 3.5f;
 
     // PREFABS
     public static readonly GameObject CORPSE = Resources.Load<GameObject>("Prefabs/Core_Gameplay/Corpse");
