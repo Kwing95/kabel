@@ -1,4 +1,0 @@
-sudo apt-install mono-dmcs
-
-mcs /t:exe /out:MyProgram.exe *.cs
-./MyProgram.exe
