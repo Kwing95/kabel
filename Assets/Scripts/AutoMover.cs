@@ -24,14 +24,13 @@ public class AutoMover : MonoBehaviour
     private float stunTimer = 0;
     private List<Vector2> extraPoints;
     private bool canAddPoints = true;
+    private List<GameObject> corpsesSeen;
 
     private GridMover player;
     private LayerMask mask;
     private GridMover mover;
     private Navigator navigator;
-    private FieldUnit unit;
 
-    private AudioSource source;
     public int startAngle = 0;
     private int routeProgress = 0;
     private FieldOfView fieldOfView;
@@ -62,12 +61,11 @@ public class AutoMover : MonoBehaviour
         extraPoints = new List<Vector2>();
         fieldOfView = GetComponentInChildren<FieldOfView>();
         rotator = GetComponent<Rotator>();
-        unit = GetComponent<FieldUnit>();
         mover = GetComponent<GridMover>();
         navigator = GetComponent<Navigator>();
-        source = GetComponent<AudioSource>();
         player = PlayerMover.instance.GetComponent<GridMover>();
 
+        corpsesSeen = new List<GameObject>();
         transform.rotation = Quaternion.Euler(Vector3.zero);
 
         if (route.Count == 0)
@@ -83,7 +81,7 @@ public class AutoMover : MonoBehaviour
     void Update()
     {
         clearView = ClearView();
-        canSeePlayer = CanSeePlayer();
+        canSeePlayer = CanSeePoint(PlayerMover.instance.transform.position);
 
         if (stunTimer <= 0)
         {
@@ -98,16 +96,18 @@ public class AutoMover : MonoBehaviour
             if (stunTimer <= 0)
                 navigator.Pause(false);
         }
-            
+
         //fieldOfView.material
 
+        if(awareness != State.Alert)
+            CheckForCorpses();
         CheckForTarget();
-
+        
         // If the player can be seen attack them
         // THIS DOES NOT ACCOUNT FOR ANGLE
         if (attackCooldown <= 0 && canSeePlayer)
         {
-            AlertToPosition(player.GetDiscretePosition());
+            VisualToPosition(player.GetDiscretePosition());
             Attack();
         }
 
@@ -227,20 +227,38 @@ public class AutoMover : MonoBehaviour
         if (canSeePlayer)
         {
             //rotator.ToggleLock(true, player.transform.position);
-            AlertToPosition(player.GetDiscretePosition());
+            VisualToPosition(player.GetDiscretePosition());
         }
         else if (awareness == State.Alert)
             SetAwareness(State.Suspicious);
+        else if(awareness == State.Idle)
+        {
+
+        }
+        // If idle, go to suspicious. If suspicious, log corpse but don't visual to position
+    }
+
+    private void CheckForCorpses()
+    {
+        List<GameObject> corpseList = ObjectContainer.GetAllCorpses();
+        foreach (GameObject corpse in corpseList)
+            // If the corpse hasn't been seen yet but the enemy can see it
+            if (corpsesSeen.IndexOf(corpse) == -1 && CanSeePoint(corpse.transform.position))
+            {
+                VisualToPosition(corpse.transform.position);
+                SetAwareness(State.Suspicious);
+                corpsesSeen.Add(corpse);
+            }
     }
 
     // Returns true if player is within enemy's cone of vision
-    private bool CanSeePlayer()
+    private bool CanSeePoint(Vector2 point)
     {
         // Check that player is within view angle
-        Vector2 direction = player.transform.position - transform.position;
-        float angleToPlayer = Mathf.Abs(Vector2.SignedAngle(direction, rotator.GetCurrentAngleVector()));
+        Vector2 direction = point - (Vector2)transform.position;
+        float angleToPoint = Mathf.Abs(Vector2.SignedAngle(direction, rotator.GetCurrentAngleVector()));
 
-        return angleToPlayer < fieldOfView.viewAngle / 2 && clearView && Vector2.Distance(player.transform.position, transform.position) <= sightDistance;
+        return angleToPoint < fieldOfView.viewAngle / 2 && ClearView(point) && Vector2.Distance(point, transform.position) <= sightDistance;
     }
 
     // Returns true if there are no obstructions between enemy and player
@@ -299,8 +317,11 @@ public class AutoMover : MonoBehaviour
         navigator.SetDestination(point, true);
     }
 
-    public void SoundToPosition(Vector2 point)
+    public void SoundToPosition(Vector2 point, bool madeByPlayer, Noise.Source source, Vector2 secondaryPosition)
     {
+        if (!madeByPlayer)
+            return;
+
         bool tooFar = GetTooFar(point);
 
         // Ignore noises outside of patrol zone... Should they at least look?
@@ -319,52 +340,17 @@ public class AutoMover : MonoBehaviour
             SetAwareness(State.Suspicious);
         }
 
-        navigator.SetDestination(point, true);
-    }
-
-    // Makes enemy investigate "point"
-    public void AlertToPosition(Vector2 point)
-    {
-        bool tooFar = GetTooFar(point);
-
-        // Ignore noises outside of patrol zone... Should they at least look?
-        if(!canSeePlayer && tooFar)
+        if(source == Noise.Source.Grenade && Vector2.Distance(transform.position, point) < Globals.GRENADE_YELLOW_RANGE)
         {
-            if (clearView)
-            {
-                SetAwareness(State.Suspicious);
-                navigator.SetDestination(route[0], true);
-            }
-            // Possibly call in backup
-            return;
-        }
-        if (canSeePlayer)
-        {
-            if (canAddPoints && pointMemory > 0)
-            {
-                canAddPoints = false;
-                extraPoints.Add(Grapher.RoundedVector(player.transform.position));
-                if (extraPoints.Count > pointMemory)
-                    extraPoints.RemoveAt(0);
-            }
-            SetAwareness(State.Alert);
-            // Don't chase player when close
-
-            bool tooClose = ClearView(player.GetDiscretePosition()) && Grapher.ManhattanDistance(player.transform.position, transform.position) <= 4;
-            if (tooClose || tooFar)
-            {
-                navigator.Pause();
-                return;
-            }
+            navigator.SetDestination(secondaryPosition, true);
         }
         else
         {
-            SetAwareness(State.Suspicious);
+            // If it's a distraction, walk
+            navigator.SetDestination(point, source != Noise.Source.Distract);
         }
-
-        navigator.SetDestination(point, true);
+        
     }
-
     private void Attack()
     {
         if (DistanceFromPlayer() <= 1)

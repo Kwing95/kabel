@@ -152,9 +152,9 @@ public class MenuManager : MonoBehaviour
     // Generate map letters for selecting a target
     public void TargetMenu(Vector2 startPoint, int radius)
     {
-        for(int i = 0; i < EnemyList.instance.transform.childCount; ++i)
+        for(int i = 0; i < ObjectContainer.instance.enemies.transform.childCount; ++i)
         {
-            Vector2 direction = (Vector2)EnemyList.instance.transform.GetChild(i).position - startPoint;
+            Vector2 direction = (Vector2)ObjectContainer.instance.enemies.transform.GetChild(i).position - startPoint;
             RaycastHit2D hit = Physics2D.Raycast(startPoint, direction, radius, mask); // this sometimes goes THROUGH enemies??
 
             if (hit.collider != null && hit.collider.CompareTag("Enemy"))

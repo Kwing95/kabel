@@ -5,25 +5,22 @@ using UnityEngine.SceneManagement;
 
 public class Collectible : MonoBehaviour
 {
+    public static int nonce = 0;
 
     public Sprite loot;
     public Sprite noLoot;
 
+    private int id;
     public bool isGoal = false;
     private bool hasLoot = true;
 
-    private GridMover player;
-    private AudioSource kaching;
     private SpriteRenderer sr;
 
     // Start is called before the first frame update
     void Start()
     {
+        id = nonce++;
         sr = GetComponent<SpriteRenderer>();
-        if (isGoal)
-            transform.position = PlayerMover.instance.transform.position;
-        kaching = GetComponent<AudioSource>();
-        player = PlayerMover.instance.GetComponent<GridMover>();
     }
 
     // Update is called once per frame
@@ -31,8 +28,14 @@ public class Collectible : MonoBehaviour
     {
         if(Vector2.Distance(transform.position, PlayerMover.instance.transform.position) < 0.5f && hasLoot)
         {
-            sr.sprite = noLoot;
+            hasLoot = false;
+            sr.color = Color.white;
+            PlayerMover.instance.GetComponent<Inventory>().Add(GetComponent<Inventory>().inventory);
         }
+    }
+    public int GetId()
+    {
+        return id;
     }
 
 }

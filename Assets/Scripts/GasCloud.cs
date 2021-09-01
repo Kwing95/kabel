@@ -27,7 +27,7 @@ public class GasCloud : MonoBehaviour
 
     private void UpdateAffectedUnits()
     {
-        List<GameObject> units = EnemyList.GetAllUnits();
+        List<GameObject> units = ObjectContainer.GetAllUnits();
 
         // Check for all units
         foreach (GameObject elt in units)

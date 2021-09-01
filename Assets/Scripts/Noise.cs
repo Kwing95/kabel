@@ -47,7 +47,7 @@ public class Noise : MonoBehaviour
 
     private void NotifyEnemies()
     {
-        enemies = EnemyList.instance.gameObject;
+        enemies = ObjectContainer.instance.enemies;
 
         for (int i = 0; i < enemies.transform.childCount; ++i)
         {
@@ -56,7 +56,7 @@ public class Noise : MonoBehaviour
             {
                 AutoMover mover = enemy.GetComponent<AutoMover>();
                 if (mover)
-                    mover.AlertToPosition(Grapher.RoundedVector(transform.position));
+                    mover.SoundToPosition(Grapher.RoundedVector(transform.position), madeByPlayer, source, secondaryPoint);
             }
         }
     }

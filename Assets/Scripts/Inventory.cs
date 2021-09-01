@@ -1,59 +1,67 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[Serializable]
 public class Inventory : MonoBehaviour
 {
-
-    public enum Item { Frag, Flash, Smoke, Gauze, Salts };
-    private Dictionary<Item, int> inventory;
+    [Serializable]
+    public enum ItemType { Frag, Gas, Smoke, Distract, Medkit };
+    [Serializable]
+    public class InventoryEntry
+    {
+        public ItemType type;
+        public int quantity;
+    }
+    
+    public List<InventoryEntry> inventory;
 
     // Start is called before the first frame update
     void Start()
     {
-        inventory = new Dictionary<Item, int>();
-        inventory.Add(Item.Frag, 0);
+        if (inventory == null)
+            inventory = new List<InventoryEntry>();
     }
 
-    // Add a single item to inventory
-    public void Assimilate(KeyValuePair<Item, int> i)
+    public void Add(InventoryEntry newItem)
     {
-        if (inventory.ContainsKey(i.Key))
-            inventory[i.Key] += i.Value;
-        else
-            inventory[i.Key] = i.Value;
+        foreach(InventoryEntry item in inventory)
+            if(item.type == newItem.type)
+            {
+                item.quantity += newItem.quantity;
+                return;
+            }
     }
 
     // Add a dictionary of items to inventory
-    public void Assimilate(Dictionary<Item, int> pickup)
+    public void Add(List<InventoryEntry> items)
     {
-        foreach(KeyValuePair<Item, int> i in pickup)
-        {
-            Assimilate(i);
-        }
+        foreach(InventoryEntry item in items)
+            Add(item);
     }
 
     // Get number of an item type
-    public int GetStock(Item type)
+    public int GetQuantity(ItemType type)
     {
-        return inventory.ContainsKey(type) ? inventory[type] : 0;
+        foreach (InventoryEntry item in inventory)
+            if (item.type == type)
+                return item.quantity;
+
+        return 0;
     }
 
     // Attempts to consume an item of type; returns true if item is consumed successfully
-    public bool Consume(Item type)
+    public bool Consume(ItemType type)
     {
-        if(inventory.ContainsKey(type) && inventory[type] > 0)
-        {
-            inventory[type] = inventory[type] - 1;
-            return true;
-        }
-        return false;
-    }
+        foreach (InventoryEntry item in inventory)
+            if (item.type == type && item.quantity > 0)
+            {
+                item.quantity -= 1;
+                return true;
+            }
 
-    // Return Dictionary "inventory"; should only be used for Assimilate
-    public Dictionary<Item, int> GetInventory()
-    {
-        return inventory;
+        return false;
     }
 
     // Update is called once per frame

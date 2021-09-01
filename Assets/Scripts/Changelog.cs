@@ -147,13 +147,31 @@ Aug 15, 2021
  + Prototypes of G1-1 through G1-3
  + Radial action button refresh
 
+Aug 21, 2021
+ + Enemy AI is smarter responding to grenades
+ + Framework for specific behavior regarding sight/sound
 
- - Enemies can attack while game is paused
+Aug 29, 2021
+ + Enemy -> corpse -> player inventory
+
+Aug 29, 2021
+ + Enemies investigate corpses
+ + Medkits are enabled
+
+Aug 31, 2021
+ + Save is created
+ + All scenes use new ObjectContainer
+
+ - Enemies may freeze while investigating corpse
+ - Save is not create
+ - Sometimes bad health color indicator
+ - Platform-agnostic controls
+ - Looting popup
+
  - Refactor ActionManager
  - AI sometimes walks through/into walls
  - AI sometimes freezes during yellow patrol
  - Parallax foreground 3D walls
- - Image type: Radial 360, amount for Action cooldown
  - Reproduce AI freeze: Let enemy see you at close range, walk around corner. Note navigator idle bool is false
     Point memory? Doesn't look like it, problem remains with pointMemory = 0
     pausePathFinding sometimes true, path count sometimes 0
@@ -178,8 +196,8 @@ Aug 15, 2021
  - Grenade can sometimes be thrown infinite distance (probably when aiming farther than max)
 
  - Enable console/keyboard controls
-    D-pad to move           X to act/confirm        O to cancel     L1/R1 to zoom
-    Square to walk/run      Start to pause          R stick to pan camera
+    D-pad to move           X to act/confirm        O to cancel/run     L1/R1 to zoom
+    Start to pause          (R) move camera
 
     WASD/Arrows move        Spacebar to act         BKSPC cancel    Q/E to zoom
     Shift to run            ESC to pause            Ctrl + Arrows to pan camera
@@ -238,6 +256,10 @@ Stun Grenade: Renders targets unable to act for some time
 Smoke Grenade: A cloud that blocks enemy vision
 Gauze: Restores health and cures limping status
 
+ACHIEVEMENTS:
+ Complete chapter (1, 2, 3, 4, 5, 6, 7)
+ Complete hardmode chapter (3, 4, 6, 7)
+
 BONUS FEATURES:
  Hardcore Mode - Enemies have no cones; player's line of sight is limited
  Cinema Mode - Autoplay all cutscenes
@@ -245,8 +267,5 @@ BONUS FEATURES:
  Jukebox - Play all game music
  Commentary Mode - Play game with commentary from developers
  Gun Bar Mode - Replaces gun sounds with battle rap voices
-
-https://docs.unity3d.com/ScriptReference/Resources.Load.html
-https://answers.unity.com/questions/917138/text-file-not-loading-after-building-the-game.html
 
  */

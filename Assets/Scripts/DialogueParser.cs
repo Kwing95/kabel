@@ -85,7 +85,7 @@ public class DialogueParser : MonoBehaviour
         int startIndex = Globals.GAME_SCRIPT.text.IndexOf("<" + _sceneName + ">") + 2 + _sceneName.Length;
         int endIndex = Globals.GAME_SCRIPT.text.IndexOf("</" + _sceneName + ">");
         string dump = Globals.GAME_SCRIPT.text.Substring(startIndex, endIndex - startIndex);
-        dialogueList = dump.Split(new[] { "\n\n" }, StringSplitOptions.None).ToList();
+        dialogueList = dump.Split(new [] { "\n\n" }, StringSplitOptions.None).ToList();
         dialogueList[0] = dialogueList[0].TrimStart('\n');
 
         currentLine = 0;

@@ -1,7 +1,7 @@
 KABEL
 GAME SCRIPT WRITTEN BY KEVIN WANG
 
-UPDATED 7/31/2021
+UPDATED 8/22/2021
 
 CHAPTER 1
 
@@ -31,11 +31,7 @@ Teacher: Oh, and Keola? I'd like to speak with you after class.
 Keola: Yes, teacher.
 
 Teacher: Anyway, our railroads are still growing, just not as fast. The same can be said of our other developments. For instance, the war effort has forced the government to cut funding for medical research. Of course, if Erawa had its way, we'd still be using crystal healing and leeches. Chemina leads the future. So you can see how important it is for us to support our troops.
-</S1-1>
 
-Horseback
-
-<S1-2>
 (The scene fades into a tropical jungle. Four men traverse a rough trail on horseback.)
 
 Biggs: Can't stand these damned beasts. I've found corpses that didn't smell this bad.
@@ -73,7 +69,7 @@ Bane: Wedge, did intel say anything about another way around?
 Wedge: No, sir. One way in, one way out.
 
 Bane: Alright, men. We'll take this one out, then continue on foot.
-</S1-2>
+</S1-1>
 
 * * *
 
@@ -81,7 +77,7 @@ GAMEPLAY SECTION: The group neutralizes a handful of Erawan militia, whose numbe
 
 Innocents
 
-<S1-3>
+<S1-2>
 (Biggs finishes off an Erawan soldier after they attempt to throw an explosive at them.)
 
 Wedge: Fuck, those things are loud. What are they?
@@ -123,11 +119,7 @@ Bane: Don't look at me like that. The supply base is in the middle of the villag
 Saito: You think proving them wrong is that important? There must be hundreds of people down there.
 
 Bane: (Sigh) Leave the storybook idealism at the door. This isn't a fairytale. It's war. Biggs and I will cover you in case someone else comes through.
-</S1-3>
 
-Avalanche
-
-<S1-4>
 (Saito and Wedge walk along the edge of the cliff.)
 
 Wedge: Can he do that? Those poor people are about to get buried alive!
@@ -171,7 +163,7 @@ Saito: Look out!
 (An Erawan higher on the cliff fires off several flat bombs, blasting Wedge off the cliff.)
 
 Saito: Shit!
-</S1-4>
+</S1-2>
 
 * * *
 
@@ -179,7 +171,7 @@ GAMEPLAY SECTION: Saito scrabbles to find Bane and Biggs while under attack. Ene
 
 Regroup
 
-<S1-5>
+<S1-3>
 (Saito encounters Biggs trading fire with an Erawan from behind cover. Saito shoots the distracted Erawan and joins Biggs behind cover.)
 
 Saito: (Never thought I'd be happy to see Biggs.)
@@ -203,11 +195,7 @@ Saito: Great. Well, we blew the mountainside. Let's get the fuck out of here.
 Biggs: Shit!!
 
 (Saito is sent flying and Biggs is impaled on a branch. The Erawan inspects Biggs' body. Saito draws a grenade, pulls the pin, but it explodes instantly.)
-</S1-5>
 
-Infirmary
-
-<S1-6>
 Saito: (Fuck this hurts! I can barely think. What happened? My grenade... went off in my hand? And then...? I'm... in a hospital bed. And that tapping... Someone's using a telegraph.)
 
 ???: ... R HAND. 3RD DEG BURNS ON ARM. TRAUM BRAIN INJ. MULT FRACTURES.
@@ -239,7 +227,7 @@ Saito: (Well I'm not going down without a fight.)
 Saito: My... hand!?
 
 (The nurse finishes injecting Saito and he collapses.)
-</S1-6>
+</S1-3>
 
 Chapter 2
 

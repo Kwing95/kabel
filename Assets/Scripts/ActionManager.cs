@@ -27,11 +27,6 @@ public class ActionManager : MonoBehaviour
     private static List<GameObject> previewObjects;
     private static ActionManager instance;
 
-    private static float grenadeRedRange = 1.5f;
-    private static float grenadeOrangeRange = 3f;
-    private static float grenadeYellowRange = 4.5f;
-    private static float knifeRange = 3;
-
     /*
      Quick reference
        Click Action: ActionPause true, SetState actionPause, ShowMenu 1
@@ -124,7 +119,7 @@ public class ActionManager : MonoBehaviour
         switch (selectedAction)
         {
             case Action.Gun:
-                instance.StartCoroutine(instance.Gun(PlayerMover.instance.gameObject, cursorPosition, 3));
+                instance.StartCoroutine(instance.Gun(PlayerMover.instance.gameObject, cursorPosition, PlayerMover.instance.gameObject.GetComponent<UnitStatus>().UnitsAlive()));
                 break;
             case Action.Frag:
                 instance.StartCoroutine(instance.Grenade(PlayerMover.instance.gameObject, attackPosition));
@@ -140,7 +135,21 @@ public class ActionManager : MonoBehaviour
             case Action.Distract:
                 instance.StartCoroutine(instance.Grenade(PlayerMover.instance.gameObject, attackPosition, true));
                 break;
+            case Action.Gauze:
+                instance.StartCoroutine(instance.Gauze());
+                break;
         }
+    }
+
+    public IEnumerator Gauze()
+    {
+        PlayerMover.instance.GetComponent<UnitStatus>().Heal();
+        yield return new WaitForSeconds(0.25f);
+        Sidebar.instance.FinishAction();
+
+        PlayerMover.instance.GetComponent<Navigator>().enabled = false;
+        yield return new WaitForSeconds(3);
+        PlayerMover.instance.GetComponent<Navigator>().enabled = true;
     }
 
     // Coroutine for player firing gun
@@ -258,7 +267,7 @@ public class ActionManager : MonoBehaviour
         if (!isDistraction)
         {
             GameObject explosion = Instantiate(Globals.EXPLOSION, target, Quaternion.identity);
-            explosion.transform.localScale = (0.2f + (0.4f * grenadeYellowRange)) * Vector2.one;
+            explosion.transform.localScale = (0.2f + (0.4f * Globals.GRENADE_YELLOW_RANGE)) * Vector2.one;
         }
 
         GameObject tempNoise = Instantiate(Globals.NOISE, target, Quaternion.identity);
@@ -268,7 +277,7 @@ public class ActionManager : MonoBehaviour
 
         if (!isDistraction)
         {
-            List<GameObject> units = EnemyList.GetAllUnits();
+            List<GameObject> units = ObjectContainer.GetAllUnits();
             foreach (GameObject elt in units)
             {
                 UnitStatus status = elt.GetComponent<UnitStatus>();
@@ -293,7 +302,7 @@ public class ActionManager : MonoBehaviour
         yield return new WaitForSeconds(1);
 
         GameObject explosion = Instantiate(Globals.EXPLOSION, target, Quaternion.identity);
-        explosion.transform.localScale = (0.2f + (0.4f * grenadeYellowRange)) * Vector2.one;
+        explosion.transform.localScale = (0.2f + (0.4f * Globals.GRENADE_YELLOW_RANGE)) * Vector2.one;
 
         GameObject tempNoise = Instantiate(Globals.NOISE, target, Quaternion.identity);
         tempNoise.GetComponent<Noise>().Initialize(unit.CompareTag("Player"), Globals.GAS_VOLUME, Noise.Source.Grenade);
@@ -311,18 +320,19 @@ public class ActionManager : MonoBehaviour
     {
         Vector2 origin = unit.transform.position;
         Vector2 direction = target - (Vector2)unit.transform.position;
-        RaycastHit2D hit = Physics2D.Raycast(origin, direction, knifeRange, ~LayerMask.GetMask("Player"));
+        RaycastHit2D hit = Physics2D.Raycast(origin, direction, Globals.KNIFE_RANGE, ~LayerMask.GetMask("Player"));
 
         if (hit.collider != null)
         {
             UnitStatus targetHit = hit.collider.GetComponent<UnitStatus>();
-            UnitStatus attacker = unit.GetComponent<UnitStatus>();
-            if (targetHit != null)
+            AutoMover targetMover = hit.collider.GetComponent<AutoMover>();
+            //UnitStatus attacker = unit.GetComponent<UnitStatus>();
+            if (targetHit != null && targetMover.GetAwareness() != AutoMover.State.Alert)
             {
                 targetHit.DamageHealth(3);
                 // There is a risk of being hurt attempting to knife an enemy
-                if(attacker && Random.Range(0, 11) == 0)
-                    attacker.DamageHealth(1);
+                //if(attacker && Random.Range(0, 11) == 0)
+                //    attacker.DamageHealth(1);
             }
 
             // May want to make amount of noise random
@@ -346,8 +356,8 @@ public class ActionManager : MonoBehaviour
     {
         Vector2 start = PlayerMover.instance.transform.position;
         Vector2 direction = cursorPosition - start;
-        RaycastHit2D hit = Physics2D.Raycast(start, direction, knifeRange, ~LayerMask.GetMask("Player"));
-        Vector2 end = hit.collider ? hit.point : start + (direction.normalized * knifeRange);
+        RaycastHit2D hit = Physics2D.Raycast(start, direction, Globals.KNIFE_RANGE, ~LayerMask.GetMask("Player"));
+        Vector2 end = hit.collider ? hit.point : start + (direction.normalized * Globals.KNIFE_RANGE);
 
         LineRenderer renderer = DrawLine(start, end).GetComponent<LineRenderer>();
 
@@ -376,6 +386,7 @@ public class ActionManager : MonoBehaviour
         Vector2 center = throwHit.collider == null ? cursorPosition : throwHit.point;
         attackPosition = center;
 
+        previewObjects.Add(DrawLine(playerPosition, center, Globals.BRIGHT_WHITE)); // player-to-grenade line
         previewObjects.Add(DrawCircle(center, Globals.DISTRACTION_VOLUME, Globals.BRIGHT_RED));
     }
 
@@ -393,25 +404,25 @@ public class ActionManager : MonoBehaviour
         if (selectedAction != Action.Frag)
         {
             previewObjects.Add(DrawLine(playerPosition, center, damageLevel > 0 ? Globals.BRIGHT_RED : Globals.BRIGHT_WHITE)); // player-to-grenade line
-            previewObjects.Add(DrawCircle(center, grenadeYellowRange, Globals.BRIGHT_WHITE));
+            previewObjects.Add(DrawCircle(center, Globals.GRENADE_YELLOW_RANGE, Globals.BRIGHT_WHITE));
             return;
         }
 
         previewObjects.Add(DrawLine(playerPosition, center, LevelToColor(damageLevel))); // player-to-grenade line
-        previewObjects.Add(DrawCircle(center, grenadeYellowRange, Globals.BRIGHT_YELLOW));
-        previewObjects.Add(DrawCircle(center, grenadeOrangeRange, Globals.ORANGE));
-        previewObjects.Add(DrawCircle(center, grenadeRedRange, Globals.BRIGHT_RED));
+        previewObjects.Add(DrawCircle(center, Globals.GRENADE_YELLOW_RANGE, Globals.BRIGHT_YELLOW));
+        previewObjects.Add(DrawCircle(center, Globals.GRENADE_ORANGE_RANGE, Globals.ORANGE));
+        previewObjects.Add(DrawCircle(center, Globals.GRENADE_RED_RANGE, Globals.BRIGHT_RED));
 
         // Circle should emanate from throw point, not cursor pos
         // Does this include player?
-        List<GameObject> units = EnemyList.GetAllEnemies();
+        List<GameObject> units = ObjectContainer.GetAllEnemies();
         foreach(GameObject unit in units)
         {
             damageLevel = DistanceToLevel(Vector2.Distance(unit.transform.position, center));
             if (damageLevel == 0)
                 continue;
 
-            RaycastHit2D hit = Physics2D.Raycast(center, (Vector2)unit.transform.position - center, grenadeYellowRange);
+            RaycastHit2D hit = Physics2D.Raycast(center, (Vector2)unit.transform.position - center, Globals.GRENADE_YELLOW_RANGE);
             if(hit.collider != null && hit.collider.gameObject == unit)
             {
                 // Possibly use ternary for damage/stunTime with smoke/stun grenade, OR use damage for both
@@ -434,11 +445,11 @@ public class ActionManager : MonoBehaviour
     // Converts distance from grenade to target to damage level (0 = miss, 3 = point-blank)
     private static int DistanceToLevel(float distance)
     {
-        if (distance < grenadeRedRange)
+        if (distance < Globals.GRENADE_RED_RANGE)
             return 3;
-        else if (distance < grenadeOrangeRange)
+        else if (distance < Globals.GRENADE_ORANGE_RANGE)
             return 2;
-        else if (distance < grenadeYellowRange)
+        else if (distance < Globals.GRENADE_YELLOW_RANGE)
             return 1;
 
         return 0;

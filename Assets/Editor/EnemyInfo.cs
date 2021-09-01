@@ -19,6 +19,7 @@ public class EnemyInfo : Editor
         for (int i = 0; i < autoMover.route.Count; ++i)
         {
             Handles.DrawSolidDisc(autoMover.route[i], Vector3.forward, 0.4f);
+            Handles.DrawLine(autoMover.route[(i + 1) % autoMover.route.Count], autoMover.route[i]);
             Handles.Label(autoMover.route[i], i.ToString());
         }
         //GUI.EndGroup();

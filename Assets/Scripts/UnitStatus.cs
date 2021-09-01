@@ -7,20 +7,27 @@ public class UnitStatus : MonoBehaviour
 
     public ColorIndicator healthIndicator;
     public ColorIndicator focusIndicator;
+    public SpriteRenderer unitOutline;
+    public GameObject spriteContainer;
 
-    public int maxHealth = 3;
-    public int maxFocus = 3;
+    public int numUnits = 3;
+    public List<int> healthArray;
     public float gasDuration = 10;
-    private int health;
-    private int focus;
     private float gasCounter = 0;
+    private List<SpriteRenderer> unitSprites; 
     private bool isPlayer;
+    private const int HEALTH_PER_UNIT = 3;
+    // SEVERELY WOUNDED | WOUNDED | SLIGHTLY WOUNDED | HEALTHY
+    private readonly List<Color> healthColors = new List<Color> { Color.clear, Color.red, new Color(1, 0.5f, 0), Color.yellow, Color.green };
 
     // Start is called before the first frame update
     void Start()
     {
-        health = maxHealth;
-        focus = maxFocus;
+        healthArray = new List<int>();
+        for (int i = 0; i < numUnits; ++i)
+            healthArray.Add(HEALTH_PER_UNIT);
+        // health = HEALTH_PER_UNIT;// numUnits * HEALTH_PER_UNIT;
+        CreateSprites();
         isPlayer = GetComponent<PlayerMover>();
     }
 
@@ -34,19 +41,87 @@ public class UnitStatus : MonoBehaviour
         }
     }
 
-    public void Heal(int amount=1)
+    public void CreateSprites()
     {
-        health += amount;
+        unitSprites = new List<SpriteRenderer>();
+        switch (numUnits)
+        {
+            case 1:
+                AddUnitSprite(new Vector2(0, 0.25f));
+                break;
+            case 2:
+                AddUnitSprite(new Vector2(-0.25f, 0));
+                AddUnitSprite(new Vector2(0.25f, 0.5f));
+                break;
+            case 3:
+                AddUnitSprite(new Vector2(-0.25f, 0.5f));
+                AddUnitSprite(new Vector2(0.25f, 0.5f));
+                AddUnitSprite(new Vector2(0, 0));
+                break;
+            case 4:
+                AddUnitSprite(new Vector2(-0.25f, 0));
+                AddUnitSprite(new Vector2(-0.25f, 0.5f));
+                AddUnitSprite(new Vector2(0.25f, 0));
+                AddUnitSprite(new Vector2(0.25f, 0.5f));
+                break;
+        }
+    }
+
+    public void AddUnitSprite(Vector2 offset)
+    {
+        unitSprites.Add(Instantiate(Globals.UNIT_SPRITE, (Vector2)spriteContainer.transform.position + offset,
+            Quaternion.identity, spriteContainer.transform).GetComponent<SpriteRenderer>());
+    }
+
+    public void Heal(int amount=-1)
+    {
+        int unitToHeal = IndexOfMin(healthArray);
+        healthArray[unitToHeal] = (amount == -1 ? HEALTH_PER_UNIT : healthArray[unitToHeal] + amount);
         RefreshIndicators();
+    }
+
+    public int UnitsAlive()
+    {
+        int unitsAlive = 0;
+        foreach(int unitHealth in healthArray)
+            unitsAlive += unitHealth > 0 ? 1 : 0;
+
+        return unitsAlive;
+    }
+
+    public static int IndexOfMin(List<int> list)
+    {
+        if (list.Count == 0)
+            return -1;
+
+        int minValue = list[0];
+        int minIndex = 0;
+
+        for(int i = 0; i < list.Count; ++i)
+        {
+            if(list[i] < minValue)
+            {
+                minValue = list[i];
+                minIndex = i;
+            }
+        }
+
+        return minIndex;
     }
 
     public void Death()
     {
-        Instantiate(Globals.CORPSE, transform.position, Quaternion.identity);
-        
+        GameObject corpse = Instantiate(Globals.CORPSE, transform.position, Quaternion.identity);
+        corpse.transform.parent = ObjectContainer.instance.corpses.transform;
+
+        Inventory unitInventory = GetComponent<Inventory>();
+        if(unitInventory)
+            unitInventory.Add(GetComponent<Inventory>().inventory);
+
         if (GetComponent<PlayerMover>())
         {
             gameObject.SetActive(false);
+            // Debug.Log("Dead!");
             // TODO: Game Over menu
             //TransitionFader.instance.Transition(0);
         }
@@ -58,47 +133,58 @@ public class UnitStatus : MonoBehaviour
 
     public void DamageHealth(int amount=1)
     {
-        health -= amount;
-        if (health <= 0)
+        List<int> eligibleTargets = new List<int>();
+
+        for(int i = 0; i < healthArray.Count; ++i)
+        {
+            if(healthArray[i] > 0)
+                eligibleTargets.Add(i);
+        }
+
+        int playerDamaged = eligibleTargets[Random.Range(0, eligibleTargets.Count)];
+
+        healthArray[playerDamaged] -= amount;
+        if (IsDead())
             Death();
-
-        RefreshIndicators();
-    }
-
-    public void DamageFocus(int amount=1)
-    {
-        if (focus <= 0)
-            DamageHealth(amount);
-        else
-            focus -= amount;
 
         RefreshIndicators();
     }
 
     public int HealthLost()
     {
-        return maxHealth - health;
+        int total = 0;
+        foreach (int amount in healthArray)
+            total += (HEALTH_PER_UNIT - amount);
+
+        return total;
     }
 
-    public int FocusLost()
+    private bool IsDead()
     {
-        return maxFocus - focus;
+        return UnitsAlive() == 0;
     }
-
+    /*
     public int GetHealth()
     {
         return health;
-    }
-
-    public int GetFocus()
-    {
-        return focus;
-    }
+    }*/
 
     private void RefreshIndicators()
     {
-        healthIndicator.SetColor(health);
-        focusIndicator.SetColor(focus);
+        if (numUnits == 1)
+            unitOutline.color = healthColors[healthArray[0]];
+        else if (numUnits == UnitsAlive())
+            unitOutline.color = Color.green;
+        else
+            unitOutline.color = healthColors[UnitsAlive()];
+
+        /*for(int i = 0; i < unitSprites.Count; ++i)
+        {
+            if(healthArray[i] >= 0)
+                unitSprites[i].color = healthColors[healthArray[i]];
+        }*/
+        // healthIndicator.SetColor(healthArray);
+        // focusIndicator.SetColor(focus);
     }
 
     public void InflictGas()

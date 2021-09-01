@@ -122,7 +122,7 @@ public class Sidebar : MonoBehaviour
 
         PlayerMover.instance.enabled = !paused;
 
-        GameObject enemyList = EnemyList.instance.gameObject;
+        GameObject enemyList = ObjectContainer.instance.enemies;
 
         foreach(Transform child in enemyList.transform)
         {
@@ -203,6 +203,11 @@ public class Sidebar : MonoBehaviour
     {
         // State { Moving, Paused, ActionMenu, AimedConfirm, NonAimConfirm };
         ActionManager.SetState(state);
+    }
+
+    public static bool GetCanAttack()
+    {
+        return canAttack;
     }
 
 }

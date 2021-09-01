@@ -44,6 +44,34 @@ public class PlayerMover : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        float horizontalInput = Input.GetAxis("Horizontal");
+        float verticalInput = Input.GetAxis("Vertical");
+        bool isRunning = Input.GetButton("Cancel");
+        if (CanMove() && mover.GetCanTurn())
+        {
+            if (Mathf.Abs(horizontalInput) > 0.5f || Mathf.Abs(verticalInput) > 0.5f)
+                nav.SetDestination(transform.position + new Vector3(Mathf.Ceil(horizontalInput), Mathf.Ceil(verticalInput)), isRunning);
+            
+
+        }
+
+        if (Input.GetButton("Confirm"))
+        {
+            if(ActionManager.GetState() == ActionManager.State.Moving && Sidebar.GetCanAttack())
+            {
+                Sidebar.instance.GetComponent<MenuNavigator>().ShowMenu(1);
+                Sidebar.instance.ActionPause(true);
+                Sidebar.instance.SetState("ActionPause");
+            }
+        }
+
+        if (Input.GetButton("Cancel"))
+        {
+            if(ActionManager.GetState() == ActionManager.State.ActionPause)
+            {
+
+            }
+        }
         /*
         if (Time.timeScale == 0)
             return;
@@ -63,19 +91,27 @@ public class PlayerMover : MonoBehaviour
 
     public void _OnClick(Vector2 mousePosition)
     {
-        ActionManager.State state = ActionManager.GetState();
-        if (state != ActionManager.State.Moving && state != ActionManager.State.ConfirmMove && state != ActionManager.State.Acting)
+        if (!CanMove())
             return;
 
-        if (Sidebar.GetMenuPaused())
-            return;
+        //float distance = Vector2.Distance(transform.position, mousePosition);
 
-        float distance = Vector2.Distance(transform.position, mousePosition);
-
-        LayerMask mask = LayerMask.GetMask("Default");
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, mousePosition - (Vector2)transform.position, distance, mask);
+        //LayerMask mask = LayerMask.GetMask("Default");
+        //RaycastHit2D hit = Physics2D.Raycast(transform.position, mousePosition - (Vector2)transform.position, distance, mask);
 
         nav.SetDestination(mousePosition, Sidebar.GetRunning());
+    }
+
+    private bool CanMove()
+    {
+        ActionManager.State state = ActionManager.GetState();
+        if (state != ActionManager.State.Moving && state != ActionManager.State.ConfirmMove && state != ActionManager.State.Acting)
+            return false;
+
+        if (Sidebar.GetMenuPaused())
+            return false;
+
+        return true;
     }
 
     private void OnDisable()

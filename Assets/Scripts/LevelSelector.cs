@@ -22,6 +22,8 @@ public class LevelData
 public class LevelSelector : MonoBehaviour
 {
 
+    public Image autoplayImage;
+    public Image hardmodeImage;
     public GameObject levelGrid;
     public GameObject levelDetails;
     public Text chapterText;
@@ -55,9 +57,15 @@ public class LevelSelector : MonoBehaviour
         for(int i = 0; i < Globals.NUM_CHAPTERS; ++i)
             levelList.Add(new List<LevelData>());
 
-        levelList[0].Add(new LevelData("Classroom", false, "1-1", false));
-        levelList[0].Add(new LevelData("Horseback", false, "1-2", false));
-        levelList[0].Add(new LevelData("Infiltration", true, "1-3", false));
+        levelList[0].Add(new LevelData("Intro", false, "S1-1", false));
+        levelList[0].Add(new LevelData("Infiltration A", true, "G1-1", false));
+        levelList[0].Add(new LevelData("Infiltration B", true, "G1-2", false));
+        levelList[0].Add(new LevelData("Infiltration C", true, "G1-3", false));
+        levelList[0].Add(new LevelData("Innocents", false, "S1-2", false));
+        levelList[0].Add(new LevelData("Escape A", true, "G1-4", false));
+        levelList[0].Add(new LevelData("Escape B", true, "G1-5", false));
+        levelList[0].Add(new LevelData("Escape C", true, "G1-6", false));
+        levelList[0].Add(new LevelData("Infirmary", false, "S1-3", false));
 
     }
 
@@ -69,6 +77,7 @@ public class LevelSelector : MonoBehaviour
     public void ToggleAutoplay()
     {
         SaveService.loadedSave.options.autoplay = !SaveService.loadedSave.options.autoplay;
+        autoplayImage.color = new Color(1, 1, 1, SaveService.loadedSave.options.autoplay ? 1 : 0.5f);
         Debug.Log("Autoplay is " + (SaveService.loadedSave.options.autoplay ? "on" : "off"));
         Toast.ToastWrapper("Autoplay is " + (SaveService.loadedSave.options.autoplay ? "on" : "off"));
     }
@@ -76,6 +85,7 @@ public class LevelSelector : MonoBehaviour
     public void ToggleHardmode()
     {
         hardmode = !hardmode;
+        hardmodeImage.color = new Color(1, 1, 1, hardmode ? 1 : 0.5f);
         Toast.ToastWrapper(hardmode ? "Showing hardmode levels" : "Showing normal levels");
     }
 

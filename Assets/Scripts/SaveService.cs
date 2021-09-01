@@ -24,6 +24,7 @@ public class GameOptions
     public GameOptions()
     {
         parallax = true;
+        autoplay = true;
         voiceVolume = 1f;
         musicVolume = 0.5f;
         soundVolume = 0.75f;
@@ -52,6 +53,11 @@ public static class SaveService
     public static SaveObject loadedSave;
     public static string path = Application.persistentDataPath + "/save_data.dat";
 
+    public static void SaveData()
+    {
+        SaveData(loadedSave);
+    }
+
     public static void SaveData(SaveObject saveObject)
     {
         BinaryFormatter formatter = new BinaryFormatter();
@@ -77,7 +83,9 @@ public static class SaveService
         else
         {
             Debug.Log("No save data found");
-            return CreateEmptySave();
+            SaveObject emptySave = CreateEmptySave();
+            SaveData(emptySave);
+            return emptySave;
         }
     }
 

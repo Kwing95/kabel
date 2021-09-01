@@ -41,6 +41,7 @@ public class GameManager : MonoBehaviour
         if (SaveService.loadedSave == null)
         {
             SaveService.loadedSave = SaveService.LoadData();
+            Debug.Log(SaveService.loadedSave);
         }
     }
 
