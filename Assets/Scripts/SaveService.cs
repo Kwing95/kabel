@@ -8,7 +8,7 @@ using System.IO;
 [System.Serializable]
 public class SaveObject
 {
-    public LevelStats[] levels;
+    public LevelRecord[] levels;
     public GameOptions options;
 }
 
@@ -32,19 +32,22 @@ public class GameOptions
 }
 
 [System.Serializable]
-public class LevelStats
+public class LevelRecord
 {
+    public string levelId;
     public bool unlocked;
     public float bestTime;
     public int healthLost;
-    public int moneyCollected;
+    public int loot;
 
-    public LevelStats()
+    public LevelRecord(string _levelId)
     {
+        levelId = _levelId;
         unlocked = false;
         bestTime = -1;
         healthLost = -1;
-        moneyCollected = -1;
+        loot = -1;
+        
     }
 }
 
@@ -71,7 +74,7 @@ public static class SaveService
 
     public static SaveObject LoadData()
     {
-        if (File.Exists(path))
+        if (File.Exists(path) && false)
         {
             BinaryFormatter formatter = new BinaryFormatter();
             FileStream stream = new FileStream(path, FileMode.Open);
@@ -94,13 +97,42 @@ public static class SaveService
         SaveObject newSave = new SaveObject
         {
             options = new GameOptions(),
-            levels = new LevelStats[Globals.NUM_LEVELS]
+            levels = new LevelRecord[Globals.LEVEL_LIST.Count]
         };
 
-        for (int i = 0; i < Globals.NUM_LEVELS; ++i)
-            newSave.levels[i] = new LevelStats();
+        for (int i = 0; i < Globals.LEVEL_LIST.Count; ++i)
+            newSave.levels[i] = new LevelRecord(Globals.LEVEL_LIST[i].levelId);
         newSave.levels[0].unlocked = true;
 
         return newSave;
+    }
+
+    public static int GetLevelIndex(string levelId)
+    {
+        for(int i = 0; i < loadedSave.levels.Length; ++i)
+            if (loadedSave.levels[i].levelId == levelId)
+                return i;
+        
+        return -1;
+    }
+
+    public static void UpdateLevelRecord(string levelId, int loot, float time, int healthLost)
+    {
+        int index = GetLevelIndex(levelId);
+
+        if(loadedSave.levels[index].bestTime == -1)
+        {
+            loadedSave.levels[index].loot = loot;
+            loadedSave.levels[index].bestTime = time;
+            loadedSave.levels[index].healthLost = healthLost;
+        }
+        else
+        {
+            loadedSave.levels[index].loot = Mathf.Max(loadedSave.levels[index].loot, loot);
+            loadedSave.levels[index].bestTime = Mathf.Min(loadedSave.levels[index].bestTime, time);
+            loadedSave.levels[index].healthLost = Mathf.Min(loadedSave.levels[index].healthLost, healthLost);
+        }
+
+        SaveData(loadedSave);
     }
 }

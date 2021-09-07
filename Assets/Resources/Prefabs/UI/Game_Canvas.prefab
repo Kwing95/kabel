@@ -3717,7 +3717,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1657776783260915577}
+      - m_Target: {fileID: 1743422262753038802}
         m_TargetAssemblyTypeName: MenuNavigator, Assembly-CSharp
         m_MethodName: MenuBack
         m_Mode: 1
@@ -6857,9 +6857,9 @@ RectTransform:
   m_Father: {fileID: 1743422262394716836}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 180}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 108, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 108, y: -108}
   m_SizeDelta: {x: 0, y: 216}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1743422263996804738

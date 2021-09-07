@@ -30,7 +30,8 @@ public class Collectible : MonoBehaviour
         {
             hasLoot = false;
             sr.color = Color.white;
-            PlayerMover.instance.GetComponent<Inventory>().Add(GetComponent<Inventory>().inventory);
+            Inventory inv = GetComponent<Inventory>();
+            PlayerMover.instance.GetComponent<Inventory>().Add(inv.inventory, inv.wallet);
         }
     }
     public int GetId()

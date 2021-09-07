@@ -6,7 +6,8 @@ using UnityEngine.UI;
 public class LevelButton : MonoBehaviour
 {
 
-    public Text levelNumber;
+    public Text buttonLabel;
+    public string levelId;
 
     // Start is called before the first frame update
     void Start()
@@ -20,9 +21,15 @@ public class LevelButton : MonoBehaviour
         
     }
 
+    public void Initialize(string label, string _levelId)
+    {
+        buttonLabel.text = label;
+        levelId = _levelId;
+    }
+
     public void SelectLevel()
     {
-        LevelSelector.instance.SetSelectedLevel(levelNumber.text);
+        LevelSelector.instance.SetSelectedLevel(levelId);
     }
 
 }

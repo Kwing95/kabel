@@ -25,7 +25,8 @@ public class ActionManager : MonoBehaviour
     private static Vector2 attackPosition;
     private static GameObject cursor;
     private static List<GameObject> previewObjects;
-    private static ActionManager instance;
+    public static ActionManager instance;
+    private float secondsPlayed = 0;
 
     /*
      Quick reference
@@ -52,6 +53,13 @@ public class ActionManager : MonoBehaviour
         previewObjects = new List<GameObject>();
 
         ClickManager.releaseHandler += _OnClick;
+    }
+
+    private void Update()
+    {
+        if(state == State.Moving)
+            secondsPlayed += Time.deltaTime;
+
     }
 
     private void OnDestroy()
@@ -533,6 +541,11 @@ public class ActionManager : MonoBehaviour
         }
 
         return circleObject;
+    }
+
+    public float GetSecondsPlayed()
+    {
+        return secondsPlayed;
     }
 
     // LISTENERS ===============================================================

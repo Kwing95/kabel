@@ -82,10 +82,11 @@ public class DialogueParser : MonoBehaviour
 
     public void ParseScene(string _sceneName)
     {
-        int startIndex = Globals.GAME_SCRIPT.text.IndexOf("<" + _sceneName + ">") + 2 + _sceneName.Length;
+        int startIndex = Globals.GAME_SCRIPT.text.IndexOf("<" + _sceneName + ">") + 3 + _sceneName.Length;
         int endIndex = Globals.GAME_SCRIPT.text.IndexOf("</" + _sceneName + ">");
         string dump = Globals.GAME_SCRIPT.text.Substring(startIndex, endIndex - startIndex);
-        dialogueList = dump.Split(new [] { "\n\n" }, StringSplitOptions.None).ToList();
+        // Use \r\n for Windows and use \n for Linux
+        dialogueList = dump.Split(new [] { "\r\n\r\n" }, StringSplitOptions.None).ToList();
         dialogueList[0] = dialogueList[0].TrimStart('\n');
 
         currentLine = 0;

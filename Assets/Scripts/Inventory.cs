@@ -16,6 +16,7 @@ public class Inventory : MonoBehaviour
     }
     
     public List<InventoryEntry> inventory;
+    public int wallet = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -35,8 +36,9 @@ public class Inventory : MonoBehaviour
     }
 
     // Add a dictionary of items to inventory
-    public void Add(List<InventoryEntry> items)
+    public void Add(List<InventoryEntry> items, int _wallet)
     {
+        wallet += _wallet;
         foreach(InventoryEntry item in items)
             Add(item);
     }

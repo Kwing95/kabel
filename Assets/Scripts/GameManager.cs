@@ -39,10 +39,7 @@ public class GameManager : MonoBehaviour
 
         Screen.orientation = ScreenOrientation.LandscapeLeft;
         if (SaveService.loadedSave == null)
-        {
             SaveService.loadedSave = SaveService.LoadData();
-            Debug.Log(SaveService.loadedSave);
-        }
     }
 
     // Update is called once per frame
@@ -50,22 +47,5 @@ public class GameManager : MonoBehaviour
     {
 
     }
-
-    /*public void SaveWrapper()
-    {
-        SaveService.SaveData(loadedSave);
-    }
-
-    public void LoadWrapper()
-    {
-        loadedSave = SaveService.LoadData();
-    }
-
-    public void SaveChanger()
-    {
-        loadedSave.options.musicVolume += 0.1f;
-        Debug.Log("musicVolume: " + loadedSave.options.musicVolume.ToString());
-        Toast.ToastWrapper("musicVolume: " + loadedSave.options.musicVolume.ToString());
-    }*/
 
 }

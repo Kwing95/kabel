@@ -11,15 +11,15 @@ public class AutoMover : MonoBehaviour
 
     private Rotator rotator;
 
-    public int leashLength = -1;
-    public bool randomPatrol = false;
-    public int pointMemory = 0;
+    public int leashLength = -1; // Maximum distance enemy will explore beyond patrol point
+    public bool randomPatrol = false; // Determines if enemy patrols randomly or sequentially
+    public int pointMemory = 0; // Number of points enemy can add to patrol upon spotting player
     public float sightDistance = 10;
-    public float attackRate = 1;
+    public float attackRate = 1; // How long between attacks (in seconds)
 
-    private bool clearView;
-    private bool canSeePlayer;
-    private bool stoppedByLeash = false;
+    private bool clearView; // True if there are no visual obstructions between enemy and player
+    private bool canSeePlayer; // True if enemy can see player
+    private bool stoppedByLeash = false; // True if enemy has stepped outside leash length
     private float attackCooldown = 0;
     private float stunTimer = 0;
     private List<Vector2> extraPoints;
@@ -187,14 +187,6 @@ public class AutoMover : MonoBehaviour
         }
     }
 
-    // Probably needs to have its own boolean so other lock-on doesn't overwrite this
-    public IEnumerator Glance(Vector2 point, float delay=2f)
-    {
-        rotator.ToggleLock(true, point);
-        yield return new WaitForSeconds(delay);
-        rotator.ToggleLock(false, point);
-    }
-
     public IEnumerator LookAround(int numDirections=3, float delay=1f)
     {
         if (leashLength == -1)
@@ -306,7 +298,8 @@ public class AutoMover : MonoBehaviour
             SetAwareness(State.Alert);
             // Don't chase player when close
 
-            bool tooClose = ClearView(player.GetDiscretePosition()) && Grapher.ManhattanDistance(player.transform.position, transform.position) <= 4;
+            bool tooClose = ClearView(player.GetDiscretePosition()) &&
+                Grapher.ManhattanDistance(player.transform.position, transform.position) <= 4;
             if (tooClose || tooFar)
             {
                 navigator.Pause();

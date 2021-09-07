@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Objective : MonoBehaviour
 {
@@ -24,7 +25,17 @@ public class Objective : MonoBehaviour
         {
             active = true;
             if (levelFinish)
+            {
+                PlayerMover.instance.GetComponent<Navigator>().Pause();
+                PlayerMover.instance.GetComponent<BoxCollider2D>().enabled = false;
+
+                SaveService.UpdateLevelRecord(SceneManager.GetActiveScene().name,
+                    PlayerMover.instance.GetComponent<Inventory>().wallet,
+                    ActionManager.instance.GetSecondsPlayed(),
+                    PlayerMover.instance.GetComponent<UnitStatus>().GetHealthLost());
+
                 TransitionFader.instance.FinishLevel();
+            }
             else
             {
                 Sidebar.instance.ToggleInGameDialogue(true);

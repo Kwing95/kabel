@@ -75864,6 +75864,7 @@ MonoBehaviour:
   inventory:
   - type: 4
     quantity: 1
+  wallet: 27
 --- !u!1 &2013262498
 GameObject:
   m_ObjectHideFlags: 0
@@ -81396,7 +81397,7 @@ PrefabInstance:
     - target: {fileID: 1743422263996804750, guid: 8565b8fcc54e5434d969835876bd7b73,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 108
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1743422263996804750, guid: 8565b8fcc54e5434d969835876bd7b73,
         type: 3}

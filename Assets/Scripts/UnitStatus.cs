@@ -16,6 +16,7 @@ public class UnitStatus : MonoBehaviour
     private float gasCounter = 0;
     private List<SpriteRenderer> unitSprites; 
     private bool isPlayer;
+    private int healthLost = 0;
     private const int HEALTH_PER_UNIT = 3;
     // SEVERELY WOUNDED | WOUNDED | SLIGHTLY WOUNDED | HEALTHY
     private readonly List<Color> healthColors = new List<Color> { Color.clear, Color.red, new Color(1, 0.5f, 0), Color.yellow, Color.green };
@@ -111,12 +112,14 @@ public class UnitStatus : MonoBehaviour
 
     public void Death()
     {
-        GameObject corpse = Instantiate(Globals.CORPSE, transform.position, Quaternion.identity);
+        
+        GameObject corpse = Instantiate(Globals.CORPSE, Grapher.RoundedVector(transform.position), Quaternion.identity);
         corpse.transform.parent = ObjectContainer.instance.corpses.transform;
 
         Inventory unitInventory = GetComponent<Inventory>();
-        if(unitInventory)
-            unitInventory.Add(GetComponent<Inventory>().inventory);
+        Inventory corpseInventory = corpse.GetComponent<Inventory>();
+        if(unitInventory && corpseInventory)
+            corpseInventory.Add(unitInventory.inventory, unitInventory.wallet);
 
         if (GetComponent<PlayerMover>())
         {
@@ -136,14 +139,14 @@ public class UnitStatus : MonoBehaviour
         List<int> eligibleTargets = new List<int>();
 
         for(int i = 0; i < healthArray.Count; ++i)
-        {
             if(healthArray[i] > 0)
                 eligibleTargets.Add(i);
-        }
 
         int playerDamaged = eligibleTargets[Random.Range(0, eligibleTargets.Count)];
 
         healthArray[playerDamaged] -= amount;
+        healthLost += amount;
+
         if (IsDead())
             Death();
 
@@ -200,6 +203,11 @@ public class UnitStatus : MonoBehaviour
     public bool IsGassed()
     {
         return gasCounter > 0;
+    }
+
+    public int GetHealthLost()
+    {
+        return healthLost;
     }
 
 }

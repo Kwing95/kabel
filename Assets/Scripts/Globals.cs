@@ -10,15 +10,20 @@ public class Globals : MonoBehaviour
     public static readonly TextAsset GAME_SCRIPT = Resources.Load<TextAsset>("gameScript");
     public static readonly Dictionary<string, LevelData> LEVEL_DATA = new Dictionary<string, LevelData> {
         // {"1-1", new LevelData(sceneTitle, isPlayable, sceneName, hasHardmode) },
-        {"S1-1", new LevelData("Intro", false, "S1-1", false) },
-        {"S1-2", new LevelData("Innocents", false, "S1-2", false) },
-        {"S1-3", new LevelData("Infirmary", false, "S1-3", false) },
-        {"G1-1", new LevelData("Infiltration A", true, "G1-1", false) },
-        {"G1-2", new LevelData("Infiltration B", true, "G1-2", false) },
-        {"G1-3", new LevelData("Infiltration C", true, "G1-3", false) },
-        {"G1-4", new LevelData("Escape A", true, "G1-4", false) },
-        {"G1-5", new LevelData("Escape B", true, "G1-5", false) },
-        {"G1-6", new LevelData("Escape C", true, "G1-6", false) }
+        {"S1-1", new LevelData("Intro", "S1-1") },
+        {"G1-1", new LevelData("Infiltration A", "G1-1") },
+        {"G1-2", new LevelData("Infiltration B", "G1-2") },
+        {"G1-3", new LevelData("Infiltration C", "G1-3") },
+        {"S1-2", new LevelData("Innocents", "S1-2") },
+        {"G1-4", new LevelData("Escape A", "G1-4") },
+        {"G1-5", new LevelData("Escape B", "G1-5") },
+        {"G1-6", new LevelData("Escape C", "G1-6") },
+        {"S1-3", new LevelData("Infirmary", "S1-3") }
+    };
+    public static readonly List<LevelData> LEVEL_LIST = new List<LevelData> {
+        new LevelData("Intro", "S1-1"), new LevelData("Infiltration A", "G1-1"), new LevelData("Infiltration B", "G1-2"),
+        new LevelData("Infiltration C", "G1-3"), new LevelData("Innocents", "S1-2"), new LevelData("Escape A", "G1-4"),
+        new LevelData("Escape B", "G1-5"), new LevelData("Escape C", "G1-6"), new LevelData("Infirmary", "S1-3")
     };
     public static readonly List<string> AUTOPLAY_LIST = new List<string> { "S1-1", "G1-1", "G1-2", "G1-3", "S1-2",
         "G1-4", "G1-5", "G1-6", "S1-3", "Level_Select" };
@@ -27,7 +32,7 @@ public class Globals : MonoBehaviour
     // CONSTANTS
     public static readonly int INFINITY = 1073741823;
     public static readonly int NUM_CHAPTERS = 7;
-    public static readonly int NUM_LEVELS = 100;
+    // public static readonly int NUM_LEVELS = 100;
     public static readonly float EPSILON = 0.01f;
 
     public static readonly float GRENADE_VOLUME = 10;
@@ -52,6 +57,7 @@ public class Globals : MonoBehaviour
     public static readonly GameObject GAS_CLOUD = Resources.Load<GameObject>("Prefabs/Core_Gameplay/Gas_Cloud");
     public static readonly GameObject UNIT_SPRITE = Resources.Load<GameObject>("Prefabs/Core_Gameplay/Figure");
     public static readonly GameObject WALL = Resources.Load<GameObject>("Prefabs/Environment/Wall");
+    public static readonly GameObject LEVEL_BUTTON = Resources.Load<GameObject>("Prefabs/UI/Level_Button");
 
     // MATERIALS
     public static readonly Material WHITE = Resources.Load<Material>("Materials/White");
