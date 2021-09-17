@@ -32,12 +32,25 @@ Sep 5, 2021
 
 Sep 6, 2021
  + Cutscene parsing fixed
+ + Inventory system handles wallet
 
- - AutoMover Coroutine glitch
- - Menu navigation to bring up levels
- - Save file to include level completions
- - Retreating enemies
- - Sometimes bad health color indicator
+Sep 7, 2021
+ + Game saves (time, wallet, damageTaken) values
+ + Created HideMover which seeks cover from player
+
+Sep 8, 2021
+ + Enemy confuse runs on timer instead of coroutine
+
+Sep 13, 2021
+ + Sidebar uses updated button styling
+ + Fixed bad health indicator
+ + Completion time now rounds to 2 decimal places
+
+Sep 16, 2021
+ + Can navigate from title screen to level select, placeholders for Extras and Options menus
+
+ - Use multithreading for HideMover
+ - Save file to unlock next level
  - Platform-agnostic controls
  - Looting popup
 
@@ -49,16 +62,36 @@ Sep 6, 2021
  - Tear gas was invented in 20s; rubber bullets, mace, and stun grenades not until 60s and later
  - Grenade can sometimes be thrown infinite distance (probably when aiming farther than max)
 
- - Enable console/keyboard controls
-    D-pad to move           X to act/confirm        O to cancel/run     L1/R1 to zoom
-    Start to pause          (R) move camera
+IN-GAME PAUSE MENU
+  Resume
+  Options
+    Audio
+    Graphics
+  Quit
 
-    WASD/Arrows move        Spacebar to act         BKSPC cancel    Q/E to zoom
-    Shift to run            ESC to pause            Ctrl + Arrows to pan camera
+MAIN MENU
+  Play
+  Extras
+    Cinema Mode
+    Encyclopedia
+    Jukebox
+    Dev Commentary
+  Options
+  Quit
+  
+
+ - Enable console/keyboard controls
+                    MOBILE          DESKTOP         CONSOLE
+    MOVEMENT        Tap             WASD            Directional pad
+    SPRINTING       Sprint button   LShift          Hold O
+    PAUSE           Pause button    Escape key      Start button
+    CAMERA          Tap and drag    Ctrl + WASD     Right stick
+    ACTION MENU     Action button   Spacebar        X
+    MENU CANCEL     Back button     LShift          O
+    ZOOM            Pinch           Q / E keys      L / R triggers
 
  - Possibly refactor PanZoom to use ClickManager, refactor ClickManager for general use?
 
- - Let enemies "take cover"; find area with no line of sight to player
  - Touching enemies is weird (not important if sound is added for walking too)
  - Enemies can probably hit overlapping enemies (make gun start projected one tile out)
  - Pathfinding should include hybrid of Dijkstra's and direct

@@ -160,6 +160,22 @@ public class Navigator : MonoBehaviour
 
     }
 
+    public void Hide(Vector2 threat)
+    {
+        SetDestination(Grapher.HidingPlace(transform.position, threat));
+        /*
+        NativeList<Vector2> rawPath = Grapher.NativeHide((Vector2)transform.position, threat);
+        path = new List<Vector2>();
+        foreach (Vector2 elt in rawPath)
+            path.Add(elt);
+
+        destinationQueued = false; // don't recalculate, we already have the path
+        SetIdle(false); // check
+
+        Pause(false); // check*/
+
+    }
+
     public void CheckJobs()
     {
         for (int i = 0; i < activeJobs.Count;)
@@ -222,6 +238,8 @@ public class Navigator : MonoBehaviour
         //if (!usesMultithreading)
         //    handle.Complete();
     }
+
+
 
     // Multi-threaded implementation
     public IEnumerator SetDestinationMulti(Vector2 dest, bool run = false)

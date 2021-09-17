@@ -29,6 +29,11 @@ public class LevelData
 public class LevelSelector : MonoBehaviour
 {
 
+    public enum Context { Title, Levels, Extras, Options };
+    private Context context = Context.Title;
+
+    public List<GameObject> menuContent;
+
     public Image autoplayImage;
     public Image hardmodeImage;
 
@@ -52,6 +57,8 @@ public class LevelSelector : MonoBehaviour
     void Start()
     {
         instance = this;
+        hardmodeImage.color = new Color(1, 1, 1, hardmode ? 1 : 0.5f);
+        autoplayImage.color = new Color(1, 1, 1, 1);
         ShowLevels(1, false);
     }
 
@@ -59,6 +66,14 @@ public class LevelSelector : MonoBehaviour
     void Update()
     {
         
+    }
+
+    public void SetContext(string newContext)
+    {
+        Context contextEnum = (Context)Enum.Parse(typeof(Context), newContext);
+        
+        for (int i = 0; i < menuContent.Count; ++i)
+            menuContent[i].SetActive((int)contextEnum == i);
     }
 
     public void PlayLevel()
@@ -70,13 +85,13 @@ public class LevelSelector : MonoBehaviour
     {
         SaveService.loadedSave.options.autoplay = !SaveService.loadedSave.options.autoplay;
         autoplayImage.color = new Color(1, 1, 1, SaveService.loadedSave.options.autoplay ? 1 : 0.5f);
-        Debug.Log("Autoplay is " + (SaveService.loadedSave.options.autoplay ? "on" : "off"));
         Toast.ToastWrapper("Autoplay is " + (SaveService.loadedSave.options.autoplay ? "on" : "off"));
     }
 
     public void ToggleHardmode()
     {
         hardmode = !hardmode;
+        Toast.ToastWrapper("Hardmode is " + (hardmode ? "on" : "off"));
         hardmodeImage.color = new Color(1, 1, 1, hardmode ? 1 : 0.5f);
         ShowLevels(currentChapter, hardmode);
     }
@@ -134,7 +149,7 @@ public class LevelSelector : MonoBehaviour
                     }
                 }
                 GameObject newButton = Instantiate(Globals.LEVEL_BUTTON, buttonContainer.transform);
-                newButton.GetComponent<LevelButton>().Initialize(level.levelId[0] + level.orderInChapter.ToString(), level.levelId);
+                newButton.GetComponent<LevelButton>().Initialize(level.orderInChapter.ToString(), level.levelId);
             }
     }
 
@@ -144,7 +159,10 @@ public class LevelSelector : MonoBehaviour
             Destroy(child.gameObject);
     }
 
-
+    public void ExitGame()
+    {
+        Application.Quit();
+    }
 
     public static string GetLevelDescription(string levelName)
     {

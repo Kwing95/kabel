@@ -74,7 +74,7 @@ public static class SaveService
 
     public static SaveObject LoadData()
     {
-        if (File.Exists(path) && false)
+        if (File.Exists(path)/* && false*/)
         {
             BinaryFormatter formatter = new BinaryFormatter();
             FileStream stream = new FileStream(path, FileMode.Open);

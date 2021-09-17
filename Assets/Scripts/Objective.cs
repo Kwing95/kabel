@@ -29,11 +29,6 @@ public class Objective : MonoBehaviour
                 PlayerMover.instance.GetComponent<Navigator>().Pause();
                 PlayerMover.instance.GetComponent<BoxCollider2D>().enabled = false;
 
-                SaveService.UpdateLevelRecord(SceneManager.GetActiveScene().name,
-                    PlayerMover.instance.GetComponent<Inventory>().wallet,
-                    ActionManager.instance.GetSecondsPlayed(),
-                    PlayerMover.instance.GetComponent<UnitStatus>().GetHealthLost());
-
                 TransitionFader.instance.FinishLevel();
             }
             else

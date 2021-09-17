@@ -59,6 +59,7 @@ public class Sidebar : MonoBehaviour
     {
         currentCooldown -= Time.deltaTime;
         actionButton.interactable = canAttack = currentCooldown <= 0;
+        actionIcon.color = actionButton.interactable ? Color.white : Color.black;
         actionIcon.fillAmount = 1.0f - Mathf.Max(currentCooldown / actionCooldown, 0);
     }
 
@@ -104,7 +105,10 @@ public class Sidebar : MonoBehaviour
         pauseMenu.SetActive(menuPaused);
         // SetState(menuPaused ? ActionManager.State.MenuPause : );
         foreach (Button button in allButtons)
+        {
             button.gameObject.SetActive(!menuPaused);
+        }
+            
             // button.interactable = !menuPaused;
 
         actionButton.interactable = canAttack && !menuPaused;

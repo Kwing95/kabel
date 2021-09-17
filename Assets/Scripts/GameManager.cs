@@ -29,7 +29,7 @@ public class GameManager : MonoBehaviour
     public static int numSmoke = 0;*/
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         #if UNITY_EDITOR
             Screen.SetResolution(1920, 1080, false);

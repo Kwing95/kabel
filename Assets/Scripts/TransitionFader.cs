@@ -47,6 +47,15 @@ public class TransitionFader : MonoBehaviour
 
     public void FinishLevel()
     {
+        if(SceneManager.GetActiveScene().name[0] == 'G')
+            SaveService.UpdateLevelRecord(SceneManager.GetActiveScene().name,
+                    PlayerMover.instance.GetComponent<Inventory>().wallet,
+                    ActionManager.instance.GetSecondsPlayed(),
+                    PlayerMover.instance.GetComponent<UnitStatus>().GetHealthLost());
+        else
+            SaveService.UpdateLevelRecord(SceneManager.GetActiveScene().name, 0, 0, 0);
+
+
         if (GameManager.cinemaMode)
         {
             int sceneIndex = Globals.CINEMA_LIST.IndexOf(SceneManager.GetActiveScene().name);

@@ -26,6 +26,11 @@ public class AutoMover : MonoBehaviour
     private bool canAddPoints = true;
     private List<GameObject> corpsesSeen;
 
+    private int maxGlances = 3;
+    private int glancesLeft = 0;
+    private float glanceLength = 1;
+    private float glanceTimer = 0;
+
     private GridMover player;
     private LayerMask mask;
     private GridMover mover;
@@ -97,7 +102,8 @@ public class AutoMover : MonoBehaviour
                 navigator.Pause(false);
         }
 
-        //fieldOfView.material
+        if(glancesLeft > 0 || glanceTimer > 0)
+            LookAround();
 
         if(awareness != State.Alert)
             CheckForCorpses();
@@ -118,7 +124,7 @@ public class AutoMover : MonoBehaviour
         // Lock on if player can be seen, OR distance away is > 1
         Vector2 lockOnPoint = canSeePlayer ? (Vector2)player.transform.position : destination;
         bool closeLockOn = Grapher.ManhattanDistance(destination, transform.position) > 1 || canSeePlayer;
-        bool lockedOn = awareness >= State.Suspicious && ClearView(destination) && closeLockOn;
+        // bool lockedOn = awareness >= State.Suspicious && ClearView(destination) && closeLockOn;
         //Debug.Log(lockedOn);
         rotator.ToggleLock(awareness >= State.Suspicious && ClearView(destination) && closeLockOn, lockOnPoint);
 
@@ -127,7 +133,7 @@ public class AutoMover : MonoBehaviour
          Could fake raycast to start one normalized length away from center point? */
 
         // Move toward position (maybe create EnemyNavigator derived from Navigator, replaces AutoMover)
-        float distanceToPlayer = Vector2.Distance(transform.position, player.GetDiscretePosition());
+        // float distanceToPlayer = Vector2.Distance(transform.position, player.GetDiscretePosition());
 
         EnemyMove();
     }
@@ -169,7 +175,8 @@ public class AutoMover : MonoBehaviour
         {
             stoppedByLeash = false;
             SetAwareness(State.Confuse);
-            StartCoroutine(LookAround());
+            Confuse();
+            // StartCoroutine(LookAround());
         }
         else if (awareness == State.Idle && navigator.GetIdle())
         {
@@ -187,28 +194,36 @@ public class AutoMover : MonoBehaviour
         }
     }
 
-    public IEnumerator LookAround(int numDirections=3, float delay=1f)
+    private void Confuse()
     {
-        if (leashLength == -1)
-        {
-            yield return new WaitForSeconds(delay);
-            for (int i = 0; i < numDirections; ++i)
-            {
-                // If awareness changes during coroutine, exit early
-                if (awareness > State.Confuse)
-                    yield break;
+        glancesLeft = maxGlances;
+        glanceTimer = glanceLength;
+    }
 
-                rotator.Rotate(Random.Range(0, 360));
-                yield return new WaitForSeconds(delay);
+    private void LookAround()
+    {
+        if (awareness > State.Confuse)
+            glanceTimer = glancesLeft = 0;
+        else if (glanceTimer > 0)
+            glanceTimer -= Time.deltaTime;
+        else
+        {
+            rotator.Rotate(Random.Range(0, 360));
+
+            glanceTimer = glanceLength;
+            glancesLeft -= 1;
+
+            if(glancesLeft <= 0)
+            {
+                navigator.SetDestination(GetDestination(), false); // comment out?
+                canAddPoints = true;
+                SetAwareness(State.Idle);
+                navigator.SetIdle(true);
+                navigator.Pause(false);
             }
         }
-        navigator.SetDestination(GetDestination(), false); // comment out?
-        canAddPoints = true;
-        SetAwareness(State.Idle);
-        navigator.SetIdle(true);
-        navigator.Pause(false);
-    }
-    
+    }    
+
     private Vector2 GetDestination()
     {
         return routeProgress < route.Count ? route[routeProgress] : extraPoints[routeProgress - route.Count];

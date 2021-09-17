@@ -175,7 +175,7 @@ public class UnitStatus : MonoBehaviour
     private void RefreshIndicators()
     {
         if (numUnits == 1)
-            unitOutline.color = healthColors[healthArray[0]];
+            unitOutline.color = healthColors[healthArray[0] + 1];
         else if (numUnits == UnitsAlive())
             unitOutline.color = Color.green;
         else

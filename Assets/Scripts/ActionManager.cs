@@ -545,7 +545,7 @@ public class ActionManager : MonoBehaviour
 
     public float GetSecondsPlayed()
     {
-        return secondsPlayed;
+        return Mathf.Round(100 * secondsPlayed) / 100.0f;
     }
 
     // LISTENERS ===============================================================

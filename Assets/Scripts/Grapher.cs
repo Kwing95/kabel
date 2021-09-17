@@ -339,6 +339,187 @@ public class Grapher : MonoBehaviour
         return path;
     }
 
+    public static Vector2 HidingPlace(Vector2 start, Vector2 threat, int maxPathLength = -1)
+    {
+        NativeList<Vector2> path = new NativeList<Vector2>(Allocator.Temp);
+        NativeList<Vector2> queue = new NativeList<Vector2>(Allocator.Temp);
+
+        if (!CheckGraph(start))
+        {
+            queue.Dispose();
+            return -1 * Vector2.one;
+        }
+
+        int[,] dist = new int[mapHeight, mapWidth];
+        Vector2[,] prev = new Vector2[mapHeight, mapWidth];
+
+        // Initialize memo
+        for (int x = 0; x < graph.GetLength(0); ++x)
+        {
+            for (int y = 0; y < graph.GetLength(1); ++y)
+            {
+                dist[y, x] = INFINITY;
+                prev[y, x] = new Vector2(-1, -1);
+                if (graph[y, x] || ((int)start.y == y && (int)start.x == x))
+                    queue.Add(new Vector2(x, y));
+            }
+        }
+
+        // Handle starting point
+        if (!InBounds(start))
+        {
+            queue.Dispose();
+            return -1 * Vector2.one; // RETURN IF START POINT IS INVALID
+        }
+
+        dist[(int)start.y, (int)start.x] = 0;
+
+        // Loop through queue
+        while (queue.Length > 0)
+        {
+            Vector2 u = NativeClosestPoint(queue, dist);
+            if (u == new Vector2(-1, -1))
+            {
+                queue.Dispose();
+                return u;
+            }
+
+            queue.RemoveAt(queue.IndexOf(u));
+
+            // Handle case where a path is found
+            if (!ClearView(u, threat) && (prev[(int)u.y, (int)u.x] != new Vector2(-1, -1) || u == start))
+            {
+                return u;
+            }
+
+            NativeList<Vector2> neighbors = NativeGetNeighbors(queue, u);
+            for (int v = 0; v < neighbors.Length; ++v)
+            {
+                int alt = dist[(int)u.y, (int)u.x] + 1;
+
+                // If there is a maximum path length, adhere to it
+                // "Out of bounds" return empty list
+                if (maxPathLength != -1 && alt > maxPathLength)
+                {
+                    return -1 * Vector2.one;
+                }
+
+                if (alt < dist[(int)neighbors[v].y, (int)neighbors[v].x])
+                {
+                    dist[(int)neighbors[v].y, (int)neighbors[v].x] = alt;
+                    prev[(int)neighbors[v].y, (int)neighbors[v].x] = u;
+                }
+            }
+            neighbors.Dispose();
+        }
+
+        // RETURN IF NO PATH IS FOUND
+        queue.Dispose();
+        return -1 * Vector2.one;
+    }
+
+    public static NativeList<Vector2> NativeHide(Vector2 start, Vector2 threat, int maxPathLength = -1)
+    {
+        NativeList<Vector2> path = new NativeList<Vector2>(Allocator.Temp);
+        NativeList<Vector2> queue = new NativeList<Vector2>(Allocator.Temp);
+
+        if (!CheckGraph(start))
+        {
+            queue.Dispose();
+            return path;
+        }
+
+        int[,] dist = new int[mapHeight, mapWidth];
+        Vector2[,] prev = new Vector2[mapHeight, mapWidth];
+
+        // Initialize memo
+        for (int x = 0; x < graph.GetLength(0); ++x)
+        {
+            for (int y = 0; y < graph.GetLength(1); ++y)
+            {
+                dist[y, x] = INFINITY;
+                prev[y, x] = new Vector2(-1, -1);
+                if (graph[y, x] || ((int)start.y == y && (int)start.x == x))
+                    queue.Add(new Vector2(x, y));
+            }
+        }
+
+        // Handle starting point
+        if (!InBounds(start))
+        {
+            queue.Dispose();
+            return path; // RETURN IF START POINT IS INVALID
+        }
+
+        dist[(int)start.y, (int)start.x] = 0;
+
+        // Loop through queue
+        while (queue.Length > 0)
+        {
+            Vector2 u = NativeClosestPoint(queue, dist);
+            if (u == new Vector2(-1, -1))
+            {
+                queue.Dispose();
+                return path;
+            }
+
+            queue.RemoveAt(queue.IndexOf(u));
+
+            // Handle case where a path is found
+            if (!ClearView(u, threat) && (prev[(int)u.y, (int)u.x] != new Vector2(-1, -1) || u == start))
+            {
+                while (u != new Vector2(-1, -1))
+                {
+                    path.Add(u);
+                    u = prev[(int)u.y, (int)u.x];
+                }
+
+                NativeList<Vector2> reversedList = new NativeList<Vector2>(Allocator.Temp);
+                for (int i = path.Length - 1; i <= 0; --i)
+                    reversedList.Add(path[i]);
+
+                queue.Dispose();
+                path.Dispose();
+                return reversedList; // RETURN WHEN PATH IS FOUND
+            }
+
+            NativeList<Vector2> neighbors = NativeGetNeighbors(queue, u);
+            for (int v = 0; v < neighbors.Length; ++v)
+            {
+                int alt = dist[(int)u.y, (int)u.x] + 1;
+
+                // If there is a maximum path length, adhere to it
+                // "Out of bounds" return empty list
+                if (maxPathLength != -1 && alt > maxPathLength)
+                {
+                    return path;
+                }
+
+                if (alt < dist[(int)neighbors[v].y, (int)neighbors[v].x])
+                {
+                    dist[(int)neighbors[v].y, (int)neighbors[v].x] = alt;
+                    prev[(int)neighbors[v].y, (int)neighbors[v].x] = u;
+                }
+            }
+            neighbors.Dispose();
+        }
+
+        // RETURN IF NO PATH IS FOUND
+        queue.Dispose();
+        return path;
+    }
+
+    public static bool ClearView(Vector2 pointA, Vector2 pointB)
+    {
+        // THIS MAY NOT WORK!!!
+        float effectiveDistance = Mathf.Min(Vector2.Distance(pointA, pointB));
+        LayerMask defaultAndPlayer = LayerMask.GetMask(new string[] { "Default", "Player" });
+        RaycastHit2D hit = Physics2D.Raycast(pointA, pointB - pointA, effectiveDistance, defaultAndPlayer);
+
+        bool returnValue = hit.collider == null || hit.collider.CompareTag("Player");
+        return returnValue;
+    }
+
     // Returns a list of positions from start to end detailing a path (Dijkstra's algorithm)
     public static List<Vector2> FindIndirectPath(Vector2 start, Vector2 end, int maxPathLength=-1)
     {
