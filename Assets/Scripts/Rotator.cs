@@ -10,7 +10,7 @@ public class Rotator : MonoBehaviour
     public List<GameObject> subjects;
 
     private int destinationAngle = 0;
-    private float currentAngle = 0;
+    private float currentAngle = 90;
     private bool lockedOnTarget = false;
     private Vector2 lockOnPosition;
 

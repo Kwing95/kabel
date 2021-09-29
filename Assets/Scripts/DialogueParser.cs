@@ -11,8 +11,9 @@ using UnityEngine.UI;
 public class DialogueParser : MonoBehaviour
 {
     public static DialogueParser instance;
+    public static string sceneToLoad = "";
 
-    public string sceneName;
+    public string sceneName = "";
     public TextMeshProUGUI dialogueBox;
     public bool isCutscene = true;
 
@@ -28,6 +29,10 @@ public class DialogueParser : MonoBehaviour
     void Awake()
     {
         dialogueList = new List<string>();
+
+        if (sceneName == "")
+            sceneName = sceneToLoad;            
+
         ParseScene(sceneName);
     }
 
@@ -85,6 +90,7 @@ public class DialogueParser : MonoBehaviour
     {
         int startIndex = Globals.GAME_SCRIPT.text.IndexOf("<" + _sceneName + ">") + 3 + _sceneName.Length;
         int endIndex = Globals.GAME_SCRIPT.text.IndexOf("</" + _sceneName + ">");
+        Debug.Log(startIndex + " " + endIndex);
         string dump = Globals.GAME_SCRIPT.text.Substring(startIndex, endIndex - startIndex);
         // Use \r\n for Windows and use \n for Linux
         dialogueList = dump.Split(new [] { "\r\n\r\n" }, StringSplitOptions.None).ToList();

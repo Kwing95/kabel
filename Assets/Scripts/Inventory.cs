@@ -7,7 +7,7 @@ using UnityEngine;
 public class Inventory : MonoBehaviour
 {
     [Serializable]
-    public enum ItemType { Frag, Gas, Smoke, Distract, Medkit };
+    public enum ItemType { Frag, Gas, Smoke, Distract, Gauze, Gun };
     [Serializable]
     public class InventoryEntry
     {

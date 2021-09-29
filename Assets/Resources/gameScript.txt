@@ -75,6 +75,34 @@ Bane: Alright, men. We'll take this one out, then continue on foot.
 
 GAMEPLAY SECTION: The group neutralizes a handful of Erawan militia, whose numbers are generally sparse. Since there is a party of four and all are well-equipped, this is meant to serve as an easy in-game tutorial. Sneaking up on enemies is methodical but not overly difficult.
 
+<M1-1>
+Click the WALK icon to toggle between walking and running. Running is noisy and can attract attention.
+</M1-1>
+
+<M1-2>
+Click and drag the map to survey your surroundings. Use pinch to zoom (on mobile) or the scroll wheel (on PC) to zoom in and out.
+</M1-2>
+
+<M1-3>
+Select FIREARM or KNIFE from the ACTION menu to eliminate this target. The game remains paused while browsing the ACTION menu.
+</M1-3>
+
+<M1-4>
+When possible, avoid enemies rather than engaging in combat directly.
+</M1-4>
+
+<M1-5>
+Use DISTRACT from the ACTION MENU to lure enemies away from their post.
+</M1-5>
+
+<M1-6>
+Select FRAG GRENADE from the ACTION menu to neutralize multiple targets.
+</M1-6>
+
+<M1-7>
+Select MEDKIT from the ACTION menu to heal wounded units.
+</M1-7>
+
 Innocents
 
 <S1-2>
@@ -275,11 +303,7 @@ Dagan: There's nothing to talk about. We've discussed this all already. Your fat
 Asra: Whoa, that is completely uncalled for! Can't you give him five fucking minutes to grieve?
 
 Thane: It's okay, Asra. He's right.
-</S2-1>
 
-Dagan's Apathy
-
-<S2-2>
 (Asra follows Thane down the stairs from the bedroom.)
 
 Asra: What is the matter with him?
@@ -319,15 +343,7 @@ Thane: She wouldn't tell them anything.
 Dagan: I won't sicken you with horror stories, but you should really know better. We're bringing her along. For her sake and yours.
 
 Thane: That wasn't my... Ugh, nevermind.
-</S2-2>
 
-* * *
-
-GAMEPLAY SECTION: The player can now control Thane and may roam around the house freely. Next to the kitchen is a vent. Interacting with it will progress the story.
-
-Book Cellar
-
-<S2-3>
 (Thane moves a grate covering a vent in the living room, revealing a crawl space. He crawls through, emerging in a cellar. Against one wall is a bookshelf. On the other, the old Cheminan flag. Transparent images of Thane and Saito appear before him.)
 
 Thane: (Why do you keep this old thing? You do realize what would happen if someone found it down here, right?)
@@ -399,14 +415,15 @@ Asra: I'm still grateful, you know. After the Rega Massacre you were all I had l
 Thane: Asra, I love you. You know I love you. Did you really think I'd just hang you out to dry?
 
 Asra: I'm still thankful.
-</S2-3>
+</S2-1>
 
 * * *
 
 GAMEPLAY SECTION: The player may roam around the cellar. Erawa at a Glance, Colonialization in Lamenir, Erawan Scriptures, and A Brief History sit next to each other and trigger their respective cutscenes when interacted with.
 
-<S2-4>
 Erawa At a Glance
+
+<M2-1>
 
 (Asra approaches the bookshelf and selects Erawa at a Glance.)
 
@@ -437,16 +454,16 @@ Asra: "The exact nature of the Fracture is unknown - reality becomes increasingl
 Asra: I didn't realize the center was so dangerous.
 
 Thane: According to Mom, it's kind of a double-edged sword. It's more dangerous, but evincers are more powerful there. The whole country is based around how close people live to the middle. Poor people on the coast, politicians and clergy farther inland.
-</S2-4>
+</M2-1>
 
 Colonialization in Lamenir
 
-<S2-5>
+<M2-2>
 (Thane picks up a book.)
 
 Thane: "Lamenir has a unique ecological history; it is the only landmass with no natural hunters. As all of its native meat-eaters have instead adapted to living as scavengers, aggressive behavior is not observed among wildlife or people."
 
-Thane: "It is the lack of aggression in the Lamenir people for which its subjugation is often attributed. Indeed, it took less than a century for 40% of its total population to be enslaved by Debon colonialists."
+Thane: "It is the lack of aggression in the Lamenir people for which its subjugation is often attributed. Indeed, it took less than a century for 40% of its total population to be enslaved by Debon colonists."
 
 Thane: "In recent years, mining of raw materials in Lamenir has become a staple in the global economy, supplying Chemina with coal and iron which are refined into consumer goods and shipped around the globe."
 
@@ -473,11 +490,11 @@ Thane: He was really close with my mom, back when she was still around. And he d
 Asra: He can be right all he wants. I just wish he wasn't such an ass about it.
 
 Thane: Yeah, me too.
-</S2-5>
+</M2-2>
 
 Erawan Scriptures
 
-<S2-6>
+<M2-3>
 (Asra hands the Erawan Scriptures to Thane.)
 
 Asra: Can you read this?
@@ -491,11 +508,11 @@ Thane: My mom taught me some growing up, but only spoken. I don't know how to re
 Asra: So why keep the scriptures after Phaedra was taken?
 
 Thane: Dad didn't want to let go of anything that reminded him of her. It's definitely not the safest decision he's made. All of these are banned, but Erawan literature would be the biggest liability by far.
-</S2-6>
+</M2-3>
 
 A Brief History
 
-<S2-7>
+<M2-4>
 Asra: Have you read all of these?
 
 Thane: Most, but my dad pushed me to read the ones about Chemina's history the most. A Brief History of Cheminan-Erawan Relations was his favorite.
@@ -541,11 +558,11 @@ Asra: See? This is the best thing we can do right now.
 Thane: ... I'm going to miss him.
 
 Asra: I know.
-</S2-7>
+</M2-4>
 
 Book Burning
 
-<S2-8>
+<S2-2>
 (Thane stands at the fireplace. The flag from the basement has been tied into a bindle holding the books, which Thane holds.)
 
 Thane: Does anyone want to look at these one last time?
@@ -579,11 +596,7 @@ Asra: And now all Dagan does is write pro-Somoza propaganda.
 Thane: I don't know what to tell you. He's a good writer and it pays the bills. Neither of us would be here if it weren't for him. But yeah, a lot of those books were his. You'd think he'd at least care a little about burning them.
 
 Asra: He didn't want to keep contraband in the house in the first place, right? We all have feelings but we can't let them get in the way of doing what has to be done.
-</S2-8>
 
-Police State
-
-<S2-9>
 (There's a loud knock at the door.)
 
 Asra: What the-
@@ -657,7 +670,7 @@ Asra: They already have.
 Dagan: (Sigh) Think before you shoot. The last thing we need is half the police department breathing down our necks. If we see someone, we go around. If we can't, we deal with them silently.
 
 Asra: Don't patronize me. I'm not stupid.
-</S2-9>
+</S2-2>
 
 * * *
 
@@ -665,8 +678,9 @@ GAMEPLAY SECTION: The player must navigate the streets of Gheni. The area is ope
 
 KNEW: Defeat in Merad
 
-<S2-10>
 (This scene triggers if the player interacts with a newspaper lying near a bottleneck in the level design. Thane picks up a newspaper and begins to read.)
+
+<M2-5>
 
 Thane: "Our valiant soldiers continue their tug of war over Merad. Nineteen Cheminan casualties were reported on the battlefields this past week. However, General Jaromir assures us that victory is simply a matter of patience."
 
@@ -689,7 +703,7 @@ Dagan: Past experience. He got plenty of practice blowing stuff up during the Ci
 Asra: Wait, Saito was a terrorist!?
 
 Dagan: (Laughs) You could say that.
-</S2-10>
+</M2-5>
 
 
 * * *
@@ -698,7 +712,7 @@ GAMEPLAY SECTION: From this point on, I-Troops are mixed in with regular officer
 
 Trainyard
 
-<S2-11>
+<S2-3>
 (The group sneaks into a trainyard.)
 
 Dagan: We'll need to be really careful here. First sign of trouble and you can bet they'll search every nook and cranny before another train leaves.
@@ -712,7 +726,7 @@ Thane: Nenegi's a military town. Any tanker car carrying nitro or poison gas wou
 Dagan: Most are probably just petrol, in which case they could be going anywhere.
 
 Thane: The valves up top should have different warnings depending on the contents. We can climb up and check.
-</S2-11>
+</S2-3>
 
 * * *
 
@@ -720,7 +734,7 @@ GAMEPLAY SECTION: This is a stealth-only section in which the player may not use
 
 Narrow Escape
 
-<S2-12>
+<S2-4>
 (Asra is on top of one of the tanker cars, with Thane and Dagan waiting below.)
 
 Watchman: You there! Hands where I can see them!
@@ -800,7 +814,7 @@ Thane: I’ll keep that in mind.
 Asra: Though now that you mention it I am getting kind of cold. And tired.
 
 (Thane wraps his arms around Asra, and she leans back into him and falls asleep.)
-</S2-12>
+</S2-4>
 
 Chapter 3
 
@@ -884,7 +898,7 @@ GAMEPLAY SECTION: Officers in this section seem to passively pursue the player; 
 
 KNEW: Night Patrol Killed
 
-<S3-2>
+<M3-1>
 (This scene triggers if the player interacts with a newspaper placed within the level. Thane unfolds a newspaper and begins to read)
 
 Thane: "Early this morning, two police officers were found shot to death in a private residence on the south side of Gheni. A third officer was found dead at Gheni Transit Center. Investigators believe both of these incidents to be related."
@@ -894,11 +908,11 @@ Dagan: Let me guess. A reward-
 Thane: "A reward of up to 1,000 lauves shall be off anyone providing evidence leading to the capture of the suspects Thane Belikoff, Dagan Belikoff, and Asra Sacco. All three are considered to be armed and dangerous."
 
 Dagan: Perfect, they already know who we are.
-</S3-2>
+</M3-1>
 
 Ruins
 
-<S3-3>
+<S3-2>
 (The group escapes a good distance away from the train tracks.)
 
 Thane: Hey Dagan, do you have a plan for where we're actually going?
@@ -928,11 +942,13 @@ Asra: Shit.
 Thane: Ruins it is.
 
 (Dagan nods, then turns and leads the group off into the distance.)
-</S3-3>
+</S3-2>
+
+GAMEPLAY SECTION: The player must proceed to the ruins.
 
 Settling Down
 
-<S3-4>
+<S3-3>
 (The group reaches the burnt neighborhood. The houses are in complete disrepair.)
 
 Thane: Well, that's one problem solved.
@@ -1074,12 +1090,8 @@ Thane: But seriously, think about how shitty it would be to do this alone. Not t
 (Asra cuddles up to Thane and closes her eyes.)
 
 Asra: Yeah, me too. I couldn't have done this without you.
-</S3-4>
 
-Leaving Chalt
-
-<S3-5>
-(The trio huddles together in a doorway, sharing a can of food in the abandoned house.)
+(The next morning, the trio huddles together in a doorway, sharing a can of food in the abandoned house.)
 
 Thane: So, what's the plan for today?
 
@@ -1106,14 +1118,15 @@ Asra: Is it really that bad? You'd think Somoza would want the capital to be... 
 Dagan: It's plenty nice by all the government buildings and tourist attractions. Only the residential districts look like a dump. Which I'm sure suits him just fine.
 
 (The group leaves the house and begins making their way into town.)
-</S3-5>
+</S3-3>
 
 * * *
 
 GAMEPLAY SECTION: The player can wander around the city without risk of combat. On the way to boarding the trolley is a newspaper which triggers a cutscene. Boarding a trolley at the station triggers the cutscene at the rally.
 
-(3.6) KNEW: Remembrance of the Rega Massacre
+KNEW: Remembrance of the Rega Massacre
 
+<M3-2>
 (Thane opens a newspaper and begins to read)
 
 Thane: "Today marks the one year anniversary of the Rega Massacre, a tragic event in which 413 civilians and 588 soldiers were killed in an unprovoked assault on Cheminan territory."
@@ -1149,9 +1162,11 @@ Asra: So only you're allowed to be a bootlicker. Got it.
 Dagan: That's literally my job. Jaromir's a general. He-
 
 Thane: Dagan, enough.
+</M3-2>
 
-(3.7) Rally
+Rally
 
+<S3-4>
 (The group steps out of the trolley into a vast downtown plaza. There's a massive gathering. At the far end, Somoza stands at a podium.)
 
 Farid Somoza: "On this day, one year ago, Cleric Gael Mancini saw fit to send an army to our homeland, slaughtering hundreds of innocents. This is a travesty of justice that our people must never forget. But neither shall we forget the bravery shown by those who laid down their lives that day protecting their neighbors.
@@ -1195,6 +1210,7 @@ Thane: What's that all about?
 Dagan: Thane already recognized one person here. No reason to risk bumping into another familiar face, least of all in a closed space.
 
 (The group begins climbing the stairs.)
+</S3-4>
 
 (3.8) Economics
 

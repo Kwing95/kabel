@@ -124,6 +124,7 @@ public class UnitStatus : MonoBehaviour
         if (GetComponent<PlayerMover>())
         {
             gameObject.SetActive(false);
+            Sidebar.instance.GameOver();
             // Debug.Log("Dead!");
             // TODO: Game Over menu
             //TransitionFader.instance.Transition(0);

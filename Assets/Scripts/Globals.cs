@@ -8,26 +8,20 @@ public class Globals : MonoBehaviour
     // public static readonly TextAsset LEVEL_DATA = Resources.Load<TextAsset>("levelList");
     // public static readonly TextAsset SAVE_DATA = Resources.Load<TextAsset>("saveData");
     public static readonly TextAsset GAME_SCRIPT = Resources.Load<TextAsset>("gameScript");
-    public static readonly Dictionary<string, LevelData> LEVEL_DATA = new Dictionary<string, LevelData> {
-        // {"1-1", new LevelData(sceneTitle, isPlayable, sceneName, hasHardmode) },
-        {"S1-1", new LevelData("Intro", "S1-1") },
-        {"G1-1", new LevelData("Infiltration A", "G1-1") },
-        {"G1-2", new LevelData("Infiltration B", "G1-2") },
-        {"G1-3", new LevelData("Infiltration C", "G1-3") },
-        {"S1-2", new LevelData("Innocents", "S1-2") },
-        {"G1-4", new LevelData("Escape A", "G1-4") },
-        {"G1-5", new LevelData("Escape B", "G1-5") },
-        {"G1-6", new LevelData("Escape C", "G1-6") },
-        {"S1-3", new LevelData("Infirmary", "S1-3") }
-    };
+
     public static readonly List<LevelData> LEVEL_LIST = new List<LevelData> {
         new LevelData("Intro", "S1-1"), new LevelData("Infiltration A", "G1-1"), new LevelData("Infiltration B", "G1-2"),
         new LevelData("Infiltration C", "G1-3"), new LevelData("Innocents", "S1-2"), new LevelData("Escape A", "G1-4"),
-        new LevelData("Escape B", "G1-5"), new LevelData("Escape C", "G1-6"), new LevelData("Infirmary", "S1-3")
+        new LevelData("Escape B", "G1-5"), new LevelData("Escape C", "G1-6"), new LevelData("Infirmary", "S1-3"),
+        new LevelData("Death Letter", "S2-1"), new LevelData("Hidden Cellar", "G2-1"), new LevelData("Book Burning", "S2-2"),
+        new LevelData("Trainyard", "S2-3"), new LevelData("Narrow Escape", "S2-4"), new LevelData("Cargo Inspection", "S3-1"),
+        new LevelData("Ruins", "S3-2"), new LevelData("Settling Down", "S3-3"), new LevelData("Rally", "S3-4")
     };
     public static readonly List<string> AUTOPLAY_LIST = new List<string> { "S1-1", "G1-1", "G1-2", "G1-3", "S1-2",
-        "G1-4", "G1-5", "G1-6", "S1-3", "Level_Select" };
-    public static readonly List<string> CINEMA_LIST = new List<string> { "S1-1", "S1-2", "S1-3", "S1-4", "S1-5", "S1-6" };
+        "G1-4", "G1-5", "G1-6", "S1-3", "S2-1", "S2-2", "S2-3", "S2-4", "S3-1", "S3-2", "S3-3", "S3-4", 
+        "Level_Select", "TextCutscene", "Level_Select" };
+    public static readonly List<string> CINEMA_LIST = new List<string> { "S1-1", "S1-2", "S1-3", "S1-4", "S1-5", "S1-6", "S2-1",
+        "S2-2", "S2-3", "S2-4", "S2-5", "S3-1", "S3-2", "S3-3", "S3-4"};
 
     // CONSTANTS
     public static readonly int INFINITY = 1073741823;

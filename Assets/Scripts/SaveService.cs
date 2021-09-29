@@ -47,7 +47,6 @@ public class LevelRecord
         bestTime = -1;
         healthLost = -1;
         loot = -1;
-        
     }
 }
 
@@ -74,7 +73,7 @@ public static class SaveService
 
     public static SaveObject LoadData()
     {
-        if (File.Exists(path)/* && false*/)
+        if (File.Exists(path))// && false)
         {
             BinaryFormatter formatter = new BinaryFormatter();
             FileStream stream = new FileStream(path, FileMode.Open);

@@ -17655,8 +17655,12 @@ PrefabInstance:
     - target: {fileID: 4069196556531642633, guid: f2528213cd211eb4f8b31ab81fde2232,
         type: 3}
       propertyPath: message
-      value: Click and drag the map to survey your surroundings. The magnifying glass
-        can be used to zoom in and out.
+      value: M1-2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4069196556531642633, guid: f2528213cd211eb4f8b31ab81fde2232,
+        type: 3}
+      propertyPath: messageId
+      value: M1-2
       objectReference: {fileID: 0}
     - target: {fileID: 4069196556531642633, guid: f2528213cd211eb4f8b31ab81fde2232,
         type: 3}
@@ -43323,8 +43327,12 @@ PrefabInstance:
     - target: {fileID: 4069196556531642633, guid: f2528213cd211eb4f8b31ab81fde2232,
         type: 3}
       propertyPath: message
-      value: Click the WALK icon to toggle between walking and running. Running is
-        noisy and can attract attention.
+      value: M1-1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4069196556531642633, guid: f2528213cd211eb4f8b31ab81fde2232,
+        type: 3}
+      propertyPath: messageId
+      value: M1-1
       objectReference: {fileID: 0}
     - target: {fileID: 4069196556531642633, guid: f2528213cd211eb4f8b31ab81fde2232,
         type: 3}
@@ -43334,7 +43342,7 @@ PrefabInstance:
     - target: {fileID: 4069196556531642633, guid: f2528213cd211eb4f8b31ab81fde2232,
         type: 3}
       propertyPath: messageFromScene
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f2528213cd211eb4f8b31ab81fde2232, type: 3}
@@ -47559,6 +47567,46 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 893638134921372859, guid: 8565b8fcc54e5434d969835876bd7b73,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 893638134921372859, guid: 8565b8fcc54e5434d969835876bd7b73,
+        type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 893638134921372859, guid: 8565b8fcc54e5434d969835876bd7b73,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 893638134921372859, guid: 8565b8fcc54e5434d969835876bd7b73,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1185887456985241117, guid: 8565b8fcc54e5434d969835876bd7b73,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1185887456985241117, guid: 8565b8fcc54e5434d969835876bd7b73,
+        type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1185887456985241117, guid: 8565b8fcc54e5434d969835876bd7b73,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1185887456985241117, guid: 8565b8fcc54e5434d969835876bd7b73,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1743422262753038814, guid: 8565b8fcc54e5434d969835876bd7b73,
         type: 3}
       propertyPath: m_IsActive
@@ -47673,6 +47721,66 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: HUD_Game
+      objectReference: {fileID: 0}
+    - target: {fileID: 4960592614596022594, guid: 8565b8fcc54e5434d969835876bd7b73,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4960592614596022594, guid: 8565b8fcc54e5434d969835876bd7b73,
+        type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4960592614596022594, guid: 8565b8fcc54e5434d969835876bd7b73,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4960592614596022594, guid: 8565b8fcc54e5434d969835876bd7b73,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6064636633811363286, guid: 8565b8fcc54e5434d969835876bd7b73,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6064636633811363286, guid: 8565b8fcc54e5434d969835876bd7b73,
+        type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6064636633811363286, guid: 8565b8fcc54e5434d969835876bd7b73,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6064636633811363286, guid: 8565b8fcc54e5434d969835876bd7b73,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6140251660364203354, guid: 8565b8fcc54e5434d969835876bd7b73,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6140251660364203354, guid: 8565b8fcc54e5434d969835876bd7b73,
+        type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6140251660364203354, guid: 8565b8fcc54e5434d969835876bd7b73,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6140251660364203354, guid: 8565b8fcc54e5434d969835876bd7b73,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8565b8fcc54e5434d969835876bd7b73, type: 3}
@@ -59763,7 +59871,7 @@ PrefabInstance:
     - target: {fileID: 1529958948040857641, guid: f5a0839dafcd8764bbf4d3e04ccacbbd,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 1529958948040857641, guid: f5a0839dafcd8764bbf4d3e04ccacbbd,
         type: 3}
@@ -59895,6 +60003,16 @@ PrefabInstance:
         type: 3}
       propertyPath: subjects.Array.data[0]
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 4953152255410894786, guid: f5a0839dafcd8764bbf4d3e04ccacbbd,
+        type: 3}
+      propertyPath: inventory.Array.data[4].quantity
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4953152255410894786, guid: f5a0839dafcd8764bbf4d3e04ccacbbd,
+        type: 3}
+      propertyPath: inventory.Array.data[5].quantity
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 5103441572290231355, guid: f5a0839dafcd8764bbf4d3e04ccacbbd,
         type: 3}
@@ -64450,8 +64568,12 @@ PrefabInstance:
     - target: {fileID: 4069196556531642633, guid: f2528213cd211eb4f8b31ab81fde2232,
         type: 3}
       propertyPath: message
-      value: Select FIREARM or KNIFE from the ACTION menu to eliminate this target.
-        The game remains paused while browsing he ACTION menu.
+      value: M1-3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4069196556531642633, guid: f2528213cd211eb4f8b31ab81fde2232,
+        type: 3}
+      propertyPath: messageId
+      value: M1-3
       objectReference: {fileID: 0}
     - target: {fileID: 4069196556531642633, guid: f2528213cd211eb4f8b31ab81fde2232,
         type: 3}

@@ -35,7 +35,7 @@ public class TransitionFader : MonoBehaviour
             image.color = new Color(0, 0, 0, image.color.a + Time.deltaTime);
             if(image.color.a >= 1)
             {
-                SceneManager.LoadScene(targetScene);
+                LoadScene(targetScene);
                 fadeToBlack = false;
             }
         }
@@ -45,17 +45,34 @@ public class TransitionFader : MonoBehaviour
         }
     }
 
+    private void LoadScene(string scene)
+    {
+        if(scene != "TextCutscene")
+            DialogueParser.sceneToLoad = scene;
+
+        if (Application.CanStreamedLevelBeLoaded(scene))
+            SceneManager.LoadScene(scene);
+        else if (scene[0] == 'S')
+            SceneManager.LoadScene("TextCutscene");
+    }
+
     public void FinishLevel()
     {
+        // Update save data
         if(SceneManager.GetActiveScene().name[0] == 'G')
             SaveService.UpdateLevelRecord(SceneManager.GetActiveScene().name,
                     PlayerMover.instance.GetComponent<Inventory>().wallet,
                     ActionManager.instance.GetSecondsPlayed(),
                     PlayerMover.instance.GetComponent<UnitStatus>().GetHealthLost());
         else
-            SaveService.UpdateLevelRecord(SceneManager.GetActiveScene().name, 0, 0, 0);
+        {
+            if(SceneManager.GetActiveScene().name == "TextCutscene")
+                SaveService.UpdateLevelRecord(DialogueParser.sceneToLoad, 0, 0, 0);
+            else
+                SaveService.UpdateLevelRecord(SceneManager.GetActiveScene().name, 0, 0, 0);
+        }
 
-
+        // Select which scene to load
         if (GameManager.cinemaMode)
         {
             int sceneIndex = Globals.CINEMA_LIST.IndexOf(SceneManager.GetActiveScene().name);

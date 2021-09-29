@@ -8,8 +8,7 @@ public class Objective : MonoBehaviour
 
     public SpriteRenderer outline;
     public bool levelFinish = true;
-    public string message = "";
-    public bool messageFromScene = false;
+    public string messageId = "";
     private bool active = false;
 
     // Start is called before the first frame update
@@ -34,11 +33,7 @@ public class Objective : MonoBehaviour
             else
             {
                 Sidebar.instance.ToggleInGameDialogue(true);
-
-                if (messageFromScene)
-                    DialogueParser.instance.ParseScene(message);
-                else
-                    DialogueParser.instance.SetDialogue(message);
+                DialogueParser.instance.ParseScene(messageId);
             }  
         }
         // Reset for repeatable scenes

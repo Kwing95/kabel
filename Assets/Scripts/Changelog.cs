@@ -49,9 +49,36 @@ Sep 13, 2021
 Sep 16, 2021
  + Can navigate from title screen to level select, placeholders for Extras and Options menus
 
+Sep 19, 2021
+ + Can navigate to TextCutscene scene to read script if no scene exists
+
+Sep 25, 2021
+ + Cutscenes are now loaded from gameScript.txt instead of hardcoded into Inspector
+ + Added LevelData in Globals for Chapter 2 and some of Chapter 3
+
+Sep 26, 2021
+ + Inventory determines whether or not player can use an item
+ + Items are consumed when used
+
+Sep 27, 2021
+ + Player gun is more accurate
+ + Player line of sight limited by blindfold object
+ + Retry menu appears when player dies
+
+Sep 28, 2021
+ + Fixed glitch where gun aim was off when attacking before moving
+ + Can restart/skip/quit from cutscenes
+ + Can view cutscenes without dedicated scenes
+
+ - Disable non-essential buttons (chapter, cutscene)
+ - Disable enemy friendly fire
+ - Make distract/knife easier
+
+ - Arcade mode
+ - Enemy grenades
  - Use multithreading for HideMover
  - Save file to unlock next level
- - Platform-agnostic controls
+ - Platform-agnostic controls (menu options and cursor movement)
  - Looting popup
 
  - Refactor ActionManager
@@ -76,6 +103,8 @@ MAIN MENU
     Encyclopedia
     Jukebox
     Dev Commentary
+    Gun Bar Mode
+    Arcade Mode
   Options
   Quit
   
@@ -145,5 +174,6 @@ BONUS FEATURES:
  Jukebox - Play all game music
  Commentary Mode - Play game with commentary from developers
  Gun Bar Mode - Replaces gun sounds with battle rap voices
+ Arcade Mode - Randomly generated maps
 
  */

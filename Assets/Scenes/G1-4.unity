@@ -48105,7 +48105,7 @@ PrefabInstance:
     - target: {fileID: 4069196556531642633, guid: f2528213cd211eb4f8b31ab81fde2232,
         type: 3}
       propertyPath: message
-      value: Select MEDKIT from the ACTION menu to heal wounded units
+      value: M1-7
       objectReference: {fileID: 0}
     - target: {fileID: 4069196556531642633, guid: f2528213cd211eb4f8b31ab81fde2232,
         type: 3}

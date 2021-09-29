@@ -20815,7 +20815,7 @@ PrefabInstance:
     - target: {fileID: 4069196556531642633, guid: f2528213cd211eb4f8b31ab81fde2232,
         type: 3}
       propertyPath: message
-      value: Use DISTRACT from the ACTION MENU to lure enemies away from their post.
+      value: M1-5
       objectReference: {fileID: 0}
     - target: {fileID: 4069196556531642633, guid: f2528213cd211eb4f8b31ab81fde2232,
         type: 3}
@@ -47205,7 +47205,7 @@ PrefabInstance:
     - target: {fileID: 4069196556531642633, guid: f2528213cd211eb4f8b31ab81fde2232,
         type: 3}
       propertyPath: message
-      value: When possible, avoid enemies rather than engaging in combat directly.
+      value: M1-4
       objectReference: {fileID: 0}
     - target: {fileID: 4069196556531642633, guid: f2528213cd211eb4f8b31ab81fde2232,
         type: 3}

@@ -151,6 +151,8 @@ public class ActionManager : MonoBehaviour
 
     public IEnumerator Gauze()
     {
+        PlayerMover.instance.GetComponent<Inventory>().Consume(Inventory.ItemType.Gauze);
+
         PlayerMover.instance.GetComponent<UnitStatus>().Heal();
         yield return new WaitForSeconds(0.25f);
         Sidebar.instance.FinishAction();
@@ -163,7 +165,9 @@ public class ActionManager : MonoBehaviour
     // Coroutine for player firing gun
     public IEnumerator Gun(GameObject unit, Vector2 target, int numShots)
     {
-        for(int i = 0; i < numShots; ++i)
+        PlayerMover.instance.GetComponent<Inventory>().Consume(Inventory.ItemType.Gun);
+
+        for (int i = 0; i < numShots; ++i)
         {
             yield return new WaitForSeconds(0.25f);
             Gun(unit, target);
@@ -175,6 +179,8 @@ public class ActionManager : MonoBehaviour
     // Single gunshot, usable by both player and enemy
     public static void Gun(GameObject unit, Vector2 target)
     {
+        bool attackerIsPlayer = unit.GetComponent<PlayerMover>();
+        
         // Prevent attacker from hitting themselves
         unit.GetComponent<BoxCollider2D>().enabled = false;
 
@@ -183,11 +189,11 @@ public class ActionManager : MonoBehaviour
 
         // 3 Focus -> 10 deg Error, 2 Focus -> 20 deg Error
         // 1 Focus -> 30 deg Error, 0 Focus -> Can't attack
-        float marginOfError = 15; //+ (10 * (3 - unit.GetComponent<FieldUnit>().party[0].focus)); // min 10 err, max 30 / formerly memberIndex
+        float marginOfError = attackerIsPlayer ? 12 : 15; //+ (10 * (3 - unit.GetComponent<FieldUnit>().party[0].focus)); // min 10 err, max 30 / formerly memberIndex
 
         // Calculate if there's a clear line of sight
         Vector2 direction = target - (Vector2)unit.transform.position;
-        RaycastHit2D hit = Physics2D.Raycast(shotOrigin, direction/*, 9, mask*/);
+        // RaycastHit2D hit = Physics2D.Raycast(shotOrigin, direction/*, 9, mask*/);
 
         float angle = Vector2.Angle(unit.GetComponent<Rotator>().FrontOffset(), direction);
         // arg1 of Angle used to be unit.GetComponent<GridMover>().GetRotator().FrontOffset()
@@ -195,7 +201,7 @@ public class ActionManager : MonoBehaviour
         // Generate an actual shot
         angle += Random.Range(0, marginOfError) * (Random.Range(0, 2) == 0 ? 1 : -1); // add margin of error
         direction = Quaternion.AngleAxis(angle, Vector3.forward) * direction; // This flattens the shot somehow
-        hit = Physics2D.Raycast(shotOrigin, direction/*, 9, mask*/);
+        RaycastHit2D hit = Physics2D.Raycast(shotOrigin, direction/*, 9, mask*/);
 
         if (hit.collider != null)
         {
@@ -211,7 +217,7 @@ public class ActionManager : MonoBehaviour
             }
 
             GameObject tempNoise = Instantiate(Globals.NOISE, unit.transform.position, Quaternion.identity);
-            tempNoise.GetComponent<Noise>().Initialize(unit.CompareTag("Player"), Globals.GUN_VOLUME, Noise.Source.Gun);
+            tempNoise.GetComponent<Noise>().Initialize(attackerIsPlayer, Globals.GUN_VOLUME, Noise.Source.Gun);
 
             // Create and format line
             GameObject shotLine = DrawLine(shotOrigin, hit.point, Globals.BRIGHT_WHITE, unit.transform);
@@ -266,6 +272,9 @@ public class ActionManager : MonoBehaviour
 
     public IEnumerator Grenade(GameObject unit, Vector2 target, bool isDistraction=false)
     {
+        PlayerMover.instance.GetComponent<Inventory>().Consume(isDistraction ?
+            Inventory.ItemType.Distract : Inventory.ItemType.Frag);
+
         // Animate grenade
         GameObject grenadeSprite = Instantiate(Globals.PROJECTILE, unit.transform.position, Quaternion.identity);
         grenadeSprite.GetComponent<PointFollower>().target = target;
@@ -488,8 +497,8 @@ public class ActionManager : MonoBehaviour
 
         GameObject coneObject = new GameObject();
         FieldOfView cone = coneObject.AddComponent<FieldOfView>();
-        cone.viewRadius = 30;
-        cone.viewAngle = 30;
+        cone.viewRadius = 24;
+        cone.viewAngle = 24;
         coneObject.transform.position = start;
         float destinationAngle = (int)Vector2.SignedAngle(Vector2.up, cursorPosition - start);
         coneObject.transform.eulerAngles = new Vector3(0, 0, destinationAngle);

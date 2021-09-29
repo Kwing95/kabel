@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class LevelData
@@ -78,7 +79,12 @@ public class LevelSelector : MonoBehaviour
 
     public void PlayLevel()
     {
-        TransitionFader.instance.Transition(selectedLevel);
+        DialogueParser.sceneToLoad = selectedLevel;
+
+        if (Application.CanStreamedLevelBeLoaded(selectedLevel))
+            TransitionFader.instance.Transition(selectedLevel);
+        else if (selectedLevel[0] == 'S')
+            TransitionFader.instance.Transition("TextCutscene");
     }
 
     public void ToggleAutoplay()
@@ -141,13 +147,13 @@ public class LevelSelector : MonoBehaviour
         foreach(LevelData level in Globals.LEVEL_LIST)
             if(level.chapter == chapter && level.isHardmode == isHardmode)
             {
+                // Show only if level is unlocked
                 foreach(LevelRecord record in SaveService.loadedSave.levels)
-                {
                     if(record.levelId == level.levelId && record.unlocked)
                     {
 
                     }
-                }
+                // Always show
                 GameObject newButton = Instantiate(Globals.LEVEL_BUTTON, buttonContainer.transform);
                 newButton.GetComponent<LevelButton>().Initialize(level.orderInChapter.ToString(), level.levelId);
             }
@@ -164,25 +170,36 @@ public class LevelSelector : MonoBehaviour
         Application.Quit();
     }
 
+    private static LevelData GetLevel(string levelName)
+    {
+        foreach (LevelData level in Globals.LEVEL_LIST)
+            if (level.levelId == levelName)
+                return level;
+
+        return new LevelData("ERROR", "ERROR");
+    }
+
     public static string GetLevelDescription(string levelName)
     {
         string output = "";
-        
-        // Get level index and scene name
-        // Debug.Log(Globals.AUTOPLAY_LIST.IndexOf(levelName));
-        LevelRecord data = SaveService.loadedSave.levels[Globals.AUTOPLAY_LIST.IndexOf(levelName)];
-        output += Globals.LEVEL_DATA[levelName].levelId + " " + Globals.LEVEL_DATA[levelName].levelName + "\n";
 
-        if (Globals.LEVEL_DATA[levelName].isPlayable)
+        // Fetch data pertaining to the level itself
+        LevelData levelInfo = GetLevel(levelName);
+        // Fetch player save data relating to the level
+        LevelRecord savedLevelData = SaveService.loadedSave.levels[Globals.AUTOPLAY_LIST.IndexOf(levelName)];
+
+        output += levelInfo.levelId + " " + levelInfo.levelName + "\n";
+
+        if (levelInfo.isPlayable)
         {
-            if (data.bestTime == -1)
+            if (savedLevelData.bestTime == -1)
                 output += "\nUNCLEARED\n\n\n\n";
             else
             {
                 output += "\nCLEARED\n\n";
-                output += "Clear Time: " + data.bestTime + "\n";
-                output += "Damage Taken: " + data.healthLost + "\n";
-                output += "Money Collected: " + data.loot + "\n\n";
+                output += "Clear Time: " + savedLevelData.bestTime + "\n";
+                output += "Damage Taken: " + savedLevelData.healthLost + "\n";
+                output += "Money Collected: " + savedLevelData.loot + "\n\n";
             }
         }
         else

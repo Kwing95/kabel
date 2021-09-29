@@ -19,11 +19,18 @@ public class Sidebar : MonoBehaviour
     public enum Menu { Main, Action, Grenade, Confirm };
 
     public GameObject pauseMenu;
+    public GameObject retryMenu;
+
     public List<Button> allButtons;
     public List<Button> actionConfirmButtons;
     public List<Button> moveConfirmButtons;
     public List<Button> zoomButtons;
     public Button actionButton;
+    public Button gauzeButton;
+    public Button fragButton;
+    public Button distractButton;
+    public Button gunButton;
+    public Button pauseButton;
     public Image actionIcon;
 
     public List<Image> moveIcons;
@@ -61,6 +68,16 @@ public class Sidebar : MonoBehaviour
         actionButton.interactable = canAttack = currentCooldown <= 0;
         actionIcon.color = actionButton.interactable ? Color.white : Color.black;
         actionIcon.fillAmount = 1.0f - Mathf.Max(currentCooldown / actionCooldown, 0);
+    }
+
+    public void GameOver()
+    {
+        if(!menuPaused)
+            MenuPause();
+
+        pauseMenu.SetActive(false);
+        pauseButton.interactable = false;
+        retryMenu.SetActive(true);
     }
 
     private void ResetStatics()
@@ -123,6 +140,7 @@ public class Sidebar : MonoBehaviour
     public void ActionPause(bool paused)
     {
         actionPaused = paused;
+        RefreshAllActionButtons();
 
         PlayerMover.instance.enabled = !paused;
 
@@ -135,6 +153,23 @@ public class Sidebar : MonoBehaviour
                 autoMover.enabled = !paused;
         }
 
+    }
+
+    private void RefreshAllActionButtons()
+    {
+        Inventory inv = PlayerMover.instance.GetComponent<Inventory>();
+
+        RefreshActionButton(inv, Inventory.ItemType.Distract, distractButton);
+        RefreshActionButton(inv, Inventory.ItemType.Gauze, gauzeButton);
+        RefreshActionButton(inv, Inventory.ItemType.Frag, fragButton);
+        RefreshActionButton(inv, Inventory.ItemType.Gun, gunButton);
+
+    }
+
+    private void RefreshActionButton(Inventory inv, Inventory.ItemType itemType, Button button)
+    {
+        button.GetComponentInChildren<Text>().text = inv.GetQuantity(itemType).ToString();
+        button.interactable = inv.GetQuantity(itemType) > 0;
     }
 
     public void ToggleInGameDialogue(bool viewingDialogue)

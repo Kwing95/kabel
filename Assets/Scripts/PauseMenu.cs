@@ -7,7 +7,7 @@ public class PauseMenu : MonoBehaviour
 {
 
     [SerializeField]
-    public enum Context { Restart, Quit };
+    public enum Context { Restart, Quit, Skip };
     public Context state = Context.Restart;
 
     // Start is called before the first frame update
@@ -27,12 +27,30 @@ public class PauseMenu : MonoBehaviour
         switch (state)
         {
             case Context.Restart:
-                TransitionFader.instance.ReloadScene();
+                RestartLevel();
                 break;
             case Context.Quit:
-                TransitionFader.instance.Transition("Level_Select"); // Main menu scene
+                QuitToMenu();
+                break;
+            case Context.Skip:
+                TransitionFader.instance.FinishLevel();
                 break;
         }
+    }
+
+    public void TogglePauseMenu()
+    {
+        gameObject.SetActive(!gameObject.activeSelf);
+    }
+
+    public void RestartLevel()
+    {
+        TransitionFader.instance.ReloadScene();
+    }
+
+    public void QuitToMenu()
+    {
+        TransitionFader.instance.Transition("Level_Select"); // Main menu scene
     }
 
     public void SetContext(string newContext)
