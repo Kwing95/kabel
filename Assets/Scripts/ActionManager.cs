@@ -21,12 +21,9 @@ public class ActionManager : MonoBehaviour
     // 0 Gun, 1 Frag, 2 Smoke, 3 Stun, 4 Distract, 5 Gauze, 6 Backstab
     public enum Action { Gun, Frag, Smoke, Gas, Distract, Gauze, Knife };
     private static Action selectedAction;
-    private static Vector2 cursorPosition;
-    private static Vector2 attackPosition;
-    private static GameObject cursor;
-    private static List<GameObject> previewObjects;
     public static ActionManager instance;
-    private float secondsPlayed = 0;
+
+    private static List<GameObject> activeGrenades;
 
     /*
      Quick reference
@@ -47,27 +44,15 @@ public class ActionManager : MonoBehaviour
     {
         instance = this;
         ResetStatics();
-
-        cursor = Instantiate(Globals.CURSOR as GameObject);
-        cursor.SetActive(false);
-        previewObjects = new List<GameObject>();
-
-        ClickManager.releaseHandler += _OnClick;
+        activeGrenades = new List<GameObject>();
     }
 
     private void Update()
     {
-        if(state == State.Moving)
-            secondsPlayed += Time.deltaTime;
-
+        UpdateEnemyGrenades();
     }
 
-    private void OnDestroy()
-    {
-        ClickManager.releaseHandler -= _OnClick;
-    }
-
-    public void ResetStatics()
+    private void ResetStatics()
     {
         state = State.Moving;
         /*private static Vector2 cursorPosition;
@@ -92,8 +77,8 @@ public class ActionManager : MonoBehaviour
         {
             // When navigating away from aiming, preview UI must reset
             Sidebar.instance.actionConfirmButtons[1].interactable = false;
-            ClearPreview();
-            cursor.SetActive(false);
+            PreviewManager.ClearPreview();
+            PreviewManager.cursor.SetActive(false);
         }
         else if (state == State.Moving)
         {
@@ -120,14 +105,21 @@ public class ActionManager : MonoBehaviour
         selectedAction = action;
     }
 
+    public static Action GetSelectedAction()
+    {
+        return selectedAction;
+    }
+
     // ACTION FUNCTIONS ========================================================
 
     public static void ExecuteAction()
     {
+        Vector2 attackPosition = PreviewManager.GetAttackPosition();
+
         switch (selectedAction)
         {
             case Action.Gun:
-                instance.StartCoroutine(instance.Gun(PlayerMover.instance.gameObject, cursorPosition, PlayerMover.instance.gameObject.GetComponent<UnitStatus>().UnitsAlive()));
+                instance.StartCoroutine(instance.Gun(PlayerMover.instance.gameObject, attackPosition, PlayerMover.instance.gameObject.GetComponent<UnitStatus>().UnitsAlive()));
                 break;
             case Action.Frag:
                 instance.StartCoroutine(instance.Grenade(PlayerMover.instance.gameObject, attackPosition));
@@ -138,7 +130,7 @@ public class ActionManager : MonoBehaviour
                 instance.StartCoroutine(instance.GasGrenade(PlayerMover.instance.gameObject, attackPosition));
                 break;
             case Action.Knife:
-                instance.StartCoroutine(instance.Knife(PlayerMover.instance.gameObject, cursorPosition));
+                instance.StartCoroutine(instance.Knife(PlayerMover.instance.gameObject, attackPosition));
                 break;
             case Action.Distract:
                 instance.StartCoroutine(instance.Grenade(PlayerMover.instance.gameObject, attackPosition, true));
@@ -201,7 +193,7 @@ public class ActionManager : MonoBehaviour
         // Generate an actual shot
         angle += Random.Range(0, marginOfError) * (Random.Range(0, 2) == 0 ? 1 : -1); // add margin of error
         direction = Quaternion.AngleAxis(angle, Vector3.forward) * direction; // This flattens the shot somehow
-        RaycastHit2D hit = Physics2D.Raycast(shotOrigin, direction/*, 9, mask*/);
+        RaycastHit2D hit = Physics2D.Raycast(shotOrigin, direction, 99, ~unit.layer);
 
         if (hit.collider != null)
         {
@@ -220,7 +212,7 @@ public class ActionManager : MonoBehaviour
             tempNoise.GetComponent<Noise>().Initialize(attackerIsPlayer, Globals.GUN_VOLUME, Noise.Source.Gun);
 
             // Create and format line
-            GameObject shotLine = DrawLine(shotOrigin, hit.point, Globals.BRIGHT_WHITE, unit.transform);
+            GameObject shotLine = ShapeManager.DrawLine(shotOrigin, hit.point, Globals.BRIGHT_WHITE, unit.transform);
             shotLine.transform.parent = unit.transform;
             LineRenderer shotRenderer = shotLine.GetComponent<LineRenderer>();
             shotRenderer.startWidth = shotRenderer.endWidth = 0.07f;
@@ -231,45 +223,6 @@ public class ActionManager : MonoBehaviour
         unit.GetComponent<BoxCollider2D>().enabled = true;
     }
 
-    // PREVIEW FUNCTIONS =======================================================
-
-    private static void ClearPreview()
-    {
-        foreach (GameObject elt in previewObjects)
-            Destroy(elt);
-
-        previewObjects.Clear();
-    }
-
-    private static void PreviewAction()
-    {
-        ClearPreview();
-
-        switch (selectedAction)
-        {
-            case Action.Knife:
-                PreviewKnife();
-                break;
-            case Action.Gun:
-                PreviewGun();
-                break;
-            case Action.Frag:
-            case Action.Smoke:
-            case Action.Gas:
-                PreviewGrenade();
-                break;
-            case Action.Distract:
-                PreviewDistraction();
-                break;
-        }
-
-    }
-
-    private static void PreviewSmoke()
-    {
-
-    }
-
     public IEnumerator Grenade(GameObject unit, Vector2 target, bool isDistraction=false)
     {
         PlayerMover.instance.GetComponent<Inventory>().Consume(isDistraction ?
@@ -278,35 +231,49 @@ public class ActionManager : MonoBehaviour
         // Animate grenade
         GameObject grenadeSprite = Instantiate(Globals.PROJECTILE, unit.transform.position, Quaternion.identity);
         grenadeSprite.GetComponent<PointFollower>().target = target;
+        grenadeSprite.GetComponent<PointFollower>().panSpeed = 3;
+        grenadeSprite.GetComponent<Projectile>().Initialize(1, isDistraction ? Projectile.Type.Distract : Projectile.Type.Frag, unit);
 
         yield return new WaitForSeconds(1);
-
-        if (!isDistraction)
-        {
-            GameObject explosion = Instantiate(Globals.EXPLOSION, target, Quaternion.identity);
-            explosion.transform.localScale = (0.2f + (0.4f * Globals.GRENADE_YELLOW_RANGE)) * Vector2.one;
-        }
-
-        GameObject tempNoise = Instantiate(Globals.NOISE, target, Quaternion.identity);
-        float volume = isDistraction ? Globals.DISTRACTION_VOLUME : Globals.GRENADE_VOLUME;
-        Noise.Source source = isDistraction ? Noise.Source.Distract : Noise.Source.Grenade;
-        tempNoise.GetComponent<Noise>().Initialize(unit.CompareTag("Player"), volume, source, unit.transform.position);
-
-        if (!isDistraction)
-        {
-            List<GameObject> units = ObjectContainer.GetAllUnits();
-            foreach (GameObject elt in units)
-            {
-                UnitStatus status = elt.GetComponent<UnitStatus>();
-                if (status)
-                    status.DamageHealth(DistanceToLevel(Vector2.Distance(elt.transform.position, target)));
-            }
-        }
 
         if (unit.GetComponent<PlayerMover>())
         {
             yield return new WaitForSeconds(0.25f);
             Sidebar.instance.FinishAction();
+        }
+    }
+
+    public void StartEnemyGrenade(GameObject unit, Vector2 target, bool isDistraction = false)
+    {
+        // Animate grenade
+        GameObject grenadeSprite = Instantiate(Globals.PROJECTILE, unit.transform.position, Quaternion.identity);
+        grenadeSprite.GetComponent<PointFollower>().target = target;
+        activeGrenades.Add(grenadeSprite);
+    }
+
+    public void UpdateEnemyGrenades()
+    {
+        foreach(GameObject grenade in activeGrenades)
+        {
+            if(grenade.GetComponent<PointFollower>().GetTimeAlive() >= 1)
+            {
+                // Explosion graphic
+                GameObject explosion = Instantiate(Globals.EXPLOSION, grenade.transform.position, Quaternion.identity);
+                explosion.transform.localScale = (0.2f + (0.4f * Globals.GRENADE_YELLOW_RANGE)) * Vector2.one;
+
+                // Noise graphic
+                GameObject tempNoise = Instantiate(Globals.NOISE, grenade.transform.position, Quaternion.identity);
+                tempNoise.GetComponent<Noise>().Initialize(false, Globals.GRENADE_VOLUME, Noise.Source.Grenade, grenade.transform.position);
+
+                // Damage units
+                List<GameObject> units = ObjectContainer.GetAllUnits();
+                foreach (GameObject elt in units)
+                {
+                    UnitStatus status = elt.GetComponent<UnitStatus>();
+                    if (status)
+                        status.DamageHealth(DistanceToLevel(Vector2.Distance(elt.transform.position, grenade.transform.position)));
+                }
+            }
         }
     }
 
@@ -357,7 +324,7 @@ public class ActionManager : MonoBehaviour
             tempNoise.GetComponent<Noise>().Initialize(unit.CompareTag("Player"), Globals.KNIFE_VOLUME, Noise.Source.Knife);
 
             // Create and format line
-            GameObject shotLine = DrawLine(origin, hit.point, Globals.BRIGHT_RED, unit.transform);
+            GameObject shotLine = ShapeManager.DrawLine(origin, hit.point, Globals.BRIGHT_RED, unit.transform);
             shotLine.transform.parent = unit.transform;
             LineRenderer shotRenderer = shotLine.GetComponent<LineRenderer>();
             shotRenderer.startWidth = shotRenderer.endWidth = 0.07f;
@@ -369,98 +336,8 @@ public class ActionManager : MonoBehaviour
         Sidebar.instance.FinishAction();
     }
 
-    private static void PreviewKnife()
-    {
-        Vector2 start = PlayerMover.instance.transform.position;
-        Vector2 direction = cursorPosition - start;
-        RaycastHit2D hit = Physics2D.Raycast(start, direction, Globals.KNIFE_RANGE, ~LayerMask.GetMask("Player"));
-        Vector2 end = hit.collider ? hit.point : start + (direction.normalized * Globals.KNIFE_RANGE);
-
-        LineRenderer renderer = DrawLine(start, end).GetComponent<LineRenderer>();
-
-        bool targetInRange = hit.collider != null && hit.collider.CompareTag("Enemy");
-        bool targetUnaware = targetInRange && hit.collider.gameObject.GetComponent<AutoMover>() && hit.collider.gameObject.GetComponent<AutoMover>().GetAwareness() != AutoMover.State.Alert;
-
-        if (!targetInRange)
-            Toast.ToastWrapper("No target in range");
-        else if(!targetUnaware)
-            Toast.ToastWrapper("Cannot knife alerted target");
-        else
-            Toast.ToastWrapper("Valid target selected");
-
-        renderer.material = (targetInRange && targetUnaware) ? Globals.BRIGHT_RED : Globals.BRIGHT_WHITE;
-        
-        renderer.startWidth = renderer.endWidth = 0.07f;
-        previewObjects.Add(renderer.gameObject);
-    }
-
-    private static void PreviewDistraction()
-    {
-        // Generate point where grenade will land
-        Vector2 playerPosition = PlayerMover.instance.transform.position;
-        float distance = Vector2.Distance(playerPosition, cursorPosition);
-        RaycastHit2D throwHit = Physics2D.Raycast(playerPosition, cursorPosition - playerPosition, Mathf.Min(10, distance), ~LayerMask.GetMask("Player"));
-        Vector2 center = throwHit.collider == null ? cursorPosition : throwHit.point;
-        attackPosition = center;
-
-        previewObjects.Add(DrawLine(playerPosition, center, Globals.BRIGHT_WHITE)); // player-to-grenade line
-        previewObjects.Add(DrawCircle(center, Globals.DISTRACTION_VOLUME, Globals.BRIGHT_RED));
-    }
-
-    private static void PreviewGrenade()
-    {
-        // Generate point where grenade will land
-        Vector2 playerPosition = PlayerMover.instance.transform.position;
-        float distance = Vector2.Distance(playerPosition, cursorPosition);
-        RaycastHit2D throwHit = Physics2D.Raycast(playerPosition, cursorPosition - playerPosition, Mathf.Min(10, distance), ~LayerMask.GetMask("Player"));
-        Vector2 center = throwHit.collider == null ? cursorPosition : throwHit.point;
-        attackPosition = center;
-
-        int damageLevel = DistanceToLevel(Vector2.Distance(playerPosition, center));
-
-        if (selectedAction != Action.Frag)
-        {
-            previewObjects.Add(DrawLine(playerPosition, center, damageLevel > 0 ? Globals.BRIGHT_RED : Globals.BRIGHT_WHITE)); // player-to-grenade line
-            previewObjects.Add(DrawCircle(center, Globals.GRENADE_YELLOW_RANGE, Globals.BRIGHT_WHITE));
-            return;
-        }
-
-        previewObjects.Add(DrawLine(playerPosition, center, LevelToColor(damageLevel))); // player-to-grenade line
-        previewObjects.Add(DrawCircle(center, Globals.GRENADE_YELLOW_RANGE, Globals.BRIGHT_YELLOW));
-        previewObjects.Add(DrawCircle(center, Globals.GRENADE_ORANGE_RANGE, Globals.ORANGE));
-        previewObjects.Add(DrawCircle(center, Globals.GRENADE_RED_RANGE, Globals.BRIGHT_RED));
-
-        // Circle should emanate from throw point, not cursor pos
-        // Does this include player?
-        List<GameObject> units = ObjectContainer.GetAllEnemies();
-        foreach(GameObject unit in units)
-        {
-            damageLevel = DistanceToLevel(Vector2.Distance(unit.transform.position, center));
-            if (damageLevel == 0)
-                continue;
-
-            RaycastHit2D hit = Physics2D.Raycast(center, (Vector2)unit.transform.position - center, Globals.GRENADE_YELLOW_RANGE);
-            if(hit.collider != null && hit.collider.gameObject == unit)
-            {
-                // Possibly use ternary for damage/stunTime with smoke/stun grenade, OR use damage for both
-                LineRenderer hitLine = DrawLine(center, unit.transform.position).GetComponent<LineRenderer>();
-                distance = Vector2.Distance(center, unit.transform.position);
-                hitLine.material = LevelToColor(damageLevel);
-
-                previewObjects.Add(hitLine.gameObject);
-            }
-            else
-            {
-                LineRenderer blueLine = DrawLine(center, hit.point).GetComponent<LineRenderer>();
-                blueLine.material = Globals.BRIGHT_BLUE;
-                previewObjects.Add(blueLine.gameObject);
-            }
-        }
-
-    }
-
     // Converts distance from grenade to target to damage level (0 = miss, 3 = point-blank)
-    private static int DistanceToLevel(float distance)
+    public static int DistanceToLevel(float distance)
     {
         if (distance < Globals.GRENADE_RED_RANGE)
             return 3;
@@ -470,105 +347,6 @@ public class ActionManager : MonoBehaviour
             return 1;
 
         return 0;
-    }
-
-    // Converts damage level (see DistanceToLevel() to corresponding material color)
-    private static Material LevelToColor(int level)
-    {
-        switch (level)
-        {
-            case 1:
-                return Globals.BRIGHT_YELLOW;
-            case 2:
-                return Globals.ORANGE;
-            case 3:
-                return Globals.BRIGHT_RED;
-            case 0:
-            default:
-                return Globals.BRIGHT_WHITE;
-        }
-    }
-
-    private static void PreviewGun()
-    {
-        Vector2 start = PlayerMover.instance.transform.position;
-        Vector2 direction = cursorPosition - start;
-        RaycastHit2D hit = Physics2D.Raycast(start, direction, 99, ~LayerMask.GetMask("Player"));
-
-        GameObject coneObject = new GameObject();
-        FieldOfView cone = coneObject.AddComponent<FieldOfView>();
-        cone.viewRadius = 24;
-        cone.viewAngle = 24;
-        coneObject.transform.position = start;
-        float destinationAngle = (int)Vector2.SignedAngle(Vector2.up, cursorPosition - start);
-        coneObject.transform.eulerAngles = new Vector3(0, 0, destinationAngle);
-        previewObjects.Add(coneObject);
-
-        LineRenderer renderer = DrawLine(start, hit.point).GetComponent<LineRenderer>();
-        renderer.material = Globals.BRIGHT_RED;
-        renderer.startWidth = renderer.endWidth = 0.07f;
-        previewObjects.Add(renderer.gameObject);
-    }
-
-    // Draw a single line between two points
-    public static GameObject DrawLine(Vector2 shotOrigin, Vector2 hitPoint, Material material=null, Transform parent=null, float width=0.07f)
-    {
-        GameObject shotObject = new GameObject();
-        if(parent != null)
-            shotObject.transform.parent = parent;
-
-        LineRenderer shotLine = shotObject.AddComponent<LineRenderer>();
-        shotLine.SetPositions(new Vector3[] { (Vector3)shotOrigin - Globals.EPSILON * Vector3.forward, (Vector3)hitPoint - Globals.EPSILON * Vector3.forward });
-
-        shotLine.startWidth = shotLine.endWidth = width;
-        shotLine.sortingLayerName = "Effects";
-        shotLine.material = (material == null ? Globals.BRIGHT_WHITE : material);
-        // shotLine.startWidth = shotLine.endWidth = 0.07f;
-
-        return shotObject;
-    }
-
-    // Draw a circle given a center and radius
-    public static GameObject DrawCircle(Vector2 center, float radius, Material material, int segments=50, float width=0.07f)
-    {
-        GameObject circleObject = new GameObject();
-        LineRenderer line = circleObject.AddComponent<LineRenderer>();
-        line.material = material;
-        line.startWidth = line.endWidth = width;
-        line.positionCount = segments + 1;
-        line.sortingLayerName = "Effects";
-
-        float angle = 20f;
-
-        for (int i = 0; i < (segments + 1); i++)
-        {
-            float x = Mathf.Sin(Mathf.Deg2Rad * angle) * radius; // xRadius for ellipse
-            float y = Mathf.Cos(Mathf.Deg2Rad * angle) * radius;
-
-            line.SetPosition(i, new Vector3(center.x + x, center.y + y, -Globals.EPSILON));
-            angle += (360f / segments);
-        }
-
-        return circleObject;
-    }
-
-    public float GetSecondsPlayed()
-    {
-        return Mathf.Round(100 * secondsPlayed) / 100.0f;
-    }
-
-    // LISTENERS ===============================================================
-
-    public void _OnClick(Vector2 mousePosition)
-    {
-        if (state == State.Aiming && selectedAction != Action.Gauze)
-        {
-            Sidebar.instance.actionConfirmButtons[1].interactable = true;
-            cursor.SetActive(true);
-            cursor.transform.position = new Vector3(mousePosition.x, mousePosition.y, -2 * Globals.EPSILON);
-            cursorPosition = mousePosition;
-            PreviewAction();
-        }
     }
 
 }

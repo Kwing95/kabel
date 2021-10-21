@@ -62,7 +62,7 @@ public class TransitionFader : MonoBehaviour
         if(SceneManager.GetActiveScene().name[0] == 'G')
             SaveService.UpdateLevelRecord(SceneManager.GetActiveScene().name,
                     PlayerMover.instance.GetComponent<Inventory>().wallet,
-                    ActionManager.instance.GetSecondsPlayed(),
+                    Timekeeper.instance.GetSecondsPlayed(),
                     PlayerMover.instance.GetComponent<UnitStatus>().GetHealthLost());
         else
         {

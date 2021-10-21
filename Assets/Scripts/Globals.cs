@@ -35,6 +35,7 @@ public class Globals : MonoBehaviour
     public static readonly float GAS_VOLUME = 5;
     public static readonly float DISTRACTION_VOLUME = 5;
     public static readonly float RUN_VOLUME = 3.5f;
+    public static readonly float WALK_VOLUME = 1f;
 
     public static readonly float GRENADE_RED_RANGE = 1.5f;
     public static readonly float GRENADE_ORANGE_RANGE = 3f;

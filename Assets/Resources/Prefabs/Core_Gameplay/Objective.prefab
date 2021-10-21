@@ -129,8 +129,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   outline: {fileID: 2715536100047346511}
   levelFinish: 1
-  message: 
-  messageFromScene: 0
+  messageId: 
 --- !u!1 &2715536101283207887
 GameObject:
   m_ObjectHideFlags: 0

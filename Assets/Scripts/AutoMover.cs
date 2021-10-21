@@ -11,6 +11,10 @@ public class AutoMover : MonoBehaviour
 
     private Rotator rotator;
 
+    [System.Serializable]
+    public enum AttackType { Gun, Frag, Gas }
+    public AttackType weaponEquipped = AttackType.Gun;
+
     public int leashLength = -1; // Maximum distance enemy will explore beyond patrol point
     public bool randomPatrol = false; // Determines if enemy patrols randomly or sequentially
     public int pointMemory = 0; // Number of points enemy can add to patrol upon spotting player
@@ -155,12 +159,12 @@ public class AutoMover : MonoBehaviour
     // Primarily affects movement when behavior needs to change
     private void EnemyMove()
     {
-        if (DistanceFromPlayer() <= 1.5f)
+        /*if (DistanceFromPlayer() <= 1.5f)
         {
             // AlertToPosition(player.transform.position);
             rotator.FacePoint(player.transform.position);
             SetAwareness(State.Alert);
-        }
+        }*/
 
         if(awareness == State.Alert &&
             route.Count == 1 &&
@@ -364,7 +368,18 @@ public class AutoMover : MonoBehaviour
         if (DistanceFromPlayer() <= 1)
             rotator.FacePoint(player.transform.position);
 
-        ActionManager.Gun(gameObject, player.transform.position);
+        switch (weaponEquipped)
+        {
+            case AttackType.Gun:
+                ActionManager.Gun(gameObject, player.transform.position);
+                break;
+            case AttackType.Frag:
+                break;
+            case AttackType.Gas:
+                break;
+
+        }
+
         attackCooldown = attackRate;
     }
 

@@ -90,7 +90,7 @@ public class DialogueParser : MonoBehaviour
     {
         int startIndex = Globals.GAME_SCRIPT.text.IndexOf("<" + _sceneName + ">") + 3 + _sceneName.Length;
         int endIndex = Globals.GAME_SCRIPT.text.IndexOf("</" + _sceneName + ">");
-        Debug.Log(startIndex + " " + endIndex);
+        // Debug.Log(startIndex + " " + endIndex);
         string dump = Globals.GAME_SCRIPT.text.Substring(startIndex, endIndex - startIndex);
         // Use \r\n for Windows and use \n for Linux
         dialogueList = dump.Split(new [] { "\r\n\r\n" }, StringSplitOptions.None).ToList();

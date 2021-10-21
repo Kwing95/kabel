@@ -114,11 +114,8 @@ public class Navigator : MonoBehaviour
                     mover.ChangeDirection(path[pathProgress] - (Vector2)transform.position, running);
                     pathProgress += 1;
 
-                    if (running)
-                    {
-                        GameObject tempNoise = Instantiate(Globals.NOISE, transform.position, Quaternion.identity);
-                        tempNoise.GetComponent<Noise>().Initialize(CompareTag("Player"), Globals.RUN_VOLUME, Noise.Source.Footsteps); // bad
-                    }
+                    GameObject tempNoise = Instantiate(Globals.NOISE, transform.position, Quaternion.identity);
+                    tempNoise.GetComponent<Noise>().Initialize(CompareTag("Player"), running ? Globals.RUN_VOLUME : Globals.WALK_VOLUME, Noise.Source.Footsteps); // bad
                 }
                 else
                 {

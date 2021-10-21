@@ -15,10 +15,15 @@ public class AutoVanish : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    public void Update()
     {
         counter += Time.deltaTime;
-        if(counter > timeToLive)
-            Destroy(gameObject);
+        if (counter > timeToLive)
+            SelfDestruct();
+    }
+
+    protected virtual void SelfDestruct()
+    {
+        Destroy(gameObject);
     }
 }
