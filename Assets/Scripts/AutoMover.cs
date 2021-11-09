@@ -374,12 +374,15 @@ public class AutoMover : MonoBehaviour
                 ActionManager.Gun(gameObject, player.transform.position);
                 break;
             case AttackType.Frag:
+                ActionManager.SpawnProjectile(gameObject, player.transform.position, Projectile.Type.Frag);
                 break;
             case AttackType.Gas:
+                ActionManager.SpawnProjectile(gameObject, player.transform.position, Projectile.Type.Gas);
                 break;
 
         }
 
+        ActionManager.Gun(gameObject, player.transform.position);
         attackCooldown = attackRate;
     }
 

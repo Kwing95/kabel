@@ -20,6 +20,7 @@ public class Sidebar : MonoBehaviour
 
     public GameObject pauseMenu;
     public GameObject retryMenu;
+    public AlphaSlider pauseDimmer;
 
     public List<Button> allButtons;
     public List<Button> actionConfirmButtons;
@@ -140,6 +141,10 @@ public class Sidebar : MonoBehaviour
     public void ActionPause(bool paused)
     {
         actionPaused = paused;
+
+        // Necessary for message dialogue
+        pauseDimmer.targetAlpha = paused ? 0.5f : 0; 
+
         RefreshAllActionButtons();
 
         PlayerMover.instance.enabled = !paused;

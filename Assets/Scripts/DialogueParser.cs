@@ -14,6 +14,7 @@ public class DialogueParser : MonoBehaviour
     public static string sceneToLoad = "";
 
     public string sceneName = "";
+    public Button prevButton;
     public TextMeshProUGUI dialogueBox;
     public bool isCutscene = true;
 
@@ -34,6 +35,7 @@ public class DialogueParser : MonoBehaviour
             sceneName = sceneToLoad;            
 
         ParseScene(sceneName);
+        RefreshIncrementButtons();
     }
 
     // Update is called once per frame
@@ -49,6 +51,13 @@ public class DialogueParser : MonoBehaviour
             IncrementLine(-1);
         else if(dialogueBox.pageToDisplay > dialogueBox.textInfo.pageCount)
             IncrementLine(1);
+
+        RefreshIncrementButtons();
+    }
+
+    private void RefreshIncrementButtons()
+    {
+        prevButton.interactable = !(dialogueBox.pageToDisplay == 1 && currentLine == 0);
     }
 
     private void IncrementLine(int increment)

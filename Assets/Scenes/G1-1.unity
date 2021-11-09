@@ -58787,6 +58787,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4735645799990054809, guid: 689dec23ed23ba449b59afe2a3d15182,
         type: 3}
+      propertyPath: weaponEquipped
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4735645799990054809, guid: 689dec23ed23ba449b59afe2a3d15182,
+        type: 3}
       propertyPath: route.Array.size
       value: 0
       objectReference: {fileID: 0}

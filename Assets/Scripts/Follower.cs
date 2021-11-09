@@ -21,10 +21,14 @@ public class Follower : MonoBehaviour
     // Update is called once per frame
     void LateUpdate()
     {
-        if(subject.GetCanTurn() && Vector2.Distance(transform.position, subject.transform.position + offset) <= closeEnough)
+        bool playerIsMoving = subject.GetCanTurn();
+        bool isCloseEnough = Vector2.Distance(transform.position, subject.transform.position + offset) <= closeEnough;
+        bool inMoveState = ActionManager.GetState() == ActionManager.State.Moving;
+
+        if ((playerIsMoving && isCloseEnough) || !inMoveState)
             paused = true;
 
-        if (paused && !subject.GetCanTurn())
+        if (paused && !playerIsMoving && inMoveState)
             paused = false;
 
         if(!paused)

@@ -86,14 +86,22 @@ Oct 21, 2021
  + Enemies should not damage themselves
  + Fixed aiming bug from PreviewManager refactor
 
+Oct 22, 2021
+ + Enemy grenades work
+
+Oct 25, 2021
+ + Back button disabled when at beginning of cutscene
+ + Screen dims in Action Menu
+ + Camera following always pauses in action menu now
+ + Enemy friendly fire should be disabled
+
+ - Detailed unit health data during "dimmed" action pause
  - Revise tutorial (narrow start, start on movement message, make knifing easier)
- - Disable non-essential buttons (chapter, cutscene)
- - Disable enemy friendly fire
+ - Disable non-essential buttons (chapter)
  - Make distract/knife easier
 
  - Make it clear when player is taking damage
  - Arcade mode
- - Enemy grenades
  - Use multithreading for HideMover
  - Save file to unlock next level
  - Platform-agnostic controls (menu options and cursor movement)

@@ -23,8 +23,6 @@ public class ActionManager : MonoBehaviour
     private static Action selectedAction;
     public static ActionManager instance;
 
-    private static List<GameObject> activeGrenades;
-
     /*
      Quick reference
        Click Action: ActionPause true, SetState actionPause, ShowMenu 1
@@ -44,12 +42,11 @@ public class ActionManager : MonoBehaviour
     {
         instance = this;
         ResetStatics();
-        activeGrenades = new List<GameObject>();
     }
 
     private void Update()
     {
-        UpdateEnemyGrenades();
+
     }
 
     private void ResetStatics()
@@ -72,6 +69,9 @@ public class ActionManager : MonoBehaviour
     public static void SetState(State newState)
     {
         state = newState;
+
+        // Necessary for un-dimming during aiming
+        Sidebar.instance.pauseDimmer.targetAlpha = state == State.ActionPause ? 0.5f : 0;
 
         if (state != State.Aiming && state != State.ConfirmMove)
         {
@@ -223,58 +223,29 @@ public class ActionManager : MonoBehaviour
         unit.GetComponent<BoxCollider2D>().enabled = true;
     }
 
+    // Coroutine for player-deployed grenade
     public IEnumerator Grenade(GameObject unit, Vector2 target, bool isDistraction=false)
     {
         PlayerMover.instance.GetComponent<Inventory>().Consume(isDistraction ?
             Inventory.ItemType.Distract : Inventory.ItemType.Frag);
 
-        // Animate grenade
-        GameObject grenadeSprite = Instantiate(Globals.PROJECTILE, unit.transform.position, Quaternion.identity);
-        grenadeSprite.GetComponent<PointFollower>().target = target;
-        grenadeSprite.GetComponent<PointFollower>().panSpeed = 3;
-        grenadeSprite.GetComponent<Projectile>().Initialize(1, isDistraction ? Projectile.Type.Distract : Projectile.Type.Frag, unit);
+        SpawnProjectile(unit, target, isDistraction ? Projectile.Type.Distract : Projectile.Type.Frag);
 
+        // Time to detonate
         yield return new WaitForSeconds(1);
 
-        if (unit.GetComponent<PlayerMover>())
-        {
-            yield return new WaitForSeconds(0.25f);
-            Sidebar.instance.FinishAction();
-        }
+        // Animate pause
+        yield return new WaitForSeconds(0.25f);
+        Sidebar.instance.FinishAction();
+
     }
 
-    public void StartEnemyGrenade(GameObject unit, Vector2 target, bool isDistraction = false)
+    public static void SpawnProjectile(GameObject user, Vector2 target, Projectile.Type projectileType)
     {
-        // Animate grenade
-        GameObject grenadeSprite = Instantiate(Globals.PROJECTILE, unit.transform.position, Quaternion.identity);
-        grenadeSprite.GetComponent<PointFollower>().target = target;
-        activeGrenades.Add(grenadeSprite);
-    }
-
-    public void UpdateEnemyGrenades()
-    {
-        foreach(GameObject grenade in activeGrenades)
-        {
-            if(grenade.GetComponent<PointFollower>().GetTimeAlive() >= 1)
-            {
-                // Explosion graphic
-                GameObject explosion = Instantiate(Globals.EXPLOSION, grenade.transform.position, Quaternion.identity);
-                explosion.transform.localScale = (0.2f + (0.4f * Globals.GRENADE_YELLOW_RANGE)) * Vector2.one;
-
-                // Noise graphic
-                GameObject tempNoise = Instantiate(Globals.NOISE, grenade.transform.position, Quaternion.identity);
-                tempNoise.GetComponent<Noise>().Initialize(false, Globals.GRENADE_VOLUME, Noise.Source.Grenade, grenade.transform.position);
-
-                // Damage units
-                List<GameObject> units = ObjectContainer.GetAllUnits();
-                foreach (GameObject elt in units)
-                {
-                    UnitStatus status = elt.GetComponent<UnitStatus>();
-                    if (status)
-                        status.DamageHealth(DistanceToLevel(Vector2.Distance(elt.transform.position, grenade.transform.position)));
-                }
-            }
-        }
+        GameObject projectile = Instantiate(Globals.PROJECTILE, user.transform.position, Quaternion.identity);
+        projectile.GetComponent<PointFollower>().target = target;
+        projectile.GetComponent<PointFollower>().panSpeed = 3;
+        projectile.GetComponent<Projectile>().Initialize(1, projectileType, user);
     }
 
     public IEnumerator GasGrenade(GameObject unit, Vector2 target)

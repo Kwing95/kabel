@@ -10,7 +10,7 @@ public class Grapher : MonoBehaviour
 
     public const int INFINITY = 1073741823;
     public const int QUEUE_MAX = 45;
-    public static readonly List<Vector2> cardinals =
+    public static readonly List<Vector2> CARDINALS =
         new List<Vector2>(new Vector2[] { Vector2.right, Vector2.left,
             Vector2.up, Vector2.down });
 
@@ -116,12 +116,12 @@ public class Grapher : MonoBehaviour
 
     private void AddAdjacent(Queue<Vector2> queue, List<Vector2> visited, Vector2 point)
     {
-        for (int i = 0; i < cardinals.Count; ++i)
+        for (int i = 0; i < CARDINALS.Count; ++i)
         {
-            if (!visited.Contains(point + cardinals[i]) && PointIsClear(point + cardinals[i]))
+            if (!visited.Contains(point + CARDINALS[i]) && PointIsClear(point + CARDINALS[i]))
             {
-                queue.Enqueue(point + cardinals[i]);
-                visited.Add(point + cardinals[i]);
+                queue.Enqueue(point + CARDINALS[i]);
+                visited.Add(point + CARDINALS[i]);
             }
         }
     }

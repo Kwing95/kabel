@@ -62,6 +62,10 @@ public class Projectile : AutoVanish
         List<GameObject> units = ObjectContainer.GetAllUnits();
         foreach (GameObject elt in units)
         {
+            // elt == user for don't hurt self, CompareTag("Enemy") for any ally
+            if (user.CompareTag("Enemy") && elt.CompareTag("Enemy")) 
+                continue;
+
             RaycastHit2D hit = Physics2D.Raycast(target, (Vector2)elt.transform.position - target, Globals.GRENADE_YELLOW_RANGE);
             if (hit.collider != null && hit.collider.gameObject == elt)
             {

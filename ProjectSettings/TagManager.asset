@@ -8,6 +8,7 @@ TagManager:
   - Sight
   - Sound
   - Enemy
+  - Divider
   layers:
   - Default
   - TransparentFX
