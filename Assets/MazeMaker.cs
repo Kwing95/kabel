@@ -49,35 +49,63 @@ public class MazeMaker : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
+    }
+
+    private void GenerateMaze()
+    {
+        // Create basic maze
+        CreateEmptyGraph();
+        stack = new Stack<Vector2>();
+        stack.Push(GetRandomPoint());
+        while (stack.Count > 0)
+            VisitNeighbor();
+
+        // Generate graph
+        GenerateNeighborGrid();
+
+        // Deform graph
+        CreateIslands(2 * width * height);
+        for(int i = 0; i < 10 * width * height; ++i)
+            ReinforceWalls(1, 1);
+
+        for (int i = 0; i < 5 * width * height; ++i)
+            ReinforceWalls(1, 2);
+
     }
 
     // OBSTACLE-RELATED FUNCTIONS =======================================
 
-    // access random vacant point in order to create obstacles
-    // check vacant point is eligible
-
-    // 2D array of ints, the int denotes how many neighbors a tile has (1 = 0 neighbors, 2 = 1 neighbor, k = k-1 neighbors)
-    // possibly have number of neighbors increase exponentially to incentivize clusters
-
-    // or, create N "floating walls" with no neighbors, then ONLY place tiles where neighbors are
-
-    // special case: value of -1 means a tile cannot be added here (it might block a path, or it may already be occupied)
-
-    // to select weighted random: create sum of all values (exclude elts with value of -1), select random(0, sum) and subtract
-    // value of elt from each element until subtraction makes random number <= 0, then add a tile there
-    // refresh availability of this cell's neighbors, then repeat
-
-    private void ReinforceWalls(int numTiles)
+    private void ReinforceWalls(int numTiles, int minNeighbors=2)
     {
+
         // Create list of candidates
         List<Vector2> candidates = new List<Vector2>();
         for (int i = 0; i < height * cellLength; ++i)
             for (int j = 0; j < width * cellLength; ++j)
-                if (neighborGrid[i][j] > 0)
+                if (neighborGrid[i][j] >= minNeighbors)
                     candidates.Add(new Vector2(j, i));
 
+        for(int i = 0; i < numTiles; ++i)
+        {
+            int index = Random.Range(0, candidates.Count);
+            GameObject newWall = Instantiate(Globals.WALL, candidates[index], Quaternion.identity);
+            newWall.transform.parent = wallsContainer.transform;
 
+            // Remove new wall from candidates and add neighbors if applicable
+            // NOTE: Contains and Remove are O(n) operations and may slow execution
+            neighborGrid[(int)candidates[index].y][(int)candidates[index].x] = -2;
+
+            foreach (Vector2 border in GetBorders(candidates[index]))
+                if (InBounds(border) && neighborGrid[(int)border.y][(int)border.x] != -2)
+                {
+                    neighborGrid[(int)border.y][(int)border.x] = PointIsEligible(border) ? GetNeighborCount(border) : -1;
+                    if (neighborGrid[(int)border.y][(int)border.x] >= minNeighbors && !candidates.Contains(border))
+                        candidates.Add(border);
+                }
+
+            candidates.Remove(candidates[index]);
+        }
 
     }
 
@@ -208,26 +236,9 @@ public class MazeMaker : MonoBehaviour
         return borders;
     }
 
-    // initialize everything to 0 neighbors
-    // set all tiles to numNeighbors (-2 if wall)
-    // set all ineligible tiles to -1
-
     // MAZE-RELATED FUNCTIONS ===========================================
 
     // Generates a maze by removing wall pieces
-    private void GenerateMaze()
-    {
-        // Create basic maze
-        CreateEmptyGraph();
-        stack = new Stack<Vector2>();
-        stack.Push(GetRandomPoint());
-        while(stack.Count > 0)
-            VisitNeighbor();
-
-        // Generate graph
-        GenerateNeighborGrid();
-        CreateIslands(2 * width * height);
-    }
 
     // Visits a random neighbor, marking it as visited and removing the wall
     private void VisitNeighbor()
