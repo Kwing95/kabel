@@ -53,6 +53,7 @@ public class Globals : MonoBehaviour
     public static readonly GameObject UNIT_SPRITE = Resources.Load<GameObject>("Prefabs/Core_Gameplay/Figure");
     public static readonly GameObject WALL = Resources.Load<GameObject>("Prefabs/Environment/Wall");
     public static readonly GameObject LEVEL_BUTTON = Resources.Load<GameObject>("Prefabs/UI/Level_Button");
+    public static readonly GameObject DIGIT = Resources.Load<GameObject>("Prefabs/Digit");
 
     // MATERIALS
     public static readonly Material WHITE = Resources.Load<Material>("Materials/White");

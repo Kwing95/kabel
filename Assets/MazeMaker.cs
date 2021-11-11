@@ -1,15 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class MazeMaker : MonoBehaviour
 {
 
+    public GameObject wallsContainer;
+    public int cellLength = 10;
     public int width = 5;
     public int height = 5;
 
     private List<List<bool>> visited;
-    private int numUnvisited = 0;
+    private List<List<int>> neighborGrid;
     private Stack<Vector2> stack;
     
 
@@ -17,6 +20,30 @@ public class MazeMaker : MonoBehaviour
     void Awake()
     {
         GenerateMaze();
+
+        // PrintMinesweeper();
+    }
+
+    private void PrintMinesweeper()
+    {
+        // Fill in zeroes with number of neighbors, unless point is ineligible (in which case set to -1)
+        for (int i = 0; i < height * cellLength; ++i)
+            for (int j = 0; j < width * cellLength; ++j)
+            {
+                if (neighborGrid[i][j] != -2)
+                    neighborGrid[i][j] = PointIsEligible(new Vector2(j, i)) ? GetNeighborCount(new Vector2(j, i)) : -1;
+
+                GameObject label = Instantiate(Globals.DIGIT, new Vector2(j + 1, i + 1), Quaternion.identity);
+                string output;
+                if (neighborGrid[i][j] == -2)
+                    output = "B";
+                else if (neighborGrid[i][j] == -1)
+                    output = "n";
+                else
+                    output = neighborGrid[i][j].ToString();
+
+                label.GetComponent<TMPro.TextMeshPro>().text = output;
+            }
     }
 
     // Update is called once per frame
@@ -25,17 +52,184 @@ public class MazeMaker : MonoBehaviour
         
     }
 
+    // OBSTACLE-RELATED FUNCTIONS =======================================
+
+    // access random vacant point in order to create obstacles
+    // check vacant point is eligible
+
+    // 2D array of ints, the int denotes how many neighbors a tile has (1 = 0 neighbors, 2 = 1 neighbor, k = k-1 neighbors)
+    // possibly have number of neighbors increase exponentially to incentivize clusters
+
+    // or, create N "floating walls" with no neighbors, then ONLY place tiles where neighbors are
+
+    // special case: value of -1 means a tile cannot be added here (it might block a path, or it may already be occupied)
+
+    // to select weighted random: create sum of all values (exclude elts with value of -1), select random(0, sum) and subtract
+    // value of elt from each element until subtraction makes random number <= 0, then add a tile there
+    // refresh availability of this cell's neighbors, then repeat
+
+    private void ReinforceWalls(int numTiles)
+    {
+        // Create list of candidates
+        List<Vector2> candidates = new List<Vector2>();
+        for (int i = 0; i < height * cellLength; ++i)
+            for (int j = 0; j < width * cellLength; ++j)
+                if (neighborGrid[i][j] > 0)
+                    candidates.Add(new Vector2(j, i));
+
+
+
+    }
+
+    private void CreateIslands(int numIslands)
+    {
+        // FIXME: Should candidates be refreshed after each wall is added?
+
+        // Create list of potential islands
+        List<Vector2> candidates = new List<Vector2>();
+        List<int> indexes = new List<int>();
+        for (int i = 0; i < height * cellLength; ++i)
+            for (int j = 0; j < width * cellLength; ++j)
+                if (neighborGrid[i][j] == 0)
+                    candidates.Add(new Vector2(j, i));
+
+        // Generate indices
+        while(indexes.Count < numIslands)
+        {
+            int newIndex = Random.Range(0, candidates.Count);
+            if (!indexes.Contains(newIndex))
+                indexes.Add(newIndex);
+        }
+
+        // For each island, create wall
+        for(int i = 0; i < indexes.Count; ++i)
+        {
+            GameObject newWall = Instantiate(Globals.WALL, candidates[indexes[i]], Quaternion.identity);
+            newWall.transform.parent = wallsContainer.transform;
+
+            // Update 
+            neighborGrid[(int)candidates[indexes[i]].y][(int)candidates[indexes[i]].x] = -2;
+            foreach(Vector2 border in GetBorders(candidates[indexes[i]]))
+                if(InBounds(border) && neighborGrid[(int)border.y][(int)border.x] != -2)
+                    neighborGrid[(int)border.y][(int)border.x] = PointIsEligible(border) ? GetNeighborCount(border) : -1;
+        }
+    }
+
+    private bool PointIsEligible(Vector2 point)
+    {
+        bool onGroup = false;
+        int numGroups = 0;
+
+        List<Vector2> borders = GetBorders(point);
+        Vector2 last = borders[borders.Count - 1];
+
+        foreach (Vector2 border in borders)
+        {
+            // If we're not on a group yet and find a wall, we've found a new group and are on a group
+            if ((!InBounds(border) || neighborGrid[(int)border.y][(int)border.x] == -2) && !onGroup)
+            {
+                ++numGroups;
+                onGroup = true;
+            }
+            // If we're on a group and find a vacancy, we're no longer on a group
+            else if (InBounds(border) && neighborGrid[(int)border.y][(int)border.x] != -2 && onGroup)
+                onGroup = false;
+        }
+
+        if((!InBounds(borders[0]) || neighborGrid[(int)borders[0].y][(int)borders[0].x] == -2) &&
+            (!InBounds(last) || neighborGrid[(int)last.y][(int)last.x] == -2))
+        {
+            --numGroups;
+        }
+
+        // 2+ groups means we can't place a wall here
+        return numGroups <= 1;
+    }
+
+    private void GenerateNeighborGrid()
+    {
+        // Initialize grid of -2 for walls and 0 for empty space
+        neighborGrid = new List<List<int>>();
+        for (int i = 0; i < height * cellLength; ++i)
+        {
+            neighborGrid.Add(new List<int>());
+            for (int j = 0; j < width * cellLength; ++j)
+                neighborGrid[i].Add(Grapher.PointIsClear(new Vector2(j, i)) ? 0 : -2);
+        }
+
+        // Fill in zeroes with number of neighbors, unless point is ineligible (in which case set to -1)
+        for (int i = 0; i < height * cellLength; ++i)
+            for (int j = 0; j < width * cellLength; ++j)
+                if(neighborGrid[i][j] == 0)
+                {
+                    
+                    neighborGrid[i][j] = PointIsEligible(new Vector2(j, i)) ? GetNeighborCount(new Vector2(j, i)) : -1;
+                    //GameObject label = Instantiate(Globals.DIGIT, new Vector2(j + 1, i + 1), Quaternion.identity);
+                    ///label.GetComponent<TMPro.TextMeshPro>().text = neighborGrid[i][j].ToString();
+                }
+                    
+    }
+    
+    private int GetNeighborCount(Vector2 point)
+    {
+        if(!Grapher.PointIsClear(point))
+            return -2;
+
+        int numNeighbors = 0;
+        // Out of bounds means a wall (-2) by definition
+        foreach(Vector2 border in GetBorders(point))
+            if(!InBounds(border) || neighborGrid[(int)border.y][(int)border.x] == -2)
+                ++numNeighbors;
+
+        return numNeighbors;
+    }
+
+    private bool InBounds(Vector2 point)
+    {
+        return Mathf.Clamp(point.x, 0, (cellLength * width) - 1) == point.x &&
+                Mathf.Clamp(point.y, 0, (cellLength * height) - 1) == point.y;
+    }
+
+    // Returns all bordering tiles, culling any that fall out of bounds
+    private List<Vector2> GetBorders(Vector2 point)
+    {
+        List<Vector2> borders = new List<Vector2>();
+        foreach (Vector2 offset in Grapher.BORDERS)
+        {
+            float x = point.x + offset.x;
+            float y = point.y + offset.y;
+
+            //if (Mathf.Clamp(x, 0, (cellLength * width) - 1) == x &&
+            //    Mathf.Clamp(y, 0, (cellLength * height) - 1) == y)
+            //{
+                borders.Add(new Vector2(x, y));
+            //}
+        }
+        return borders;
+    }
+
+    // initialize everything to 0 neighbors
+    // set all tiles to numNeighbors (-2 if wall)
+    // set all ineligible tiles to -1
+
+    // MAZE-RELATED FUNCTIONS ===========================================
+
+    // Generates a maze by removing wall pieces
     private void GenerateMaze()
     {
+        // Create basic maze
         CreateEmptyGraph();
         stack = new Stack<Vector2>();
         stack.Push(GetRandomPoint());
         while(stack.Count > 0)
-        {
             VisitNeighbor();
-        }
+
+        // Generate graph
+        GenerateNeighborGrid();
+        CreateIslands(2 * width * height);
     }
 
+    // Visits a random neighbor, marking it as visited and removing the wall
     private void VisitNeighbor()
     {
         Vector2 oldPoint = stack.Peek();
@@ -57,12 +251,14 @@ public class MazeMaker : MonoBehaviour
         stack.Push(newPoint);
     }
 
+    // Gets all unvisited neighbors of current, then returns a random item from the list
     private Vector2 GetRandomNeighbor(Vector2 current)
     {
         List<Vector2> neighbors = GetUnvisitedNeighbors(current);
         return neighbors.Count > 0 ? neighbors[Random.Range(0, neighbors.Count)] : new Vector2(-1, -1);
     }
 
+    // Checks adds all neighboring points to current that have not been visited
     private List<Vector2> GetUnvisitedNeighbors(Vector2 current)
     {
         List<Vector2> result = new List<Vector2>();
@@ -81,15 +277,16 @@ public class MazeMaker : MonoBehaviour
         return result;
     }
 
+    // Selects random point inside graph
     private Vector2 GetRandomPoint()
     {
         return new Vector2(Random.Range(0, width), Random.Range(0, height));
     }
 
+    // Initializes visited to a grid of all unvisited points
     private void CreateEmptyGraph()
     {
         visited = new List<List<bool>>();
-        numUnvisited = width * height;
 
         for (int i = 0; i < height; ++i)
         {
@@ -99,11 +296,17 @@ public class MazeMaker : MonoBehaviour
         }
     }
 
+    // Removes a Divider given cell coordinates rather than world coordinates
     private void RemoveWallGraph(Vector2 cellA, Vector2 cellB)
     {
-        RemoveWallWorld(new Vector2(10 + (20 * cellA.x), 10 + (20 * cellA.y)), new Vector2(10 + (20 * cellB.x), 10 + (20 * cellB.y)));
+        int halfLength = cellLength / 2;
+        Vector2 centerA = new Vector2(halfLength + (cellLength * cellA.x), halfLength + (cellLength * cellA.y));
+        Vector2 centerB = new Vector2(halfLength + (cellLength * cellB.x), halfLength + (cellLength * cellB.y));
+
+        RemoveWallWorld(centerA, centerB);
     }
 
+    // Creates a raycast between start and end and removes any Divider caught in the middle
     private void RemoveWallWorld(Vector2 start, Vector2 end)
     {
         float distance = Vector2.Distance(start, end);

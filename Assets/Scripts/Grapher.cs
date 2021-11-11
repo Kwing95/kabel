@@ -10,6 +10,14 @@ public class Grapher : MonoBehaviour
 
     public const int INFINITY = 1073741823;
     public const int QUEUE_MAX = 45;
+    public static readonly List<Vector2> BORDERS = new List<Vector2>(new Vector2[] {
+        new Vector2(-1, 1), Vector2.up, new Vector2(1, 1),
+        Vector2.right, new Vector2(1, -1), Vector2.down,
+        new Vector2(-1, -1), Vector2.left
+    });
+    public static readonly List<Vector2> DIAGONALS =
+        new List<Vector2>(new Vector2[] { new Vector2(-1, 1), new Vector2(1, 1),
+            new Vector2(-1, -1), new Vector2(1, -1) });
     public static readonly List<Vector2> CARDINALS =
         new List<Vector2>(new Vector2[] { Vector2.right, Vector2.left,
             Vector2.up, Vector2.down });
@@ -64,6 +72,7 @@ public class Grapher : MonoBehaviour
         for (int y = 0; y < mapHeight; ++y)
             for (int x = 0; x < mapWidth; ++x)
                 graph[y, x] = PointIsClear(entryPoint + new Vector2(x, y));
+                
     }
 
     private static bool InBounds(Vector2 point)
@@ -84,13 +93,13 @@ public class Grapher : MonoBehaviour
         return Mathf.Abs(pointA.x - pointB.x) + Mathf.Abs(pointA.y - pointB.y);
     }
 
-    private static bool PointIsClear(Vector2 point)
+    public static bool PointIsClear(Vector2 point)
     {
         RaycastHit2D hit = Physics2D.Raycast(point, Vector2.zero, 0/*, mask*/);
         if (hit.collider != null)
         {
             //return false;
-            return !hit.collider.CompareTag("Wall");
+            return !(hit.collider.CompareTag("Wall") || hit.collider.CompareTag("Divider"));
         }
         return true;
     }

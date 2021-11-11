@@ -95,6 +95,15 @@ Oct 25, 2021
  + Camera following always pauses in action menu now
  + Enemy friendly fire should be disabled
 
+Nov 8, 2021
+ + RandomMap creates random mazes
+
+ - Make levels repeatable (seeding number)
+ - Make RandomMap smaller (50x50 maybe)
+ - Remove additional walls
+ - Add additional wall tiles inside maze without blocking paths
+
+ - Increased distance player can indirectly move
  - Detailed unit health data during "dimmed" action pause
  - Revise tutorial (narrow start, start on movement message, make knifing easier)
  - Disable non-essential buttons (chapter)

@@ -6208,7 +6208,7 @@ GameObject:
   - component: {fileID: 7990036067324883870}
   - component: {fileID: 1599805414476205480}
   m_Layer: 0
-  m_Name: Divider
+  m_Name: Divider_20
   m_TagString: Divider
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
