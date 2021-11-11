@@ -1,75 +1,5 @@
 ﻿/*
 
-Aug 10, 2021
- + Working dialogue parser for scenes and in-game prompts
- + Partial implementation for 3D walls
- + Implemented Distract action
-
-Aug 15, 2021
- + Prototypes of G1-1 through G1-3
- + Radial action button refresh
-
-Aug 21, 2021
- + Enemy AI is smarter responding to grenades
- + Framework for specific behavior regarding sight/sound
-
-Aug 29, 2021
- + Enemy -> corpse -> player inventory
-
-Aug 29, 2021
- + Enemies investigate corpses
- + Medkits are enabled
-
-Aug 31, 2021
- + Save is created
- + All scenes use new ObjectContainer
-
-Sep 1, 2021
- + Enemies no longer freeze from corpses
-
-Sep 5, 2021
- + Level Selector can generate buttons from List<LevelData> and infer level data
-
-Sep 6, 2021
- + Cutscene parsing fixed
- + Inventory system handles wallet
-
-Sep 7, 2021
- + Game saves (time, wallet, damageTaken) values
- + Created HideMover which seeks cover from player
-
-Sep 8, 2021
- + Enemy confuse runs on timer instead of coroutine
-
-Sep 13, 2021
- + Sidebar uses updated button styling
- + Fixed bad health indicator
- + Completion time now rounds to 2 decimal places
-
-Sep 16, 2021
- + Can navigate from title screen to level select, placeholders for Extras and Options menus
-
-Sep 19, 2021
- + Can navigate to TextCutscene scene to read script if no scene exists
-
-Sep 25, 2021
- + Cutscenes are now loaded from gameScript.txt instead of hardcoded into Inspector
- + Added LevelData in Globals for Chapter 2 and some of Chapter 3
-
-Sep 26, 2021
- + Inventory determines whether or not player can use an item
- + Items are consumed when used
-
-Sep 27, 2021
- + Player gun is more accurate
- + Player line of sight limited by blindfold object
- + Retry menu appears when player dies
-
-Sep 28, 2021
- + Fixed glitch where gun aim was off when attacking before moving
- + Can restart/skip/quit from cutscenes
- + Can view cutscenes without dedicated scenes
-
 Oct 8, 2021
  + Balanced game based on scarcity
  + Partial work on refactoring ActionManager
@@ -98,12 +28,17 @@ Oct 25, 2021
 Nov 8, 2021
  + RandomMap creates random mazes
 
- - Make levels repeatable (seeding number)
- - Make RandomMap smaller (50x50 maybe)
- - Remove additional walls
- - Add additional wall tiles inside maze without blocking paths
+Nov 10, 2021
+ + Random map now has a few walls missing
+ + Random mazes now have islands and deformities
 
- - Increased distance player can indirectly move
+Nov 11, 2021
+ + Reorganized Scripts folder
+
+ - Make levels repeatable (seeding number)
+ - Remove additional walls
+
+ - Increased distance player can indirectly move (maybe path to raycast, then Dijkstra's?)
  - Detailed unit health data during "dimmed" action pause
  - Revise tutorial (narrow start, start on movement message, make knifing easier)
  - Disable non-essential buttons (chapter)
@@ -120,6 +55,8 @@ Nov 8, 2021
  - AI sometimes walks through/into walls
  - AI sometimes freezes during yellow patrol
  - Parallax foreground 3D walls
+
+ - Gas inhibits sight distance, firing accuracy, and action cooldown
 
  - Tear gas was invented in 20s; rubber bullets, mace, and stun grenades not until 60s and later
  - Grenade can sometimes be thrown infinite distance (probably when aiming farther than max)
@@ -156,16 +93,11 @@ MAIN MENU
 
  - Possibly refactor PanZoom to use ClickManager, refactor ClickManager for general use?
 
- - Touching enemies is weird (not important if sound is added for walking too)
  - Enemies can probably hit overlapping enemies (make gun start projected one tile out)
  - Pathfinding should include hybrid of Dijkstra's and direct
  - Figure out health system
- - Cooldown and movement based on health (-1 HP = -1 move, -1 focus = +1 act cooldown)
-   - Replace Focus with status ailment? Reduce movement/increase cooldown?
- - Limit ammunition
- - Limit player's field of view
  - Stationary enemies have "leashLength" so they guard certain points
- - Implement player stun (pauses action cooldown AND movement)
+ - Implement player stun (pauses action cooldown AND movement) (?)
 
  */
 

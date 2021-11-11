@@ -138,6 +138,76 @@ June 12, 2021
 July 5, 2021
  + Can use pause menu to navigate between scenes
 
+Aug 10, 2021
+ + Working dialogue parser for scenes and in-game prompts
+ + Partial implementation for 3D walls
+ + Implemented Distract action
+
+Aug 15, 2021
+ + Prototypes of G1-1 through G1-3
+ + Radial action button refresh
+
+Aug 21, 2021
+ + Enemy AI is smarter responding to grenades
+ + Framework for specific behavior regarding sight/sound
+
+Aug 29, 2021
+ + Enemy -> corpse -> player inventory
+
+Aug 29, 2021
+ + Enemies investigate corpses
+ + Medkits are enabled
+
+Aug 31, 2021
+ + Save is created
+ + All scenes use new ObjectContainer
+
+Sep 1, 2021
+ + Enemies no longer freeze from corpses
+
+Sep 5, 2021
+ + Level Selector can generate buttons from List<LevelData> and infer level data
+
+Sep 6, 2021
+ + Cutscene parsing fixed
+ + Inventory system handles wallet
+
+Sep 7, 2021
+ + Game saves (time, wallet, damageTaken) values
+ + Created HideMover which seeks cover from player
+
+Sep 8, 2021
+ + Enemy confuse runs on timer instead of coroutine
+
+Sep 13, 2021
+ + Sidebar uses updated button styling
+ + Fixed bad health indicator
+ + Completion time now rounds to 2 decimal places
+
+Sep 16, 2021
+ + Can navigate from title screen to level select, placeholders for Extras and Options menus
+
+Sep 19, 2021
+ + Can navigate to TextCutscene scene to read script if no scene exists
+
+Sep 25, 2021
+ + Cutscenes are now loaded from gameScript.txt instead of hardcoded into Inspector
+ + Added LevelData in Globals for Chapter 2 and some of Chapter 3
+
+Sep 26, 2021
+ + Inventory determines whether or not player can use an item
+ + Items are consumed when used
+
+Sep 27, 2021
+ + Player gun is more accurate
+ + Player line of sight limited by blindfold object
+ + Retry menu appears when player dies
+
+Sep 28, 2021
+ + Fixed glitch where gun aim was off when attacking before moving
+ + Can restart/skip/quit from cutscenes
+ + Can view cutscenes without dedicated scenes
+
 CANCELLED CONTENT
  * Flushing: Enemies systematically search all tiles in a certain area
  * Interception: Alerted enemies guard critical areas of map
