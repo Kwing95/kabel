@@ -44,6 +44,7 @@ public class Globals : MonoBehaviour
 
     // PREFABS
     public static readonly GameObject CORPSE = Resources.Load<GameObject>("Prefabs/Core_Gameplay/Corpse");
+    public static readonly GameObject LOOT = Resources.Load<GameObject>("Prefabs/Core_Gameplay/Loot");
     public static readonly GameObject EXPLOSION = Resources.Load<GameObject>("Prefabs/Core_Gameplay/Explosion");
     public static readonly GameObject NOISE = Resources.Load<GameObject>("Prefabs/Core_Gameplay/Noise");
     public static readonly GameObject PROJECTILE = Resources.Load<GameObject>("Prefabs/Core_Gameplay/Projectile");
@@ -54,6 +55,7 @@ public class Globals : MonoBehaviour
     public static readonly GameObject WALL = Resources.Load<GameObject>("Prefabs/Environment/Wall");
     public static readonly GameObject LEVEL_BUTTON = Resources.Load<GameObject>("Prefabs/UI/Level_Button");
     public static readonly GameObject DIGIT = Resources.Load<GameObject>("Prefabs/Digit");
+    public static readonly GameObject ENEMY = Resources.Load<GameObject>("Prefabs/Core_Gameplay/EnemyV1");
 
     // MATERIALS
     public static readonly Material WHITE = Resources.Load<Material>("Materials/White");

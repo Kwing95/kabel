@@ -7,20 +7,16 @@ public class Collectible : MonoBehaviour
 {
     public static int nonce = 0;
 
-    public Sprite loot;
-    public Sprite noLoot;
-
     private int id;
     public bool isGoal = false;
     private bool hasLoot = true;
 
-    private SpriteRenderer sr;
+    public SpriteRenderer sr;
 
     // Start is called before the first frame update
     void Start()
     {
         id = nonce++;
-        sr = GetComponent<SpriteRenderer>();
     }
 
     // Update is called once per frame

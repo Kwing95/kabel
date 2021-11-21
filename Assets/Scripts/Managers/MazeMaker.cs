@@ -14,18 +14,32 @@ public class MazeMaker : MonoBehaviour
     private List<List<bool>> visited;
     private List<List<int>> neighborGrid;
     private Stack<Vector2> stack;
+    private List<Vector2> fullPath;
+
+    private List<GameObject> minesweeperReadout;
     
 
     // Start is called before the first frame update
     void Awake()
     {
         GenerateMaze();
-
+        DeformMaze(2 * width * height, 10 * width * height, 5 * width * height);
+        
         // PrintMinesweeper();
+    }
+
+    private void Start()
+    {
+        SpawnEnemies(10);
+        SpawnLoot(5);
     }
 
     private void PrintMinesweeper()
     {
+        foreach (GameObject elt in minesweeperReadout)
+            Destroy(elt);
+        
+        minesweeperReadout = new List<GameObject>();
         // Fill in zeroes with number of neighbors, unless point is ineligible (in which case set to -1)
         for (int i = 0; i < height * cellLength; ++i)
             for (int j = 0; j < width * cellLength; ++j)
@@ -34,6 +48,7 @@ public class MazeMaker : MonoBehaviour
                     neighborGrid[i][j] = PointIsEligible(new Vector2(j, i)) ? GetNeighborCount(new Vector2(j, i)) : -1;
 
                 GameObject label = Instantiate(Globals.DIGIT, new Vector2(j + 1, i + 1), Quaternion.identity);
+                minesweeperReadout.Add(label);
                 string output;
                 if (neighborGrid[i][j] == -2)
                     output = "B";
@@ -54,27 +69,95 @@ public class MazeMaker : MonoBehaviour
 
     private void GenerateMaze()
     {
+        fullPath = new List<Vector2>();
         // Create basic maze
         CreateEmptyGraph();
         stack = new Stack<Vector2>();
         stack.Push(GetRandomPoint());
         while (stack.Count > 0)
             VisitNeighbor();
+    }
 
+    private void DeformMaze(int numIslands, int thinClusters, int thickClusters)
+    {
         // Generate graph
         GenerateNeighborGrid();
 
         // Deform graph
-        CreateIslands(2 * width * height);
-        for(int i = 0; i < 10 * width * height; ++i)
+        CreateIslands(numIslands);
+        for (int i = 0; i < thinClusters; ++i)
             ReinforceWalls(1, 1);
 
-        for (int i = 0; i < 5 * width * height; ++i)
+        for (int i = 0; i < thickClusters; ++i)
             ReinforceWalls(1, 2);
-
     }
 
     // OBSTACLE-RELATED FUNCTIONS =======================================
+
+    private List<Vector2> GenerateEnemyRoute(int routeLength=4)
+    {
+        List<Vector2> route = new List<Vector2>();
+
+        int index = Random.Range(0, fullPath.Count - routeLength);
+        for(int i = 0; i < routeLength; ++i)
+            route.Add(RandomTileFromCell(fullPath[index + i]));
+
+        return route;
+    }
+
+    private Vector2 RandomTileFromCell(Vector2 cell)
+    {
+        List<Vector2> tilesInCell = GetTilesFromCell(cell, 0);
+        return tilesInCell[Random.Range(0, tilesInCell.Count)];
+    }
+
+    private List<Vector2> GetTilesFromCell(Vector2 cell, int minValue)
+    {
+        List<Vector2> results = new List<Vector2>();
+
+        for(int i = (int)cell.y * cellLength; i < (int)(cell.y + 1) * cellLength; ++i)
+            for(int j = (int)cell.x; j < (int)(cell.x + 1) * cellLength; ++j)
+                if (neighborGrid[i][j] >= minValue)
+                    results.Add(new Vector2(j, i));
+
+        return results;
+    }
+
+    private void SpawnEnemies(int numEnemies)
+    {
+        for(int i = 0; i < numEnemies; ++i)
+        {
+            GameObject newEnemy = Instantiate(Globals.ENEMY, new Vector2(), Quaternion.identity);
+            newEnemy.transform.parent = ObjectContainer.instance.enemies.transform;
+            AutoMover autoMover = newEnemy.GetComponent<AutoMover>();
+            Inventory inventory = newEnemy.GetComponent<Inventory>();
+            
+            autoMover.route = GenerateEnemyRoute();
+            newEnemy.transform.position = autoMover.route[0];
+            autoMover.randomPatrol = Random.Range(0, 2) == 0;
+            autoMover.pointMemory = Random.Range(0, 3);
+
+            Inventory.ItemType[] types = (Inventory.ItemType[])System.Enum.GetValues(typeof(Inventory.ItemType));
+            Inventory.ItemType dropType = types[Random.Range(0, types.Length)];
+            Inventory.InventoryEntry item = new Inventory.InventoryEntry(dropType, 1);
+            inventory.Add(item);
+            
+            // Position, route, weaponequipped, leashlength, randompatrol, pointmemory, inventory
+        }
+    }
+
+    private void SpawnLoot(int numLoot)
+    {
+        for(int i = 0; i < numLoot; ++i)
+        {
+            GameObject newEnemy = Instantiate(Globals.LOOT, new Vector2(), Quaternion.identity);
+            newEnemy.transform.parent = ObjectContainer.instance.corpses.transform;
+
+            newEnemy.transform.position = GenerateEnemyRoute(1)[0];
+        }
+    }
+
+    // WALL-RELATED FUNCTIONS ===========================================
 
     private void ReinforceWalls(int numTiles, int minNeighbors=2)
     {
@@ -244,6 +327,7 @@ public class MazeMaker : MonoBehaviour
     private void VisitNeighbor()
     {
         Vector2 oldPoint = stack.Peek();
+        fullPath.Add(oldPoint);
         Vector2 newPoint = GetRandomNeighbor(oldPoint);
 
         // If newPoint doesn't exist, backtrack and try again

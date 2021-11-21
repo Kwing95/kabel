@@ -158,6 +158,9 @@ TextureImporter:
   - first:
       213: -934097531700555190
     second: menu_buttons_26
+  - first:
+      213: -4375687511632689899
+    second: menu_buttons_27
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -845,6 +848,27 @@ TextureImporter:
       bones: []
       spriteID: a425b657e3b6903f0800000000000000
       internalID: -934097531700555190
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: menu_buttons_27
+      rect:
+        serializedVersion: 2
+        x: 600
+        y: 0
+        width: 200
+        height: 200
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 515450d346f6643c0800000000000000
+      internalID: -4375687511632689899
       vertices: []
       indices: 
       edges: []

@@ -11,9 +11,7 @@ public class PlayerMover : MonoBehaviour
 
     private Rotator rotator;
     private GridMover mover;
-    private FieldUnit unit;
 
-    private AudioSource source;
     private Navigator nav;
 
     // Start is called before the first frame update
@@ -27,8 +25,6 @@ public class PlayerMover : MonoBehaviour
         instance = this; // Intentionally not using DestroyOnLoad
 
         rotator = GetComponent<Rotator>();
-        unit = GetComponent<FieldUnit>();
-        source = GetComponent<AudioSource>();
         mover = GetComponent<GridMover>();
         nav = GetComponent<Navigator>();
 

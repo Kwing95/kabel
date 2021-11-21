@@ -10,7 +10,7 @@ public class ObjectContainer : MonoBehaviour
     public GameObject corpses;
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         instance = this;
     }

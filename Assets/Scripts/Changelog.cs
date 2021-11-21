@@ -35,6 +35,21 @@ Nov 10, 2021
 Nov 11, 2021
  + Reorganized Scripts folder
 
+Nov 19, 2021
+ + Can spawn enemies with routes
+
+Nov 21, 2021
+ + Can spawn and collect loot
+ + Organized script files into UI folder
+
+Script Execution Order
+ - MazeMaker: Must run before Grapher because it modifies the map
+ - Grapher: Must run after MazeMaker so that it can graph an up-to-date map
+ - PlayerMover: Must run before other scripts that need reference to PlayerMover.instance
+ - GridMover: Must Awake to initialize "rotator"
+ - Health: 
+
+ - Enemy routes may go through walls (Globals should initialize afterward? Race condition?)
  - Make levels repeatable (seeding number)
  - Remove additional walls
 

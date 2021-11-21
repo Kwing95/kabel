@@ -11,6 +11,11 @@ public class Inventory : MonoBehaviour
     [Serializable]
     public class InventoryEntry
     {
+        public InventoryEntry(ItemType _type, int _quantity)
+        {
+            type = _type;
+            quantity = _quantity;
+        }
         public ItemType type;
         public int quantity;
     }
