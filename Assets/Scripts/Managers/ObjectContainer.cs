@@ -8,6 +8,7 @@ public class ObjectContainer : MonoBehaviour
     public static ObjectContainer instance;
     public GameObject enemies;
     public GameObject corpses;
+    public GameObject loot;
 
     // Start is called before the first frame update
     void Awake()

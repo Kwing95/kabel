@@ -24,7 +24,7 @@ public class MazeMaker : MonoBehaviour
     {
         GenerateMaze();
         DeformMaze(2 * width * height, 10 * width * height, 5 * width * height);
-        
+
         // PrintMinesweeper();
     }
 
@@ -32,6 +32,7 @@ public class MazeMaker : MonoBehaviour
     {
         SpawnEnemies(10);
         SpawnLoot(5);
+        PlayerMover.instance.transform.position = GenerateRandomRoute(1)[0];
     }
 
     private void PrintMinesweeper()
@@ -94,7 +95,7 @@ public class MazeMaker : MonoBehaviour
 
     // OBSTACLE-RELATED FUNCTIONS =======================================
 
-    private List<Vector2> GenerateEnemyRoute(int routeLength=4)
+    private List<Vector2> GenerateRandomRoute(int routeLength=4)
     {
         List<Vector2> route = new List<Vector2>();
 
@@ -127,13 +128,13 @@ public class MazeMaker : MonoBehaviour
     {
         for(int i = 0; i < numEnemies; ++i)
         {
-            GameObject newEnemy = Instantiate(Globals.ENEMY, new Vector2(), Quaternion.identity);
-            newEnemy.transform.parent = ObjectContainer.instance.enemies.transform;
+            List<Vector2> enemyRoute = GenerateRandomRoute();
+            GameObject newEnemy = Instantiate(Globals.ENEMY, enemyRoute[0], Quaternion.identity);
+            newEnemy.transform.SetParent(ObjectContainer.instance.enemies.transform);
             AutoMover autoMover = newEnemy.GetComponent<AutoMover>();
             Inventory inventory = newEnemy.GetComponent<Inventory>();
-            
-            autoMover.route = GenerateEnemyRoute();
-            newEnemy.transform.position = autoMover.route[0];
+
+            autoMover.route = enemyRoute;
             autoMover.randomPatrol = Random.Range(0, 2) == 0;
             autoMover.pointMemory = Random.Range(0, 3);
 
@@ -151,9 +152,9 @@ public class MazeMaker : MonoBehaviour
         for(int i = 0; i < numLoot; ++i)
         {
             GameObject newEnemy = Instantiate(Globals.LOOT, new Vector2(), Quaternion.identity);
-            newEnemy.transform.parent = ObjectContainer.instance.corpses.transform;
+            newEnemy.transform.SetParent(ObjectContainer.instance.loot.transform);
 
-            newEnemy.transform.position = GenerateEnemyRoute(1)[0];
+            newEnemy.transform.position = GenerateRandomRoute(1)[0];
         }
     }
 
@@ -173,7 +174,7 @@ public class MazeMaker : MonoBehaviour
         {
             int index = Random.Range(0, candidates.Count);
             GameObject newWall = Instantiate(Globals.WALL, candidates[index], Quaternion.identity);
-            newWall.transform.parent = wallsContainer.transform;
+            newWall.transform.SetParent(wallsContainer.transform);
 
             // Remove new wall from candidates and add neighbors if applicable
             // NOTE: Contains and Remove are O(n) operations and may slow execution
@@ -216,7 +217,7 @@ public class MazeMaker : MonoBehaviour
         for(int i = 0; i < indexes.Count; ++i)
         {
             GameObject newWall = Instantiate(Globals.WALL, candidates[indexes[i]], Quaternion.identity);
-            newWall.transform.parent = wallsContainer.transform;
+            newWall.transform.SetParent(wallsContainer.transform);
 
             // Update 
             neighborGrid[(int)candidates[indexes[i]].y][(int)candidates[indexes[i]].x] = -2;

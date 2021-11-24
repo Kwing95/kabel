@@ -137,6 +137,7 @@ public class Navigator : MonoBehaviour
             GetComponent<AutoMover>().crossInstance.transform.position = dest;
             GetComponent<AutoMover>().crossInstance.GetComponent<SpriteRenderer>().enabled = true;
         }*/
+        // Debug.Log(gameObject + " (Navigator): SetDestination from " + transform.position + " to " + dest);
 
         if (usesMultithreading)
             SetDestinationJob(dest, run);

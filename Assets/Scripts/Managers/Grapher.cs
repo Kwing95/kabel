@@ -6,6 +6,8 @@ using Unity.Collections;
 public class Grapher : MonoBehaviour
 {
 
+    private bool verbose = false;
+
     public static Grapher instance;
 
     public const int INFINITY = 1073741823;
@@ -60,6 +62,32 @@ public class Grapher : MonoBehaviour
             {
                 line += (graph[y, x] ? " " : "X");
             }
+            dump = line + "\n" + dump;
+        }
+        Debug.Log(dump);
+    }
+
+    private static void PrintPath(List<Vector2> path)
+    {
+        string dump = "";
+        for (int y = 0; y < mapHeight; ++y)
+        {
+            string line = "";
+            for (int x = 0; x < mapWidth; ++x)
+                line += path.Contains(new Vector2(x, y)) ? "O" : graph[y, x] ? " " : "X";
+            dump = line + "\n" + dump;
+        }
+        Debug.Log(dump);
+    }
+
+    private static void PrintPath(NativeList<Vector2> path)
+    {
+        string dump = "";
+        for (int y = 0; y < mapHeight; ++y)
+        {
+            string line = "";
+            for (int x = 0; x < mapWidth; ++x)
+                line += path.Contains(new Vector2(x, y)) ? "O" : graph[y, x] ? " " : "X";
             dump = line + "\n" + dump;
         }
         Debug.Log(dump);
@@ -262,8 +290,14 @@ public class Grapher : MonoBehaviour
         NativeList<Vector2> path = new NativeList<Vector2>(Allocator.Temp);
         NativeList<Vector2> queue = new NativeList<Vector2>(Allocator.Temp);
 
-        if (!CheckGraph(start) || !CheckGraph(end))
+        if (!CheckGraph(start) || !CheckGraph(end) || !InBounds(start))
         {
+            if (instance.verbose)
+            {
+                PrintPath(path);
+                Debug.Log("NFIP: Invalid start or end point");
+            }
+            
             queue.Dispose();
             return path;
         }
@@ -283,13 +317,6 @@ public class Grapher : MonoBehaviour
             }
         }
 
-        // Handle starting point
-        if (!InBounds(start))
-        {
-            queue.Dispose();
-            return path; // RETURN IF START POINT IS INVALID
-        }
-
         dist[(int)start.y, (int)start.x] = 0;
 
         // Loop through queue
@@ -299,6 +326,11 @@ public class Grapher : MonoBehaviour
             if (u == new Vector2(-1, -1))
             {
                 queue.Dispose();
+                if (instance.verbose)
+                {
+                    PrintPath(path);
+                    Debug.Log("NFIP: Unknown branch.");
+                }
                 return path;
             }
 
@@ -319,6 +351,11 @@ public class Grapher : MonoBehaviour
 
                 queue.Dispose();
                 path.Dispose();
+                if (instance.verbose)
+                {
+                    PrintPath(path);
+                    Debug.Log("NFIP: Path was found.");
+                }
                 return reversedList; // RETURN WHEN PATH IS FOUND
             }
 
@@ -331,6 +368,11 @@ public class Grapher : MonoBehaviour
                 // "Out of bounds" return empty list
                 if (maxPathLength != -1 && alt > maxPathLength)
                 {
+                    if (instance.verbose)
+                    {
+                        PrintPath(path);
+                        Debug.Log("NFIP: Path was too long.");
+                    }
                     return path;
                 }
 
@@ -344,6 +386,11 @@ public class Grapher : MonoBehaviour
         }
 
         // RETURN IF NO PATH IS FOUND
+        if (instance.verbose)
+        {
+            PrintPath(path);
+            Debug.Log("NFIP: No path was found.");
+        }
         queue.Dispose();
         return path;
     }
@@ -535,8 +582,19 @@ public class Grapher : MonoBehaviour
         List<Vector2> path = new List<Vector2>();
         List<Vector2> queue = new List<Vector2>();
 
-        if(!CheckGraph(start) || !CheckGraph(end))
+        if(!CheckGraph(start) || !CheckGraph(end) || !InBounds(start))
+        {
+            if (instance.verbose)
+            {
+                
+                Debug.Log(!CheckGraph(start) + " " + !CheckGraph(end) + " " + !InBounds(start));
+                PrintPath(path);
+                Debug.Log("FIP: Invalid start or end point");
+            }
+            
             return path;
+        }
+            
 
         int[,] dist = new int[mapHeight, mapWidth];
         Vector2[,] prev = new Vector2[mapHeight, mapWidth];
@@ -553,10 +611,6 @@ public class Grapher : MonoBehaviour
             }
         }
 
-        // Handle starting point
-        if (!InBounds(start))
-            return path; // RETURN IF START POINT IS INVALID
-
         dist[(int)start.y, (int)start.x] = 0;
 
         // Loop through queue
@@ -564,7 +618,14 @@ public class Grapher : MonoBehaviour
         {
             Vector2 u = ClosestPoint(queue, dist);
             if (u == new Vector2(-1, -1))
+            {
+                if (instance.verbose)
+                {
+                    PrintPath(path);
+                    Debug.Log("FIP: Unknown branch.");
+                }
                 return path;
+            }
             
             queue.Remove(u);
 
@@ -577,6 +638,11 @@ public class Grapher : MonoBehaviour
                     u = prev[(int)u.y, (int)u.x];
                 }
 
+                if (instance.verbose)
+                {
+                    PrintPath(path);
+                    Debug.Log("FIP: Found path.");
+                }
                 return path; // RETURN WHEN PATH IS FOUND
             }
 
@@ -588,7 +654,15 @@ public class Grapher : MonoBehaviour
                 // If there is a maximum path length, adhere to it
                 // "Out of bounds" return empty list
                 if (maxPathLength != -1 && alt > maxPathLength)
+                {
+                    if (instance.verbose)
+                    {
+                        PrintPath(path);
+                        Debug.Log("FIP: Path was too long.");
+                    }
                     return path;
+                }
+                    
                     
 
                 if (alt < dist[(int)neighbors[v].y, (int)neighbors[v].x])
@@ -600,6 +674,11 @@ public class Grapher : MonoBehaviour
         }
 
         // RETURN IF NO PATH IS FOUND
+        if (instance.verbose)
+        {
+            PrintPath(path);
+            Debug.Log("FIP: No path was found.");
+        }
         return path;
     }
 

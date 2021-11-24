@@ -42,17 +42,21 @@ Nov 21, 2021
  + Can spawn and collect loot
  + Organized script files into UI folder
 
-Script Execution Order
+SCRIPT EXECUTION ORDER
  - MazeMaker: Must run before Grapher because it modifies the map
  - Grapher: Must run after MazeMaker so that it can graph an up-to-date map
  - PlayerMover: Must run before other scripts that need reference to PlayerMover.instance
  - GridMover: Must Awake to initialize "rotator"
  - Health: 
 
+DEBUGGING
+ - Print messages inside NativeFindIndirectPath and FindIndirectPath if paths aren't found; print out why
+ - Create function to print out ASCII copy of map with S and E for START and END
+
  - Enemy routes may go through walls (Globals should initialize afterward? Race condition?)
  - Make levels repeatable (seeding number)
- - Remove additional walls
 
+BALANCING
  - Increased distance player can indirectly move (maybe path to raycast, then Dijkstra's?)
  - Detailed unit health data during "dimmed" action pause
  - Revise tutorial (narrow start, start on movement message, make knifing easier)
@@ -60,7 +64,6 @@ Script Execution Order
  - Make distract/knife easier
 
  - Make it clear when player is taking damage
- - Arcade mode
  - Use multithreading for HideMover
  - Save file to unlock next level
  - Platform-agnostic controls (menu options and cursor movement)

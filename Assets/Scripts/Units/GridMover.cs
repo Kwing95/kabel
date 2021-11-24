@@ -45,9 +45,13 @@ public class GridMover : MonoBehaviour
         rotator = GetComponent<Rotator>();
         rb = GetComponent<Rigidbody2D>();
         heldVelocity = Vector2.zero;
-        nextDiscretePosition = transform.position;
 
         ModifySpeed(0);
+    }
+
+    private void Start()
+    {
+        nextDiscretePosition = transform.position;
     }
 
     // Update is called once per frame
