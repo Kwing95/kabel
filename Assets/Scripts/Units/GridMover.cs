@@ -135,6 +135,10 @@ public class GridMover : MonoBehaviour
     // Returns true if movement was produced
     public bool ChangeDirection(Vector2 direction, bool running=false)
     {
+        if (Mathf.Abs(direction.x) > 1.0f || Mathf.Abs(direction.y) > 1.0f)
+        {
+            Debug.Log("ChangeDirection direction is not a cardinal: " + direction);
+        }
         float moveSpeed = running ? runSpeed : walkSpeed;
         
         if (canTurn /*&& PointClear(direction)*/)

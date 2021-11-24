@@ -11,6 +11,10 @@ public class MazeMaker : MonoBehaviour
     public int width = 5;
     public int height = 5;
 
+    public int enemyCount = 10;
+    public int lootCount = 5;
+    private int seed = 1;
+
     private List<List<bool>> visited;
     private List<List<int>> neighborGrid;
     private Stack<Vector2> stack;
@@ -22,6 +26,7 @@ public class MazeMaker : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
+        PRNG.ForceSeed(seed);
         GenerateMaze();
         DeformMaze(2 * width * height, 10 * width * height, 5 * width * height);
 
@@ -30,8 +35,8 @@ public class MazeMaker : MonoBehaviour
 
     private void Start()
     {
-        SpawnEnemies(10);
-        SpawnLoot(5);
+        SpawnEnemies(enemyCount);
+        SpawnLoot(lootCount);
         PlayerMover.instance.transform.position = GenerateRandomRoute(1)[0];
     }
 
@@ -99,7 +104,7 @@ public class MazeMaker : MonoBehaviour
     {
         List<Vector2> route = new List<Vector2>();
 
-        int index = Random.Range(0, fullPath.Count - routeLength);
+        int index = PRNG.Range(0, fullPath.Count - routeLength);
         for(int i = 0; i < routeLength; ++i)
             route.Add(RandomTileFromCell(fullPath[index + i]));
 
@@ -109,7 +114,7 @@ public class MazeMaker : MonoBehaviour
     private Vector2 RandomTileFromCell(Vector2 cell)
     {
         List<Vector2> tilesInCell = GetTilesFromCell(cell, 0);
-        return tilesInCell[Random.Range(0, tilesInCell.Count)];
+        return tilesInCell[PRNG.Range(0, tilesInCell.Count)];
     }
 
     private List<Vector2> GetTilesFromCell(Vector2 cell, int minValue)
@@ -135,11 +140,11 @@ public class MazeMaker : MonoBehaviour
             Inventory inventory = newEnemy.GetComponent<Inventory>();
 
             autoMover.route = enemyRoute;
-            autoMover.randomPatrol = Random.Range(0, 2) == 0;
-            autoMover.pointMemory = Random.Range(0, 3);
+            autoMover.randomPatrol = PRNG.Range(0, 2) == 0;
+            autoMover.pointMemory = PRNG.Range(0, 3);
 
             Inventory.ItemType[] types = (Inventory.ItemType[])System.Enum.GetValues(typeof(Inventory.ItemType));
-            Inventory.ItemType dropType = types[Random.Range(0, types.Length)];
+            Inventory.ItemType dropType = types[PRNG.Range(0, types.Length)];
             Inventory.InventoryEntry item = new Inventory.InventoryEntry(dropType, 1);
             inventory.Add(item);
             
@@ -172,7 +177,7 @@ public class MazeMaker : MonoBehaviour
 
         for(int i = 0; i < numTiles; ++i)
         {
-            int index = Random.Range(0, candidates.Count);
+            int index = PRNG.Range(0, candidates.Count);
             GameObject newWall = Instantiate(Globals.WALL, candidates[index], Quaternion.identity);
             newWall.transform.SetParent(wallsContainer.transform);
 
@@ -208,7 +213,7 @@ public class MazeMaker : MonoBehaviour
         // Generate indices
         while(indexes.Count < numIslands)
         {
-            int newIndex = Random.Range(0, candidates.Count);
+            int newIndex = PRNG.Range(0, candidates.Count);
             if (!indexes.Contains(newIndex))
                 indexes.Add(newIndex);
         }
@@ -351,7 +356,7 @@ public class MazeMaker : MonoBehaviour
     private Vector2 GetRandomNeighbor(Vector2 current)
     {
         List<Vector2> neighbors = GetUnvisitedNeighbors(current);
-        return neighbors.Count > 0 ? neighbors[Random.Range(0, neighbors.Count)] : new Vector2(-1, -1);
+        return neighbors.Count > 0 ? neighbors[PRNG.Range(0, neighbors.Count)] : new Vector2(-1, -1);
     }
 
     // Checks adds all neighboring points to current that have not been visited
@@ -376,7 +381,7 @@ public class MazeMaker : MonoBehaviour
     // Selects random point inside graph
     private Vector2 GetRandomPoint()
     {
-        return new Vector2(Random.Range(0, width), Random.Range(0, height));
+        return new Vector2(PRNG.Range(0, width), PRNG.Range(0, height));
     }
 
     // Initializes visited to a grid of all unvisited points

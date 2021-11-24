@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
 using UnityEngine.UI;
+using System.Linq;
 
 public class PRNG : MonoBehaviour
 {
@@ -57,6 +58,9 @@ public class PRNG : MonoBehaviour
         rawSeed = newSeed;
         moddedSeed = newSeed;
         ResetNonce();
+
+        SetLobby();
+        Debug.Log("Seed name: " + lobbyName);
     }
 
     // Initializes the seed with current Unix time
@@ -91,8 +95,8 @@ public class PRNG : MonoBehaviour
 
     private static void InitializeLists()
     {
-        adjectives = FileToList(@"Assets/Resources/adjectives.txt");
-        animals = FileToList(@"Assets/Resources/animals.txt");
+        adjectives = Globals.ADJECTIVES.text.Split().ToList();
+        animals = Globals.ANIMALS.text.Split().ToList();
     }
 
     private static List<string> FileToList(string path)
