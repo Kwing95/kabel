@@ -92,7 +92,8 @@ public class Navigator : MonoBehaviour
                 waypoint = Instantiate(Globals.WAYPOINT, destination, Quaternion.identity);
             }
 
-            pathProgress = 1;
+            if(path.Count > 1)
+                pathProgress = Grapher.ManhattanDistance(path[0], transform.position) == 1 ? 0 : 1;
             destinationQueued = false;
 
             // If path does not exist, stop trying to navigate there
@@ -111,7 +112,14 @@ public class Navigator : MonoBehaviour
                 if (pathProgress < path.Count)
                 {
                     //Debug.Log("Moving from " + transform.position + " to " + path[pathProgress] + " path index " + pathProgress);
-                    mover.ChangeDirection(path[pathProgress] - (Vector2)transform.position, running);
+                    Vector2 direction = path[pathProgress] - (Vector2)transform.position;
+                    if(!Grapher.CARDINALS.Contains(new Vector2(Mathf.Round(direction.x), Mathf.Round(direction.y))))
+                    //if (Mathf.Abs(direction.x) > 1.0f || Mathf.Abs(direction.y) > 1.0f)
+                    {
+                        Debug.Log("Navigating to " + path[pathProgress] + " - path index " + pathProgress);
+                        Debug.Log(transform.position + ": ChangeDirection direction is not a cardinal: " + direction);
+                    }
+                    mover.ChangeDirection(direction, running);
                     pathProgress += 1;
 
                     GameObject tempNoise = Instantiate(Globals.NOISE, transform.position, Quaternion.identity);
@@ -192,7 +200,8 @@ public class Navigator : MonoBehaviour
                         convertedList.Add(elt);
                     path = convertedList;
 
-                    pathProgress = 1;
+                    if (path.Count > 1)
+                        pathProgress = Grapher.ManhattanDistance(path[0], transform.position) == 1 ? 0 : 1;
                     running = activeJobs[i].Value.running;
                     SetIdle(false);
                     Pause(false);
@@ -268,7 +277,8 @@ public class Navigator : MonoBehaviour
         {
             destination = dest;
             path = newPath;
-            pathProgress = 1;
+            if (path.Count > 1)
+                pathProgress = Grapher.ManhattanDistance(path[0], transform.position) == 1 ? 0 : 1;
             running = run;
             SetIdle(false);
             Pause(false);

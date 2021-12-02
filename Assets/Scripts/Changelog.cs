@@ -46,6 +46,11 @@ Nov 23, 2021
  + Fixed player and enemy default position bug in random maps
  + Random maps can be replicated with seeding number
 
+Dec 1, 2021
+ + Worked on fixing bad pathfinding
+   + FindDirectPath can add duplicate squares; created check to 
+   + pathProgress sometimes doesn't index adjacent tile; can reset to 0 or 1
+
 SCRIPT EXECUTION ORDER
  - MazeMaker: Must run before Grapher because it modifies the map
  - Grapher: Must run after MazeMaker so that it can graph an up-to-date map
@@ -54,10 +59,10 @@ SCRIPT EXECUTION ORDER
  - Health: 
 
 DEBUGGING
- - Print messages inside NativeFindIndirectPath and FindIndirectPath if paths aren't found; print out why
- - Create function to print out ASCII copy of map with S and E for START and END
  - Enemies walk through walls when the direction argument of ChangeDirection is not a cardinal. This happens
     when their current position is not adjacent to the path
+ - [Seed 3, enemyCount 1] Navigator path contains same position twice; direction will be 0,0
+ - [Seed 4, enemyCount 3] 
 
  - Enemy routes may go through walls (Globals should initialize afterward? Race condition?)
  - Make levels repeatable (seeding number)

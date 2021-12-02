@@ -3112,6 +3112,9 @@ MonoBehaviour:
   cellLength: 10
   width: 5
   height: 5
+  enemyCount: 10
+  lootCount: 5
+  seed: 4
 --- !u!1 &791368842
 GameObject:
   m_ObjectHideFlags: 0

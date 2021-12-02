@@ -233,9 +233,9 @@ public class Grapher : MonoBehaviour
                 int pathLength = path.Count;
 
                 if (CheckGraph(oldTile + new Vector2(diagonal.x, 0)))
-                    path.Add(RoundedVector(oldTile + new Vector2(diagonal.x, 0)));
+                    AddNoRepeats(path, RoundedVector(oldTile + new Vector2(diagonal.x, 0)));
                 else if (CheckGraph(oldTile + new Vector2(0, diagonal.y)))
-                    path.Add(RoundedVector(oldTile + new Vector2(0, diagonal.y)));
+                    AddNoRepeats(path, RoundedVector(oldTile + new Vector2(0, diagonal.y)));
 
                 // If no tile was added, no path exists
                 if (pathLength == path.Count)
@@ -244,15 +244,24 @@ public class Grapher : MonoBehaviour
 
             // Add the tile one step forward
             if (CheckGraph(newTile))
-                path.Add(RoundedVector(newTile));
+                AddNoRepeats(path, RoundedVector(newTile));
             else
                 return new List<Vector2>();
 
             lineProgress += step;
         }
 
-        path.Add(end);
+        AddNoRepeats(path, end);
         return path;
+    }
+
+    // Add value to list and return list; if the last item in list is value, skip it
+    private static List<Vector2> AddNoRepeats(List<Vector2> list, Vector2 value) {
+        if (list.Count > 0 && list[list.Count - 1] == value)
+            return list;
+
+        list.Add(value);
+        return list;
     }
 
     public static float AbsCeil(float number)
@@ -634,6 +643,10 @@ public class Grapher : MonoBehaviour
             {
                 while (u != new Vector2(-1, -1))
                 {
+                    if (path.Count > 0 && ManhattanDistance(path[0], u) != 1)
+                    {
+                        Debug.Log("Connecting " + path[0] + " to " + u);
+                    }
                     path.Insert(0, u);
                     u = prev[(int)u.y, (int)u.x];
                 }

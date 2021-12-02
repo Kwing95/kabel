@@ -135,15 +135,11 @@ public class GridMover : MonoBehaviour
     // Returns true if movement was produced
     public bool ChangeDirection(Vector2 direction, bool running=false)
     {
-        if (Mathf.Abs(direction.x) > 1.0f || Mathf.Abs(direction.y) > 1.0f)
-        {
-            Debug.Log("ChangeDirection direction is not a cardinal: " + direction);
-        }
         float moveSpeed = running ? runSpeed : walkSpeed;
         
         if (canTurn /*&& PointClear(direction)*/)
         {
-            if(direction.y > 0)
+            if(direction == Vector2.up)
             {
                 rb.velocity = Vector2.up * moveSpeed;
                 nextDiscretePosition = (Vector2)transform.position + Vector2.up;
@@ -151,7 +147,7 @@ public class GridMover : MonoBehaviour
                 boundDirection = 'U';
                 Rotate(0);
             }
-            else if(direction.y < 0)
+            else if(direction == Vector2.down)
             {
                 rb.velocity = Vector2.down * moveSpeed;
                 nextDiscretePosition = (Vector2)transform.position + Vector2.down;
@@ -159,7 +155,7 @@ public class GridMover : MonoBehaviour
                 boundDirection = 'D';
                 Rotate(180);
             }
-            else if(direction.x > 0)
+            else if(direction == Vector2.right)
             {
                 rb.velocity = Vector2.right * moveSpeed;
                 nextDiscretePosition = (Vector2)transform.position + Vector2.right;
@@ -167,7 +163,7 @@ public class GridMover : MonoBehaviour
                 boundDirection = 'R';
                 Rotate(270);
             }
-            else if(direction.x < 0)
+            else if(direction == Vector2.left)
             {
                 rb.velocity = Vector2.left * moveSpeed;
                 nextDiscretePosition = (Vector2)transform.position + Vector2.left;
@@ -177,7 +173,7 @@ public class GridMover : MonoBehaviour
             }
             else
             {
-                // Debug.Log(gameObject.name + " did nothing");
+                Debug.Log(gameObject.name + " called ChangeDirection with direction " + direction);
                 return false;
             }
 

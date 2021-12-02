@@ -13,6 +13,7 @@ public class MazeMaker : MonoBehaviour
 
     public int enemyCount = 10;
     public int lootCount = 5;
+    [SerializeField]
     private int seed = 1;
 
     private List<List<bool>> visited;
@@ -135,6 +136,7 @@ public class MazeMaker : MonoBehaviour
         {
             List<Vector2> enemyRoute = GenerateRandomRoute();
             GameObject newEnemy = Instantiate(Globals.ENEMY, enemyRoute[0], Quaternion.identity);
+            newEnemy.name = newEnemy.name + i;
             newEnemy.transform.SetParent(ObjectContainer.instance.enemies.transform);
             AutoMover autoMover = newEnemy.GetComponent<AutoMover>();
             Inventory inventory = newEnemy.GetComponent<Inventory>();
