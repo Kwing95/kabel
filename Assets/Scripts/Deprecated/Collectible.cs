@@ -24,6 +24,10 @@ public class Collectible : MonoBehaviour
     {
         if(Vector2.Distance(transform.position, PlayerMover.instance.transform.position) < 0.5f && hasLoot)
         {
+            LootCounter lc = GetComponent<LootCounter>();
+            if (lc)
+                lc.Collect();
+
             hasLoot = false;
             sr.color = Color.white;
             Inventory inv = GetComponent<Inventory>();

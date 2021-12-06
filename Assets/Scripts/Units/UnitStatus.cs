@@ -178,7 +178,7 @@ public class UnitStatus : MonoBehaviour
         if (unitOutline)
         {
             if (numUnits == 1)
-                unitOutline.color = healthColors[healthArray[0] + 1];
+                unitOutline.color = healthColors[Mathf.Clamp(healthArray[0] + 1, 0, healthColors.Count - 1)];
             else if (numUnits == UnitsAlive())
                 unitOutline.color = Color.green;
             else

@@ -32,7 +32,7 @@ public class LevelSelector : MonoBehaviour
 
     public enum Context { Title, Levels, Extras, Options, Arcade };
     private Context context = Context.Title;
-    public Text customSeed;
+    public InputField customSeed;
 
     public List<GameObject> menuContent;
 
@@ -209,10 +209,24 @@ public class LevelSelector : MonoBehaviour
         return output;
     }
 
+    public void RandomizeSeed()
+    {
+        MazeMaker.seed = UnityEngine.Random.Range(1, 10000000);
+        customSeed.text = MazeMaker.seed.ToString();
+    }
+
     public void StartArcade()
     {
-        MazeMaker.seed = Int32.Parse(customSeed.text);
-        TransitionFader.instance.Transition("RandomMap");
+        try
+        {
+            MazeMaker.seed = int.Parse(customSeed.text);
+            TransitionFader.instance.Transition("RandomMap");
+        }
+        catch (FormatException)
+        {
+            Toast.ToastWrapper("Seed must be a number");
+            customSeed.text = "";
+        }
     }
 
 }

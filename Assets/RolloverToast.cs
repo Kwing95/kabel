@@ -25,7 +25,7 @@ public class RolloverToast : MonoBehaviour, ISelectHandler, IPointerEnterHandler
         //if (eventData.selectedObject && eventData.selectedObject == gameObject)
         //{
             Toast.ToastWrapper(label);
-            Debug.Log(gameObject.name + " was selected");
+            //Debug.Log(gameObject.name + " was selected");
         //}
     }
 

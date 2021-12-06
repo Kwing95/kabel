@@ -1,3 +1,10 @@
+ENEMY FREEZES DURING PATROL:
+  seed 5848359
+
+ENEMY FREEZES DURING SUSPICIOUS:
+  Navigator: Path length = 1, position = path[0]
+  GridMover: canTurn = true
+
 SCRIPT EXECUTION ORDER
  - MazeMaker: Must run before Grapher because it modifies the map
  - Grapher: Must run after MazeMaker so that it can graph an up-to-date map

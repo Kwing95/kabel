@@ -30,6 +30,10 @@ Dec 5, 2021
  + Enemies no longer randomly stand still
  + Can input and play custom seeded maps from main menu
 
+Dec 6, 2021
+ + Error handling for custom seeds
+ + Can return to menu after collecting loot
+
 BALANCING
  - Increased distance player can indirectly move (maybe path to raycast, then Dijkstra's?)
  - Detailed unit health data during "dimmed" action pause
