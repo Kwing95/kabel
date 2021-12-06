@@ -1,0 +1,17 @@
+SCRIPT EXECUTION ORDER
+ - MazeMaker: Must run before Grapher because it modifies the map
+ - Grapher: Must run after MazeMaker so that it can graph an up-to-date map
+ - PlayerMover: Must run before other scripts that need reference to PlayerMover.instance
+ - GridMover: Must Awake to initialize "rotator"
+ - Health: 
+
+DEBUGGING
+ - Enemies walk through walls when the direction argument of ChangeDirection is not a cardinal. This happens
+    when their current position is not adjacent to the path
+ - Some enemies may start without trying to pathfind to a point on their route
+ - In Navigator before calling GridMover.ChangeDirection, check that position equals path[pathProgress - 1]
+   so you don't go off route (and into walls)
+ - [Seed 3, enemyCount 1] Navigator path contains same position twice; direction will be 0,0
+ - [Seed 4, enemyCount 3] 
+
+ - Enemy routes may go through walls (Globals should initialize afterward? Race condition?)

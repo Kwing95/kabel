@@ -17,7 +17,12 @@ public struct PathfindingJob : IJob
 
     public void Execute()
     {
+        //Debug.Log("beginning pathfinding job from " + start + " to " + dest);
         List<Vector2> rawPath = Grapher.FindPath(start, dest, maxPathLength);
+        if(rawPath.Count == 0)
+        {
+            Debug.Log("Failed to generate path from " + start + " to " + dest);
+        }
         foreach (Vector2 elt in rawPath)
             path.Add(elt);
     }
@@ -111,14 +116,10 @@ public class Navigator : MonoBehaviour
             if (path.Count > 1){
                 if (pathProgress < path.Count)
                 {
-                    //Debug.Log("Moving from " + transform.position + " to " + path[pathProgress] + " path index " + pathProgress);
                     Vector2 direction = path[pathProgress] - (Vector2)transform.position;
-                    if(!Grapher.CARDINALS.Contains(new Vector2(Mathf.Round(direction.x), Mathf.Round(direction.y))))
-                    //if (Mathf.Abs(direction.x) > 1.0f || Mathf.Abs(direction.y) > 1.0f)
-                    {
-                        Debug.Log("Navigating to " + path[pathProgress] + " - path index " + pathProgress);
-                        Debug.Log(transform.position + ": ChangeDirection direction is not a cardinal: " + direction);
-                    }
+
+                    //if(pathProgress > 0 && (Vector2)transform.position != path[pathProgress - 1])
+                    //    Debug.Log("WARNING: Expected position " + transform.position + " to be " + path[pathProgress - 1]);
                     mover.ChangeDirection(direction, running);
                     pathProgress += 1;
 
@@ -251,6 +252,7 @@ public class Navigator : MonoBehaviour
     // Multi-threaded implementation
     public IEnumerator SetDestinationMulti(Vector2 dest, bool run = false)
     {
+        Debug.Log("SetDestinationMulti called");
         bool done = false;
 
         // Halt the enemy while they're thinking

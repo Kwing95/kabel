@@ -30,8 +30,9 @@ public class LevelData
 public class LevelSelector : MonoBehaviour
 {
 
-    public enum Context { Title, Levels, Extras, Options };
+    public enum Context { Title, Levels, Extras, Options, Arcade };
     private Context context = Context.Title;
+    public Text customSeed;
 
     public List<GameObject> menuContent;
 
@@ -206,6 +207,12 @@ public class LevelSelector : MonoBehaviour
             output += "\nCUTSCENE\n\n\n";
 
         return output;
+    }
+
+    public void StartArcade()
+    {
+        MazeMaker.seed = Int32.Parse(customSeed.text);
+        TransitionFader.instance.Transition("RandomMap");
     }
 
 }

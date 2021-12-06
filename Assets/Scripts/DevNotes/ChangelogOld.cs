@@ -208,6 +208,31 @@ Sep 28, 2021
  + Can restart/skip/quit from cutscenes
  + Can view cutscenes without dedicated scenes
 
+Oct 8, 2021
+ + Balanced game based on scarcity
+ + Partial work on refactoring ActionManager
+
+Oct 20, 2021
+ + Refactored ActionManager, PreviewManager, and Projectile
+
+Oct 21, 2021
+ + Grenades no longer damage through walls
+ + Deleted commented code in ActionManager
+ + Cannot use knife without a target
+ + Walking generates noise
+ + Enemy no longer detects player by walking past them
+ + Enemies should not damage themselves
+ + Fixed aiming bug from PreviewManager refactor
+
+Oct 22, 2021
+ + Enemy grenades work
+
+Oct 25, 2021
+ + Back button disabled when at beginning of cutscene
+ + Screen dims in Action Menu
+ + Camera following always pauses in action menu now
+ + Enemy friendly fire should be disabled
+
 CANCELLED CONTENT
  * Flushing: Enemies systematically search all tiles in a certain area
  * Interception: Alerted enemies guard critical areas of map

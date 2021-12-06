@@ -14,7 +14,7 @@ public class MazeMaker : MonoBehaviour
     public int enemyCount = 10;
     public int lootCount = 5;
     [SerializeField]
-    private int seed = 1;
+    public static int seed = 1;
 
     private List<List<bool>> visited;
     private List<List<int>> neighborGrid;
@@ -28,6 +28,8 @@ public class MazeMaker : MonoBehaviour
     void Awake()
     {
         PRNG.ForceSeed(seed);
+        enemyCount = PRNG.Range(5, 15);
+        lootCount = PRNG.Range(3, 10);
         GenerateMaze();
         DeformMaze(2 * width * height, 10 * width * height, 5 * width * height);
 

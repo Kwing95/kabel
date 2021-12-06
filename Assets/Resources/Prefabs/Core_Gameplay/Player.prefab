@@ -230,7 +230,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c592e9cb3e89a7146bcafb7ac2fb40ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxPathLength: 10
+  maxPathLength: 20
   usesMultithreading: 0
   waypointEnabled: 0
   pausePathFinding: 0

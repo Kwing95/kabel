@@ -35,7 +35,7 @@ LINES	ASL		NAME			DESCRIPTION
 1		40M		Sailor			Minor character
 1		40M		Captain			Minor character
 
-1186	TOTAL 	(at $3/line, $3,5580
+1186	TOTAL 	(at $3/line, $3,580
 
 VOICE ACTORS:	$3,500
 EDITING:		$2,500

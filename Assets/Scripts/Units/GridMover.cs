@@ -173,7 +173,7 @@ public class GridMover : MonoBehaviour
             }
             else
             {
-                Debug.Log(gameObject.name + " called ChangeDirection with direction " + direction);
+                Debug.Log(gameObject.name + " at " + transform.position + " called ChangeDirection with direction " + direction);
                 return false;
             }
 

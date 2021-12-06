@@ -187,7 +187,7 @@ public class AutoMover : MonoBehaviour
             // If the enemy is not chasing the player, patrol duty
             Vector2 destination = GetDestination();
             navigator.SetDestination(destination, false);
-            if (Vector2.Distance(transform.position, destination) == 0)
+            if (Vector2.Distance(transform.position, destination) < 0.01f)
             {
                 routeProgress = randomPatrol ? Random.Range(0, route.Count + extraPoints.Count) : (routeProgress + 1) % route.Count;
 
