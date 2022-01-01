@@ -316,6 +316,7 @@ GameObject:
   - component: {fileID: 2700365390141613526}
   - component: {fileID: 1333094116810465314}
   - component: {fileID: 1826348440696335364}
+  - component: {fileID: 4615426391678141916}
   m_Layer: 9
   m_Name: WoundedEnemy
   m_TagString: Enemy
@@ -454,6 +455,7 @@ MonoBehaviour:
   numUnits: 1
   healthArray: 
   gasDuration: 10
+  startingHealth: 1
 --- !u!114 &1333094116810465314
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -481,6 +483,32 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maximumFleeDistance: 0
+--- !u!114 &4615426391678141916
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4735645799990054801}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b95c8ce52b21303468dac52dd181f45f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inventory:
+  - type: 0
+    quantity: 0
+  - type: 1
+    quantity: 0
+  - type: 2
+    quantity: 0
+  - type: 3
+    quantity: 0
+  - type: 4
+    quantity: 0
+  - type: 5
+    quantity: 0
+  wallet: 0
 --- !u!1 &6862415815506916078
 GameObject:
   m_ObjectHideFlags: 0

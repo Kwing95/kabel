@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class MazeMaker : MonoBehaviour
 {
+    public static MazeMaker instance;
 
     public GameObject wallsContainer;
     public int cellLength = 10;
@@ -15,6 +16,7 @@ public class MazeMaker : MonoBehaviour
     public int lootCount = 5;
     [SerializeField]
     public static int seed = 1;
+    public int lootLeft = 0;
 
     private List<List<bool>> visited;
     private List<List<int>> neighborGrid;
@@ -27,6 +29,8 @@ public class MazeMaker : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
+        instance = this;
+
         PRNG.ForceSeed(seed);
         enemyCount = PRNG.Range(5, 15);
         lootCount = PRNG.Range(3, 10);
@@ -40,6 +44,7 @@ public class MazeMaker : MonoBehaviour
     {
         SpawnEnemies(enemyCount);
         SpawnLoot(lootCount);
+        lootLeft = lootCount;
         PlayerMover.instance.transform.position = GenerateRandomRoute(1)[0];
     }
 

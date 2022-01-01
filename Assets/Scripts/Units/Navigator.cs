@@ -14,10 +14,15 @@ public struct PathfindingJob : IJob
     public int maxPathLength;
     public int jobId;
     public bool running;
+    public bool hiding;
 
     public void Execute()
     {
+        if (hiding)
+            dest = Grapher.HidingPlace(start, dest, maxPathLength);
+
         //Debug.Log("beginning pathfinding job from " + start + " to " + dest);
+
         List<Vector2> rawPath = Grapher.FindPath(start, dest, maxPathLength);
         if(rawPath.Count == 0)
         {
@@ -72,11 +77,14 @@ public class Navigator : MonoBehaviour
 
     public void OnDestroy()
     {
-        foreach(KeyValuePair<JobHandle, PathfindingJob> job in activeJobs)
+        if (activeJobs != null)
         {
-            // WARNING: Game could slow down if enemy is destroyed during pathfinding operation
-            job.Key.Complete();
-            job.Value.path.Dispose();
+            foreach (KeyValuePair<JobHandle, PathfindingJob> job in activeJobs)
+            {
+                // WARNING: Game could slow down if enemy is destroyed during pathfinding operation
+                job.Key.Complete();
+                job.Value.path.Dispose();
+            }
         }
     }
 
@@ -137,7 +145,7 @@ public class Navigator : MonoBehaviour
 
     public void SetDestination(Vector2 dest, bool run=false)
     {
-        if (dest == destination || activeJobs.Count > 0)
+        if (dest == destination || (activeJobs != null && activeJobs.Count > 0))
             return;
 
         // TODO testing
@@ -169,18 +177,19 @@ public class Navigator : MonoBehaviour
 
     public void Hide(Vector2 threat)
     {
-        SetDestination(Grapher.HidingPlace(transform.position, threat));
-        /*
-        NativeList<Vector2> rawPath = Grapher.NativeHide((Vector2)transform.position, threat);
-        path = new List<Vector2>();
-        foreach (Vector2 elt in rawPath)
-            path.Add(elt);
+        if (!mover.GetCanTurn())
+            return;
 
-        destinationQueued = false; // don't recalculate, we already have the path
-        SetIdle(false); // check
-
-        Pause(false); // check*/
-
+        Vector2 destination = Grapher.HidingPlace(transform.position, threat, 20);
+        if(destination != -1 * Vector2.one)
+            SetDestination(destination);
+        else
+        {
+            Vector2 offset = (threat.x > transform.position.x ? Vector2.right : Vector2.left) +
+                (threat.y > transform.position.y ? Vector2.up : Vector2.down);
+            SetDestination((Vector2)transform.position + offset);
+        }
+        //SetDestinationJob(threat, false, true);
     }
 
     public void CheckJobs()
@@ -218,7 +227,7 @@ public class Navigator : MonoBehaviour
         }
     }
 
-    public void SetDestinationJob(Vector2 dest, bool run = false)
+    public void SetDestinationJob(Vector2 dest, bool run=false, bool hide=false)
     {
         nonce += 1;
         int lastKnownNonce = nonce;
@@ -235,7 +244,8 @@ public class Navigator : MonoBehaviour
             maxPathLength = maxPathLength,
             path = rawList,
             jobId = lastKnownNonce,
-            running = run
+            running = run,
+            hiding = hide
         };
 
         // Schedule the job

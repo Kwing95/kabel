@@ -7,11 +7,31 @@ public class HideMover : MonoBehaviour
 
     public int maximumFleeDistance;
     private Navigator navigator;
+    private GridMover mover;
+    private Rotator rotator;
+    private FieldOfView fieldOfView;
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         navigator = GetComponent<Navigator>();
+        fieldOfView = GetComponentInChildren<FieldOfView>();
+        rotator = GetComponent<Rotator>();
+        mover = GetComponent<GridMover>();
+    }
+
+    private void OnDisable()
+    {
+        mover.enabled = false;
+        rotator.enabled = false;
+        fieldOfView.enabled = false;
+    }
+
+    private void OnEnable()
+    {
+        mover.enabled = true;
+        rotator.enabled = true;
+        fieldOfView.enabled = true;
     }
 
     // Update is called once per frame

@@ -181,7 +181,7 @@ public class ActionManager : MonoBehaviour
 
         // 3 Focus -> 10 deg Error, 2 Focus -> 20 deg Error
         // 1 Focus -> 30 deg Error, 0 Focus -> Can't attack
-        float marginOfError = attackerIsPlayer ? 12 : 15; //+ (10 * (3 - unit.GetComponent<FieldUnit>().party[0].focus)); // min 10 err, max 30 / formerly memberIndex
+        float marginOfError = attackerIsPlayer ? 13 : 15; //+ (10 * (3 - unit.GetComponent<FieldUnit>().party[0].focus)); // min 10 err, max 30 / formerly memberIndex
 
         // Calculate if there's a clear line of sight
         Vector2 direction = target - (Vector2)unit.transform.position;
@@ -193,7 +193,8 @@ public class ActionManager : MonoBehaviour
         // Generate an actual shot
         angle += Random.Range(0, marginOfError) * (Random.Range(0, 2) == 0 ? 1 : -1); // add margin of error
         direction = Quaternion.AngleAxis(angle, Vector3.forward) * direction; // This flattens the shot somehow
-        RaycastHit2D hit = Physics2D.Raycast(shotOrigin, direction, 99, ~unit.layer);
+        RaycastHit2D hit = Physics2D.Raycast(shotOrigin, direction, 255, ~LayerMask.GetMask(LayerMask.LayerToName(unit.layer)));
+        // Debug.Log("layer: " + LayerMask.LayerToName(unit.layer));
 
         if (hit.collider != null)
         {
@@ -205,6 +206,9 @@ public class ActionManager : MonoBehaviour
             UnitStatus targetHit = hit.collider.GetComponent<UnitStatus>();
             if (targetHit != null)
             {
+                //Debug.Log("unit      " + Convert.ToString(~unit.layer, 2));
+                //Debug.Log(targetHit.gameObject.name);
+                //Debug.Log("targetHit " + Convert.ToString(targetHit.gameObject.layer, 2));
                 targetHit.DamageHealth(); // formerly memberIndex
             }
 
@@ -280,9 +284,9 @@ public class ActionManager : MonoBehaviour
         if (hit.collider != null)
         {
             UnitStatus targetHit = hit.collider.GetComponent<UnitStatus>();
-            AutoMover targetMover = hit.collider.GetComponent<AutoMover>();
+            //AutoMover targetMover = hit.collider.GetComponent<AutoMover>();
             //UnitStatus attacker = unit.GetComponent<UnitStatus>();
-            if (targetHit != null && targetMover.GetAwareness() != AutoMover.State.Alert)
+            if (targetHit != null /*&& targetMover.GetAwareness() != AutoMover.State.Alert*/)
             {
                 targetHit.DamageHealth(3);
                 // There is a risk of being hurt attempting to knife an enemy

@@ -17,19 +17,22 @@ public class UnitStatus : MonoBehaviour
     private List<SpriteRenderer> unitSprites; 
     private bool isPlayer;
     private int healthLost = 0;
-    private const int HEALTH_PER_UNIT = 3;
+    private const int MAX_HEALTH = 3;
+    public int startingHealth = 3;
     // SEVERELY WOUNDED | WOUNDED | SLIGHTLY WOUNDED | HEALTHY
-    private readonly List<Color> healthColors = new List<Color> { Color.clear, Color.red, new Color(1, 0.5f, 0), Color.yellow, Color.green };
+    private readonly List<Color> colors3x = new List<Color> { Color.clear, Color.red, Color.yellow, Color.green };
+    private readonly List<Color> colors4x = new List<Color> { Color.clear, Color.red, new Color(1, 0.5f, 0), Color.yellow, Color.green };
 
     // Start is called before the first frame update
     void Start()
     {
         healthArray = new List<int>();
         for (int i = 0; i < numUnits; ++i)
-            healthArray.Add(HEALTH_PER_UNIT);
+            healthArray.Add(startingHealth);
         // health = HEALTH_PER_UNIT;// numUnits * HEALTH_PER_UNIT;
         CreateSprites();
         isPlayer = GetComponent<PlayerMover>();
+        RefreshIndicators();
     }
 
     // Update is called once per frame
@@ -77,7 +80,7 @@ public class UnitStatus : MonoBehaviour
     public void Heal(int amount=-1)
     {
         int unitToHeal = IndexOfMin(healthArray);
-        healthArray[unitToHeal] = (amount == -1 ? HEALTH_PER_UNIT : healthArray[unitToHeal] + amount);
+        healthArray[unitToHeal] = (amount == -1 ? MAX_HEALTH : healthArray[unitToHeal] + amount);
         RefreshIndicators();
     }
 
@@ -112,14 +115,8 @@ public class UnitStatus : MonoBehaviour
 
     public void Death()
     {
-        
-        GameObject corpse = Instantiate(Globals.CORPSE, Grapher.RoundedVector(transform.position), Quaternion.identity);
-        corpse.transform.parent = ObjectContainer.instance.corpses.transform;
-
-        Inventory unitInventory = GetComponent<Inventory>();
-        Inventory corpseInventory = corpse.GetComponent<Inventory>();
-        if(unitInventory && corpseInventory)
-            corpseInventory.Add(unitInventory.inventory, unitInventory.wallet);
+        AutoMover autoMover = GetComponent<AutoMover>();
+        HideMover hideMover = GetComponent<HideMover>();
 
         if (GetComponent<PlayerMover>())
         {
@@ -129,8 +126,27 @@ public class UnitStatus : MonoBehaviour
             // TODO: Game Over menu
             //TransitionFader.instance.Transition(0);
         }
-        else if (GetComponent<AutoMover>())
+        else if(autoMover && autoMover.spawnsWounded)
         {
+            GameObject woundedEnemy = Instantiate(Globals.WEAK_ENEMY, Grapher.RoundedVector(transform.position), Quaternion.identity, ObjectContainer.instance.enemies.transform);
+
+            Inventory oldInventory = GetComponent<Inventory>();
+            Inventory newInventory = woundedEnemy.GetComponent<Inventory>();
+            if (oldInventory && newInventory)
+                newInventory.Add(oldInventory.inventory, oldInventory.wallet);
+
+            Destroy(gameObject);
+        }
+        else if(hideMover || (autoMover && !autoMover.spawnsWounded))
+        {
+            GameObject corpse = Instantiate(Globals.CORPSE, Grapher.RoundedVector(transform.position), Quaternion.identity);
+            corpse.transform.parent = ObjectContainer.instance.corpses.transform;
+
+            Inventory unitInventory = GetComponent<Inventory>();
+            Inventory corpseInventory = corpse.GetComponent<Inventory>();
+            if (unitInventory && corpseInventory)
+                corpseInventory.Add(unitInventory.inventory, unitInventory.wallet);
+
             Destroy(gameObject);
         }
     }
@@ -143,9 +159,12 @@ public class UnitStatus : MonoBehaviour
             if(healthArray[i] > 0)
                 eligibleTargets.Add(i);
 
-        int playerDamaged = eligibleTargets[Random.Range(0, eligibleTargets.Count)];
-
-        healthArray[playerDamaged] -= amount;
+        if(eligibleTargets.Count > 0)
+        {
+            int playerDamaged = eligibleTargets[Random.Range(0, eligibleTargets.Count)];
+            healthArray[playerDamaged] -= amount;
+        }
+        
         healthLost += amount;
 
         if (IsDead())
@@ -158,7 +177,7 @@ public class UnitStatus : MonoBehaviour
     {
         int total = 0;
         foreach (int amount in healthArray)
-            total += (HEALTH_PER_UNIT - amount);
+            total += (MAX_HEALTH - amount);
 
         return total;
     }
@@ -177,12 +196,12 @@ public class UnitStatus : MonoBehaviour
     {
         if (unitOutline)
         {
-            if (numUnits == 1)
-                unitOutline.color = healthColors[Mathf.Clamp(healthArray[0] + 1, 0, healthColors.Count - 1)];
+            if (numUnits == 1 && healthArray.Count > 0)
+                unitOutline.color = colors3x[Mathf.Clamp(healthArray[0], 0, colors3x.Count - 1)];
             else if (numUnits == UnitsAlive())
                 unitOutline.color = Color.green;
             else
-                unitOutline.color = healthColors[UnitsAlive()];
+                unitOutline.color = colors4x[UnitsAlive()];
         }
 
         /*for(int i = 0; i < unitSprites.Count; ++i)

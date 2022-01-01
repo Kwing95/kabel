@@ -34,8 +34,8 @@ public class Globals : MonoBehaviour
     public static readonly float KNIFE_VOLUME = 5;
     public static readonly float GAS_VOLUME = 5;
     public static readonly float DISTRACTION_VOLUME = 5;
-    public static readonly float RUN_VOLUME = 3.5f;
-    public static readonly float WALK_VOLUME = 1f;
+    public static readonly float RUN_VOLUME = 4f;
+    public static readonly float WALK_VOLUME = 2f;
 
     public static readonly float GRENADE_RED_RANGE = 1.5f;
     public static readonly float GRENADE_ORANGE_RANGE = 3f;
@@ -56,6 +56,7 @@ public class Globals : MonoBehaviour
     public static readonly GameObject LEVEL_BUTTON = Resources.Load<GameObject>("Prefabs/UI/Level_Button");
     public static readonly GameObject DIGIT = Resources.Load<GameObject>("Prefabs/Digit");
     public static readonly GameObject ENEMY = Resources.Load<GameObject>("Prefabs/Core_Gameplay/EnemyV1");
+    public static readonly GameObject WEAK_ENEMY = Resources.Load<GameObject>("Prefabs/Core_Gameplay/WoundedEnemy");
 
     // MATERIALS
     public static readonly Material WHITE = Resources.Load<Material>("Materials/White");

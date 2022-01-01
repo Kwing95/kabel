@@ -156,6 +156,10 @@ public class Sidebar : MonoBehaviour
             AutoMover autoMover = child.GetComponent<AutoMover>();
             if (autoMover != null)
                 autoMover.enabled = !paused;
+
+            HideMover hideMover = child.GetComponent<HideMover>();
+            if (hideMover != null)
+                hideMover.enabled = !paused;
         }
 
     }

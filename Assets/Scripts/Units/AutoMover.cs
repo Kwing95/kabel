@@ -19,7 +19,8 @@ public class AutoMover : MonoBehaviour
     public bool randomPatrol = false; // Determines if enemy patrols randomly or sequentially
     public int pointMemory = 0; // Number of points enemy can add to patrol upon spotting player
     public float sightDistance = 10;
-    public float attackRate = 1; // How long between attacks (in seconds)
+    private float attackRate = 1; // How long between attacks (in seconds)
+    public bool spawnsWounded = false;
 
     private bool clearView; // True if there are no visual obstructions between enemy and player
     private bool canSeePlayer; // True if enemy can see player
@@ -32,7 +33,7 @@ public class AutoMover : MonoBehaviour
 
     private int maxGlances = 3;
     private int glancesLeft = 0;
-    private float glanceLength = 1;
+    private float glanceLength = 1.5f;
     private float glanceTimer = 0;
 
     private GridMover player;

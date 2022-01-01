@@ -916,26 +916,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "[The scene fades into a tropical jungle. Four men traverse a rough trail
-    on horseback.]\r\n\nBiggs: Can't stand these damned beasts. I've found corpses
-    that didn't smell this bad.\r\n\nWedge: You know, Biggs, I've found corpses that
-    smelled better than you, too.\r\n\nBane: They're the best mounts we have for
-    the mission. An armored vehicle just isn't going to cut it on this terrain. Not
-    to mention how much racket the engine would make if we rolled through here in
-    a Vollmer.\r\n\nWedge: We haven't seen signs of life in hours, Captain. There's
-    no one around to hear us.\r\n\nBane: Don't sound so disappointed. We\u2019ve
-    barely crossed the border into Merad.\r\n\n[Wedge's horse inadvertently splashes
-    muddy water on Saito.]\r\n\nBane: Shit. Saito, that didn't splash the dynamite,
-    did it?\r\n\nSaito: No, sir. Still dry.\r\n\nBiggs: I still don't get why we're
-    trusting him with that stuff. Wasn't his wife an Erawan?\r\n\nSaito: (Does he
-    really have to bring that up every chance he gets?)\r\n\nBane: Saito is the only
-    explosives expert here. The mission depends on his expertise. Unless you have
-    a better way of causing an avalanche?\r\n\nBiggs: ...\r\n\nWedge: Captain, ahead!\r\n\n[The
-    group stops and looks in the direction Wedge is pointing.]\r\n\nSaito: I only
-    see one. If he's got any squadmates, they're lurking just out of sight.\r\n\nBane:
-    Wedge, did intel say anything about another way around?\r\n\nWedge: No, sir.
-    One way in, one way out.\r\n\nBane: Alright, men. We'll take this one out, then
-    continue on foot."
+  m_text: Default text
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 23491262576758745bd0ed069513ad8e, type: 2}
   m_sharedMaterial: {fileID: -4849191145844020230, guid: 23491262576758745bd0ed069513ad8e,
@@ -955,7 +936,7 @@ MonoBehaviour:
     bottomLeft: {r: 1, g: 1, b: 1, a: 1}
     bottomRight: {r: 1, g: 1, b: 1, a: 1}
   m_fontColorGradientPreset: {fileID: 0}
-  m_spriteAsset: {fileID: 0}
+  m_spriteAsset: {fileID: 11400000, guid: 6aa1e9fbe323b324ab0406541feeb5a1, type: 2}
   m_tintAllSprites: 0
   m_StyleSheet: {fileID: 0}
   m_TextStyleHashCode: -1183493901
@@ -6764,6 +6745,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1743422262394716836}
     m_Modifications:
+    - target: {fileID: 2199934512094124451, guid: 8a5403b8db8dc17459cda3036a5e1e20,
+        type: 3}
+      propertyPath: m_Text
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 3942707949434880487, guid: 8a5403b8db8dc17459cda3036a5e1e20,
         type: 3}
       propertyPath: m_LocalScale.x
@@ -7550,6 +7536,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1743422262606871128}
     m_Modifications:
+    - target: {fileID: 2199934512094124451, guid: 8a5403b8db8dc17459cda3036a5e1e20,
+        type: 3}
+      propertyPath: m_Text
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 3942707949434880487, guid: 8a5403b8db8dc17459cda3036a5e1e20,
         type: 3}
       propertyPath: m_LocalScale.x
@@ -9115,6 +9106,31 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1743422262394716836}
     m_Modifications:
+    - target: {fileID: 2199934512094124451, guid: 8a5403b8db8dc17459cda3036a5e1e20,
+        type: 3}
+      propertyPath: m_Text
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 2199934512094124451, guid: 8a5403b8db8dc17459cda3036a5e1e20,
+        type: 3}
+      propertyPath: m_FontData.m_BestFit
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2199934512094124451, guid: 8a5403b8db8dc17459cda3036a5e1e20,
+        type: 3}
+      propertyPath: m_FontData.m_MaxSize
+      value: 111
+      objectReference: {fileID: 0}
+    - target: {fileID: 2199934512094124451, guid: 8a5403b8db8dc17459cda3036a5e1e20,
+        type: 3}
+      propertyPath: m_FontData.m_MinSize
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2199934512094124451, guid: 8a5403b8db8dc17459cda3036a5e1e20,
+        type: 3}
+      propertyPath: m_FontData.m_FontSize
+      value: 77
+      objectReference: {fileID: 0}
     - target: {fileID: 3942707949434880487, guid: 8a5403b8db8dc17459cda3036a5e1e20,
         type: 3}
       propertyPath: m_LocalScale.x
@@ -9275,6 +9291,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 8948226534363485865, guid: 8a5403b8db8dc17459cda3036a5e1e20,
+        type: 3}
+      propertyPath: m_FontData.m_BestFit
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8a5403b8db8dc17459cda3036a5e1e20, type: 3}

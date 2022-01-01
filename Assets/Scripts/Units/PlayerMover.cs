@@ -96,6 +96,9 @@ public class PlayerMover : MonoBehaviour
         //RaycastHit2D hit = Physics2D.Raycast(transform.position, mousePosition - (Vector2)transform.position, distance, mask);
 
         nav.SetDestination(mousePosition, Sidebar.GetRunning());
+        if(nav.GetPathLength() == 0)
+            Toast.ToastWrapper("Tile out of range");
+        
     }
 
     private bool CanMove()

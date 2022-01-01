@@ -8,6 +8,7 @@ public class PanZoom : MonoBehaviour
     public float zoomOutMin = 5;
     public float zoomOutMax = 14;
     public float scrollZoomSpeed = 6;
+    public float maxPan = 20;
     private bool canDrag = true;
 
     // Update is called once per frame
@@ -37,8 +38,20 @@ public class PanZoom : MonoBehaviour
         else if (Input.GetMouseButton(0))
         {
             Vector3 direction = touchStart - (Vector3)ClickManager.GetMousePosition(true); // Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            if(canDrag)
-                Camera.main.transform.position += direction;
+            if (canDrag)
+            {
+                if(Vector2.Distance(transform.position, PlayerMover.instance.transform.position) > maxPan)
+                {
+                    canDrag = false;
+                    Vector2 offset = Vector3.Normalize((Vector2)transform.position - (Vector2)PlayerMover.instance.transform.position);
+                    Camera.main.transform.position = new Vector3(0, 0, transform.position.z) + PlayerMover.instance.transform.position + (Vector3)(0.95f * maxPan * offset);
+                }
+                else
+                {
+                    Camera.main.transform.position += direction;
+                }
+            }
+                
         }
 
         if(!Sidebar.GetMenuPaused())

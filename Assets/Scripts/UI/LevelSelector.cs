@@ -46,6 +46,9 @@ public class LevelSelector : MonoBehaviour
     public GameObject buttonContainer;
     public GameObject levelDetails;
 
+    public Button prevChapter;
+    public Button nextChapter;
+
     public Text chapterText;
     public Text longDescription;
 
@@ -61,6 +64,7 @@ public class LevelSelector : MonoBehaviour
         instance = this;
         hardmodeImage.color = new Color(1, 1, 1, hardmode ? 1 : 0.5f);
         autoplayImage.color = new Color(1, 1, 1, 1);
+        prevChapter.interactable = false;
         ShowLevels(1, false);
     }
 
@@ -106,6 +110,10 @@ public class LevelSelector : MonoBehaviour
     public void ChapterSelect(bool next)
     {
         currentChapter = Mathf.Clamp(currentChapter + (next ? 1 : -1), 1, Globals.NUM_CHAPTERS);
+
+        prevChapter.interactable = currentChapter != 1;
+        nextChapter.interactable = currentChapter != Globals.NUM_CHAPTERS;
+
         ShowLevels(currentChapter, hardmode);
         chapterText.text = "CHAPTER " + currentChapter.ToString();
     }

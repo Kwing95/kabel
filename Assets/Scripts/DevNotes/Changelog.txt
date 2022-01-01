@@ -1,5 +1,3 @@
-﻿/*
- 
 October 4, 2019                                             [v0.02]
  + Units have turn-based movement
  + Enemies have fully rendered sight cones
@@ -233,8 +231,65 @@ Oct 25, 2021
  + Camera following always pauses in action menu now
  + Enemy friendly fire should be disabled
 
+ Nov 8, 2021
+ + RandomMap creates random mazes
+
+Nov 10, 2021
+ + Random map now has a few walls missing
+ + Random mazes now have islands and deformities
+
+Nov 11, 2021
+ + Reorganized Scripts folder
+
+Nov 19, 2021
+ + Can spawn enemies with routes
+
+Nov 21, 2021
+ + Can spawn and collect loot
+ + Organized script files into UI folder
+
+Nov 23, 2021
+ + Fixed player and enemy default position bug in random maps
+ + Random maps can be replicated with seeding number
+
+Dec 1, 2021
+ + Worked on fixing bad pathfinding
+   + FindDirectPath can add duplicate squares; created check to 
+   + pathProgress sometimes doesn't index adjacent tile; can reset to 0 or 1
+
+Dec 5, 2021
+ + Enemies no longer randomly stand still
+ + Can input and play custom seeded maps from main menu
+
+Dec 6, 2021
+ + Error handling for custom seeds
+ + Can return to menu after collecting loot
+
+Dec 8, 2021
+ + Glance is now 1.5 seconds long
+ + "Out of range" message for player
+ + Useless chapter buttons disable themselves
+
+Dec 19, 2021
+ + Added HideMover hybrid model (not tested)
+ + HideMover has necessary OnDisable
+
+Dec 20, 2021
+ + Fixed bug with killing WoundedEnemy
+
+Dec 31, 2021
+ + Inline icons for tutorial messages
+ + Redesigned G1-1 and G1-2 for clarity
+ + Health indicators have better colors for single units
+ + Can knife WoundedEnemy
+ + Fixed bugs associated with enemy death
+ + Camera cannot exceed max distance from player
+
+Jan 1, 2022
+ + Changed LootCounter to remove bug
+ + Enemy friendly fire disabled
+
 CANCELLED CONTENT
  * Flushing: Enemies systematically search all tiles in a certain area
  * Interception: Alerted enemies guard critical areas of map
-
- */
+ * Parallax graphics

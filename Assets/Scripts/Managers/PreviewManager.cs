@@ -87,7 +87,9 @@ public class PreviewManager : MonoBehaviour
         LineRenderer renderer = ShapeManager.DrawLine(start, end).GetComponent<LineRenderer>();
 
         bool targetInRange = hit.collider != null && hit.collider.CompareTag("Enemy");
-        bool targetUnaware = targetInRange && hit.collider.gameObject.GetComponent<AutoMover>() && hit.collider.gameObject.GetComponent<AutoMover>().GetAwareness() != AutoMover.State.Alert;
+        bool targetUnaware = targetInRange &&
+            (hit.collider.gameObject.GetComponent<HideMover>() || (hit.collider.gameObject.GetComponent<AutoMover>() &&
+            hit.collider.gameObject.GetComponent<AutoMover>().GetAwareness() != AutoMover.State.Alert));
 
         if (!targetInRange)
         {
@@ -179,8 +181,8 @@ public class PreviewManager : MonoBehaviour
 
         GameObject coneObject = new GameObject();
         FieldOfView cone = coneObject.AddComponent<FieldOfView>();
-        cone.viewRadius = 24;
-        cone.viewAngle = 24;
+        cone.viewRadius = 26;
+        cone.viewAngle = 26;
         coneObject.transform.position = start;
         float destinationAngle = (int)Vector2.SignedAngle(Vector2.up, cursorPosition - start);
         coneObject.transform.eulerAngles = new Vector3(0, 0, destinationAngle);

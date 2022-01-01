@@ -31,6 +31,7 @@ public class Grapher : MonoBehaviour
 
     public Vector2 entryPoint;
     private static LayerMask mask;
+    private static LayerMask defaultAndPlayer;
 
     // Start is called before the first frame update
     void Awake()
@@ -44,6 +45,7 @@ public class Grapher : MonoBehaviour
 
         ResetGraph();
         mask = LayerMask.GetMask("Default");
+        defaultAndPlayer = LayerMask.GetMask(new string[] { "Default", "Player" });
     }
 
     // Update is called once per frame
@@ -578,7 +580,6 @@ public class Grapher : MonoBehaviour
     {
         // THIS MAY NOT WORK!!!
         float effectiveDistance = Mathf.Min(Vector2.Distance(pointA, pointB));
-        LayerMask defaultAndPlayer = LayerMask.GetMask(new string[] { "Default", "Player" });
         RaycastHit2D hit = Physics2D.Raycast(pointA, pointB - pointA, effectiveDistance, defaultAndPlayer);
 
         bool returnValue = hit.collider == null || hit.collider.CompareTag("Player");

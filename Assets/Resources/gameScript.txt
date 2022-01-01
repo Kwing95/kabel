@@ -75,32 +75,38 @@ Bane: Alright, men. We'll take this one out, then continue on foot.
 
 GAMEPLAY SECTION: The group neutralizes a handful of Erawan militia, whose numbers are generally sparse. Since there is a party of four and all are well-equipped, this is meant to serve as an easy in-game tutorial. Sneaking up on enemies is methodical but not overly difficult.
 
+<M1-0>
+Click a tile on the map to move to that location. Click the <rotate=270><sprite name="arrow"><rotate=0> arrow in the top right corner to close this popup.
+</M1-0>
+
 <M1-1>
-Click the WALK icon to toggle between walking and running. Running is noisy and can attract attention.
+Stand 2-3 tiles from this target, then select KNIFE <sprite name="knife"> from the ACTION <sprite name="action"> menu to eliminate this target. The game remains paused while browsing the ACTION menu.
 </M1-1>
 
 <M1-2>
-Click and drag the map to survey your surroundings. Use pinch to zoom (on mobile) or the scroll wheel (on PC) to zoom in and out.
+Click the WALK <sprite name="walk"> icon to toggle between walking and running. Running is noisy and can attract attention.
 </M1-2>
 
 <M1-3>
-Select FIREARM or KNIFE from the ACTION menu to eliminate this target. The game remains paused while browsing the ACTION menu.
+This unit will notice you as soon as you enter its cone of vision. Enter the ACTION <sprite name="action"> menu as soon as it sees you, then select FIREARM <sprite name="gun"> to eliminate it.
 </M1-3>
 
 <M1-4>
-When possible, avoid enemies rather than engaging in combat directly.
+Click and drag the map to survey your surroundings. Use pinch to zoom (on mobile) or the scroll wheel (on PC) to zoom in and out. When possible, avoid enemies rather than engaging in combat directly.
 </M1-4>
 
+==============================
+
 <M1-5>
-Use DISTRACT from the ACTION MENU to lure enemies away from their post.
+Use DISTRACT <sprite name="noise"> from the ACTION <sprite name="action"> MENU to lure enemies away from their post. The red circle indicates which who can hear the noise.
 </M1-5>
 
 <M1-6>
-Select FRAG GRENADE from the ACTION menu to neutralize multiple targets.
+Select GRENADE <sprite name="grenade"> from the ACTION <sprite name="action"> menu to neutralize multiple targets.
 </M1-6>
 
 <M1-7>
-Select MEDKIT from the ACTION menu to heal wounded units.
+Select MEDKIT <sprite name="first_aid"> from the ACTION <sprite name="action"> menu to heal wounded units.
 </M1-7>
 
 Innocents

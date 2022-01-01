@@ -349,7 +349,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 2021.12.6
+  m_Text: 2022.1.1
 --- !u!222 &96796074
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -678,6 +678,18 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
+--- !u!114 &310547864 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3942707949883080452, guid: 8a5403b8db8dc17459cda3036a5e1e20,
+    type: 3}
+  m_PrefabInstance: {fileID: 1040221298}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &319642263
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -929,6 +941,18 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 319642263}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &347658594 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3942707949883080452, guid: 8a5403b8db8dc17459cda3036a5e1e20,
+    type: 3}
+  m_PrefabInstance: {fileID: 584717550}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &353495463
 GameObject:
   m_ObjectHideFlags: 0
@@ -6527,6 +6551,8 @@ MonoBehaviour:
   levelGrid: {fileID: 1672032234}
   buttonContainer: {fileID: 1672032234}
   levelDetails: {fileID: 51295460}
+  prevChapter: {fileID: 347658594}
+  nextChapter: {fileID: 310547864}
   chapterText: {fileID: 885868790}
   longDescription: {fileID: 1117606453}
 --- !u!1 &1672032234

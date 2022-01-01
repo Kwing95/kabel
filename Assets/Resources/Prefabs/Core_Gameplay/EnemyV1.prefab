@@ -476,6 +476,7 @@ MonoBehaviour:
   numUnits: 1
   healthArray: 
   gasDuration: 10
+  startingHealth: 3
 --- !u!114 &1333094116810465314
 MonoBehaviour:
   m_ObjectHideFlags: 0
