@@ -4,10 +4,12 @@ UX PATCH
  - Icon/text/both options for buttons
  - Make it clear when player is taking damage
  - Looting popup
+ - Help button
 
  BALANCING PATCH
  - Must be out of sight for 1-3 seconds before knifing target
  - Enemies will ignore corpses if investigating noise/sighting
+ - Decrease knife range
 
 TUTORIAL PATCH
  - Fix G1-2 through G1-6
@@ -66,7 +68,7 @@ BONUS FEATURES:
   Features unlocked from the beginning:
     Jukebox - Play all game music
     Arcade Mode - Randomly generated maps
-    Encyclopedia - Appendix of game lore
+    Appendix - Appendix of game lore
   Beating the game unlocks the following:
     Hardcore Mode - Enemies have no cones; player noises no longer visualized; enemy cash drop doubled
     Cinema Mode - Autoplay all cutscenes

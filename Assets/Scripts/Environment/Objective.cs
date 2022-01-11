@@ -25,10 +25,17 @@ public class Objective : MonoBehaviour
             active = true;
             if (levelFinish)
             {
-                PlayerMover.instance.GetComponent<Navigator>().Pause();
-                PlayerMover.instance.GetComponent<BoxCollider2D>().enabled = false;
+                if (AutoMover.InAlertStatus())
+                {
+                    Toast.ToastWrapper("Evade or eliminate enemies to proceed");
+                }
+                else
+                {
+                    PlayerMover.instance.GetComponent<Navigator>().Pause();
+                    PlayerMover.instance.GetComponent<BoxCollider2D>().enabled = false;
 
-                TransitionFader.instance.FinishLevel();
+                    TransitionFader.instance.FinishLevel();
+                }
             }
             else
             {

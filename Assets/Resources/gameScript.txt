@@ -76,7 +76,7 @@ Bane: Alright, men. We'll take this one out, then continue on foot.
 GAMEPLAY SECTION: The group neutralizes a handful of Erawan militia, whose numbers are generally sparse. Since there is a party of four and all are well-equipped, this is meant to serve as an easy in-game tutorial. Sneaking up on enemies is methodical but not overly difficult.
 
 <M1-0>
-Click a tile on the map to move to that location. Click the <rotate=270><sprite name="arrow"><rotate=0> arrow in the top right corner to close this popup.
+Click a tile on the map to move to that location. Click the <rotate=270><sprite name="arrow"><rotate=0> arrow in the top right corner to close this popup. Right-click or long tap a button for an explanation of what it does.
 </M1-0>
 
 <M1-1>
@@ -95,8 +95,6 @@ This unit will notice you as soon as you enter its cone of vision. Enter the ACT
 Click and drag the map to survey your surroundings. Use pinch to zoom (on mobile) or the scroll wheel (on PC) to zoom in and out. When possible, avoid enemies rather than engaging in combat directly.
 </M1-4>
 
-==============================
-
 <M1-5>
 Use DISTRACT <sprite name="noise"> from the ACTION <sprite name="action"> MENU to lure enemies away from their post. The red circle indicates which who can hear the noise.
 </M1-5>
@@ -104,6 +102,8 @@ Use DISTRACT <sprite name="noise"> from the ACTION <sprite name="action"> MENU t
 <M1-6>
 Select GRENADE <sprite name="grenade"> from the ACTION <sprite name="action"> menu to neutralize multiple targets.
 </M1-6>
+
+=================
 
 <M1-7>
 Select MEDKIT <sprite name="first_aid"> from the ACTION <sprite name="action"> menu to heal wounded units.

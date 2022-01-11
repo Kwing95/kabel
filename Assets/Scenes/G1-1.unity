@@ -55445,6 +55445,11 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4490379367719905864, guid: 8565b8fcc54e5434d969835876bd7b73,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4882986587428883140, guid: 8565b8fcc54e5434d969835876bd7b73,
         type: 3}
       propertyPath: m_AnchorMax.y
@@ -68812,6 +68817,51 @@ PrefabInstance:
       propertyPath: unitOutline
       value: 
       objectReference: {fileID: 1634749596}
+    - target: {fileID: 3358951895766255718, guid: f5a0839dafcd8764bbf4d3e04ccacbbd,
+        type: 3}
+      propertyPath: healthArray.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3358951895766255718, guid: f5a0839dafcd8764bbf4d3e04ccacbbd,
+        type: 3}
+      propertyPath: healthArray.Array.data[0].name
+      value: Saito
+      objectReference: {fileID: 0}
+    - target: {fileID: 3358951895766255718, guid: f5a0839dafcd8764bbf4d3e04ccacbbd,
+        type: 3}
+      propertyPath: healthArray.Array.data[1].name
+      value: Bane
+      objectReference: {fileID: 0}
+    - target: {fileID: 3358951895766255718, guid: f5a0839dafcd8764bbf4d3e04ccacbbd,
+        type: 3}
+      propertyPath: healthArray.Array.data[2].name
+      value: Biggs
+      objectReference: {fileID: 0}
+    - target: {fileID: 3358951895766255718, guid: f5a0839dafcd8764bbf4d3e04ccacbbd,
+        type: 3}
+      propertyPath: healthArray.Array.data[3].name
+      value: Wedge
+      objectReference: {fileID: 0}
+    - target: {fileID: 3358951895766255718, guid: f5a0839dafcd8764bbf4d3e04ccacbbd,
+        type: 3}
+      propertyPath: healthArray.Array.data[0].health
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3358951895766255718, guid: f5a0839dafcd8764bbf4d3e04ccacbbd,
+        type: 3}
+      propertyPath: healthArray.Array.data[1].health
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3358951895766255718, guid: f5a0839dafcd8764bbf4d3e04ccacbbd,
+        type: 3}
+      propertyPath: healthArray.Array.data[2].health
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3358951895766255718, guid: f5a0839dafcd8764bbf4d3e04ccacbbd,
+        type: 3}
+      propertyPath: healthArray.Array.data[3].health
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 3527596514183042670, guid: f5a0839dafcd8764bbf4d3e04ccacbbd,
         type: 3}
       propertyPath: bar

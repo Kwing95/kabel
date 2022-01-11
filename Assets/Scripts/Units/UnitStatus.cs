@@ -2,6 +2,18 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[System.Serializable]
+public class Unit
+{
+    public string name;
+    public int health;
+    public Unit(int _health=3, string _name = "Unit")
+    {
+        name = _name;
+        health = _health;
+    }
+}
+
 public class UnitStatus : MonoBehaviour
 {
 
@@ -11,7 +23,7 @@ public class UnitStatus : MonoBehaviour
     public GameObject spriteContainer;
 
     public int numUnits = 3;
-    public List<int> healthArray;
+    public List<Unit> healthArray;
     public float gasDuration = 10;
     private float gasCounter = 0;
     private List<SpriteRenderer> unitSprites; 
@@ -20,15 +32,20 @@ public class UnitStatus : MonoBehaviour
     private const int MAX_HEALTH = 3;
     public int startingHealth = 3;
     // SEVERELY WOUNDED | WOUNDED | SLIGHTLY WOUNDED | HEALTHY
+    private readonly List<string> stringStatus = new List<string> { "UNRESPONSIVE", "DYING", "WOUNDED", "HEALTHY" };
     private readonly List<Color> colors3x = new List<Color> { Color.clear, Color.red, Color.yellow, Color.green };
     private readonly List<Color> colors4x = new List<Color> { Color.clear, Color.red, new Color(1, 0.5f, 0), Color.yellow, Color.green };
 
     // Start is called before the first frame update
     void Start()
     {
-        healthArray = new List<int>();
-        for (int i = 0; i < numUnits; ++i)
-            healthArray.Add(startingHealth);
+        if (healthArray == null || healthArray.Count == 0)
+        {
+            healthArray = new List<Unit>();
+            for (int i = 0; i < numUnits; ++i)
+                healthArray.Add(new Unit(startingHealth));
+        }
+
         // health = HEALTH_PER_UNIT;// numUnits * HEALTH_PER_UNIT;
         CreateSprites();
         isPlayer = GetComponent<PlayerMover>();
@@ -80,32 +97,32 @@ public class UnitStatus : MonoBehaviour
     public void Heal(int amount=-1)
     {
         int unitToHeal = IndexOfMin(healthArray);
-        healthArray[unitToHeal] = (amount == -1 ? MAX_HEALTH : healthArray[unitToHeal] + amount);
+        healthArray[unitToHeal].health = (amount == -1 ? MAX_HEALTH : healthArray[unitToHeal].health + amount);
         RefreshIndicators();
     }
 
     public int UnitsAlive()
     {
         int unitsAlive = 0;
-        foreach(int unitHealth in healthArray)
-            unitsAlive += unitHealth > 0 ? 1 : 0;
+        foreach(Unit unit in healthArray)
+            unitsAlive += unit.health > 0 ? 1 : 0;
 
         return unitsAlive;
     }
 
-    public static int IndexOfMin(List<int> list)
+    public static int IndexOfMin(List<Unit> list)
     {
         if (list.Count == 0)
             return -1;
 
-        int minValue = list[0];
+        int minValue = list[0].health;
         int minIndex = 0;
 
         for(int i = 0; i < list.Count; ++i)
         {
-            if(list[i] < minValue)
+            if(list[i].health < minValue)
             {
-                minValue = list[i];
+                minValue = list[i].health;
                 minIndex = i;
             }
         }
@@ -156,13 +173,13 @@ public class UnitStatus : MonoBehaviour
         List<int> eligibleTargets = new List<int>();
 
         for(int i = 0; i < healthArray.Count; ++i)
-            if(healthArray[i] > 0)
+            if(healthArray[i].health > 0)
                 eligibleTargets.Add(i);
 
         if(eligibleTargets.Count > 0)
         {
             int playerDamaged = eligibleTargets[Random.Range(0, eligibleTargets.Count)];
-            healthArray[playerDamaged] -= amount;
+            healthArray[playerDamaged].health -= amount;
         }
         
         healthLost += amount;
@@ -176,8 +193,8 @@ public class UnitStatus : MonoBehaviour
     public int HealthLost()
     {
         int total = 0;
-        foreach (int amount in healthArray)
-            total += (MAX_HEALTH - amount);
+        foreach (Unit amount in healthArray)
+            total += (MAX_HEALTH - amount.health);
 
         return total;
     }
@@ -197,7 +214,7 @@ public class UnitStatus : MonoBehaviour
         if (unitOutline)
         {
             if (numUnits == 1 && healthArray.Count > 0)
-                unitOutline.color = colors3x[Mathf.Clamp(healthArray[0], 0, colors3x.Count - 1)];
+                unitOutline.color = colors3x[Mathf.Clamp(healthArray[0].health, 0, colors3x.Count - 1)];
             else if (numUnits == UnitsAlive())
                 unitOutline.color = Color.green;
             else
@@ -231,6 +248,15 @@ public class UnitStatus : MonoBehaviour
     public int GetHealthLost()
     {
         return healthLost;
+    }
+
+    public string StringStatus()
+    {
+        string output = "";
+        foreach(Unit unit in healthArray)
+            output += unit.name + ": " + stringStatus[unit.health] + "\n";
+
+        return output;
     }
 
 }

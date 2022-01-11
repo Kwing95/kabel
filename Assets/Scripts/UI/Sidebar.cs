@@ -25,7 +25,6 @@ public class Sidebar : MonoBehaviour
     public List<Button> allButtons;
     public List<Button> actionConfirmButtons;
     public List<Button> moveConfirmButtons;
-    public List<Button> zoomButtons;
     public Button actionButton;
     public Button gauzeButton;
     public Button fragButton;
@@ -57,8 +56,6 @@ public class Sidebar : MonoBehaviour
         menuNavigator = GetComponent<MenuNavigator>();
         zoomer = Camera.main.GetComponent<Zoomer>();
         currentZoom = 0;
-        if(zoomer)
-            ZoomOut();
         RefreshRunning();
     }
 
@@ -89,33 +86,6 @@ public class Sidebar : MonoBehaviour
         running = false;
     }
 
-    public void ZoomIn()
-    {
-        if (currentZoom > 0)
-            zoomer.SetDestination(cameraZooms[--currentZoom]);
-
-        zoomButtons[1].interactable = true;
-        RefreshZoomButtons();
-    }
-
-    public void ZoomOut()
-    {
-        if (currentZoom < cameraZooms.Count - 1)
-            zoomer.SetDestination(cameraZooms[++currentZoom]);
-
-        zoomButtons[0].interactable = true;
-        RefreshZoomButtons();
-    }
-
-    public void RefreshZoomButtons()
-    {
-        if (currentZoom == 0)
-            zoomButtons[0].interactable = false;
-
-        if (currentZoom == cameraZooms.Count - 1)
-            zoomButtons[1].interactable = false;
-    }
-
     public void MenuPause()
     {
         menuPaused = !menuPaused;
@@ -130,8 +100,6 @@ public class Sidebar : MonoBehaviour
             // button.interactable = !menuPaused;
 
         actionButton.interactable = canAttack && !menuPaused;
-        if (!menuPaused)
-            RefreshZoomButtons();
 
         pauseDisplay.sprite = menuPaused ? sprites[0] : sprites[1];
         Time.timeScale = menuPaused ? 0 : 1;

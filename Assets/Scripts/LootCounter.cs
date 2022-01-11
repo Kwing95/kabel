@@ -12,6 +12,7 @@ public class LootCounter : MonoBehaviour
         if (active)
         {
             MazeMaker.instance.lootLeft -= 1;
+            Toast.ToastWrapper(MazeMaker.instance.lootLeft + " remaining");
             if (MazeMaker.instance.lootLeft <= 0)
             {
                 TransitionFader.instance.Transition("Level_Select");

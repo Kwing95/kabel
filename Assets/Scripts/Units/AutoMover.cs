@@ -423,4 +423,18 @@ public class AutoMover : MonoBehaviour
         return awareness;
     }
 
+    public static bool InAlertStatus()
+    {
+        List<GameObject> enemies = ObjectContainer.GetAllEnemies();
+
+        foreach(GameObject enemy in enemies)
+        {
+            AutoMover mover = enemy.GetComponent<AutoMover>();
+            if (mover && mover.awareness == State.Alert)
+                return true;
+        }
+
+        return false;
+    }
+
 }

@@ -288,6 +288,8 @@ Dec 31, 2021
 Jan 1, 2022
  + Changed LootCounter to remove bug
  + Enemy friendly fire disabled
+ + Loot remaining toast display
+ + Must not be in alert status to finish level
 
 CANCELLED CONTENT
  * Flushing: Enemies systematically search all tiles in a certain area
