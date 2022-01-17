@@ -1,0 +1,350 @@
+Main Cast ========================
+
+1 Wynn - Captain
+
+	A former slave from Lamenir slowly dying from Pronsi withdrawal. Led a
+	failed movement for peace and independence before escaping to Lebre as a
+	refugee.
+	
+2 Novak - Assassin
+
+	From same town as Wynn. Led Arm and Leg terrorist organization, and
+	personally assassinated several high-ranking leaders, causing massive
+	collateral damage to commoners in the process. Strong ideological
+	differences with Wynn, but the two trust each other more than anyone.
+	
+	Wynn and his late wife were both coal miners. When she became pregnant, a
+	latent lung disease surfaced. Being forced to work anyway, Wynn had no
+	choice but to watch her both miscarry and die. Following this event, he
+	staged a handful of terrorist attacks against various mines, covering up
+	the attacks as hate crimes from Debon nationalists. When the royal family
+	could only source coal from a neighboring province, he dynamited a mountain
+	pass on the supply line, waited for the electrical security system to lose
+	power, and proceeded to slaughter the entire royal family, cutting off an
+	arm and leg from each victim and leading to the formation of the Arm and Leg
+	organization.
+	
+3 Janka - Warrior
+
+	From the warrior tribe of Talteb who prioritize love of battle above all
+	else. She says a prayer and thanks every enemy she defeats in battle.
+	
+	While she originally claims to have a strong kinship to her culture, it's
+	later revealed that she resents Talteb's stoicism regarding defeat and
+	death, particularly after her older sister was captured and sold into sexual
+	slavery. Janka's father disappeared trying to fifnd her. Soon after, she,
+	her mother, and stepfather immigrated to Lebre.
+	
+4 Sezar - Pirate
+
+	A former Cheminan pirate who trafficked illegally modified arms to rebels
+	in Lamenir. When he was caught he fled to Lebre and enlisted in the military
+	to gain citizenship.
+	
+Tavis - A 20 year old Debon student reporting on the conflict in Lebre. His
+ideals of peace frequently cause him to come into conflict with Novak.
+
+Cities ===========================
+
+1 - The first town Wynn's team is tasked with defending. The player engages
+Debon forces before they reach the town, each time killing as many as possible
+before retreating. Certain story arcs progress (including some civilians
+evacuating) until the Debon military finally reaches the town and slaughters the
+civilians.
+
+2 - A town Wynn's team passes; they are ordered not to protect them as the town
+holds no strategic value. When they return later, the men and children have been
+slaughtered.
+
+3 - A town Wynn's team is tasked with defending. The town is successfully
+defended, but at the end of the game, Novak is tasked with assisting Debon
+forces with subjugating the villagers after Lamenir agrees to a treaty.
+
+Jenoir ===========================
+
+Traditional Lebre funeral.
+
+Talteb ===========================
+
+A small island occupied by the Talteb tribe. According to mythology, the island
+was once occupied by two tribes who were at war with each other. The most feared
+generals from each side locked horns in battle, but enjoyed fighting so much
+that they both defected from their respective armies, fell in love, and started
+a dojo in the mountains together. The two tribes they were from were enraged by
+their desertion and sent their armies after them, but were quickly dispatched.
+Over time, young and eager warriors sought them out, eventually forming the
+Talteb tribe.
+
+The Talteb place divine importance on fighting and personal strength. The
+fighting spirit and self-improvement are admired moreso than simple victory.
+
+For many years, Talteb was ignored by colonizing countries due to its lack of
+resources, strategic position, and small population. However, when demand for
+rubber increased during industrialization, the Talteb people were quickly
+overcome by a military force utilizing modern weaponry. Following the genocide,
+Talteb became a common destination for sex tourism.
+
+==================================
+
+The player is introduced to the team from the perspective of Janka. Sezar is a
+pirate from Chemina who fled after being exposed for illegally trafficking
+automatic weapons to the military in Lebre. He enlisted in the military to gain
+citizenship after turning his back on Chemina. Wynn and Novak are introduced as
+Lamenir natives, working as slaves in the coal mines before their hometown was
+liberated and assimilated by Lebre. While they have a lot of history, they are
+described as being very different, working together out of mutual respect for
+each others' combat ability but having a tense relationship otherwise. Wynn is
+the captain of the fireteam, but because he is slowly dying of withdrawal from
+Pronsi and plans to leave Novak as the captain once he is gone.
+
+Janka asks why Novak isn't also dying of Pronsi. Wynn explains that there is a
+1 in 50 chance of being able to survive the withdrawal symptoms. When Janka
+asks why Novak would wait so long, Wynn tries to evade the question before
+Novak reveals that the withdrawal was a failed suicide attempt.
+
+The player fights a losing battle against invading Debon forces. In many cases
+they must defeat as many as they can before retreating. Villages the player
+defend will slowly dwindle as civilian casualties pile up.
+
+The village they defend is visited by Tavis, a 20 year old student from Debon
+reporting on the war from Lebre's perspective. Wynn does his best to explain
+the war situation to him, but Novak is disgusted by his naivete and refuses to
+speak to him.
+
+At one point, Novak spirals into a habit of drinking, causing his normally
+tight-lipped demeanor to become hostile. He begins arguing with Wynn and Tavis.
+At one point Tavis asks Novak why Lebre doesn't attempt to negotiate peace with
+Debon, causing Novak to attack him, challenging him, "Stop me with your words!"
+Janka subdues Novak.
+
+Tavis dies due to health complications resulting from Novak attacking him. Janka
+confronts Wynn about his decision for Novak to be captain, and Wynn asks that
+Novak shares information about his past in hopes of humanizing him to Janka and
+Sezar.
+
+Novak reluctantly explains that he and his wife were enslaved coal miners, and
+that when she became pregnant, it caused her lungs to become more sensitive to
+the coal mines. She was forced to continue working anyway, ultimately resulting
+in her death.
+
+Wynn's withdrawal worsens and he ultimately makes a last stand, leaving Novak as
+captain of the fireteam, much to the concern of Janka and and Sezar. When they
+recover Wynn's body, Novak gives Wynn a traditional Lebre funeral including
+ritualistic cannibalism; he consumes a raw piece of Wynn's flesh, Janka consumes
+a cooked piece, and Sezar abstains. Novak reveals information about his wife and
+laments that he was not able to give her a proper funeral.
+
+Due to political turbulence, Lebre negotiates peace with Debon and orders Novak
+to help suppress an uprising of their former allies, effectively betraying them.
+Novak consults the team about this. When Sezar states his intent to obey orders,
+Novak kills him on the spot, then asks Janka what she wants to do.
+
+If Janka chooses to join Novak in switching sides and supporting the uprising,
+Novak hugs and thanks her. The two fight an unwinnable battle and die together.
+If Janka chooses to desert the military and go elsewhere, Novak nods and leaves
+to make his final stand alone.
+
+==================================
+
+Novak: Fell in love with a girl while working in the coal mines. The girl had a
+late-onset lung condition. When she became pregnant with Novak's child, a
+combination of mining conditions and her pregnancy killed her. She told Novak
+to take her Pronsi.
+
+Janka: You don't seriously believe anyone could be that strong, do you?
+
+Sezar: I try not to make the mistake of underestimating people. One time when I
+was docked in Debony I saw a man wipe out an entire sailing crew on his own.
+
+-
+
+Sezar: That's exactly what was wrong with sending in Somoza to topple the
+Cheminan government. He was smart enough to actually rule Chemina without
+foreign aid. An incompetent buffoon wouldn't have dared defecting.
+
+-
+
+Janka: Surely some of the problem is the system, right?
+
+Novak: Political philosophy is how leeches shift blame away from themselves.
+It's no different from the Debonese National Society... blame the poor, blame
+the system, blame anyone except the ones that are actually responsible.
+
+Chemina was a confederacy before Somoza. Lamenir was a bunch of nomadic hunter
+gatherers before Debonese colonialization. And before Survi colonized Debony,
+the native Debonese had a primitive agrarian society. All of those worked just
+fine until a few pieces of shit weaseled their way to the top.
+
+-
+
+Novak: If a politician doesn't obey you instantly and out o
+
+Politicians feign humanity by making others enslave, murder, and torture on
+their behalf. Don't mistake their soft features and uncallused hands for
+civility. Your empathy will not be reciprocated. Demonstrate that they will die
+horrifically the instant they even think to defy you.
+
+-
+
+Tavis: Two wrongs don't make a right.
+
+Novak: Then it's a good thing killing isn't wrong. Do you honestly think
+non-violence would have yielded results?
+
+Tavis: Of course! Debony isn't a country of savages! We-
+
+Novak: Stop me.
+
+Tavis: What?
+
+[Novak punches Tavis in the face.]
+
+Novak: Stop me with your words!
+
+Tavis: What are you doing!?
+
+[Novak knees Tavis in the stomach, then grabs his hair and knees him in the
+nose. Tavis screams in agony. Janka stands up and walks toward Novak.]
+
+Wynn: Novak! You're going to fucking kill him!
+
+Novak: No I'm not. He's going to stop me with the power of pacifism. Isn't
+that right?
+
+[Novak grabs Tavis' arm and dislocates his shoulder, causing him to scream
+again.]
+
+Tavis: Stop!!
+
+Janka: Enough!
+
+[Janka grabs Novak and hurls him to the ground. Tavis rolls onto his side
+and coughs up blood.]
+
+Tavis: Fuck...
+
+Novak: 
+
+Listen up  you little shit. The world is not run by ideas, logic,
+morality, or justice. It's ruled by force. Call it brutish or uncivilized
+if you want, but nothing you said could have stopped me from killing you.
+Janka did. If pacifism is the hill you want to die on, I suggest asking her
+why she didn't just "use her words."
+
+-
+
+Wynn: We're not friends.
+
+Janka: Why not? You've known each other your whole lives, he's the best
+tactician you know, and you'd trust him with your life before anyone else. All
+your words. So why are you so tense around him?
+
+[Beat]
+
+Wynn: Novak's assessment of the enslavement and the coal mines was that a
+revolution wouldn't be possible without winning a resource war. So Debony's
+resources were the main target.
+
+Janka: Seems logical.
+
+Wynn: The slaves were the resources.
+
+[Beat]
+
+Janka: ... No.
+
+Wynn: Novak did eventually assassinate several members of the royal family, but
+if you're going by the numbers... He's killed more of our people than any Debon
+soldier. By a lot.
+
+-
+
+Novak: The moment you NEED to care for others, you bind yourself to a set of parameters
+that your opponent does not have. When you show empathy, it's weaponized and used
+against you.
+
+I used to be like that, and then I lost what I was trying to protect. If I allow myself
+to be soft and complacent, they will have died for nothing.
+
+Janka: ... Is it really worth it? Destroying your own people just to destroy them?
+
+Novak: Absolutely.
+
+-
+
+Novak: "My brand of vigilante justice?" We're way past justice.
+
+Novak: Change the world? You're a couple armies short and several decades too late.
+
+Sezar: The world's going to shit and there's nothing you or I can do about it. The best you can do is keep your loved ones close, find a little corner that isn't on fire, and pray that your luck holds out long enough for you to die a natural death.
+
+-
+
+Janka: I understand where you're coming from. (Beat) When my older sister was
+13, she was taken. My dad went looking for her. He was never seen again. (Beat)
+Talteb is a major destination for sex tourism. Whenever I saw rich Debon
+businessmen, I... Whatever it is you felt when your wife died, I promise you
+I've felt the same thing.
+
+Novak: Janka.
+
+Janka: Yes?
+
+Novak: Never try to empathize with me again. I don't need anyone trying to
+understand or justify my actions.
+
+-
+
+Novak: Why does my personal shit have to be public knowledge?
+
+Wynn: Because you want to kill as many Debon as possible, and you won't be able
+to do that if Janka and and Sezar don't trust you, and right now they think
+you're a complete monster.
+
+[Beat]
+
+Novak: I had a wife with a lung condition. We slaved away in the coal mines
+together. When she became pregnant with my child, her condition worsened. The
+slavers wouldn't give her time for the pregnancy to come to term. She died.
+Happy?
+
+Wynn: That'll do.
+
+-
+
+Janka: What's his deal?
+
+Wynn: Novak and I have a lot of history. Back when we were in mainland Lamenir,
+I was the head of a group of revolutionaries called the Arm and Leg. We fought
+together.
+
+Janka: But both of you were violent revolutionaries, right? What was the
+difference?
+
+Wynn: Novak didn't care about collateral damage, or even public opinion. All he
+cared about was eliminating the aristocracy, even if it meant using his own
+people as human shields.
+
+-
+
+Novak: If you want a predictable reaction, you need to induce immediate
+pressure to act, and target as many people as possible.
+
+-
+
+Janka: What was your life like before you became an assassin?
+
+Novak: (Sigh) You want some kind of backstory that explains why I am the way I
+am. Why I'm so violent, why I have such a casual disregard for life, why I'm
+able to do what I do and not feel bad about it. Well, I understand myself
+perfectly well and I don't need anyone else to. I don't need anyone to show me
+empathy because I have some big sob story to tell. There were people in my life
+that were important to me and they're gone now. I hope that satisfies your
+curiosity because it's all you're getting.
+
+Janka: You're fighting for a better life, not just for yourself but for all of
+Lebre. Surely that must be important.
+
+Novak: There is no victory to be had from this fight, and there's no better life
+waiting for us on the other side, either. I fight because it's the only way I
+can live with myself.
