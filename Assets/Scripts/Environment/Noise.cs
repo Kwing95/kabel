@@ -54,9 +54,9 @@ public class Noise : MonoBehaviour
             Transform enemy = enemies.transform.GetChild(i);
             if (Vector2.Distance(enemy.transform.position, transform.position) <= hearDistance)
             {
-                AutoMover mover = enemy.GetComponent<AutoMover>();
-                if (mover)
-                    mover.SoundToPosition(Grapher.RoundedVector(transform.position), madeByPlayer, source, secondaryPoint);
+                AutoMover autoMover = enemy.GetComponent<AutoMover>();
+                if (autoMover)
+                    autoMover.SoundToPosition(Grapher.RoundedVector(transform.position), madeByPlayer, source, secondaryPoint);
             }
         }
     }

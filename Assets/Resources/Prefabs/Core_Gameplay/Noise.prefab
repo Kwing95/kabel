@@ -48,6 +48,8 @@ SpriteRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -59,6 +61,7 @@ SpriteRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -94,7 +97,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e17658a1a15826f4b86e6e6fc1370a9d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  friendly: 1
   hearDistance: 3.3
 --- !u!114 &4855644702613849585
 MonoBehaviour:
@@ -108,7 +110,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80dac0cc441216542bc9e71d1b1af8aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  growthRate: 1
+  growthRate: 0.3
 --- !u!114 &8302931597466615989
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -121,3 +123,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 841338265d7da774992839dfd46593cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fadeRate: 0.5

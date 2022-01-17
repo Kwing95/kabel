@@ -6,6 +6,7 @@ using System.Threading;
 public class AutoMover : MonoBehaviour
 {
     public const int INFINITY = 1073741823;
+    private static float alertGracePeriod = 1f;
 
     public List<Vector2> route;
 
@@ -27,6 +28,8 @@ public class AutoMover : MonoBehaviour
     private bool stoppedByLeash = false; // True if enemy has stepped outside leash length
     private float attackCooldown = 0;
     private float stunTimer = 0;
+    private bool canInspectBodies = true;
+    private float timeSinceVisual = 0;
     private List<Vector2> extraPoints;
     private bool canAddPoints = true;
     private List<GameObject> corpsesSeen;
@@ -79,7 +82,7 @@ public class AutoMover : MonoBehaviour
         transform.rotation = Quaternion.Euler(Vector3.zero);
 
         if (route.Count == 0)
-            route.Add(transform.position);        
+            route.Add(transform.position);
     }
 
     void Start()
@@ -110,6 +113,7 @@ public class AutoMover : MonoBehaviour
         if(glancesLeft > 0 || glanceTimer > 0)
             LookAround();
 
+        timeSinceVisual += Time.deltaTime;
         if(awareness != State.Alert)
             CheckForCorpses();
         CheckForTarget();
@@ -201,6 +205,7 @@ public class AutoMover : MonoBehaviour
 
     private void Confuse()
     {
+        canInspectBodies = true;
         glancesLeft = maxGlances;
         glanceTimer = glanceLength;
     }
@@ -239,9 +244,11 @@ public class AutoMover : MonoBehaviour
         if (canSeePlayer)
         {
             //rotator.ToggleLock(true, player.transform.position);
+            canInspectBodies = false;
+            timeSinceVisual = 0;
             VisualToPosition(player.GetDiscretePosition());
         }
-        else if (awareness == State.Alert)
+        else if (awareness == State.Alert && timeSinceVisual >= alertGracePeriod)
             SetAwareness(State.Suspicious);
         else if(awareness == State.Idle)
         {
@@ -255,7 +262,7 @@ public class AutoMover : MonoBehaviour
         List<GameObject> corpseList = ObjectContainer.GetAllCorpses();
         foreach (GameObject corpse in corpseList)
             // If the corpse hasn't been seen yet but the enemy can see it
-            if (corpsesSeen.IndexOf(corpse) == -1 && CanSeePoint(corpse.transform.position))
+            if (canInspectBodies && corpsesSeen.IndexOf(corpse) == -1 && CanSeePoint(corpse.transform.position))
             {
                 VisualToPosition(corpse.transform.position);
                 SetAwareness(State.Suspicious);

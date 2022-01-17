@@ -56,6 +56,8 @@ public class Sidebar : MonoBehaviour
         menuNavigator = GetComponent<MenuNavigator>();
         zoomer = Camera.main.GetComponent<Zoomer>();
         currentZoom = 0;
+        if(zoomer)
+            ZoomOut();
         RefreshRunning();
     }
 
@@ -84,6 +86,18 @@ public class Sidebar : MonoBehaviour
         menuPaused = false;
         actionPaused = false;
         running = false;
+    }
+
+    public void ZoomIn()
+    {
+        if (currentZoom > 0)
+            zoomer.SetDestination(cameraZooms[--currentZoom]);
+    }
+
+    public void ZoomOut()
+    {
+        if (currentZoom < cameraZooms.Count - 1)
+            zoomer.SetDestination(cameraZooms[++currentZoom]);
     }
 
     public void MenuPause()

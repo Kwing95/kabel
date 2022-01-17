@@ -145,6 +145,7 @@ public class Navigator : MonoBehaviour
 
     public void SetDestination(Vector2 dest, bool run=false)
     {
+        dest = Grapher.RoundedVector(dest);
         if (dest == destination || (activeJobs != null && activeJobs.Count > 0))
             return;
 

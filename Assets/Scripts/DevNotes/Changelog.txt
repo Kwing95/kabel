@@ -291,6 +291,24 @@ Jan 1, 2022
  + Loot remaining toast display
  + Must not be in alert status to finish level
 
+Jan 10, 2022
+ + Added help dialogue for all in-game buttons
+
+Jan 11, 2022
+ + Made Noise clearer to see
+ + Decreased Knife range
+ + Enemies will not inspect bodies if investigating a sighting
+ + Enemies stay in Alert status for 1 second after losing sight
+
+Jan 12, 2022
+ + Redesigned G1-5
+
+Jan 16, 2022
+ + G2-2 has basic design
+ + WoundedEnemy looks around when idle
+ + WoundedEnemy must see player to run from them
+ + WoundedEnemy can shoot flares to spawn and alert enemies
+
 CANCELLED CONTENT
  * Flushing: Enemies systematically search all tiles in a certain area
  * Interception: Alerted enemies guard critical areas of map

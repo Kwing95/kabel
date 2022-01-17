@@ -1,21 +1,17 @@
 UX PATCH
  - Detailed unit information during action pause
- - Button labels on rollover/selection
- - Icon/text/both options for buttons
  - Make it clear when player is taking damage
  - Looting popup
- - Help button
 
  BALANCING PATCH
- - Must be out of sight for 1-3 seconds before knifing target
- - Enemies will ignore corpses if investigating noise/sighting
- - Decrease knife range
+ - None
 
-TUTORIAL PATCH
- - Fix G1-2 through G1-6
+GHENI PATCH
+ - G2-1
 
  BUG PATCH
  - Enemies sometimes freeze in Suspicious state
+   Reproduce: G1-2, use footsteps to lure one enemy, then knife. Second enemy freezes
  - Grenade can sometimes be thrown infinite distance (probably when aiming farther than max)
  - Memory leak
 
@@ -41,6 +37,13 @@ FEATURE PATCH
  - Flares to spawn and alert enemies
  - Platform-agnostic controls (menu options and cursor movement)
 
+OPTIONS PATCH
+ - Graphics (grid transparency, parallax)
+ - Audio (voice, music, effects)
+ - Save (save, load, delete)
+ - Game (hardcore, autoplay)
+ - Bonus (gun bar, commentary)
+
 UNIQUE FEATURES BY CHAPTER
   MERAD - Basic gameplay
   GHENI - Retreating enemies with flares
@@ -53,6 +56,7 @@ UNIQUE FEATURES BY CHAPTER
 CONTROLS:
                     MOBILE          DESKTOP         CONSOLE
     MOVEMENT        Tap             WASD            Directional pad
+    HELP            Long tap        H key           Select button
     SPRINTING       Sprint button   LShift          Hold O
     PAUSE           Pause button    Escape key      Start button
     CAMERA          Tap and drag    Ctrl + WASD     Right stick

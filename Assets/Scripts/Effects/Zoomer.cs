@@ -46,6 +46,29 @@ public class Zoomer : MonoBehaviour
         paused = value;
     }
 
+    public void ZoomIn()
+    {
+        for (int i = zooms.Count - 1; i >= 0; --i) { 
+            if (zooms[i] < Camera.main.orthographicSize && Camera.main.orthographicSize - zooms[i] > snapThreshold)
+            {
+                SetDestination(zooms[i]);
+                break;
+            }
+        }
+    }
+
+    public void ZoomOut()
+    {
+        for (int i = 0; i < zooms.Count; ++i)
+        {
+            if (zooms[i] > Camera.main.orthographicSize && zooms[i] - Camera.main.orthographicSize > snapThreshold)
+            {
+                SetDestination(zooms[i]);
+                break;
+            }
+        }
+    }
+
     public void UpdateFieldOfView()
     {
         Camera.main.fieldOfView = 40 + (Camera.main.orthographicSize * 3);

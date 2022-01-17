@@ -10,6 +10,13 @@ public class HideMover : MonoBehaviour
     private GridMover mover;
     private Rotator rotator;
     private FieldOfView fieldOfView;
+    private float glanceTimer = 0;
+    private static float glanceLength = 1;
+    public Vector2 lastSawPlayer;
+    private float sightDistance = 10;
+    private bool hasFiredFlare = false;
+    private float flareDelay = 5;
+    private float timeAlone = 0;
 
     // Start is called before the first frame update
     void Awake()
@@ -18,6 +25,15 @@ public class HideMover : MonoBehaviour
         fieldOfView = GetComponentInChildren<FieldOfView>();
         rotator = GetComponent<Rotator>();
         mover = GetComponent<GridMover>();
+    }
+
+    void Start()
+    {
+        if (ClearView(transform.position, PlayerMover.instance.transform.position))
+        {
+            lastSawPlayer = Grapher.RoundedVector(PlayerMover.instance.transform.position);
+            navigator.Hide(PlayerMover.instance.transform.position);
+        }
     }
 
     private void OnDisable()
@@ -37,13 +53,47 @@ public class HideMover : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (ClearView(navigator.GetDestination(), PlayerMover.instance.transform.position))
+        // If it sees player, run from player
+        if (CanSeePoint(PlayerMover.instance.transform.position))
         {
-            //Grapher.NativeHide(transform.position, PlayerMover.instance.transform.position);
+            lastSawPlayer = Grapher.RoundedVector(PlayerMover.instance.transform.position);
             navigator.Hide(PlayerMover.instance.transform.position);
-            //navigator.path
-            //navigator.SetDestination()
         }
+            
+        else if (mover.GetCanTurn())
+        {
+            timeAlone += Time.deltaTime;
+
+            if(timeAlone > flareDelay && !hasFiredFlare)
+                Flare();
+
+            if (glanceTimer > 0)
+                glanceTimer -= Time.deltaTime;
+            else
+            {
+                rotator.Rotate(Random.Range(0, 360));
+                glanceTimer = glanceLength;
+            }
+        }
+    }
+
+    private void Flare()
+    {
+        Vector2 roundedPosition = Grapher.RoundedVector(transform.position);
+        GameObject tempNoise = Instantiate(Globals.NOISE, roundedPosition, Quaternion.identity);
+        tempNoise.GetComponent<Noise>().Initialize(true, Globals.FLARE_VOLUME, Noise.Source.Gun);
+        
+        SpawnService.instance.SpawnEnemy(roundedPosition);
+        hasFiredFlare = true;
+    }
+
+    private bool CanSeePoint(Vector2 point)
+    {
+        // Check that player is within view angle
+        Vector2 direction = point - (Vector2)transform.position;
+        float angleToPoint = Mathf.Abs(Vector2.SignedAngle(direction, rotator.GetCurrentAngleVector()));
+        
+        return angleToPoint < fieldOfView.viewAngle / 2 && ClearView(transform.position, point) && Vector2.Distance(point, transform.position) <= sightDistance;
     }
 
     private bool ClearView(Vector2 pointA, Vector2 pointB)

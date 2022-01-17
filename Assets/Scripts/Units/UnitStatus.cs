@@ -134,6 +134,8 @@ public class UnitStatus : MonoBehaviour
     {
         AutoMover autoMover = GetComponent<AutoMover>();
         HideMover hideMover = GetComponent<HideMover>();
+        Vector2 playerPos = Grapher.RoundedVector(PlayerMover.instance.transform.position);
+        Vector2 position = Grapher.RoundedVector(transform.position);
 
         if (GetComponent<PlayerMover>())
         {
@@ -145,18 +147,23 @@ public class UnitStatus : MonoBehaviour
         }
         else if(autoMover && autoMover.spawnsWounded)
         {
-            GameObject woundedEnemy = Instantiate(Globals.WEAK_ENEMY, Grapher.RoundedVector(transform.position), Quaternion.identity, ObjectContainer.instance.enemies.transform);
+            GameObject woundedEnemy = Instantiate(Globals.WEAK_ENEMY, position, Quaternion.identity, ObjectContainer.instance.enemies.transform);
 
+            woundedEnemy.GetComponent<HideMover>().lastSawPlayer = playerPos;
             Inventory oldInventory = GetComponent<Inventory>();
             Inventory newInventory = woundedEnemy.GetComponent<Inventory>();
             if (oldInventory && newInventory)
                 newInventory.Add(oldInventory.inventory, oldInventory.wallet);
 
+            // Wounded enemies make noise
+            GameObject tempNoise = Instantiate(Globals.NOISE, position, Quaternion.identity);
+            tempNoise.GetComponent<Noise>().Initialize(true, Globals.KNIFE_VOLUME, Noise.Source.Knife);
+
             Destroy(gameObject);
         }
         else if(hideMover || (autoMover && !autoMover.spawnsWounded))
         {
-            GameObject corpse = Instantiate(Globals.CORPSE, Grapher.RoundedVector(transform.position), Quaternion.identity);
+            GameObject corpse = Instantiate(Globals.CORPSE, position, Quaternion.identity);
             corpse.transform.parent = ObjectContainer.instance.corpses.transform;
 
             Inventory unitInventory = GetComponent<Inventory>();

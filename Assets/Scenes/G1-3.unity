@@ -12752,37 +12752,57 @@ PrefabInstance:
     - target: {fileID: 4735645799990054809, guid: 689dec23ed23ba449b59afe2a3d15182,
         type: 3}
       propertyPath: route.Array.size
-      value: 3
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 4735645799990054809, guid: 689dec23ed23ba449b59afe2a3d15182,
         type: 3}
       propertyPath: route.Array.data[0].x
-      value: 47
+      value: 45
       objectReference: {fileID: 0}
     - target: {fileID: 4735645799990054809, guid: 689dec23ed23ba449b59afe2a3d15182,
         type: 3}
       propertyPath: route.Array.data[0].y
-      value: 33
+      value: 34
       objectReference: {fileID: 0}
     - target: {fileID: 4735645799990054809, guid: 689dec23ed23ba449b59afe2a3d15182,
         type: 3}
       propertyPath: route.Array.data[1].x
-      value: 60
+      value: 61
       objectReference: {fileID: 0}
     - target: {fileID: 4735645799990054809, guid: 689dec23ed23ba449b59afe2a3d15182,
         type: 3}
       propertyPath: route.Array.data[1].y
-      value: 41
+      value: 44
       objectReference: {fileID: 0}
     - target: {fileID: 4735645799990054809, guid: 689dec23ed23ba449b59afe2a3d15182,
         type: 3}
       propertyPath: route.Array.data[2].x
-      value: 60
+      value: 66
       objectReference: {fileID: 0}
     - target: {fileID: 4735645799990054809, guid: 689dec23ed23ba449b59afe2a3d15182,
         type: 3}
       propertyPath: route.Array.data[2].y
-      value: 32
+      value: 37
+      objectReference: {fileID: 0}
+    - target: {fileID: 4735645799990054809, guid: 689dec23ed23ba449b59afe2a3d15182,
+        type: 3}
+      propertyPath: route.Array.data[3].x
+      value: 54
+      objectReference: {fileID: 0}
+    - target: {fileID: 4735645799990054809, guid: 689dec23ed23ba449b59afe2a3d15182,
+        type: 3}
+      propertyPath: route.Array.data[3].y
+      value: 29
+      objectReference: {fileID: 0}
+    - target: {fileID: 4735645799990054809, guid: 689dec23ed23ba449b59afe2a3d15182,
+        type: 3}
+      propertyPath: route.Array.data[4].x
+      value: 48
+      objectReference: {fileID: 0}
+    - target: {fileID: 4735645799990054809, guid: 689dec23ed23ba449b59afe2a3d15182,
+        type: 3}
+      propertyPath: route.Array.data[4].y
+      value: 29
       objectReference: {fileID: 0}
     - target: {fileID: 4735645799990054813, guid: 689dec23ed23ba449b59afe2a3d15182,
         type: 3}
@@ -12882,12 +12902,12 @@ PrefabInstance:
     - target: {fileID: 4735645799990054814, guid: 689dec23ed23ba449b59afe2a3d15182,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 47
+      value: 45
       objectReference: {fileID: 0}
     - target: {fileID: 4735645799990054814, guid: 689dec23ed23ba449b59afe2a3d15182,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 33
+      value: 34
       objectReference: {fileID: 0}
     - target: {fileID: 4735645799990054814, guid: 689dec23ed23ba449b59afe2a3d15182,
         type: 3}
@@ -47613,12 +47633,12 @@ PrefabInstance:
     - target: {fileID: 2715536100569553972, guid: f2528213cd211eb4f8b31ab81fde2232,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 77
+      value: 29
       objectReference: {fileID: 0}
     - target: {fileID: 2715536100569553972, guid: f2528213cd211eb4f8b31ab81fde2232,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 45
+      value: 38
       objectReference: {fileID: 0}
     - target: {fileID: 2715536100569553972, guid: f2528213cd211eb4f8b31ab81fde2232,
         type: 3}
@@ -47673,7 +47693,7 @@ PrefabInstance:
     - target: {fileID: 4069196556531642633, guid: f2528213cd211eb4f8b31ab81fde2232,
         type: 3}
       propertyPath: messageId
-      value: M1-6
+      value: M1-7
       objectReference: {fileID: 0}
     - target: {fileID: 4069196556531642633, guid: f2528213cd211eb4f8b31ab81fde2232,
         type: 3}
@@ -69024,6 +69044,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemies: {fileID: 1984483797}
   corpses: {fileID: 1763626654}
+  loot: {fileID: 0}
 --- !u!4 &1636971680
 Transform:
   m_ObjectHideFlags: 0
@@ -80620,7 +80641,7 @@ PrefabInstance:
     - target: {fileID: 4735645799990054809, guid: 689dec23ed23ba449b59afe2a3d15182,
         type: 3}
       propertyPath: route.Array.size
-      value: 3
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 4735645799990054809, guid: 689dec23ed23ba449b59afe2a3d15182,
         type: 3}
@@ -80630,27 +80651,57 @@ PrefabInstance:
     - target: {fileID: 4735645799990054809, guid: 689dec23ed23ba449b59afe2a3d15182,
         type: 3}
       propertyPath: route.Array.data[0].y
-      value: 50
+      value: 51
       objectReference: {fileID: 0}
     - target: {fileID: 4735645799990054809, guid: 689dec23ed23ba449b59afe2a3d15182,
         type: 3}
       propertyPath: route.Array.data[1].x
-      value: 67
+      value: 61
       objectReference: {fileID: 0}
     - target: {fileID: 4735645799990054809, guid: 689dec23ed23ba449b59afe2a3d15182,
         type: 3}
       propertyPath: route.Array.data[1].y
-      value: 37
+      value: 49
       objectReference: {fileID: 0}
     - target: {fileID: 4735645799990054809, guid: 689dec23ed23ba449b59afe2a3d15182,
         type: 3}
       propertyPath: route.Array.data[2].x
-      value: 73
+      value: 61
       objectReference: {fileID: 0}
     - target: {fileID: 4735645799990054809, guid: 689dec23ed23ba449b59afe2a3d15182,
         type: 3}
       propertyPath: route.Array.data[2].y
-      value: 45
+      value: 43
+      objectReference: {fileID: 0}
+    - target: {fileID: 4735645799990054809, guid: 689dec23ed23ba449b59afe2a3d15182,
+        type: 3}
+      propertyPath: route.Array.data[3].x
+      value: 68
+      objectReference: {fileID: 0}
+    - target: {fileID: 4735645799990054809, guid: 689dec23ed23ba449b59afe2a3d15182,
+        type: 3}
+      propertyPath: route.Array.data[3].y
+      value: 36
+      objectReference: {fileID: 0}
+    - target: {fileID: 4735645799990054809, guid: 689dec23ed23ba449b59afe2a3d15182,
+        type: 3}
+      propertyPath: route.Array.data[4].x
+      value: 73
+      objectReference: {fileID: 0}
+    - target: {fileID: 4735645799990054809, guid: 689dec23ed23ba449b59afe2a3d15182,
+        type: 3}
+      propertyPath: route.Array.data[4].y
+      value: 36
+      objectReference: {fileID: 0}
+    - target: {fileID: 4735645799990054809, guid: 689dec23ed23ba449b59afe2a3d15182,
+        type: 3}
+      propertyPath: route.Array.data[5].x
+      value: 73
+      objectReference: {fileID: 0}
+    - target: {fileID: 4735645799990054809, guid: 689dec23ed23ba449b59afe2a3d15182,
+        type: 3}
+      propertyPath: route.Array.data[5].y
+      value: 51
       objectReference: {fileID: 0}
     - target: {fileID: 4735645799990054813, guid: 689dec23ed23ba449b59afe2a3d15182,
         type: 3}
@@ -80755,7 +80806,7 @@ PrefabInstance:
     - target: {fileID: 4735645799990054814, guid: 689dec23ed23ba449b59afe2a3d15182,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 50
+      value: 51
       objectReference: {fileID: 0}
     - target: {fileID: 4735645799990054814, guid: 689dec23ed23ba449b59afe2a3d15182,
         type: 3}

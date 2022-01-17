@@ -18,7 +18,7 @@ public class Globals : MonoBehaviour
         new LevelData("Ruins", "S3-2"), new LevelData("Settling Down", "S3-3"), new LevelData("Rally", "S3-4")
     };
     public static readonly List<string> AUTOPLAY_LIST = new List<string> { "S1-1", "G1-1", "G1-2", "G1-3", "S1-2",
-        "G1-4", "G1-5", "G1-6", "S1-3", "S2-1", "S2-2", "S2-3", "S2-4", "S3-1", "S3-2", "S3-3", "S3-4", 
+        "G1-4", "G1-5", "G1-6", "S1-3", "S2-1", "G2-1", "S2-2", "S2-3", "S2-4", "S3-1", "S3-2", "S3-3", "S3-4", 
         "Level_Select", "TextCutscene", "Level_Select" };
     public static readonly List<string> CINEMA_LIST = new List<string> { "S1-1", "S1-2", "S1-3", "S1-4", "S1-5", "S1-6", "S2-1",
         "S2-2", "S2-3", "S2-4", "S2-5", "S3-1", "S3-2", "S3-3", "S3-4"};
@@ -36,11 +36,12 @@ public class Globals : MonoBehaviour
     public static readonly float DISTRACTION_VOLUME = 5;
     public static readonly float RUN_VOLUME = 4f;
     public static readonly float WALK_VOLUME = 2f;
+    public static readonly float FLARE_VOLUME = 20f;
 
     public static readonly float GRENADE_RED_RANGE = 1.5f;
     public static readonly float GRENADE_ORANGE_RANGE = 3f;
     public static readonly float GRENADE_YELLOW_RANGE = 4.5f;
-    public static readonly float KNIFE_RANGE = 3;
+    public static readonly float KNIFE_RANGE = 2.75f;
 
     // PREFABS
     public static readonly GameObject CORPSE = Resources.Load<GameObject>("Prefabs/Core_Gameplay/Corpse");

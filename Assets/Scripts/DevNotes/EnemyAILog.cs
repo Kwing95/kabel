@@ -34,4 +34,16 @@ DEATH
 Wounded enemies run to nearest tile not in direct view of player
 Wounded enemies may shoot a flare gun to summon 2 allies
 
+AUTOMOVER RESPONSIBILITIES
+ - Patrol
+   - Idle patrol
+   - Investigation
+   - Chasing
+   - Revising patrols (remembering points, leash)
+ - Attacking
+ - Awareness
+   - Look and listen
+   - Inspect corpses
+ - Confuse (LookAround)
+
  */

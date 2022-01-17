@@ -29,12 +29,12 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/G1-4.unity
     guid: c972c907c94f17446ac2d80d67096c92
-  - enabled: 1
-    path: Assets/Scenes/G1-5.unity
-    guid: 394932aa145beea4b8f0339292cde879
-  - enabled: 1
-    path: Assets/Scenes/G1-6.unity
-    guid: a797bc29afe5aeb4c8bd9324a0631257
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
   - enabled: 1
     path: Assets/Scenes/S1-3.unity
     guid: fcb0804626ff3ee4c828e7fe20e10715
@@ -44,4 +44,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/RandomMap.unity
     guid: 8d7bc6a54d6eef9489b55a90c978fe8e
+  - enabled: 1
+    path: Assets/Scenes/G2-1.unity
+    guid: 395c3363afe2f7d4e83de66fe35ebee9
   m_configObjects: {}

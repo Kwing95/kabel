@@ -106,8 +106,12 @@ Select GRENADE <sprite name="grenade"> from the ACTION <sprite name="action"> me
 =================
 
 <M1-7>
-Select MEDKIT <sprite name="first_aid"> from the ACTION <sprite name="action"> menu to heal wounded units.
+Select MEDKIT <sprite name="first_aid"> from the ACTION <sprite name="action"> menu to heal wounded units. The outline around the player is color-coded to indicate health.
 </M1-7>
+
+<M1-8>
+When playing with only one unit, using FIREARM <sprite name="gun"> will only fire a single shot, and your health is reduced.
+</M1-8>
 
 Innocents
 
@@ -685,6 +689,10 @@ GAMEPLAY SECTION: The player must navigate the streets of Gheni. The area is ope
 KNEW: Defeat in Merad
 
 (This scene triggers if the player interacts with a newspaper lying near a bottleneck in the level design. Thane picks up a newspaper and begins to read.)
+
+<M2-4b>
+Wounded soldiers will retreat and eventually call for backup.
+</M2-4b>
 
 <M2-5>
 

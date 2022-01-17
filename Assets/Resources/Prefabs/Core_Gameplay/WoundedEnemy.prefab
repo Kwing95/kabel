@@ -453,7 +453,7 @@ MonoBehaviour:
   unitOutline: {fileID: 4317088359649074491}
   spriteContainer: {fileID: 4263464239792461578}
   numUnits: 1
-  healthArray: 
+  healthArray: []
   gasDuration: 10
   startingHealth: 1
 --- !u!114 &1333094116810465314
@@ -559,7 +559,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   useDefaultSettings: 0
   viewRadius: 10
-  viewAngle: 30
+  viewAngle: 70
   targetMask:
     serializedVersion: 2
     m_Bits: 4096
