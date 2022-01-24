@@ -44,6 +44,24 @@ public class SpawnService : MonoBehaviour
         return route;
     }
 
+    private Vector2 ClosestPoint(Vector2 origin)
+    {
+        float distance = float.PositiveInfinity;
+        Vector2 closest = origin;
+
+        foreach(Vector2 point in patrolPoints)
+        {
+            float tempDistance = Vector2.Distance(origin, point);
+            if (tempDistance < distance)
+            {
+                closest = point;
+                distance = tempDistance;
+            }
+        }
+
+        return closest;
+    }
+
     private Vector2 GetSpawnPoint()
     {
         List<Vector2> eligiblePoints = new List<Vector2>();
@@ -57,8 +75,12 @@ public class SpawnService : MonoBehaviour
 
     public void SpawnEnemy(Vector2 firstDestination)
     {
-        List<Vector2> enemyRoute = GenerateRoute();
-        GameObject newEnemy = Instantiate(Globals.ENEMY, enemyRoute[0], Quaternion.identity);
+        // List<Vector2> enemyRoute = GenerateRoute();
+        List<Vector2> enemyRoute = new List<Vector2>();
+        //enemyRoute.Add(GetSpawnPoint());
+        enemyRoute.Add(firstDestination);
+        enemyRoute.Add(ClosestPoint(firstDestination));
+        GameObject newEnemy = Instantiate(Globals.ENEMY, GetSpawnPoint(), Quaternion.identity);
 
         newEnemy.transform.SetParent(ObjectContainer.instance.enemies.transform);
         AutoMover autoMover = newEnemy.GetComponent<AutoMover>();

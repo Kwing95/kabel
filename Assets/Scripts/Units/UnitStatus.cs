@@ -147,7 +147,7 @@ public class UnitStatus : MonoBehaviour
         }
         else if(autoMover && autoMover.spawnsWounded)
         {
-            GameObject woundedEnemy = Instantiate(Globals.WEAK_ENEMY, position, Quaternion.identity, ObjectContainer.instance.enemies.transform);
+            GameObject woundedEnemy = Instantiate(Globals.WEAK_ENEMY, position, Quaternion.identity, ObjectContainer.instance.wounded.transform);
 
             woundedEnemy.GetComponent<HideMover>().lastSawPlayer = playerPos;
             Inventory oldInventory = GetComponent<Inventory>();

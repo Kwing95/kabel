@@ -181,14 +181,31 @@ public class Navigator : MonoBehaviour
         if (!mover.GetCanTurn())
             return;
 
-        Vector2 destination = Grapher.HidingPlace(transform.position, threat, 20);
+        Vector2 destination = Grapher.HidingPlace(transform.position, threat, 10);
         if(destination != -1 * Vector2.one)
             SetDestination(destination);
         else
         {
-            Vector2 offset = (threat.x > transform.position.x ? Vector2.right : Vector2.left) +
-                (threat.y > transform.position.y ? Vector2.up : Vector2.down);
-            SetDestination((Vector2)transform.position + offset);
+            // Determine base direction of retreat
+            bool axisIsX = Mathf.Abs(threat.x - transform.position.x) > Mathf.Abs(threat.y - transform.position.y);
+            Vector2 offset;
+            if (axisIsX)
+                offset = threat.x < transform.position.x ? Vector2.right : Vector2.left;
+            else
+                offset = threat.y < transform.position.y ? Vector2.up : Vector2.down;
+
+            // Project destination outward until a wall is hit
+            int multiplier = 1;
+            while(Grapher.PointIsClear((Vector2)transform.position + (offset * multiplier)))
+            {
+                destination = (Vector2)transform.position + (offset * multiplier);
+                multiplier += 1;
+            }
+            if (Grapher.PointIsClear(destination))
+                SetDestination(destination);
+            else
+                Pause(true); // Stuck
+
         }
         //SetDestinationJob(threat, false, true);
     }

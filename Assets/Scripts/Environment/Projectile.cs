@@ -70,8 +70,11 @@ public class Projectile : AutoVanish
             if (hit.collider != null && hit.collider.gameObject == elt)
             {
                 UnitStatus status = elt.GetComponent<UnitStatus>();
+                int damage = ActionManager.DistanceToLevel(Vector2.Distance(elt.transform.position, target));
+                if (user.CompareTag("Enemy") && elt.CompareTag("Player"))
+                    damage = 1;
                 if (status)
-                    status.DamageHealth(ActionManager.DistanceToLevel(Vector2.Distance(elt.transform.position, target)));
+                    status.DamageHealth(damage);
             }
         }
     }

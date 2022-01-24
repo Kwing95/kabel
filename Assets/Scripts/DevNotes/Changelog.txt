@@ -309,6 +309,24 @@ Jan 16, 2022
  + WoundedEnemy must see player to run from them
  + WoundedEnemy can shoot flares to spawn and alert enemies
 
+Jan 19, 2022
+ + Enemies and Wounded are now tracked in separate lists
+ + Enemies now "listen" to where wounded enemies saw the player
+
+Jan 22, 2022
+ + WoundedEnemy looks toward last position player was seen
+ + WoundedEnemy has simple retreating option
+ + Backup spawn has simpler, more relevant route
+ + G2-2 has been balanced
+
+Jan 23, 2022
+ + Enemy grenades only deal 1 damage
+ + Chapter 1 enemies use grenades
+ + Re-balanced enemy item drops
+ + Can autoplay even if a cutscene has no Scene
+ + Added Object Container prefab instead of inconsistent non-prefab
+ + Enemies no longer attack twice per attack cycle
+
 CANCELLED CONTENT
  * Flushing: Enemies systematically search all tiles in a certain area
  * Interception: Alerted enemies guard critical areas of map

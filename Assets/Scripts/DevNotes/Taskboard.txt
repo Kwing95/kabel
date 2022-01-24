@@ -4,14 +4,17 @@ UX PATCH
  - Looting popup
 
  BALANCING PATCH
- - None
+ - Fix item drops for G1-1 through G2-2
 
 GHENI PATCH
- - G2-1
+ - Spawned enemies take K closest points for their route
+ - Spawned enemies may have pathfinding bug
 
  BUG PATCH
+ - Wrong message sometimes displays when loading scene
+ - Enemy grenades move during ActionPause
+ - Test to see if preview lines for wounded enemy work
  - Enemies sometimes freeze in Suspicious state
-   Reproduce: G1-2, use footsteps to lure one enemy, then knife. Second enemy freezes
  - Grenade can sometimes be thrown infinite distance (probably when aiming farther than max)
  - Memory leak
 
@@ -28,6 +31,7 @@ ARCHITECTURAL PATCH
  - Refactor PanZoom to use ClickManager
 
 FEATURE PATCH
+ - In-game character dialogue boxes
  - I-Troops with tear gas (inhibits sight and accuracy)
  - Hounds with tracking ability
  - Cavalry with fast movement speed

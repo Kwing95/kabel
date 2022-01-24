@@ -131,15 +131,15 @@ public class Sidebar : MonoBehaviour
 
         PlayerMover.instance.enabled = !paused;
 
-        GameObject enemyList = ObjectContainer.instance.enemies;
+        List<GameObject> enemyList = ObjectContainer.GetEnemiesAndWounded();
 
-        foreach(Transform child in enemyList.transform)
+        foreach(GameObject unit in enemyList)
         {
-            AutoMover autoMover = child.GetComponent<AutoMover>();
+            AutoMover autoMover = unit.GetComponent<AutoMover>();
             if (autoMover != null)
                 autoMover.enabled = !paused;
 
-            HideMover hideMover = child.GetComponent<HideMover>();
+            HideMover hideMover = unit.GetComponent<HideMover>();
             if (hideMover != null)
                 hideMover.enabled = !paused;
         }

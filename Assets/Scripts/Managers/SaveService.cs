@@ -73,7 +73,8 @@ public static class SaveService
 
     public static SaveObject LoadData()
     {
-        if (File.Exists(path))// && false)
+        bool resettingSave = false;
+        if (File.Exists(path) && !resettingSave)
         {
             BinaryFormatter formatter = new BinaryFormatter();
             FileStream stream = new FileStream(path, FileMode.Open);

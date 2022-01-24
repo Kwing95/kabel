@@ -33,6 +33,7 @@ public class AutoMover : MonoBehaviour
     private List<Vector2> extraPoints;
     private bool canAddPoints = true;
     private List<GameObject> corpsesSeen;
+    private List<GameObject> woundedSeen;
 
     private int maxGlances = 3;
     private int glancesLeft = 0;
@@ -79,6 +80,7 @@ public class AutoMover : MonoBehaviour
         player = PlayerMover.instance.GetComponent<GridMover>();
 
         corpsesSeen = new List<GameObject>();
+        woundedSeen = new List<GameObject>();
         transform.rotation = Quaternion.Euler(Vector3.zero);
 
         if (route.Count == 0)
@@ -259,6 +261,18 @@ public class AutoMover : MonoBehaviour
 
     private void CheckForCorpses()
     {
+        // Listen to wounded units before inspecting bodies
+        List<GameObject> woundedList = ObjectContainer.GetAllWounded();
+        foreach (GameObject wounded in woundedList)
+            if (woundedSeen.IndexOf(wounded) == -1 && CanSeePoint(wounded.transform.position))
+            {
+                SoundToPosition(wounded.GetComponent<HideMover>().lastSawPlayer, true, Noise.Source.Gun, Vector2.zero);
+                SetAwareness(State.Suspicious);
+                canInspectBodies = false; // Don't get distracted by other things
+                woundedSeen.Add(wounded);
+                return;
+            }
+
         List<GameObject> corpseList = ObjectContainer.GetAllCorpses();
         foreach (GameObject corpse in corpseList)
             // If the corpse hasn't been seen yet but the enemy can see it
@@ -390,7 +404,7 @@ public class AutoMover : MonoBehaviour
 
         }
 
-        ActionManager.Gun(gameObject, player.transform.position);
+        // ActionManager.Gun(gameObject, player.transform.position);
         attackCooldown = attackRate;
     }
 

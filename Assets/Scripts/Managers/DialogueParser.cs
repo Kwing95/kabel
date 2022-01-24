@@ -109,4 +109,10 @@ public class DialogueParser : MonoBehaviour
         dialogueBox.text = dialogueList[0];
     }
 
+    public void DisplayMessage(string message)
+    {
+        SetDialogue(message);
+        Sidebar.instance.ToggleInGameDialogue(true);
+    }
+
 }

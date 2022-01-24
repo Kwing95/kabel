@@ -307,10 +307,6 @@ MonoBehaviour:
     quantity: 0
   - type: 3
     quantity: 0
-  - type: 4
-    quantity: 0
-  - type: 5
-    quantity: 0
   wallet: 0
 --- !u!1 &5135143130795393207
 GameObject:

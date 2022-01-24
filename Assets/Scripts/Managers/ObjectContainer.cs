@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class ObjectContainer : MonoBehaviour
@@ -9,11 +10,21 @@ public class ObjectContainer : MonoBehaviour
     public GameObject enemies;
     public GameObject corpses;
     public GameObject loot;
+    public GameObject wounded;
 
     // Start is called before the first frame update
     void Awake()
     {
         instance = this;
+    }
+
+    public static List<GameObject> GetAllWounded()
+    {
+        List<GameObject> woundedList = new List<GameObject>();
+        for (int i = 0; i < instance.wounded.transform.childCount; ++i)
+            woundedList.Add(instance.wounded.transform.GetChild(i).gameObject);
+
+        return woundedList;
     }
 
     public static List<GameObject> GetAllCorpses()
@@ -23,6 +34,11 @@ public class ObjectContainer : MonoBehaviour
             corpseList.Add(instance.corpses.transform.GetChild(i).gameObject);
 
         return corpseList;
+    }
+
+    public static List<GameObject> GetEnemiesAndWounded()
+    {
+        return GetAllEnemies().Concat(GetAllWounded()).ToList();
     }
 
     public static List<GameObject> GetAllEnemies()

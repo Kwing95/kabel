@@ -691,8 +691,20 @@ KNEW: Defeat in Merad
 (This scene triggers if the player interacts with a newspaper lying near a bottleneck in the level design. Thane picks up a newspaper and begins to read.)
 
 <M2-4b>
-Wounded soldiers will retreat and eventually call for backup.
+Wounded soldiers will retreat and eventually call for backup. They will also inform other enemies of your location.
 </M2-4b>
+
+<M2-4c>
+Saito's books are smoldering in the fireplace.
+</M2-4c>
+
+<M2-4d>
+There's nothing of use upstairs. It's time to leave.
+</M2-4d>
+
+<M2-4e>
+The secret basement is hidden by a vent grill. There's no reason to go down there.
+</M2-4e>
 
 <M2-5>
 

@@ -17,6 +17,7 @@ public class HideMover : MonoBehaviour
     private bool hasFiredFlare = false;
     private float flareDelay = 5;
     private float timeAlone = 0;
+    private bool lookTowardPlayer = true;
 
     // Start is called before the first frame update
     void Awake()
@@ -58,8 +59,8 @@ public class HideMover : MonoBehaviour
         {
             lastSawPlayer = Grapher.RoundedVector(PlayerMover.instance.transform.position);
             navigator.Hide(PlayerMover.instance.transform.position);
+            timeAlone = 0;
         }
-            
         else if (mover.GetCanTurn())
         {
             timeAlone += Time.deltaTime;
@@ -71,7 +72,12 @@ public class HideMover : MonoBehaviour
                 glanceTimer -= Time.deltaTime;
             else
             {
-                rotator.Rotate(Random.Range(0, 360));
+                if(lookTowardPlayer)
+                    rotator.FacePoint(lastSawPlayer);
+                else
+                    rotator.Rotate(Random.Range(0, 360));
+
+                lookTowardPlayer = !lookTowardPlayer;
                 glanceTimer = glanceLength;
             }
         }

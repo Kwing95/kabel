@@ -81,8 +81,10 @@ public class TransitionFader : MonoBehaviour
         } 
         else if (SaveService.loadedSave.options.autoplay)
         {
-            int sceneIndex = Globals.AUTOPLAY_LIST.IndexOf(SceneManager.GetActiveScene().name);
-            if(sceneIndex > -1)
+            string activeScene = SceneManager.GetActiveScene().name;
+            string scene = activeScene == "TextCutscene" ? DialogueParser.sceneToLoad : activeScene;
+            int sceneIndex = Globals.AUTOPLAY_LIST.IndexOf(scene);
+            if (sceneIndex > -1)
                 Transition(Globals.AUTOPLAY_LIST[sceneIndex + 1]);
         }
         else
