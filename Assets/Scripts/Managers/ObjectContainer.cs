@@ -11,11 +11,21 @@ public class ObjectContainer : MonoBehaviour
     public GameObject corpses;
     public GameObject loot;
     public GameObject wounded;
+    public GameObject projectiles;
 
     // Start is called before the first frame update
     void Awake()
     {
         instance = this;
+    }
+
+    public static List<GameObject> GetAllProjectiles()
+    {
+        List<GameObject> projectileList = new List<GameObject>();
+        for (int i = 0; i < instance.projectiles.transform.childCount; ++i)
+            projectileList.Add(instance.projectiles.transform.GetChild(i).gameObject);
+
+        return projectileList;
     }
 
     public static List<GameObject> GetAllWounded()

@@ -12,7 +12,7 @@ GHENI PATCH
 
  BUG PATCH
  - Wrong message sometimes displays when loading scene
- - Enemy grenades move during ActionPause
+   To reproduce, start from G2-2, quit to menu, select G2-2 from menu
  - Test to see if preview lines for wounded enemy work
  - Enemies sometimes freeze in Suspicious state
  - Grenade can sometimes be thrown infinite distance (probably when aiming farther than max)

@@ -9,10 +9,23 @@ public class Projectile : AutoVanish
     public enum Type { Distract, Frag, Gas }
     public Type type;
     private GameObject user;
+    private PointFollower follower;
+    private string userTag;
+
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
-        
+        follower = GetComponent<PointFollower>();
+    }
+
+    private void OnDisable()
+    {
+        follower.enabled = false;
+    }
+
+    private void OnEnable()
+    {
+        follower.enabled = true;
     }
 
     public void Initialize(float _timeToLive, Type _type, GameObject _user)
@@ -20,6 +33,7 @@ public class Projectile : AutoVanish
         timeToLive = _timeToLive;
         type = _type;
         user = _user;
+        userTag = _user.tag;
     }
 
     protected override void SelfDestruct()
@@ -51,7 +65,8 @@ public class Projectile : AutoVanish
 
         // Noise
         GameObject tempNoise = Instantiate(Globals.NOISE, transform.position, Quaternion.identity);
-        tempNoise.GetComponent<Noise>().Initialize(user.CompareTag("Player"), noiseVolume, source, user.transform.position);
+        Vector2 secondaryPosition = (userTag == "Player" ? (Vector2)user.transform.position : Vector2.zero);
+        tempNoise.GetComponent<Noise>().Initialize(userTag == "Player", noiseVolume, source, secondaryPosition);
 
         Destroy(gameObject);
     }
@@ -63,7 +78,7 @@ public class Projectile : AutoVanish
         foreach (GameObject elt in units)
         {
             // elt == user for don't hurt self, CompareTag("Enemy") for any ally
-            if (user.CompareTag("Enemy") && elt.CompareTag("Enemy")) 
+            if (userTag == "Enemy" && elt.CompareTag("Enemy")) 
                 continue;
 
             RaycastHit2D hit = Physics2D.Raycast(target, (Vector2)elt.transform.position - target, Globals.GRENADE_YELLOW_RANGE);
@@ -71,7 +86,7 @@ public class Projectile : AutoVanish
             {
                 UnitStatus status = elt.GetComponent<UnitStatus>();
                 int damage = ActionManager.DistanceToLevel(Vector2.Distance(elt.transform.position, target));
-                if (user.CompareTag("Enemy") && elt.CompareTag("Player"))
+                if (userTag == "Enemy" && elt.CompareTag("Player"))
                     damage = 1;
                 if (status)
                     status.DamageHealth(damage);
@@ -86,7 +101,7 @@ public class Projectile : AutoVanish
         explosion.transform.localScale = (0.2f + (0.4f * Globals.GRENADE_YELLOW_RANGE)) * Vector2.one;
 
         GameObject tempNoise = Instantiate(Globals.NOISE, target, Quaternion.identity);
-        tempNoise.GetComponent<Noise>().Initialize(user.CompareTag("Player"), Globals.GAS_VOLUME, Noise.Source.Grenade);
+        tempNoise.GetComponent<Noise>().Initialize(userTag == "Player", Globals.GAS_VOLUME, Noise.Source.Grenade);
 
         GameObject gasCloud = Instantiate(Globals.GAS_CLOUD, target, Quaternion.identity);
     }

@@ -327,6 +327,14 @@ Jan 23, 2022
  + Added Object Container prefab instead of inconsistent non-prefab
  + Enemies no longer attack twice per attack cycle
 
+Jan 26, 2022
+ + Grenades now freeze during Action Pause
+ + Added sprites for transparent wall and floor tiles
+
+Jan 27, 2021
+ + G2-3 added
+ + Fix for DialogueParser displaying wrong messages
+
 CANCELLED CONTENT
  * Flushing: Enemies systematically search all tiles in a certain area
  * Interception: Alerted enemies guard critical areas of map

@@ -247,6 +247,7 @@ public class ActionManager : MonoBehaviour
     public static void SpawnProjectile(GameObject user, Vector2 target, Projectile.Type projectileType)
     {
         GameObject projectile = Instantiate(Globals.PROJECTILE, user.transform.position, Quaternion.identity);
+        projectile.transform.SetParent(ObjectContainer.instance.projectiles.transform);
         projectile.GetComponent<PointFollower>().target = target;
         projectile.GetComponent<PointFollower>().panSpeed = 3;
         projectile.GetComponent<Projectile>().Initialize(1, projectileType, user);

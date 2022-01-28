@@ -2611,7 +2611,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9363172f27f6f004cabffeedeb28873a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneName: S1-1
+  sceneName: 
   prevButton: {fileID: 8209485535817687958}
   dialogueBox: {fileID: 1743422262789198762}
   isCutscene: 0

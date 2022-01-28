@@ -47,7 +47,7 @@ public class TransitionFader : MonoBehaviour
 
     private void LoadScene(string scene)
     {
-        if(scene != "TextCutscene")
+        if(scene != "TextCutscene" && scene[0] == 'S')
             DialogueParser.sceneToLoad = scene;
 
         if (Application.CanStreamedLevelBeLoaded(scene))

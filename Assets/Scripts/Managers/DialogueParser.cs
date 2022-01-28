@@ -29,10 +29,11 @@ public class DialogueParser : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
+        instance = this;
         dialogueList = new List<string>();
 
-        if (sceneName == "")
-            sceneName = sceneToLoad;            
+        if (sceneName == "" && sceneToLoad.Length > 0 && sceneToLoad[0] != 'G')
+            sceneName = sceneToLoad;
 
         ParseScene(sceneName);
         RefreshIncrementButtons();
@@ -97,6 +98,9 @@ public class DialogueParser : MonoBehaviour
 
     public void ParseScene(string _sceneName)
     {
+        if (_sceneName == "" || _sceneName[0] == 'G')
+            return;
+
         int startIndex = Globals.GAME_SCRIPT.text.IndexOf("<" + _sceneName + ">") + 3 + _sceneName.Length;
         int endIndex = Globals.GAME_SCRIPT.text.IndexOf("</" + _sceneName + ">");
         // Debug.Log(startIndex + " " + endIndex);

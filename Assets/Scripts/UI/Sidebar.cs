@@ -144,6 +144,15 @@ public class Sidebar : MonoBehaviour
                 hideMover.enabled = !paused;
         }
 
+        List<GameObject> projectiles = ObjectContainer.GetAllProjectiles();
+
+        foreach(GameObject projectile in projectiles)
+        {
+            Projectile proj = projectile.GetComponent<Projectile>();
+            if (proj != null)
+                proj.enabled = !paused;
+        }
+
     }
 
     private void RefreshAllActionButtons()
