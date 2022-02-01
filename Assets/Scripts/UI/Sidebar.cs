@@ -142,6 +142,10 @@ public class Sidebar : MonoBehaviour
             HideMover hideMover = unit.GetComponent<HideMover>();
             if (hideMover != null)
                 hideMover.enabled = !paused;
+
+            Airship airship = unit.GetComponent<Airship>();
+            if (airship != null)
+                airship.enabled = !paused;
         }
 
         List<GameObject> projectiles = ObjectContainer.GetAllProjectiles();

@@ -1,22 +1,39 @@
 UX PATCH
  - Detailed unit information during action pause
- - Make it clear when player is taking damage
  - Looting popup
+ - Dialogue panels over gameplay
 
  BALANCING PATCH
  - Fix item drops for G1-1 through G2-2
+ - Enemies to have "last place player was seen"
 
 GHENI PATCH
- - Spawned enemies take K closest points for their route
- - Spawned enemies may have pathfinding bug
+ - G2-4 Trainyard
+
+CHALT PATCH
+ - Civilians
+ - Cavalry enemy
+   - Increased speed
+ - Vollmer enemy
+   - Increased speed
+   - Movement restrictions (can't go in small gaps)
+   - Shoots gun when player is in line of sight
+   - If player is hiding, throws bombs to drive player out of cover
+
+
+NENEGI PATCH
+ - Bloodhounds
+ - Enemy vs enemy
+
+TRIPSI
+ - Mixed gun/bomb enemy types
 
  BUG PATCH
- - Wrong message sometimes displays when loading scene
-   To reproduce, start from G2-2, quit to menu, select G2-2 from menu
- - Test to see if preview lines for wounded enemy work
+ - Stuck WoundedEnemy drops framerate (simple flee: check two directions, flee in direction with longer path)
+ - Spawned enemies may have pathfinding bug
  - Enemies sometimes freeze in Suspicious state
  - Grenade can sometimes be thrown infinite distance (probably when aiming farther than max)
- - Memory leak
+ - Memory leak?
 
 ARCADE PATCH
  - End screen for randomized levels (seed/time/damage/money/save)

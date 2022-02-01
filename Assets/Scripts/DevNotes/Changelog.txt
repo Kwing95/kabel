@@ -335,6 +335,15 @@ Jan 27, 2021
  + G2-3 added
  + Fix for DialogueParser displaying wrong messages
 
+Jan 29, 2021
+ + Blood effects when a unit takes damage
+ + G2-4 added
+ + Grenades can kill WoundedEnemy
+
+Jan 31, 2021
+ + Grenades have ParticleSystem explosion
+ + Airship added
+
 CANCELLED CONTENT
  * Flushing: Enemies systematically search all tiles in a certain area
  * Interception: Alerted enemies guard critical areas of map

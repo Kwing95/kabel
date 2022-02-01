@@ -71,15 +71,20 @@ public static class SaveService
         stream.Close();
     }
 
-    public static SaveObject LoadData()
+    public static SaveObject LoadData(bool reset=false)
     {
-        bool resettingSave = false;
-        if (File.Exists(path) && !resettingSave)
+        if (File.Exists(path) && !reset)
         {
             BinaryFormatter formatter = new BinaryFormatter();
             FileStream stream = new FileStream(path, FileMode.Open);
 
             SaveObject data = formatter.Deserialize(stream) as SaveObject;
+            if(data.levels.Length != Globals.LEVEL_LIST.Count)
+            {
+                stream.Close();
+                Debug.Log("Number of levels has been modified. Deleting save.");
+                return LoadData(true);
+            }
             stream.Close();
             return data;
         }

@@ -21,6 +21,7 @@ public class UnitStatus : MonoBehaviour
     public ColorIndicator focusIndicator;
     public SpriteRenderer unitOutline;
     public GameObject spriteContainer;
+    public SingleBurst singleBurst;
 
     public int numUnits = 3;
     public List<Unit> healthArray;
@@ -188,7 +189,10 @@ public class UnitStatus : MonoBehaviour
             int playerDamaged = eligibleTargets[Random.Range(0, eligibleTargets.Count)];
             healthArray[playerDamaged].health -= amount;
         }
-        
+
+        if (singleBurst)
+            singleBurst.Burst();
+
         healthLost += amount;
 
         if (IsDead())

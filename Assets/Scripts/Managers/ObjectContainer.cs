@@ -62,7 +62,7 @@ public class ObjectContainer : MonoBehaviour
 
     public static List<GameObject> GetAllUnits()
     {
-        List<GameObject> units = GetAllEnemies();
+        List<GameObject> units = GetEnemiesAndWounded();
         units.Add(PlayerMover.instance.gameObject);
 
         return units;

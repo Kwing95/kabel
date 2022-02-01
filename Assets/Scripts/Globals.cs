@@ -14,12 +14,12 @@ public class Globals : MonoBehaviour
         new LevelData("Infiltration C", "G1-3"), new LevelData("Innocents", "S1-2"), new LevelData("Escape A", "G1-4"),
         new LevelData("Escape B", "G1-5"), new LevelData("Escape C", "G1-6"), new LevelData("Infirmary", "S1-3"),
         new LevelData("Death Letter", "S2-1"), new LevelData("Hidden Cellar", "G2-1"), new LevelData("Book Burning", "S2-2"),
-        new LevelData("Departure A", "G2-2"), new LevelData("Departure B", "G2-3"), new LevelData("Trainyard", "S2-3"), new LevelData("Narrow Escape", "S2-4"),
-        new LevelData("Cargo Inspection", "S3-1"),
+        new LevelData("Departure A", "G2-2"), new LevelData("Departure B", "G2-3"), new LevelData("Trainyard", "S2-3"),
+        new LevelData("Departure C", "G2-4"), new LevelData("Narrow Escape", "S2-4"), new LevelData("Cargo Inspection", "S3-1"),
         new LevelData("Ruins", "S3-2"), new LevelData("Settling Down", "S3-3"), new LevelData("Rally", "S3-4")
     };
     public static readonly List<string> AUTOPLAY_LIST = new List<string> { "S1-1", "G1-1", "G1-2", "G1-3", "S1-2",
-        "G1-4", "G1-5", "G1-6", "S1-3", "S2-1", "G2-1", "S2-2", "G2-2", "G2-3", "S2-3", "S2-4", "S3-1", "S3-2", "S3-3", "S3-4", 
+        "G1-4", "G1-5", "G1-6", "S1-3", "S2-1", "G2-1", "S2-2", "G2-2", "G2-3", "S2-3", "G2-4", "S2-4", "S3-1", "S3-2", "S3-3", "S3-4", 
         "Level_Select", "TextCutscene", "Level_Select" };
     public static readonly List<string> CINEMA_LIST = new List<string> { "S1-1", "S1-2", "S1-3", "S1-4", "S1-5", "S1-6", "S2-1",
         "S2-2", "S2-3", "S2-4", "S2-5", "S3-1", "S3-2", "S3-3", "S3-4"};

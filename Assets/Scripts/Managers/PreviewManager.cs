@@ -145,7 +145,7 @@ public class PreviewManager : MonoBehaviour
 
         // Circle should emanate from throw point, not cursor pos
         // Does this include player?
-        List<GameObject> units = ObjectContainer.GetAllEnemies();
+        List<GameObject> units = ObjectContainer.GetEnemiesAndWounded();
         foreach (GameObject unit in units)
         {
             damageLevel = ActionManager.DistanceToLevel(Vector2.Distance(unit.transform.position, center));
