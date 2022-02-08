@@ -231,7 +231,7 @@ Oct 25, 2021
  + Camera following always pauses in action menu now
  + Enemy friendly fire should be disabled
 
- Nov 8, 2021
+Nov 8, 2021
  + RandomMap creates random mazes
 
 Nov 10, 2021
@@ -331,18 +331,30 @@ Jan 26, 2022
  + Grenades now freeze during Action Pause
  + Added sprites for transparent wall and floor tiles
 
-Jan 27, 2021
+Jan 27, 2022
  + G2-3 added
  + Fix for DialogueParser displaying wrong messages
 
-Jan 29, 2021
+Jan 29, 2022
  + Blood effects when a unit takes damage
  + G2-4 added
  + Grenades can kill WoundedEnemy
 
-Jan 31, 2021
+Jan 31, 2022
  + Grenades have ParticleSystem explosion
  + Airship added
+
+Feb 1, 2022
+ + Vollmer has independently rotating turret and sprite
+ + Vollmer has 9 health and 2x attack speed
+
+Feb 3, 2022
+ + MusicAdapter can fade between idle and chase music
+
+Feb 7, 2022
+ + Added SoundManager and multiple sound effects
+ + HideMover now uses simple fleeing
+ + Balanced enemy and loot spawns in Arcade Mode
 
 CANCELLED CONTENT
  * Flushing: Enemies systematically search all tiles in a certain area

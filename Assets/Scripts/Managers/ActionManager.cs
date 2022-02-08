@@ -172,9 +172,11 @@ public class ActionManager : MonoBehaviour
     public static void Gun(GameObject unit, Vector2 target)
     {
         bool attackerIsPlayer = unit.GetComponent<PlayerMover>();
-        
+
         // Prevent attacker from hitting themselves
-        unit.GetComponent<BoxCollider2D>().enabled = false;
+        BoxCollider2D unitCollider = unit.GetComponent<BoxCollider2D>();
+        unitCollider.enabled = false;
+        int instanceId = unitCollider.GetInstanceID();
 
         Vector2 shotOrigin = unit.transform.position;
         //(Vector2)unit.transform.position + unit.GetComponent<GridMover>().GetRotator().FrontOffset();
@@ -194,6 +196,8 @@ public class ActionManager : MonoBehaviour
         angle += Random.Range(0, marginOfError) * (Random.Range(0, 2) == 0 ? 1 : -1); // add margin of error
         direction = Quaternion.AngleAxis(angle, Vector3.forward) * direction; // This flattens the shot somehow
         RaycastHit2D hit = Physics2D.Raycast(shotOrigin, direction, 255, ~LayerMask.GetMask(LayerMask.LayerToName(unit.layer)));
+
+        SoundManager.instance.Play(SoundManager.Sound.Gun, instanceId);
         // Debug.Log("layer: " + LayerMask.LayerToName(unit.layer));
 
         if (hit.collider != null)
@@ -289,6 +293,7 @@ public class ActionManager : MonoBehaviour
             //UnitStatus attacker = unit.GetComponent<UnitStatus>();
             if (targetHit != null /*&& targetMover.GetAwareness() != AutoMover.State.Alert*/)
             {
+                SoundManager.instance.Play(SoundManager.Sound.Knife);
                 targetHit.DamageHealth(3);
                 // There is a risk of being hurt attempting to knife an enemy
                 //if(attacker && Random.Range(0, 11) == 0)

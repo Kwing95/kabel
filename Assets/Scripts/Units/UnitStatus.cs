@@ -17,8 +17,8 @@ public class Unit
 public class UnitStatus : MonoBehaviour
 {
 
-    public ColorIndicator healthIndicator;
-    public ColorIndicator focusIndicator;
+    //public ColorIndicator healthIndicator;
+    //public ColorIndicator focusIndicator;
     public SpriteRenderer unitOutline;
     public GameObject spriteContainer;
     public SingleBurst singleBurst;

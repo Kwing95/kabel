@@ -219,6 +219,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9245559d635d8f3448c0cfd5ae2c8264, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  instance: {fileID: 0}
+  pointsPerRoute: 3
   spawnPoints: []
   patrolPoints: []

@@ -4,8 +4,7 @@ UX PATCH
  - Dialogue panels over gameplay
 
  BALANCING PATCH
- - Fix item drops for G1-1 through G2-2
- - Enemies to have "last place player was seen"
+ - Alert enemies give location to other enemies
 
 GHENI PATCH
  - G2-4 Trainyard
@@ -19,7 +18,7 @@ CHALT PATCH
    - Movement restrictions (can't go in small gaps)
    - Shoots gun when player is in line of sight
    - If player is hiding, throws bombs to drive player out of cover
-
+   - Immunity to Knife
 
 NENEGI PATCH
  - Bloodhounds
@@ -28,18 +27,20 @@ NENEGI PATCH
 TRIPSI
  - Mixed gun/bomb enemy types
 
+REGA
+ - I-Troops
+
  BUG PATCH
- - Stuck WoundedEnemy drops framerate (simple flee: check two directions, flee in direction with longer path)
  - Spawned enemies may have pathfinding bug
  - Enemies sometimes freeze in Suspicious state
  - Grenade can sometimes be thrown infinite distance (probably when aiming farther than max)
  - Memory leak?
 
 ARCADE PATCH
+ - Player starting inventory varies
  - End screen for randomized levels (seed/time/damage/money/save)
- - Don't spawn player in bad position
- - Better distribution of enemies
  - Fewer hiding places
+ - Spawn backup enemies and create routes
 
 ARCHITECTURAL PATCH
  - Derive AutoMover and HideMover from same class maybe?

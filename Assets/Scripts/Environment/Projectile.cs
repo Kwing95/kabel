@@ -44,6 +44,7 @@ public class Projectile : AutoVanish
         switch (type)
         {
             case Type.Distract:
+                SoundManager.instance.Play(SoundManager.Sound.Glass);
                 noiseVolume = Globals.DISTRACTION_VOLUME;
                 source = Noise.Source.Distract;
                 break;
@@ -54,6 +55,7 @@ public class Projectile : AutoVanish
                 // Damage
                 DamageRadius();
                 // Noise volume
+                SoundManager.instance.Play(SoundManager.Sound.Explosion);
                 noiseVolume = Globals.GRENADE_VOLUME;
                 source = Noise.Source.Grenade;
                 break;

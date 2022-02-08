@@ -36,6 +36,20 @@ public class PRNG : MonoBehaviour
         return min + ((max - min) * UnityEngine.Random.value);
     }
 
+    // Single random value unaffected by nonce
+    public static int SeededRange(int min, int max, int seed)
+    {
+        UnityEngine.Random.InitState(seed);
+        return min + (int)((max - min) * UnityEngine.Random.value);
+    }
+
+    // Single random value unaffected by nonce
+    public static float SeededRange(float min, float max, int seed)
+    {
+        UnityEngine.Random.InitState(seed);
+        return min + ((max - min) * UnityEngine.Random.value);
+    }
+
     public static void ResetNonce()
     {
         nonce = 1;

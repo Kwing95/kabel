@@ -160,6 +160,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   baseWalkSpeed: 4
   baseRunSpeed: 6
+  rotator: {fileID: 6508245757227045874}
 --- !u!50 &1529958948040857633
 Rigidbody2D:
   serializedVersion: 4

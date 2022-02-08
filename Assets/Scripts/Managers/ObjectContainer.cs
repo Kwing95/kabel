@@ -19,6 +19,15 @@ public class ObjectContainer : MonoBehaviour
         instance = this;
     }
 
+    public static List<GameObject> GetAllLoot()
+    {
+        List<GameObject> lootList = new List<GameObject>();
+        for (int i = 0; i < instance.loot.transform.childCount; ++i)
+            lootList.Add(instance.loot.transform.GetChild(i).gameObject);
+
+        return lootList;
+    }
+
     public static List<GameObject> GetAllProjectiles()
     {
         List<GameObject> projectileList = new List<GameObject>();

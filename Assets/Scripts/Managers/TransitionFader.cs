@@ -7,16 +7,17 @@ using UnityEngine.UI;
 public class TransitionFader : MonoBehaviour
 {
 
+    public GameObject rootObject;
     private Image image;
     public static TransitionFader instance;
     private bool fadeToBlack = false;
     private string targetScene = "";
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         if (instance != null && instance != this)
-            Destroy(this);
+            Destroy(rootObject);
         else
         {
             instance = this;

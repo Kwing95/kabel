@@ -37,12 +37,12 @@ public class GridMover : MonoBehaviour
     private Vector2 prevDiscretePosition;
     private Vector2 nextDiscretePosition;
     private Vector2 heldVelocity;
-    private Rotator rotator;
+    public Rotator rotator;
 
     // Start is called before the first frame update
     void Awake()
     {
-        rotator = GetComponent<Rotator>();
+        //rotator = GetComponent<Rotator>();
         rb = GetComponent<Rigidbody2D>();
         heldVelocity = Vector2.zero;
 
@@ -139,6 +139,10 @@ public class GridMover : MonoBehaviour
         
         if (canTurn /*&& PointClear(direction)*/)
         {
+            float volume = (running ? 1 : 0.5f) - (0.05f * Vector2.Distance(transform.position, PlayerMover.instance.transform.position));
+            if(volume > 0)
+                SoundManager.instance.Play(SoundManager.Sound.Step, -1, volume);
+
             if(direction == Vector2.up)
             {
                 rb.velocity = Vector2.up * moveSpeed;

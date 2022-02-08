@@ -10,17 +10,18 @@ public class AutoMover : MonoBehaviour
 
     public List<Vector2> route;
 
-    private Rotator rotator;
+    public Rotator rotator;
 
     [System.Serializable]
     public enum AttackType { Gun, Frag, Gas }
     public AttackType weaponEquipped = AttackType.Gun;
 
+    public int preferredDistance = 4;
     public int leashLength = -1; // Maximum distance enemy will explore beyond patrol point
     public bool randomPatrol = false; // Determines if enemy patrols randomly or sequentially
     public int pointMemory = 0; // Number of points enemy can add to patrol upon spotting player
     public float sightDistance = 10;
-    private float attackRate = 1; // How long between attacks (in seconds)
+    public float attackRate = 1; // How long between attacks (in seconds)
     public bool spawnsWounded = false;
 
     private bool clearView; // True if there are no visual obstructions between enemy and player
@@ -74,7 +75,7 @@ public class AutoMover : MonoBehaviour
         
         extraPoints = new List<Vector2>();
         fieldOfView = GetComponentInChildren<FieldOfView>();
-        rotator = GetComponent<Rotator>();
+        //rotator = GetComponent<Rotator>();
         mover = GetComponent<GridMover>();
         navigator = GetComponent<Navigator>();
         player = PlayerMover.instance.GetComponent<GridMover>();
@@ -340,7 +341,7 @@ public class AutoMover : MonoBehaviour
             // Don't chase player when close
 
             bool tooClose = ClearView(player.GetDiscretePosition()) &&
-                Grapher.ManhattanDistance(player.transform.position, transform.position) <= 4;
+                Grapher.ManhattanDistance(player.transform.position, transform.position) <= preferredDistance;
             if (tooClose || tooFar)
             {
                 navigator.Pause();
@@ -446,13 +447,16 @@ public class AutoMover : MonoBehaviour
 
     public static bool InAlertStatus()
     {
-        List<GameObject> enemies = ObjectContainer.GetAllEnemies();
-
-        foreach(GameObject enemy in enemies)
+        if (ObjectContainer.instance)
         {
-            AutoMover mover = enemy.GetComponent<AutoMover>();
-            if (mover && mover.awareness == State.Alert)
-                return true;
+            List<GameObject> enemies = ObjectContainer.GetAllEnemies();
+
+            foreach (GameObject enemy in enemies)
+            {
+                AutoMover mover = enemy.GetComponent<AutoMover>();
+                if (mover && mover.awareness == State.Alert)
+                    return true;
+            }
         }
 
         return false;

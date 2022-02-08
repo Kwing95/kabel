@@ -76,6 +76,9 @@ public class Globals : MonoBehaviour
     public static readonly Sprite PAUSE_ICON = Resources.Load<Sprite>("Graphics/menu_buttons_1");
     public static readonly Sprite UNPAUSE_ICON = Resources.Load<Sprite>("Graphics/menu_buttons_0");
 
+    // AUDIO
+    public static readonly AudioClip SFX_GUN = Resources.Load<AudioClip>("Audio/gunshot");
+
     // OTHER
     public static readonly TextAsset ADJECTIVES = Resources.Load<TextAsset>("adjectives");
     public static readonly TextAsset ANIMALS = Resources.Load<TextAsset>("animals");

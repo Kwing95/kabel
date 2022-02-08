@@ -8,7 +8,7 @@ public class HideMover : MonoBehaviour
     public int maximumFleeDistance;
     private Navigator navigator;
     private GridMover mover;
-    private Rotator rotator;
+    public Rotator rotator;
     private FieldOfView fieldOfView;
     private float glanceTimer = 0;
     private static float glanceLength = 1;
@@ -18,13 +18,14 @@ public class HideMover : MonoBehaviour
     private float flareDelay = 5;
     private float timeAlone = 0;
     private bool lookTowardPlayer = true;
+    private bool stuck = false;
 
     // Start is called before the first frame update
     void Awake()
     {
         navigator = GetComponent<Navigator>();
         fieldOfView = GetComponentInChildren<FieldOfView>();
-        rotator = GetComponent<Rotator>();
+        //rotator = GetComponent<Rotator>();
         mover = GetComponent<GridMover>();
     }
 
@@ -55,10 +56,11 @@ public class HideMover : MonoBehaviour
     void Update()
     {
         // If it sees player, run from player
-        if (CanSeePoint(PlayerMover.instance.transform.position))
+        if (CanSeePoint(PlayerMover.instance.transform.position) && !stuck)
         {
             lastSawPlayer = Grapher.RoundedVector(PlayerMover.instance.transform.position);
-            navigator.Hide(PlayerMover.instance.transform.position);
+            GetHidingPlace(PlayerMover.instance.transform.position);
+            //navigator.Hide(PlayerMover.instance.transform.position);
             timeAlone = 0;
         }
         else if (mover.GetCanTurn())
@@ -83,8 +85,49 @@ public class HideMover : MonoBehaviour
         }
     }
 
+    private void GetHidingPlace(Vector2 threat)
+    {
+        Vector2 horizontalEscape = threat.x > transform.position.x ? Vector2.left : Vector2.right;
+        Vector2 verticalEscape = threat.y > transform.position.y ? Vector2.down : Vector2.up;
+
+        horizontalEscape = GetFarthestStraightLine(horizontalEscape);
+        verticalEscape = GetFarthestStraightLine(verticalEscape);
+
+        bool invalidHorizontal = horizontalEscape == -1 * Vector2.one;
+        bool invalidVertical = verticalEscape == -1 * Vector2.one;
+
+        // The axis to use is the one where the unit can run farther away
+        bool axisIsX = Vector2.Distance(transform.position, horizontalEscape) > Vector2.Distance(transform.position, verticalEscape);
+
+        // If neither values are valid and instead contain a dummy value, unit is stuck
+        if (invalidHorizontal && invalidVertical)
+        {
+            stuck = true;
+            return;
+        }
+        else if (invalidHorizontal)
+            axisIsX = false;
+        else if (invalidVertical)
+            axisIsX = true;
+        
+        navigator.SetDestination(axisIsX ? horizontalEscape : verticalEscape);
+    }
+
+    private Vector2 GetFarthestStraightLine(Vector2 offset)
+    {
+        Vector2 destination = -1 * Vector2.one;
+        int multiplier = 1;
+        while (Grapher.PointIsClear((Vector2)transform.position + (offset * multiplier)))
+        {
+            destination = (Vector2)transform.position + (offset * multiplier);
+            multiplier += 1;
+        }
+        return destination;
+    }
+
     private void Flare()
     {
+        SoundManager.instance.Play(SoundManager.Sound.Flare);
         Vector2 roundedPosition = Grapher.RoundedVector(transform.position);
         GameObject tempNoise = Instantiate(Globals.NOISE, roundedPosition, Quaternion.identity);
         tempNoise.GetComponent<Noise>().Initialize(true, Globals.FLARE_VOLUME, Noise.Source.Gun);

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,6 +21,7 @@ public class MazeMaker : MonoBehaviour
 
     private List<List<bool>> visited;
     private List<List<int>> neighborGrid;
+    private Dictionary<Vector2, HashSet<Vector2>> neighborList;
     private Stack<Vector2> stack;
     private List<Vector2> fullPath;
 
@@ -30,12 +32,13 @@ public class MazeMaker : MonoBehaviour
     void Awake()
     {
         instance = this;
+        neighborList = new Dictionary<Vector2, HashSet<Vector2>>();
 
         PRNG.ForceSeed(seed);
-        enemyCount = PRNG.Range(5, 15);
-        lootCount = PRNG.Range(3, 10);
+        enemyCount = PRNG.Range(10, 15);
+        lootCount = PRNG.Range(5, 10);
         GenerateMaze();
-        DeformMaze(2 * width * height, 10 * width * height, 5 * width * height);
+        DeformMaze(width * height, 10 * width * height, 5 * width * height);
 
         // PrintMinesweeper();
     }
@@ -45,7 +48,7 @@ public class MazeMaker : MonoBehaviour
         SpawnEnemies(enemyCount);
         SpawnLoot(lootCount);
         lootLeft = lootCount;
-        PlayerMover.instance.transform.position = GenerateRandomRoute(1)[0];
+        PlayerMover.instance.transform.position = RandomTileFromCell(new Vector2(2, 2));
     }
 
     private void PrintMinesweeper()
@@ -130,7 +133,7 @@ public class MazeMaker : MonoBehaviour
         List<Vector2> results = new List<Vector2>();
 
         for(int i = (int)cell.y * cellLength; i < (int)(cell.y + 1) * cellLength; ++i)
-            for(int j = (int)cell.x; j < (int)(cell.x + 1) * cellLength; ++j)
+            for(int j = (int)cell.x * cellLength; j < (int)(cell.x + 1) * cellLength; ++j)
                 if (neighborGrid[i][j] >= minValue)
                     results.Add(new Vector2(j, i));
 
@@ -139,36 +142,76 @@ public class MazeMaker : MonoBehaviour
 
     private void SpawnEnemies(int numEnemies)
     {
-        for(int i = 0; i < numEnemies; ++i)
+        for(int i = 0; i < height; ++i)
+            for(int j = 0; j < width; ++j)
+            {
+                Vector2 cell = new Vector2(i, j);
+                if (Vector2.Distance(new Vector2(2, 2), cell) > 1)
+                    SpawnEnemy(new Vector2(i, j));
+            }
+
+        int numToDelete = (height * width) - numEnemies - 5;
+        
+        for (int i = 0; i < numToDelete; ++i)
         {
-            List<Vector2> enemyRoute = GenerateRandomRoute();
-            GameObject newEnemy = Instantiate(Globals.ENEMY, enemyRoute[0], Quaternion.identity);
-            newEnemy.name = newEnemy.name + i;
-            newEnemy.transform.SetParent(ObjectContainer.instance.enemies.transform);
-            AutoMover autoMover = newEnemy.GetComponent<AutoMover>();
-            Inventory inventory = newEnemy.GetComponent<Inventory>();
-
-            autoMover.route = enemyRoute;
-            autoMover.randomPatrol = PRNG.Range(0, 2) == 0;
-            autoMover.pointMemory = PRNG.Range(0, 3);
-
-            Inventory.ItemType[] types = (Inventory.ItemType[])System.Enum.GetValues(typeof(Inventory.ItemType));
-            Inventory.ItemType dropType = types[PRNG.Range(0, types.Length)];
-            Inventory.InventoryEntry item = new Inventory.InventoryEntry(dropType, 1);
-            inventory.Add(item);
-            
-            // Position, route, weaponequipped, leashlength, randompatrol, pointmemory, inventory
+            List<GameObject> enemyList = ObjectContainer.GetAllEnemies();
+            GameObject enemyToDelete = enemyList[PRNG.Range(0, enemyList.Count)];
+            DestroyImmediate(enemyToDelete);
         }
+
+    }
+
+    private void SpawnEnemy(Vector2 cell)
+    {
+        List<Vector2> enemyRoute = new List<Vector2>();
+        enemyRoute.Add(RandomTileFromCell(cell));
+
+        foreach(Vector2 neighbor in neighborList[cell])
+        {
+            enemyRoute.Add(RandomTileFromCell(neighbor));
+        }
+            
+
+        GameObject newEnemy = Instantiate(Globals.ENEMY, enemyRoute[0], Quaternion.identity);
+        // newEnemy.name = newEnemy.name + i;
+        newEnemy.transform.SetParent(ObjectContainer.instance.enemies.transform);
+        AutoMover autoMover = newEnemy.GetComponent<AutoMover>();
+        Inventory inventory = newEnemy.GetComponent<Inventory>();
+
+        autoMover.spawnsWounded = false;
+        autoMover.route = enemyRoute;
+        autoMover.randomPatrol = PRNG.Range(0, 2) == 0;
+        autoMover.pointMemory = PRNG.Range(0, 3);
+
+        Inventory.ItemType[] types = (Inventory.ItemType[])System.Enum.GetValues(typeof(Inventory.ItemType));
+        Inventory.ItemType dropType = types[PRNG.Range(0, types.Length)];
+        Inventory.InventoryEntry item = new Inventory.InventoryEntry(dropType, 1);
+        inventory.Add(item);
+
+        // Position, route, weaponequipped, leashlength, randompatrol, pointmemory, inventory
     }
 
     private void SpawnLoot(int numLoot)
     {
-        for(int i = 0; i < numLoot; ++i)
-        {
-            GameObject newEnemy = Instantiate(Globals.LOOT, new Vector2(), Quaternion.identity);
-            newEnemy.transform.SetParent(ObjectContainer.instance.loot.transform);
+        for (int i = 0; i < height; ++i)
+            for (int j = 0; j < width; ++j)
+            {
+                Vector2 cell = new Vector2(i, j);
+                if (Vector2.Distance(new Vector2(2, 2), cell) > 1)
+                {
+                    GameObject newEnemy = Instantiate(Globals.LOOT, new Vector2(), Quaternion.identity);
+                    newEnemy.transform.SetParent(ObjectContainer.instance.loot.transform);
+                    newEnemy.transform.position = RandomTileFromCell(cell);
+                }
+            }
 
-            newEnemy.transform.position = GenerateRandomRoute(1)[0];
+        int numToDelete = (height * width) - numLoot - 5;
+
+        for (int i = 0; i < numToDelete; ++i)
+        {
+            List<GameObject> lootList = ObjectContainer.GetAllLoot();
+            GameObject enemyToDelete = lootList[PRNG.Range(0, lootList.Count)];
+            DestroyImmediate(enemyToDelete);
         }
     }
 
@@ -402,13 +445,19 @@ public class MazeMaker : MonoBehaviour
         {
             visited.Add(new List<bool>());
             for (int j = 0; j < width; ++j)
+            {
+                neighborList.Add(new Vector2(j, i), new HashSet<Vector2>());
                 visited[i].Add(false);
+            } 
         }
     }
 
     // Removes a Divider given cell coordinates rather than world coordinates
     private void RemoveWallGraph(Vector2 cellA, Vector2 cellB)
     {
+        neighborList[cellA].Add(cellB);
+        neighborList[cellB].Add(cellA);
+
         int halfLength = cellLength / 2;
         Vector2 centerA = new Vector2(halfLength + (cellLength * cellA.x), halfLength + (cellLength * cellA.y));
         Vector2 centerB = new Vector2(halfLength + (cellLength * cellB.x), halfLength + (cellLength * cellB.y));
@@ -421,7 +470,7 @@ public class MazeMaker : MonoBehaviour
     {
         float distance = Vector2.Distance(start, end);
         RaycastHit2D[] hits = Physics2D.RaycastAll(start, end - start, distance);
-        foreach(RaycastHit2D hit in hits)
+        foreach (RaycastHit2D hit in hits)
             if (hit.collider.CompareTag("Divider"))
                 Destroy(hit.collider.gameObject);
     }

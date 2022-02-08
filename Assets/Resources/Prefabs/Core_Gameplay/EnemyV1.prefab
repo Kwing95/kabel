@@ -371,6 +371,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   baseWalkSpeed: 3
   baseRunSpeed: 5
+  rotator: {fileID: 1333094116810465314}
 --- !u!50 &4735645799990054802
 Rigidbody2D:
   serializedVersion: 4
@@ -431,6 +432,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   route: []
+  rotator: {fileID: 1333094116810465314}
   weaponEquipped: 0
   leashLength: -1
   randomPatrol: 0

@@ -371,6 +371,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   baseWalkSpeed: 3
   baseRunSpeed: 5
+  rotator: {fileID: 1333094116810465314}
 --- !u!50 &4735645799990054802
 Rigidbody2D:
   serializedVersion: 4
@@ -485,6 +486,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maximumFleeDistance: 0
+  rotator: {fileID: 1333094116810465314}
   lastSawPlayer: {x: 0, y: 0}
 --- !u!114 &4615426391678141916
 MonoBehaviour:
