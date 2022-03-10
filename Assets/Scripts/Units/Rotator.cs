@@ -9,10 +9,10 @@ public class Rotator : MonoBehaviour
 
     public List<GameObject> subjects;
 
-    private int destinationAngle = 0;
-    private float currentAngle = 90;
-    private bool lockedOnTarget = false;
-    private Vector2 lockOnPosition;
+    protected int destinationAngle = 0;
+    protected float currentAngle = 90;
+    protected bool lockedOnTarget = false;
+    protected Vector2 lockOnPosition;
 
     // Start is called before the first frame update
     void Awake()
@@ -22,7 +22,7 @@ public class Rotator : MonoBehaviour
     }
 
     // Update is called once per frame
-    void FixedUpdate()
+    public virtual void FixedUpdate()
     {
         if (lockedOnTarget)
         {
@@ -38,7 +38,7 @@ public class Rotator : MonoBehaviour
 
     // Maybe put FaceDirection inside its own Rotator class?
 
-    public void Rotate(int ang)
+    public virtual void Rotate(int ang)
     {
         // If locked onto a specific target, don't look in a different direction
         if (lockedOnTarget)

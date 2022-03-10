@@ -48,6 +48,9 @@ public class ButtonHelper : MonoBehaviour, IPointerClickHandler, IPointerDownHan
 
     private void OpenDisplay()
     {
+        if (Input.touchCount > 1)
+            return;
+        
         HelpPanel.instance.gameObject.SetActive(true);
         HelpPanel.instance.message.text = message;
         displaying = true;

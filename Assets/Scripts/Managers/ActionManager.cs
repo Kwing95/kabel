@@ -208,12 +208,12 @@ public class ActionManager : MonoBehaviour
             // Camera.main.GetComponent<Jerk>().Shake(1); // Replace this with something better
 
             UnitStatus targetHit = hit.collider.GetComponent<UnitStatus>();
-            if (targetHit != null)
+            if (targetHit)
             {
-                //Debug.Log("unit      " + Convert.ToString(~unit.layer, 2));
-                //Debug.Log(targetHit.gameObject.name);
-                //Debug.Log("targetHit " + Convert.ToString(targetHit.gameObject.layer, 2));
                 targetHit.DamageHealth(); // formerly memberIndex
+                AutoMover autoMover = hit.collider.GetComponent<AutoMover>();
+                if (autoMover)
+                    autoMover.VisualToPosition(Grapher.RoundedVector(unit.transform.position));
             }
 
             GameObject tempNoise = Instantiate(Globals.NOISE, unit.transform.position, Quaternion.identity);

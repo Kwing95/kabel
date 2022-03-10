@@ -3,8 +3,10 @@ UX PATCH
  - Looting popup
  - Dialogue panels over gameplay
 
- BALANCING PATCH
+BALANCING PATCH
+ - Auto-aim for Knife
  - Alert enemies give location to other enemies
+ - Arcade Mode to have difficult (4 units/4 items EASY, 1 unit/1 item BRUTAL)
 
 GHENI PATCH
  - G2-4 Trainyard
@@ -14,9 +16,7 @@ CHALT PATCH
  - Cavalry enemy
    - Increased speed
  - Vollmer enemy
-   - Increased speed
    - Movement restrictions (can't go in small gaps)
-   - Shoots gun when player is in line of sight
    - If player is hiding, throws bombs to drive player out of cover
    - Immunity to Knife
 
@@ -29,20 +29,22 @@ TRIPSI
 
 REGA
  - I-Troops
+   - Cheating AI
+   - Tear gas weapon
 
- BUG PATCH
+BUG PATCH
+ - UI Help panel gets stuck if two buttons are held at once
+ - Must click twice on menu button when two cutscenes appear in a row
+ - Erroneously displayed Chapter button in Level Select
  - Spawned enemies may have pathfinding bug
- - Enemies sometimes freeze in Suspicious state
- - Grenade can sometimes be thrown infinite distance (probably when aiming farther than max)
+ - Enemies may freeze for a bit and spawn Noise every frame
  - Memory leak?
 
 ARCADE PATCH
- - Player starting inventory varies
  - End screen for randomized levels (seed/time/damage/money/save)
- - Fewer hiding places
- - Spawn backup enemies and create routes
 
 ARCHITECTURAL PATCH
+ - Implement TileMap
  - Derive AutoMover and HideMover from same class maybe?
  - Pathfinding to allow diagonal movement (A* maybe)
  - Refactor ActionManager

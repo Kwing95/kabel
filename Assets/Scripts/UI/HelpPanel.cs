@@ -31,8 +31,13 @@ public class HelpPanel : MonoBehaviour, IPointerClickHandler
     {
         if (eventData.button == PointerEventData.InputButton.Left)
         {
-            ButtonHelper.displaying = false;
-            gameObject.SetActive(false);
+            ClosePanel();
         }
+    }
+
+    public void ClosePanel()
+    {
+        ButtonHelper.displaying = false;
+        gameObject.SetActive(false);
     }
 }

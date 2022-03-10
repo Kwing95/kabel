@@ -1,0 +1,42 @@
+Walk unarmed
+Run unarmed
+
+Walk with gun
+Run with gun
+
+Limp unarmed
+Limp with gun
+
+Throw grenade
+Throw grenade while running
+
+Fire gun
+Fire gun while running
+
+Fire flare
+
+Walk on horse
+Run on horse
+
+Dog walking
+Dog running
+
+Being stabbed with gun
+Being shot with gun
+
+Being stabbed unarmed
+Being shot unarmed
+
+Dying with gun
+Dying unarmed
+
+Collapse and die unarmed
+Collapse and die with gun
+Collapse and die on horse
+
+Standing unarmed
+Standing with gun
+
+Recoil from damage unarmed
+Recoil from damage with gun
+Recoil from damage on horse

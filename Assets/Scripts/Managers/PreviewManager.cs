@@ -97,7 +97,10 @@ public class PreviewManager : MonoBehaviour
             Toast.ToastWrapper("No target in range");
         }
         else if (!targetUnaware)
+        {
+            Sidebar.instance.actionConfirmButtons[1].interactable = false;
             Toast.ToastWrapper("Cannot knife alerted target");
+        }
         else
             Toast.ToastWrapper("Valid target selected");
 

@@ -48,7 +48,7 @@ public class AutoMover : MonoBehaviour
 
     public int startAngle = 0;
     private int routeProgress = 0;
-    private FieldOfView fieldOfView;
+    protected FieldOfView fieldOfView;
 
     public enum State { Stun, Idle, Confuse, Suspicious, Alert } // stun 0, alert 4
     [SerializeField]
@@ -187,7 +187,7 @@ public class AutoMover : MonoBehaviour
         {
             stoppedByLeash = false;
             SetAwareness(State.Confuse);
-            Confuse();
+            SetConfuse();
             // StartCoroutine(LookAround());
         }
         else if (awareness == State.Idle && navigator.GetIdle())
@@ -206,7 +206,7 @@ public class AutoMover : MonoBehaviour
         }
     }
 
-    private void Confuse()
+    private void SetConfuse()
     {
         canInspectBodies = true;
         glancesLeft = maxGlances;
@@ -248,7 +248,6 @@ public class AutoMover : MonoBehaviour
         {
             //rotator.ToggleLock(true, player.transform.position);
             canInspectBodies = false;
-            timeSinceVisual = 0;
             VisualToPosition(player.GetDiscretePosition());
         }
         else if (awareness == State.Alert && timeSinceVisual >= alertGracePeriod)
@@ -286,7 +285,7 @@ public class AutoMover : MonoBehaviour
     }
 
     // Returns true if player is within enemy's cone of vision
-    private bool CanSeePoint(Vector2 point)
+    protected virtual bool CanSeePoint(Vector2 point)
     {
         // Check that player is within view angle
         Vector2 direction = point - (Vector2)transform.position;
@@ -296,13 +295,13 @@ public class AutoMover : MonoBehaviour
     }
 
     // Returns true if there are no obstructions between enemy and player
-    private bool ClearView()
+    protected bool ClearView()
     {
         return ClearView(player.transform.position);
     }
 
     // Returns true if there are no obstructions between enemy and point
-    private bool ClearView(Vector2 point)
+    protected bool ClearView(Vector2 point)
     {
         // Don't look farther than distance of point of interest, but don't look farther than sightDistance either
         float effectiveDistance = Mathf.Min(Vector2.Distance(transform.position, point), sightDistance);
@@ -330,6 +329,7 @@ public class AutoMover : MonoBehaviour
 
         if (canSeePlayer)
         {
+            timeSinceVisual = 0;
             if (canAddPoints && pointMemory > 0)
             {
                 canAddPoints = false;

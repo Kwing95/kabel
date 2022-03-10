@@ -13,7 +13,7 @@ public class SpawnService : MonoBehaviour
     public List<Vector2> patrolPoints;
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         instance = this;
     }

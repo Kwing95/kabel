@@ -356,6 +356,23 @@ Feb 7, 2022
  + HideMover now uses simple fleeing
  + Balanced enemy and loot spawns in Arcade Mode
 
+Feb 8, 2022
+ + Arcade Mode has balanced hiding places
+ + SpawnService integrated into Arcade Mode
+ + Player starts with random items
+
+Feb 9, 2022
+ + Cannot knife alerted targets
+ + Wounded Enemy immediately runs from player now
+ + Enemies react to being shot
+
+Feb 13, 2022
+ + Vollmer sprite and turret rotate correctly
+
+Mar 9, 2022
+ + Fixed enemy timeSinceVisual bug
+ + Added safeguard to UI Help bug
+
 CANCELLED CONTENT
  * Flushing: Enemies systematically search all tiles in a certain area
  * Interception: Alerted enemies guard critical areas of map

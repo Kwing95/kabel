@@ -31,11 +31,13 @@ public class HideMover : MonoBehaviour
 
     void Start()
     {
-        if (ClearView(transform.position, PlayerMover.instance.transform.position))
+        lastSawPlayer = Grapher.RoundedVector(PlayerMover.instance.transform.position);
+        GetHidingPlace(PlayerMover.instance.transform.position);
+        /*if (ClearView(transform.position, PlayerMover.instance.transform.position))
         {
             lastSawPlayer = Grapher.RoundedVector(PlayerMover.instance.transform.position);
             navigator.Hide(PlayerMover.instance.transform.position);
-        }
+        }*/
     }
 
     private void OnDisable()
@@ -61,6 +63,7 @@ public class HideMover : MonoBehaviour
             lastSawPlayer = Grapher.RoundedVector(PlayerMover.instance.transform.position);
             GetHidingPlace(PlayerMover.instance.transform.position);
             //navigator.Hide(PlayerMover.instance.transform.position);
+            lookTowardPlayer = true;
             timeAlone = 0;
         }
         else if (mover.GetCanTurn())

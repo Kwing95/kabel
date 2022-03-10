@@ -38,7 +38,7 @@ public class MazeMaker : MonoBehaviour
         enemyCount = PRNG.Range(10, 15);
         lootCount = PRNG.Range(5, 10);
         GenerateMaze();
-        DeformMaze(width * height, 10 * width * height, 5 * width * height);
+        DeformMaze(4 * width, 5 * width * height, 10 * width * height);
 
         // PrintMinesweeper();
     }
@@ -48,7 +48,8 @@ public class MazeMaker : MonoBehaviour
         SpawnEnemies(enemyCount);
         SpawnLoot(lootCount);
         lootLeft = lootCount;
-        PlayerMover.instance.transform.position = RandomTileFromCell(new Vector2(2, 2));
+        SpawnPlayer();
+        SpawnServiceInit();
     }
 
     private void PrintMinesweeper()
@@ -82,6 +83,33 @@ public class MazeMaker : MonoBehaviour
     void Update()
     {
 
+    }
+
+    private void SpawnPlayer()
+    {
+        PlayerMover.instance.transform.position = RandomTileFromCell(new Vector2(2, 2));
+        Inventory inventory = PlayerMover.instance.GetComponent<Inventory>();
+        Inventory.ItemType[] types = (Inventory.ItemType[])System.Enum.GetValues(typeof(Inventory.ItemType));
+        int startingItems = PRNG.Range(0, 5);
+
+        for (int i = 0; i < startingItems; ++i)
+        {
+            Inventory.ItemType dropType = types[PRNG.Range(0, types.Length)];
+            Inventory.InventoryEntry item = new Inventory.InventoryEntry(dropType, 1);
+            inventory.Add(item);
+        }
+    }
+
+    private void SpawnServiceInit()
+    {
+        SpawnService.instance.spawnPoints.Add(RandomTileFromCell(new Vector2(0, 0)));
+        SpawnService.instance.spawnPoints.Add(RandomTileFromCell(new Vector2(4, 0)));
+        SpawnService.instance.spawnPoints.Add(RandomTileFromCell(new Vector2(0, 4)));
+        SpawnService.instance.spawnPoints.Add(RandomTileFromCell(new Vector2(4, 4)));
+
+        for(int i = 0; i < width; ++i)
+            for(int j = 0; j < height; ++j)
+                SpawnService.instance.patrolPoints.Add(RandomTileFromCell(new Vector2(j, i)));
     }
 
     private void GenerateMaze()
@@ -178,7 +206,7 @@ public class MazeMaker : MonoBehaviour
         AutoMover autoMover = newEnemy.GetComponent<AutoMover>();
         Inventory inventory = newEnemy.GetComponent<Inventory>();
 
-        autoMover.spawnsWounded = false;
+        autoMover.spawnsWounded = true;
         autoMover.route = enemyRoute;
         autoMover.randomPatrol = PRNG.Range(0, 2) == 0;
         autoMover.pointMemory = PRNG.Range(0, 3);
