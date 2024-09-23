@@ -1,0 +1,21 @@
+Hunter's Cove
+
+BUGS:
+	Big sound ripple
+	Flare sound glitch
+	No X with keyboard input
+	Grenade to hit multiple enemies
+	Show sprint icon when Shift key held
+
+FEATURES:
+	Daily Challenge
+	Select difficulty in seeded
+	Distance-based knife damage
+	Distance-based gun damage
+	Smart aim
+	Tutorial
+		Knife, Distraction, Gun, Grenade, Medkit
+	Save level (using procedural name) to come back to later
+		NAME	SEED	EASY_TIME	MEDIUM_TIME		HARD_TIME	BRUTAL_TIME
+
+3/13/2024:	Starting from Kabel 1.3 repository

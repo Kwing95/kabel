@@ -47,13 +47,13 @@ Classroom
 Horseback
 Avalanche
 Regroup
-Infirmary
+InfirmaryCargo Inspection
+
 
 Death Letter
 Police State
 Narrow Escape
 
-Cargo Inspection
 Armored Car
 Roadtrip
 

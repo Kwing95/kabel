@@ -1,9 +1,21 @@
+PRIORITY ITEMS
+ - Arcade mode difficulty levels
+ - Arcade mode end screen (results, save, replay options)
+ - Grenade hitting overlapping enemies fix
+ - Knife auto-aim
+ - Gun re-balance
+ - Vollmer boss fight
+ - Platform-agnostic controls
+
 UX PATCH
  - Detailed unit information during action pause
  - Looting popup
  - Dialogue panels over gameplay
 
 BALANCING PATCH
+ - Gun damage based on distance
+   Unaware: 3 damage at < 2 tiles, 2 damage at < 4 tiles
+   Aware: 2 damage at < 2 tiles
  - Auto-aim for Knife
  - Alert enemies give location to other enemies
  - Arcade Mode to have difficult (4 units/4 items EASY, 1 unit/1 item BRUTAL)
