@@ -13,10 +13,12 @@ public class MazeMaker : MonoBehaviour
     public int width = 5;
     public int height = 5;
 
+    public enum Difficulty { Easy, Medium, Hard, Brutal };
+    public static Difficulty difficulty = Difficulty.Easy;
+
     public int enemyCount = 10;
     public int lootCount = 5;
-    [SerializeField]
-    public static int seed = 1;
+    [SerializeField] public static int seed = 1;
     public int lootLeft = 0;
 
     private List<List<bool>> visited;
@@ -45,11 +47,14 @@ public class MazeMaker : MonoBehaviour
 
     private void Start()
     {
+        // determine difficulty
+
         SpawnEnemies(enemyCount);
         SpawnLoot(lootCount);
         lootLeft = lootCount;
-        SpawnPlayer();
+        
         SpawnServiceInit();
+        SpawnPlayer();
     }
 
     private void PrintMinesweeper()
@@ -90,7 +95,28 @@ public class MazeMaker : MonoBehaviour
         PlayerMover.instance.transform.position = RandomTileFromCell(new Vector2(2, 2));
         Inventory inventory = PlayerMover.instance.GetComponent<Inventory>();
         Inventory.ItemType[] types = (Inventory.ItemType[])System.Enum.GetValues(typeof(Inventory.ItemType));
-        int startingItems = PRNG.Range(0, 5);
+        //int startingItems = PRNG.Range(0, 5);
+
+        int startingItems = 0;
+        switch (difficulty)
+        {
+            case Difficulty.Easy:
+                startingItems = 6;
+                PlayerMover.instance.GetComponent<UnitStatus>().numUnits = 4;
+                break;
+            case Difficulty.Medium:
+                startingItems = 4;
+                PlayerMover.instance.GetComponent<UnitStatus>().numUnits = 3;
+                break;
+            case Difficulty.Hard:
+                startingItems = 2;
+                PlayerMover.instance.GetComponent<UnitStatus>().numUnits = 2;
+                break;
+            case Difficulty.Brutal:
+                startingItems = 0;
+                PlayerMover.instance.GetComponent<UnitStatus>().numUnits = 1;
+                break;
+        }
 
         for (int i = 0; i < startingItems; ++i)
         {

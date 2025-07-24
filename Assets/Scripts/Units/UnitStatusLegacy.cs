@@ -1,10 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UIElements;
 
 [System.Serializable]
-public class Unit
+/*public class Unit
 {
     public string name;
     public int health;
@@ -13,39 +12,40 @@ public class Unit
         name = _name;
         health = _health;
     }
-}
+}*/
 
-public class UnitStatus : MonoBehaviour
+public class UnitStatusLegacy : MonoBehaviour
 {
 
+    //public ColorIndicator healthIndicator;
+    //public ColorIndicator focusIndicator;
     public SpriteRenderer unitOutline;
     public GameObject spriteContainer;
     public SingleBurst singleBurst;
 
     public int numUnits = 3;
+    public List<Unit> healthArray;
     public float gasDuration = 10;
     private float gasCounter = 0;
     private List<SpriteRenderer> unitSprites; 
     private bool isPlayer;
-    public const int MAX_HEALTH_PER_UNIT = 3;
-    private int maxHealth = 3;
-    private int currentHealth = 3;
-    public bool isWounded = false;
-
+    private int healthLost = 0;
+    private const int MAX_HEALTH = 3;
+    public int startingHealth = 3;
     // SEVERELY WOUNDED | WOUNDED | SLIGHTLY WOUNDED | HEALTHY
     private readonly List<string> stringStatus = new List<string> { "UNRESPONSIVE", "DYING", "WOUNDED", "HEALTHY" };
     private readonly List<Color> colors3x = new List<Color> { Color.clear, Color.red, Color.yellow, Color.green };
     private readonly List<Color> colors4x = new List<Color> { Color.clear, Color.red, new Color(1, 0.5f, 0), Color.yellow, Color.green };
-    public readonly Color ORANGE = new Color(1, 0.5f, 0);
 
     // Start is called before the first frame update
     void Start()
     {
-        maxHealth = MAX_HEALTH_PER_UNIT * numUnits;
-        currentHealth = maxHealth;
-
-        if (isWounded)
-            currentHealth = 1;
+        if (healthArray == null || healthArray.Count == 0)
+        {
+            healthArray = new List<Unit>();
+            for (int i = 0; i < numUnits; ++i)
+                healthArray.Add(new Unit(startingHealth));
+        }
 
         // health = HEALTH_PER_UNIT;// numUnits * HEALTH_PER_UNIT;
         CreateSprites();
@@ -97,14 +97,18 @@ public class UnitStatus : MonoBehaviour
 
     public void Heal(int amount=-1)
     {
-        // Default -1 value means full health
-        currentHealth = (amount == -1 ? maxHealth : currentHealth + amount);
+        int unitToHeal = IndexOfMin(healthArray);
+        healthArray[unitToHeal].health = (amount == -1 ? MAX_HEALTH : healthArray[unitToHeal].health + amount);
         RefreshIndicators();
     }
 
     public int UnitsAlive()
     {
-        return Mathf.CeilToInt((float)currentHealth / MAX_HEALTH_PER_UNIT);
+        int unitsAlive = 0;
+        foreach(Unit unit in healthArray)
+            unitsAlive += unit.health > 0 ? 1 : 0;
+
+        return unitsAlive;
     }
 
     public static int IndexOfMin(List<Unit> list)
@@ -127,10 +131,12 @@ public class UnitStatus : MonoBehaviour
         return minIndex;
     }
 
-    private void Death()
+    public void Death()
     {
         AutoMover autoMover = GetComponent<AutoMover>();
         HideMover hideMover = GetComponent<HideMover>();
+        Vector2 playerPos = Grapher.RoundedVector(PlayerMover.instance.transform.position);
+        Vector2 position = Grapher.RoundedVector(transform.position);
 
         if (GetComponent<PlayerMover>())
         {
@@ -140,54 +146,54 @@ public class UnitStatus : MonoBehaviour
             // TODO: Game Over menu
             //TransitionFader.instance.Transition(0);
         }
-        else if (autoMover && autoMover.spawnsWounded && currentHealth == 0)
+        else if(autoMover && autoMover.spawnsWounded)
         {
-            SpawnWounded();
+            GameObject woundedEnemy = Instantiate(Globals.WEAK_ENEMY, position, Quaternion.identity, ObjectContainer.instance.wounded.transform);
+
+            woundedEnemy.GetComponent<HideMover>().lastSawPlayer = playerPos;
+            Inventory oldInventory = GetComponent<Inventory>();
+            Inventory newInventory = woundedEnemy.GetComponent<Inventory>();
+            if (oldInventory && newInventory)
+                newInventory.Add(oldInventory.inventory, oldInventory.wallet);
+
+            // Wounded enemies make noise
+            GameObject tempNoise = Instantiate(Globals.NOISE, position, Quaternion.identity);
+            tempNoise.GetComponent<Noise>().Initialize(true, Globals.KNIFE_VOLUME, Noise.Source.Knife);
+
             Destroy(gameObject);
         }
-        // If already wounded (hideMover) or doesn't spawn wounded or has negative HP
-        else if (hideMover || (autoMover && (!autoMover.spawnsWounded || currentHealth <= -1)))
+        else if(hideMover || (autoMover && !autoMover.spawnsWounded))
         {
-            SpawnCorpse();
+            GameObject corpse = Instantiate(Globals.CORPSE, position, Quaternion.identity);
+            corpse.transform.parent = ObjectContainer.instance.corpses.transform;
+
+            Inventory unitInventory = GetComponent<Inventory>();
+            Inventory corpseInventory = corpse.GetComponent<Inventory>();
+            if (unitInventory && corpseInventory)
+                corpseInventory.Add(unitInventory.inventory, unitInventory.wallet);
+
             Destroy(gameObject);
         }
-    }
-
-    private void SpawnWounded()
-    {
-        Vector2 playerPos = Grapher.RoundedVector(PlayerMover.instance.transform.position);
-        Vector2 position = Grapher.RoundedVector(transform.position);
-        GameObject woundedEnemy = Instantiate(Globals.WEAK_ENEMY, position, Quaternion.identity, ObjectContainer.instance.wounded.transform);
-
-        woundedEnemy.GetComponent<HideMover>().lastSawPlayer = playerPos;
-        Inventory oldInventory = GetComponent<Inventory>();
-        Inventory newInventory = woundedEnemy.GetComponent<Inventory>();
-        if (oldInventory && newInventory)
-            newInventory.Add(oldInventory.inventory, oldInventory.wallet);
-
-        // Wounded enemies make noise
-        GameObject tempNoise = Instantiate(Globals.NOISE, position, Quaternion.identity);
-        tempNoise.GetComponent<Noise>().Initialize(true, Globals.KNIFE_VOLUME, Noise.Source.Knife);
-    }
-
-    private void SpawnCorpse()
-    {
-        Vector2 position = Grapher.RoundedVector(transform.position);
-        GameObject corpse = Instantiate(Globals.CORPSE, position, Quaternion.identity);
-        corpse.transform.parent = ObjectContainer.instance.corpses.transform;
-
-        Inventory unitInventory = GetComponent<Inventory>();
-        Inventory corpseInventory = corpse.GetComponent<Inventory>();
-        if (unitInventory && corpseInventory)
-            corpseInventory.Add(unitInventory.inventory, unitInventory.wallet);
     }
 
     public void DamageHealth(int amount=1)
     {
-        currentHealth -= amount;
+        List<int> eligibleTargets = new List<int>();
+
+        for(int i = 0; i < healthArray.Count; ++i)
+            if(healthArray[i].health > 0)
+                eligibleTargets.Add(i);
+
+        if(eligibleTargets.Count > 0)
+        {
+            int playerDamaged = eligibleTargets[Random.Range(0, eligibleTargets.Count)];
+            healthArray[playerDamaged].health -= amount;
+        }
 
         if (singleBurst)
             singleBurst.Burst();
+
+        healthLost += amount;
 
         if (IsDead())
             Death();
@@ -197,26 +203,42 @@ public class UnitStatus : MonoBehaviour
 
     public int HealthLost()
     {
-        return maxHealth - currentHealth;
+        int total = 0;
+        foreach (Unit amount in healthArray)
+            total += (MAX_HEALTH - amount.health);
+
+        return total;
     }
 
     private bool IsDead()
     {
-        return currentHealth <= 0;
+        return UnitsAlive() == 0;
     }
+    /*
+    public int GetHealth()
+    {
+        return health;
+    }*/
 
     private void RefreshIndicators()
     {
         if (unitOutline)
         {
-            float healthDecimal = currentHealth / (float)maxHealth;
-            if (healthDecimal >= 0.67f)
+            if (numUnits == 1 && healthArray.Count > 0)
+                unitOutline.color = colors3x[Mathf.Clamp(healthArray[0].health, 0, colors3x.Count - 1)];
+            else if (numUnits == UnitsAlive())
                 unitOutline.color = Color.green;
-            else if(healthDecimal >= 0.34f)
-                unitOutline.color = Color.yellow;
             else
-                unitOutline.color = Color.red;
+                unitOutline.color = colors4x[UnitsAlive()];
         }
+
+        /*for(int i = 0; i < unitSprites.Count; ++i)
+        {
+            if(healthArray[i] >= 0)
+                unitSprites[i].color = healthColors[healthArray[i]];
+        }*/
+        // healthIndicator.SetColor(healthArray);
+        // focusIndicator.SetColor(focus);
     }
 
     public void InflictGas()
@@ -232,6 +254,20 @@ public class UnitStatus : MonoBehaviour
     public bool IsGassed()
     {
         return gasCounter > 0;
+    }
+
+    public int GetHealthLost()
+    {
+        return healthLost;
+    }
+
+    public string StringStatus()
+    {
+        string output = "";
+        foreach(Unit unit in healthArray)
+            output += unit.name + ": " + stringStatus[unit.health] + "\n";
+
+        return output;
     }
 
 }

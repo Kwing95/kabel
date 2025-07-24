@@ -99,7 +99,7 @@ public class Navigator : MonoBehaviour
             Vector2 position = mover.GetDiscretePosition();
             path = Grapher.FindPath(position, destination, maxPathLength);
 
-            if (path.Count > 0 && waypointEnabled)
+            if (path.Count > 0 && waypointEnabled && PlayerMover.lastCommand == PlayerMover.CommandType.Mouse)
             {
                 Destroy(waypoint);
                 waypoint = Instantiate(Globals.WAYPOINT, destination, Quaternion.identity);

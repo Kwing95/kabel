@@ -210,7 +210,12 @@ public class ActionManager : MonoBehaviour
             UnitStatus targetHit = hit.collider.GetComponent<UnitStatus>();
             if (targetHit)
             {
-                targetHit.DamageHealth(); // formerly memberIndex
+                if (attackerIsPlayer && Vector2.Distance(shotOrigin, hit.collider.gameObject.transform.position) <= Globals.GUN_RED_RANGE)
+                    targetHit.DamageHealth(3);
+                else if (attackerIsPlayer && Vector2.Distance(shotOrigin, hit.collider.gameObject.transform.position) <= Globals.GUN_ORANGE_RANGE)
+                    targetHit.DamageHealth(2);
+                else
+                    targetHit.DamageHealth(); // formerly memberIndex
                 AutoMover autoMover = hit.collider.GetComponent<AutoMover>();
                 if (autoMover)
                     autoMover.VisualToPosition(Grapher.RoundedVector(unit.transform.position));
@@ -294,7 +299,12 @@ public class ActionManager : MonoBehaviour
             if (targetHit != null /*&& targetMover.GetAwareness() != AutoMover.State.Alert*/)
             {
                 SoundManager.instance.Play(SoundManager.Sound.Knife);
-                targetHit.DamageHealth(3);
+                if (Vector2.Distance(origin, hit.collider.gameObject.transform.position) <= Globals.KNIFE_KILL_RANGE)
+                {
+                    targetHit.DamageHealth(4);
+                }
+                else
+                    targetHit.DamageHealth(3);
                 // There is a risk of being hurt attempting to knife an enemy
                 //if(attacker && Random.Range(0, 11) == 0)
                 //    attacker.DamageHealth(1);

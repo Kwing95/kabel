@@ -64,7 +64,7 @@ public class TransitionFader : MonoBehaviour
             SaveService.UpdateLevelRecord(SceneManager.GetActiveScene().name,
                     PlayerMover.instance.GetComponent<Inventory>().wallet,
                     Timekeeper.instance.GetSecondsPlayed(),
-                    PlayerMover.instance.GetComponent<UnitStatus>().GetHealthLost());
+                    PlayerMover.instance.GetComponent<UnitStatus>().HealthLost());
         else
         {
             if(SceneManager.GetActiveScene().name == "TextCutscene")

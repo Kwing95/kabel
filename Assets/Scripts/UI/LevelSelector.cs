@@ -223,6 +223,18 @@ public class LevelSelector : MonoBehaviour
         customSeed.text = MazeMaker.seed.ToString();
     }
 
+    public void ToggleDifficulty()
+    {
+        switch (MazeMaker.difficulty)
+        {
+            case MazeMaker.Difficulty.Easy: MazeMaker.difficulty = MazeMaker.Difficulty.Medium; break;
+            case MazeMaker.Difficulty.Medium: MazeMaker.difficulty = MazeMaker.Difficulty.Hard; break;
+            case MazeMaker.Difficulty.Hard: MazeMaker.difficulty = MazeMaker.Difficulty.Brutal; break;
+            case MazeMaker.Difficulty.Brutal: MazeMaker.difficulty = MazeMaker.Difficulty.Easy; break;
+        }
+        Toast.ToastWrapper("Difficulty set to " + MazeMaker.difficulty);
+    }
+
     public void StartArcade()
     {
         try

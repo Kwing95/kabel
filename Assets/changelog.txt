@@ -13,9 +13,14 @@ FEATURES:
 	Distance-based knife damage
 	Distance-based gun damage
 	Smart aim
+	Simple health
 	Tutorial
 		Knife, Distraction, Gun, Grenade, Medkit
 	Save level (using procedural name) to come back to later
 		NAME	SEED	EASY_TIME	MEDIUM_TIME		HARD_TIME	BRUTAL_TIME
 
 3/13/2024:	Starting from Kabel 1.3 repository
+7/20/2025:	Difficulty setting added to Arcade Mode
+7/23/2025:	New UnitStatus that doesn't track individual units
+			Knives instakill within a certain range
+			Guns do more damage within a certain range

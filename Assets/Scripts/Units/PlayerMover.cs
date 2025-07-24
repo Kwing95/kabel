@@ -6,6 +6,8 @@ using UnityEngine.UI;
 public class PlayerMover : MonoBehaviour
 {
     public float maxSmartMoveDistance = 10;
+    public enum CommandType { Mouse, Keyboard };
+    public static CommandType lastCommand;
 
     public static PlayerMover instance;
 
@@ -46,9 +48,10 @@ public class PlayerMover : MonoBehaviour
         if (CanMove() && mover.GetCanTurn())
         {
             if (Mathf.Abs(horizontalInput) > 0.5f || Mathf.Abs(verticalInput) > 0.5f)
+            {
+                lastCommand = CommandType.Keyboard;
                 nav.SetDestination(transform.position + new Vector3(Mathf.Ceil(horizontalInput), Mathf.Ceil(verticalInput)), isRunning);
-            
-
+            }
         }
 
         if (Input.GetButton("Confirm"))
@@ -95,6 +98,7 @@ public class PlayerMover : MonoBehaviour
         //LayerMask mask = LayerMask.GetMask("Default");
         //RaycastHit2D hit = Physics2D.Raycast(transform.position, mousePosition - (Vector2)transform.position, distance, mask);
 
+        lastCommand = CommandType.Mouse;
         nav.SetDestination(mousePosition, Sidebar.GetRunning());
         if(nav.GetPathLength() == 0)
             Toast.ToastWrapper("Tile out of range");

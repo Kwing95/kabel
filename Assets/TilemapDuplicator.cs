@@ -9,6 +9,7 @@ public class TilemapDuplicator : MonoBehaviour
     private bool isOriginal = true;
     public Color copyColor;
     public RuleTile copyRuleTile;
+    private GameObject copyObject;
 
     // Start is called before the first frame update
     void Start()
@@ -19,17 +20,17 @@ public class TilemapDuplicator : MonoBehaviour
 
     private void CreateCopy()
     {
-        GameObject tilemapCopy = Instantiate(gameObject, transform.position, Quaternion.identity, transform.parent);
-        tilemapCopy.GetComponent<TilemapDuplicator>().isOriginal = false;
-        tilemapCopy.GetComponent<TilemapColorer>().color = copyColor;
-        Tilemap tilemap = tilemapCopy.GetComponent<Tilemap>();
+        copyObject = Instantiate(gameObject, transform.position, Quaternion.identity, transform.parent);
+        copyObject.GetComponent<TilemapDuplicator>().isOriginal = false;
+        copyObject.GetComponent<TilemapColorer>().color = copyColor;
+        Tilemap tilemap = copyObject.GetComponent<Tilemap>();
         ReplaceAllTiles(tilemap, copyRuleTile);
         //tilemap.ClearAllTiles();
         //tilemap.SetTile(new Vector3Int(0, 0, 0), copyRuleTile);
-        tilemapCopy.GetComponent<TilemapRenderer>().sortingOrder = GetComponent<TilemapRenderer>().sortingOrder - 1;
+        copyObject.GetComponent<TilemapRenderer>().sortingOrder = GetComponent<TilemapRenderer>().sortingOrder - 1;
     }
 
-    void ReplaceAllTiles(Tilemap tilemap, RuleTile newTile)
+    private void ReplaceAllTiles(Tilemap tilemap, RuleTile newTile)
     {
         // Get the bounds of the tilemap
         BoundsInt bounds = tilemap.cellBounds;

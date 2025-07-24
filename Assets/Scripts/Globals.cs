@@ -48,10 +48,13 @@ public class Globals : MonoBehaviour
     public static readonly float WALK_VOLUME = 2f;
     public static readonly float FLARE_VOLUME = 20f;
 
-    public static readonly float GRENADE_RED_RANGE = 1.5f;
+    public static readonly float GUN_RED_RANGE = 1.6f;
+    public static readonly float GUN_ORANGE_RANGE = 2.6f;
+    public static readonly float GRENADE_RED_RANGE = 1.6f;
     public static readonly float GRENADE_ORANGE_RANGE = 3f;
     public static readonly float GRENADE_YELLOW_RANGE = 4.5f;
-    public static readonly float KNIFE_RANGE = 2.75f;
+    public static readonly float KNIFE_KILL_RANGE = 1.5f;
+    public static readonly float KNIFE_RANGE = 2.5f;
 
     // PREFABS
     public static readonly GameObject CORPSE = Resources.Load<GameObject>("Prefabs/Core_Gameplay/Corpse");

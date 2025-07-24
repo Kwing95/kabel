@@ -104,10 +104,23 @@ public class PreviewManager : MonoBehaviour
         else
             Toast.ToastWrapper("Valid target selected");
 
-        renderer.material = (targetInRange && targetUnaware) ? Globals.BRIGHT_RED : Globals.BRIGHT_WHITE;
+        if (targetInRange && targetUnaware)
+        {
+            if (Vector2.Distance(start, hit.collider.gameObject.transform.position) <= Globals.KNIFE_KILL_RANGE)
+            {
+                renderer.material = Globals.BRIGHT_RED;
+            }
+            else
+            {
+                renderer.material = Globals.BRIGHT_YELLOW;
+            }
+        }
+        else
+            renderer.material = Globals.BRIGHT_WHITE;
 
         renderer.startWidth = renderer.endWidth = 0.07f;
         previewObjects.Add(renderer.gameObject);
+        previewObjects.Add(ShapeManager.DrawCircle(start, Globals.KNIFE_KILL_RANGE, Globals.RED));
     }
 
     private static void PreviewDistraction()
@@ -195,6 +208,8 @@ public class PreviewManager : MonoBehaviour
         renderer.material = Globals.BRIGHT_RED;
         renderer.startWidth = renderer.endWidth = 0.07f;
         previewObjects.Add(renderer.gameObject);
+        previewObjects.Add(ShapeManager.DrawCircle(start, Globals.GUN_RED_RANGE, Globals.RED));
+        previewObjects.Add(ShapeManager.DrawCircle(start, Globals.GUN_ORANGE_RANGE, Globals.ORANGE));
     }
 
 
